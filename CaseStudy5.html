@@ -52,6 +52,7 @@
   /* ── HERO ── */
   .hero {
     background: var(--slate);
+    padding-top: 64px;
     position: relative;
     overflow: hidden;
   }
@@ -978,9 +979,32 @@
     .screens-grid { grid-template-columns: repeat(2, 1fr); }
     .roles-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── NAV ── */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(17,24,32,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-logo { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; color: #ffffff; text-decoration: none; display: flex; align-items: baseline; gap: 6px; }
+  .nav-logo em { font-style: italic; color: #c8922a; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; letter-spacing: 0.02em; }
+  .nav-links a:hover { color: #ffffff; }
+  .nav-cta { font-size: 12px; font-weight: 500; color: #111820; background: #c8922a; padding: 8px 20px; border-radius: 4px; text-decoration: none; transition: background 0.2s, transform 0.15s; letter-spacing: 0.02em; }
+  .nav-cta:hover { background: #d9a033; transform: translateY(-1px); }
+  @media (max-width: 768px) { nav { padding: 0 24px; } .nav-links { display: none; } }
 </style>
 </head>
 <body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Learning <em>Matters.</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="nav-cta">Let's talk</a>
+</nav>
+
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -1493,8 +1517,7 @@
     <h2 class="reveal">Need a learning system that<br><em>scales with your workforce?</em></h2>
     <p class="cta-tagline reveal">Learning matters. Let's make yours count.</p>
     <div class="cta-buttons reveal">
-      <a href="#" class="btn-primary">Let's talk ↗</a>
-      <a href="#" class="btn-secondary">Download full case study</a>
+      <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="btn-primary">Let's talk ↗</a>
     </div>
   </div>
 </section>
