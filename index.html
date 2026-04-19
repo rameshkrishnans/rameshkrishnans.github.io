@@ -636,6 +636,110 @@ nav {
 }
 .article-link:hover { gap: 8px; }
 
+/* ── GAMES FOR TRAINERS ── */
+.games-section {
+  padding: 100px 0;
+  background: var(--warm-white);
+  position: relative;
+  overflow: hidden;
+}
+.games-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,146,42,0.35), transparent);
+}
+.games-section .section-eyebrow { color: var(--gold); }
+.games-section .section-title { color: var(--ink); }
+.games-section .section-title em { color: var(--gold); }
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.game-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
+}
+.game-card:hover {
+  border-color: rgba(200,146,42,0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.game-card-top {
+  padding: 28px 28px 0;
+}
+.game-card-icon {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+.game-card-icon.amber  { background: rgba(200,146,42,0.1); border: 1px solid rgba(200,146,42,0.2); }
+.game-card-icon.forest { background: rgba(13,59,46,0.08); border: 1px solid rgba(13,59,46,0.15); }
+.game-card-icon.navy   { background: rgba(10,37,64,0.08); border: 1px solid rgba(10,37,64,0.15); }
+.game-tag {
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.game-tag.amber  { background: rgba(200,146,42,0.1); color: #a0700f; border: 1px solid rgba(200,146,42,0.25); }
+.game-tag.forest { background: rgba(13,59,46,0.08); color: var(--forest); border: 1px solid rgba(13,59,46,0.2); }
+.game-tag.navy   { background: rgba(10,37,64,0.08); color: var(--navy); border: 1px solid rgba(10,37,64,0.2); }
+.game-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.game-title em { font-style: italic; }
+.game-excerpt {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-mid);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.game-card-footer {
+  padding: 0 28px 28px;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.game-meta {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+}
+.game-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: gap 0.2s;
+  letter-spacing: 0.02em;
+}
+.game-link:hover { gap: 8px; }
+
 /* ── TESTIMONIALS ── */
 .testimonials-section {
   padding: 100px 0;
@@ -830,6 +934,7 @@ footer {
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#articles">Insights</a></li>
+    <li><a href="#games">Games</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
@@ -1081,6 +1186,61 @@ footer {
         <div class="article-card-footer">
           <div class="article-meta">10 min read</div>
           <a href="article-situated-learning.html" class="article-link">Read article →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GAMES FOR TRAINERS ── -->
+<section class="games-section" id="games">
+  <div class="page-wrap">
+    <div class="section-header reveal">
+      <div class="section-header-left">
+        <div class="section-eyebrow">Games for Trainers</div>
+        <h2 class="section-title">Play that makes<br><em>people think differently</em></h2>
+      </div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="games-grid">
+
+      <div class="game-card reveal reveal-delay-1">
+        <div class="game-card-top">
+          <div class="game-card-icon amber">🎯</div>
+          <div class="game-tag amber">Energiser</div>
+          <div class="game-title">The Assumption<br><em>Auction</em></div>
+          <p class="game-excerpt">Participants bid fictional currency on assumptions they believe are true — then the facilitator reveals which ones the data actually supports. A deceptively simple game that exposes confirmation bias, surfaces hidden mental models, and generates the kind of honest conversation that no icebreaker ever could.</p>
+        </div>
+        <div class="game-card-footer">
+          <div class="game-meta">8 min read</div>
+          <a href="game-assumption-auction.html" class="game-link">Read article →</a>
+        </div>
+      </div>
+
+      <div class="game-card reveal reveal-delay-2">
+        <div class="game-card-top">
+          <div class="game-card-icon forest">🔄</div>
+          <div class="game-tag forest">Role Reversal</div>
+          <div class="game-title">The Other<br><em>Side of the Table</em></div>
+          <p class="game-excerpt">Each participant is handed a role card that places them on the opposite side of a workplace scenario — the manager becomes the new hire, the trainer becomes the resistant learner, the expert becomes the confused beginner. What they discover about perspective, patience, and assumptions tends to stay with them long after the room clears.</p>
+        </div>
+        <div class="game-card-footer">
+          <div class="game-meta">7 min read</div>
+          <a href="game-other-side.html" class="game-link">Read article →</a>
+        </div>
+      </div>
+
+      <div class="game-card reveal reveal-delay-3">
+        <div class="game-card-top">
+          <div class="game-card-icon navy">🏗️</div>
+          <div class="game-tag navy">Decision Making</div>
+          <div class="game-title">The Constraint<br><em>Tower</em></div>
+          <p class="game-excerpt">Teams are given identical materials and an identical goal — but each team receives a different hidden constraint: a budget limit, a missing resource, a silent rule. The towers they build reveal how people behave under pressure, who leads, who problem-solves, and who shuts down. The debrief practically runs itself.</p>
+        </div>
+        <div class="game-card-footer">
+          <div class="game-meta">9 min read</div>
+          <a href="game-constraint-tower.html" class="game-link">Read article →</a>
         </div>
       </div>
 

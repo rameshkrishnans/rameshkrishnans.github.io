@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Assumption Auction | Games for Trainers — Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #111820; --ink-mid: #344050; --ink-light: #6b7888;
+  --white: #ffffff; --warm-white: #f8f7f4; --rule: #e2dfd8;
+  --gold: #c8922a; --gold-light: #fdf4e3; --navy: #0a2540; --forest: #0d3b2e;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); -webkit-font-smoothing: antialiased; padding-top: 64px; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(17,24,32,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-logo { font-family: var(--font-display); font-size: 20px; color: #fff; text-decoration: none; display: flex; align-items: baseline; gap: 6px; }
+.nav-logo em { font-style: italic; color: var(--gold); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; letter-spacing: 0.02em; }
+.nav-links a:hover { color: #fff; }
+.nav-cta { font-size: 12px; font-weight: 500; color: var(--ink); background: var(--gold); padding: 8px 20px; border-radius: 4px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+.nav-cta:hover { background: #d9a033; transform: translateY(-1px); }
+.article-hero { background: var(--ink); padding: 72px 0 64px; position: relative; overflow: hidden; }
+.article-hero::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,146,42,0.5), transparent); }
+.article-hero-inner { max-width: 760px; margin: 0 auto; padding: 0 48px; }
+.article-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+.article-eyebrow::before { content: ''; display: block; width: 24px; height: 1.5px; background: var(--gold); }
+.article-hero h1 { font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 52px); font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 24px; }
+.article-hero h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+.article-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.article-meta-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; background: rgba(200,146,42,0.15); color: var(--gold); border: 1px solid rgba(200,146,42,0.3); }
+.article-meta-time { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); }
+.article-body { max-width: 760px; margin: 0 auto; padding: 64px 48px 80px; }
+.article-body p { font-size: 16px; font-weight: 300; color: var(--ink-mid); line-height: 1.9; margin-bottom: 28px; }
+.article-body h2 { font-family: var(--font-display); font-size: clamp(22px, 2.8vw, 32px); font-weight: 400; color: var(--ink); line-height: 1.25; margin: 52px 0 20px; }
+.article-body h2 em { font-style: italic; color: var(--ink-mid); }
+.article-body strong { font-weight: 500; color: var(--ink); }
+.pull-quote { margin: 40px 0; padding: 28px 36px; border-left: 3px solid var(--gold); background: var(--gold-light); border-radius: 0 8px 8px 0; font-family: var(--font-display); font-size: 20px; font-style: italic; color: var(--ink); line-height: 1.6; }
+.adaptation-box { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 32px 36px; margin: 40px 0; }
+.adaptation-box-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.adaptation-box h3 { font-family: var(--font-display); font-size: 20px; color: var(--ink); margin: 0 0 16px; }
+.adaptation-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.adaptation-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; }
+.adaptation-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
+.run-box { background: var(--ink); border-radius: 12px; padding: 36px; margin: 40px 0; }
+.run-box-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.run-steps { display: flex; flex-direction: column; gap: 20px; }
+.run-step { display: flex; gap: 18px; align-items: flex-start; }
+.run-step-num { font-family: var(--font-display); font-size: 28px; color: rgba(200,146,42,0.4); line-height: 1; min-width: 32px; }
+.run-step-title { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 5px; }
+.run-step-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.65; }
+.author-section { max-width: 760px; margin: 0 auto; padding: 48px 48px 64px; border-top: 1px solid var(--rule); }
+.author-block { display: flex; align-items: center; gap: 20px; }
+.author-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 18px; flex-shrink: 0; }
+.author-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.author-role { font-size: 13px; font-weight: 300; color: var(--ink-light); }
+.author-cta { font-size: 12px; font-weight: 500; color: var(--gold); text-decoration: none; margin-top: 6px; display: inline-block; }
+.continue-section { background: var(--white); border-top: 1px solid var(--rule); padding: 56px 0; }
+.continue-inner { max-width: 760px; margin: 0 auto; padding: 0 48px; }
+.continue-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 24px; }
+.continue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.continue-card { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 10px; padding: 24px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: block; }
+.continue-card:hover { border-color: rgba(200,146,42,0.4); transform: translateY(-2px); }
+.continue-card-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.continue-card-title { font-family: var(--font-display); font-size: 18px; color: var(--ink); line-height: 1.3; }
+.continue-card-title em { font-style: italic; }
+footer { background: var(--ink); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: var(--font-display); font-size: 18px; color: rgba(255,255,255,0.7); text-decoration: none; }
+.footer-logo em { font-style: italic; color: var(--gold); }
+.footer-links { display: flex; gap: 28px; list-style: none; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.7); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+@media (max-width: 768px) {
+  .article-hero-inner, .article-body, .author-section, .continue-inner { padding-left: 24px; padding-right: 24px; }
+  .continue-grid { grid-template-columns: 1fr; }
+  nav { padding: 0 24px; } .nav-links { display: none; }
+  footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Learning <em>Matters.</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="nav-cta">Let's talk</a>
+</nav>
+
+<header class="article-hero">
+  <div class="article-hero-inner">
+    <div class="article-eyebrow">Games for Trainers</div>
+    <h1>The Assumption <em>Auction</em></h1>
+    <div class="article-meta-row">
+      <span class="article-meta-tag">Energiser</span>
+      <span class="article-meta-tag">Critical Thinking</span>
+      <span class="article-meta-time">· 8 min read</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+  <p>Every room full of learners arrives with invisible baggage. Not the kind they check at the door — the kind they don't even know they're carrying. Assumptions about how things work. Beliefs about what's true. Mental models built from experience, habit, and instinct that feel so self-evident they never get questioned. The Assumption Auction is a game designed to drag those hidden beliefs into the light — gently, playfully, and with enough psychological safety that people actually engage.</p>
+
+  <p>It takes about twenty minutes to run. It requires no technology, no special materials, and no facilitation expertise beyond a willingness to let the room surprise you. And it consistently produces the kind of honest, energised conversation that takes most workshops an hour to reach.</p>
+
+  <h2>How the game <em>works</em></h2>
+
+  <p>Before the session, you prepare a set of statements — ten to fifteen assertions related to the topic you're exploring. These statements are deliberately designed to sit somewhere between obviously true and obviously false. The best ones are the ones where reasonable, experienced people genuinely disagree.</p>
+
+  <p>Each participant receives a set of bidding tokens — fictional currency, coloured chips, or simply numbered cards. You then read each statement aloud, one at a time, and run a short auction. Participants bid tokens on the statements they believe are true. The highest bidder wins that statement — and the responsibility of defending it if challenged.</p>
+
+  <div class="pull-quote">"The magic is not in the bidding. It's in the moment the facilitator reveals which statements the data actually supports — and the room discovers which of their confident convictions were fiction."</div>
+
+  <p>The debrief is where the real learning happens. Go through each statement. Reveal whether it's supported by evidence, contested, or demonstrably false. Ask the people who bid high on wrong assumptions: what made you so confident? Ask those who held back on true statements: what stopped you from committing? The conversation that follows tends to be more honest and more generative than anything you could have scripted.</p>
+
+  <h2>Why it works — the psychology behind <em>the auction</em></h2>
+
+  <p>The auction format does something clever: it asks people to put a price on their beliefs. When you make someone convert a vague opinion into a concrete bid, you force a level of commitment that simple discussion never produces. People who might shrug and say "I'm not sure" in a group conversation will place a bet — and then feel the sting when that bet turns out to be wrong.</p>
+
+  <p>This mild experience of being wrong in a safe, playful context is exactly what makes assumptions visible. The competitive element keeps energy high without turning the room adversarial. The fictional currency removes the stakes just enough that people are willing to take risks. And the collective discovery of which assumptions held up creates a shared reference point the rest of the workshop can build on.</p>
+
+  <p>There is also something important about the physical act of placing a bid. The game pulls people out of passive listening mode and into active engagement — they're making decisions, watching the room, reading other people's choices. That shift in posture, from audience to participant, tends to persist for the rest of the session.</p>
+
+  <div class="run-box">
+    <div class="run-box-label">How to run it — step by step</div>
+    <div class="run-steps">
+      <div class="run-step">
+        <div class="run-step-num">01</div>
+        <div class="run-step-content">
+          <div class="run-step-title">Prepare your statements</div>
+          <div class="run-step-desc">Write 10–15 statements about your topic. Each should be plausible enough that people might believe it — but not so obvious that everyone agrees immediately. The best statements are the ones where you can genuinely imagine the room splitting.</div>
+        </div>
+      </div>
+      <div class="run-step">
+        <div class="run-step-num">02</div>
+        <div class="run-step-content">
+          <div class="run-step-title">Distribute bidding tokens</div>
+          <div class="run-step-desc">Give each participant 20–30 tokens. Physical tokens — poker chips, coins, folded paper slips — work better than virtual ones. The tactile element increases engagement. Tell participants they can bid any amount on each statement, including zero.</div>
+        </div>
+      </div>
+      <div class="run-step">
+        <div class="run-step-num">03</div>
+        <div class="run-step-content">
+          <div class="run-step-title">Run the auction</div>
+          <div class="run-step-desc">Read each statement clearly. Allow 30 seconds for bidding. The highest bidder claims that statement card. Move quickly — the pace keeps energy up. Do not reveal answers yet. Save them all for the debrief.</div>
+        </div>
+      </div>
+      <div class="run-step">
+        <div class="run-step-num">04</div>
+        <div class="run-step-content">
+          <div class="run-step-title">Reveal and debrief</div>
+          <div class="run-step-desc">Go through each statement and reveal whether it's true, false, or genuinely contested. Focus debrief time on the statements that surprised the room most — where the gap between assumption and evidence was widest. Ask: what made us so sure? What would have changed our minds?</div>
+        </div>
+      </div>
+      <div class="run-step">
+        <div class="run-step-num">05</div>
+        <div class="run-step-content">
+          <div class="run-step-title">Bridge to the workshop</div>
+          <div class="run-step-desc">Connect the experience explicitly to what comes next. The assumptions surfaced in the game are the starting point for the session's learning. Name them. Keep them visible on a flipchart. Return to them at the close to show how thinking has shifted.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Adapting the Assumption Auction <em>to different contexts</em></h2>
+
+  <p>The game's greatest strength is its flexibility. The format stays the same regardless of topic — only the statements change. Here's how it adapts across some of the most common training contexts.</p>
+
+  <div class="adaptation-box">
+    <div class="adaptation-box-label">Workshop Adaptations</div>
+    <h3>Where this game travels well</h3>
+    <ul class="adaptation-list">
+      <li><strong>Leadership development:</strong> Use statements about what motivates people, what makes teams effective, or what distinguishes great managers from average ones. Leadership assumptions are often the most entrenched — and the most worth examining.</li>
+      <li><strong>Compliance and ethics training:</strong> Frame statements as workplace scenarios: "Most people who commit fraud are doing it out of greed." Surface the beliefs that drive real behaviour far more effectively than policy slides ever could.</li>
+      <li><strong>Customer service and sales:</strong> Use statements about what customers actually want, what drives buying decisions, or what kills a deal. Ask people to bid on beliefs they've held for years — then show them what the data says.</li>
+      <li><strong>Diversity and inclusion:</strong> Handle with care, but done well, this is one of the most powerful applications. Statements about hiring bias or representation can surface unexamined beliefs in a way that opens dialogue rather than closing it down.</li>
+      <li><strong>Onboarding:</strong> Introduce new hires to the organisation's culture by auctioning assumptions about "how things work here." Experienced colleagues share what surprised them when they joined — and what they wish they'd known.</li>
+      <li><strong>Virtual delivery:</strong> Use Mentimeter, Slido, or a Miro board to replicate the bidding mechanic online. The energy is lower than in-room, but the insight is just as sharp. Assign token counts at the start and track bids on a shared screen.</li>
+    </ul>
+  </div>
+
+  <h2>What to watch for as a <em>facilitator</em></h2>
+
+  <p><strong>Don't over-explain the rules.</strong> The game is intuitive — too much upfront instruction kills the spontaneity. Give the basics, run a practice round with a low-stakes statement, and let people work out the rest as they go.</p>
+
+  <p><strong>Watch the room during the reveal.</strong> The moment someone discovers their confident bid was wrong is a learning opportunity, not a moment for correction. Acknowledge the surprise with curiosity rather than triumph. The goal is reflection, not embarrassment.</p>
+
+  <p><strong>Prepare for disagreement.</strong> Some statements won't have a clean true-or-false answer. That's fine — contested territory is often more interesting than settled fact. Be ready to say "this one's genuinely debated, and here's why" rather than forcing a verdict you can't fully support.</p>
+
+  <p><strong>Keep a note of what surprised the room.</strong> The statements that generated the biggest bids on wrong answers are telling you exactly where your session's learning needs to be anchored. Don't ignore that signal.</p>
+
+  <h2>The takeaway</h2>
+
+  <p>The Assumption Auction works because it treats assumptions not as problems to be corrected but as data to be examined. It creates the conditions for intellectual honesty without demanding it — and in doing so, tends to get more of it than any direct challenge ever could.</p>
+
+  <p>When people discover their own assumptions are wrong through a game, in a room full of peers, they tend to stay curious. And a curious room is the best possible place to start any learning experience.</p>
+
+</article>
+
+<section class="author-section">
+  <div class="author-block">
+    <div class="author-avatar">R</div>
+    <div>
+      <div class="author-name">Ramesh Krishnan</div>
+      <div class="author-role">Learning Consultant &amp; Instructional Designer</div>
+      <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="author-cta">Work with me ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="continue-section">
+  <div class="continue-inner">
+    <div class="continue-label">Continue reading</div>
+    <div class="continue-grid">
+      <a href="game-other-side.html" class="continue-card">
+        <div class="continue-card-tag">Role Reversal</div>
+        <div class="continue-card-title">The Other <em>Side of the Table</em></div>
+      </a>
+      <a href="game-constraint-tower.html" class="continue-card">
+        <div class="continue-card-tag">Decision Making</div>
+        <div class="continue-card-title">The Constraint <em>Tower</em></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">Learning <em>Matters.</em></a>
+  <ul class="footer-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Learning Matters. All rights reserved.</div>
+</footer>
+</body>
+</html>
