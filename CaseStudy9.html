@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI-Powered Sales Force Virtual Assistant | Case Study — Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest:      #0d3b2e;
+    --forest-mid:  #174d3c;
+    --green:       #1e7a5a;
+    --green-light: #2d9e74;
+    --sage:        #e4f0eb;
+    --sage-mid:    #c2ddd2;
+    --ink:         #151f1b;
+    --ink-mid:     #3a4a43;
+    --ink-light:   #6b7d75;
+    --white:       #ffffff;
+    --warm-white:  #f6f8f7;
+    --rule:        #d0ddd8;
+    --gold:        #c8922a;
+    --gold-light:  #fdf4e3;
+    --teal:        #006d77;
+    --teal-mid:    #008891;
+    --teal-light:  #e0f4f5;
+    --cyan:        #00b4c8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Outfit', system-ui, sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); -webkit-font-smoothing: antialiased; padding-top: 64px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(17,24,32,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-logo { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; color: #fff; text-decoration: none; display: flex; align-items: baseline; gap: 6px; }
+  .nav-logo em { font-style: italic; color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { font-size: 12px; font-weight: 500; color: var(--ink); background: var(--gold); padding: 8px 20px; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: #d9a033; }
+  @media (max-width: 768px) { nav { padding: 0 24px; } .nav-links { display: none; } }
+
+  /* HERO */
+  .hero { background: var(--teal); padding-top: 64px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; top: 0; right: 0; width: 480px; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(0,180,200,0.12) 100%); pointer-events: none; }
+  .hero::before { content: ''; position: absolute; bottom: -60px; left: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,136,145,0.3) 0%, transparent 70%); pointer-events: none; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 360px; max-width: 1100px; margin: 0 auto; }
+  .hero-left { padding: 72px 56px 72px 48px; display: flex; flex-direction: column; justify-content: center; animation: fadeUp 0.9s var(--ease) both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--gold); }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(30px, 3.8vw, 52px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: #a0e8f0; font-weight: 400; }
+  .hero-sub { font-size: 15px; font-weight: 300; color: #88ccd4; line-height: 1.75; max-width: 500px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 28px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: #3d8890; }
+  .hero-meta-value { font-size: 13px; font-weight: 300; color: #a0d8e0; }
+  .hero-right { background: var(--teal-mid); border-left: 1px solid rgba(255,255,255,0.05); padding: 56px 36px; display: flex; flex-direction: column; justify-content: center; animation: fadeUp 0.9s 0.12s var(--ease) both; }
+  .hero-right-label { font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: #3d8890; margin-bottom: 28px; }
+  .stat-list { display: flex; flex-direction: column; gap: 22px; }
+  .stat-item { display: flex; align-items: flex-start; gap: 14px; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-num { font-family: var(--font-display); font-size: 38px; font-weight: 500; color: var(--white); line-height: 1; min-width: 88px; }
+  .stat-num sup { font-size: 20px; color: var(--gold); vertical-align: super; line-height: 0; }
+  .stat-desc { font-size: 13px; font-weight: 300; color: #88ccd4; line-height: 1.55; padding-top: 6px; }
+
+  /* LAYOUT */
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+  .section-label-text { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); white-space: nowrap; }
+  .section-label-line { flex: 1; height: 1px; background: var(--rule); transform: scaleX(0); transform-origin: left; transition: transform 0.9s var(--ease) 0.2s; }
+  .section-label-line.visible { transform: scaleX(1); }
+
+  /* CHALLENGE */
+  .challenge-section { padding: 80px 0 72px; }
+  .challenge-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+  .challenge-left h2 { font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 500; color: var(--forest); line-height: 1.2; margin-bottom: 22px; }
+  .challenge-left h2 em { font-style: italic; color: var(--green); font-weight: 400; }
+  .challenge-left p { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; margin-bottom: 18px; }
+  .constraint-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .constraint-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--white); border: 1px solid var(--rule); border-radius: 8px; font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.65; transition: border-color 0.2s; }
+  .constraint-item:hover { border-color: var(--sage-mid); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 5px; }
+
+  /* CONTENT AUDIT */
+  .audit-section { padding: 72px 0; background: var(--teal); position: relative; overflow: hidden; }
+  .audit-section::before { content: ''; position: absolute; bottom: -80px; right: -80px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(0,180,200,0.18) 0%, transparent 70%); pointer-events: none; }
+  .audit-section .section-label-text { color: var(--gold); }
+  .audit-section .section-label-line { background: rgba(255,255,255,0.08); }
+  .audit-intro { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 30px); font-weight: 400; color: var(--white); line-height: 1.45; max-width: 680px; margin-bottom: 48px; }
+  .audit-intro em { font-style: italic; color: #a0e8f0; }
+  .audit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 40px; }
+  .audit-card { background: var(--teal-mid); padding: 28px 22px; position: relative; transition: background 0.25s; }
+  .audit-card:hover { background: #00a0aa; }
+  .audit-card-accent { position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); opacity: 0; transition: opacity 0.25s; }
+  .audit-card:hover .audit-card-accent { opacity: 1; }
+  .audit-card-icon { font-size: 24px; margin-bottom: 14px; }
+  .audit-card-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
+  .audit-card-desc { font-size: 11px; font-weight: 300; color: #88ccd4; line-height: 1.6; }
+  .audit-finding { background: rgba(200,146,42,0.12); border: 1px solid rgba(200,146,42,0.28); border-radius: 8px; padding: 22px 28px; }
+  .audit-finding-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
+  .audit-finding-desc { font-size: 13px; font-weight: 300; color: #a0d8e0; line-height: 1.7; }
+
+  /* QUESTION MAPPING */
+  .questions-section { padding: 72px 0; background: var(--white); border-top: 1px solid var(--rule); }
+  .questions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+  .questions-left h2 { font-family: var(--font-display); font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; color: var(--forest); line-height: 1.2; margin-bottom: 18px; }
+  .questions-left h2 em { font-style: italic; color: var(--teal); font-weight: 400; }
+  .questions-left p { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; margin-bottom: 16px; }
+  .question-clusters { display: flex; flex-direction: column; gap: 10px; }
+  .question-cluster { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 20px; transition: border-color 0.2s; }
+  .question-cluster:hover { border-color: var(--teal-light); }
+  .question-cluster-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+  .question-cluster-count { font-size: 11px; font-weight: 400; color: var(--ink-light); background: var(--teal-light); padding: 2px 8px; border-radius: 10px; }
+  .question-cluster-examples { font-size: 12px; font-weight: 300; color: var(--ink-light); line-height: 1.55; margin-top: 4px; font-style: italic; }
+  .question-highlight { background: var(--teal-light); border: 1px solid rgba(0,109,119,0.2); border-radius: 8px; padding: 18px 22px; margin-top: 20px; }
+  .question-highlight strong { display: block; font-size: 11px; font-weight: 500; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .question-highlight p { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.65; margin: 0; }
+
+  /* CONTENT CREATION */
+  .content-section { padding: 72px 0; }
+  .content-section .section-label-text { color: var(--green); }
+  .content-intro { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 32px); font-weight: 500; color: var(--forest); line-height: 1.35; max-width: 680px; margin-bottom: 48px; }
+  .content-intro em { font-style: italic; color: var(--green); font-weight: 400; }
+  .content-types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 40px; }
+  .content-type-card { background: var(--white); border: 1px solid var(--rule); padding: 26px 22px; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s var(--ease); }
+  .content-type-card:hover { border-color: var(--sage-mid); transform: translateY(-3px); }
+  .content-type-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--teal), var(--cyan)); }
+  .content-type-icon { font-size: 26px; margin-bottom: 14px; }
+  .content-type-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .content-type-desc { font-size: 12px; font-weight: 300; color: var(--ink-light); line-height: 1.6; }
+  .content-type-count { margin-top: 14px; font-size: 11px; font-weight: 500; color: var(--teal); letter-spacing: 0.06em; }
+
+  /* COPILOT BUILD */
+  .copilot-section { padding: 72px 0; background: var(--teal); position: relative; overflow: hidden; }
+  .copilot-section::before { content: ''; position: absolute; top: -80px; right: -80px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(0,180,200,0.18) 0%, transparent 70%); pointer-events: none; }
+  .copilot-section .section-label-text { color: var(--gold); }
+  .copilot-section .section-label-line { background: rgba(255,255,255,0.08); }
+  .copilot-intro { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 30px); font-weight: 400; color: var(--white); line-height: 1.45; max-width: 680px; margin-bottom: 48px; }
+  .copilot-intro em { font-style: italic; color: #a0e8f0; }
+  .copilot-phases { display: flex; flex-direction: column; gap: 3px; }
+  .copilot-phase { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 24px 28px; display: grid; grid-template-columns: 160px 1fr 1fr; gap: 24px; align-items: start; transition: background 0.25s; }
+  .copilot-phase:hover { background: rgba(255,255,255,0.09); }
+  .copilot-phase-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); padding-top: 2px; }
+  .copilot-phase-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+  .copilot-phase-desc { font-size: 12px; font-weight: 300; color: #88ccd4; line-height: 1.65; }
+  .copilot-phase-detail { font-size: 12px; font-weight: 300; color: #a0d8e0; line-height: 1.65; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px; }
+  .copilot-badge { margin-top: 36px; background: rgba(200,146,42,0.1); border: 1px solid rgba(200,146,42,0.25); border-radius: 8px; padding: 20px 28px; display: flex; align-items: flex-start; gap: 20px; }
+  .copilot-badge-icon { font-size: 28px; flex-shrink: 0; }
+  .copilot-badge-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+  .copilot-badge-desc { font-size: 12px; font-weight: 300; color: #a0d8e0; line-height: 1.6; }
+
+  /* CHALLENGES */
+  .challenges-section { padding: 72px 0; background: var(--warm-white); }
+  .challenges-section .section-label-text { color: var(--green); }
+  .challenges-section h2 { font-family: var(--font-display); font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; color: var(--forest); line-height: 1.25; margin-bottom: 40px; }
+  .challenges-section h2 em { font-style: italic; color: var(--teal); font-weight: 400; }
+  .challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .challenge-card { background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 28px 24px; transition: border-color 0.2s; }
+  .challenge-card:hover { border-color: var(--teal-light); }
+  .challenge-card-num { font-family: var(--font-display); font-size: 36px; font-weight: 500; color: rgba(0,109,119,0.15); line-height: 1; margin-bottom: 12px; }
+  .challenge-card-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .challenge-card-body { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; }
+  .challenge-card-resolve { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 12px; font-weight: 300; color: var(--teal); line-height: 1.55; }
+  .challenge-card-resolve strong { color: var(--gold); font-weight: 500; display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+
+  /* DESIGN INSIGHT */
+  .insight-section { padding: 72px 0; background: var(--white); border-top: 1px solid var(--rule); }
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .insight-card { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 32px; position: relative; overflow: hidden; transition: border-color 0.2s; }
+  .insight-card:hover { border-color: var(--sage-mid); }
+  .insight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--teal), var(--cyan)); }
+  .insight-label { font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .insight-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--forest); margin-bottom: 14px; line-height: 1.3; }
+  .insight-card p { font-size: 14px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; }
+  .insight-card p + p { margin-top: 12px; }
+
+  /* OUTCOME */
+  .outcome-section { padding: 72px 0; background: var(--warm-white); }
+  .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+  .outcome-left h2 { font-family: var(--font-display); font-size: clamp(24px, 2.8vw, 38px); font-weight: 500; color: var(--forest); line-height: 1.25; margin-bottom: 20px; }
+  .outcome-left h2 em { font-style: italic; color: var(--green); font-weight: 400; }
+  .outcome-left p { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; margin-bottom: 18px; }
+  .quote-block { border-left: 3px solid var(--teal); padding: 20px 24px; background: var(--teal-light); border-radius: 0 8px 8px 0; margin-top: 28px; }
+  .quote-text { font-family: var(--font-display); font-size: 18px; font-style: italic; font-weight: 400; color: var(--teal); line-height: 1.65; margin-bottom: 12px; }
+  .quote-attr { font-size: 12px; font-weight: 500; color: var(--teal-mid); letter-spacing: 0.05em; }
+  .result-cards { display: flex; flex-direction: column; gap: 12px; }
+  .result-card { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 20px 24px; display: flex; align-items: center; gap: 20px; transition: border-color 0.2s; }
+  .result-card:hover { border-color: var(--sage-mid); }
+  .result-num { font-family: var(--font-display); font-size: 42px; font-weight: 500; color: var(--forest); line-height: 1; min-width: 96px; }
+  .result-num sup { font-size: 20px; color: var(--green); vertical-align: super; line-height: 0; }
+  .result-label strong { display: block; font-weight: 500; color: var(--ink); margin-bottom: 4px; font-size: 14px; }
+  .result-label span { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.5; }
+
+  /* CTA */
+  .cta-section { background: var(--forest); padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 500px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(30,122,90,0.2) 0%, transparent 70%); pointer-events: none; }
+  .cta-section h2 { font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 42px); font-weight: 500; color: var(--white); line-height: 1.3; margin-bottom: 14px; }
+  .cta-section h2 em { font-style: italic; color: #7ec5a8; font-weight: 400; }
+  .cta-tagline { font-size: 15px; font-weight: 300; color: #7aaa93; margin-bottom: 40px; }
+  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--forest); font-family: var(--font-body); font-size: 13px; font-weight: 500; padding: 13px 30px; border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: #d9a033; transform: translateY(-1px); }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #9ec9b7; font-family: var(--font-body); font-size: 13px; font-weight: 400; padding: 13px 30px; border-radius: 6px; text-decoration: none; border: 1px solid rgba(158,201,183,0.3); transition: border-color 0.2s, color 0.2s; }
+  .btn-secondary:hover { border-color: rgba(158,201,183,0.6); color: var(--white); }
+
+  /* FOOTER */
+  footer { background: #0a1510; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: 'DM Serif Display', Georgia, serif; font-size: 18px; color: rgba(255,255,255,0.7); text-decoration: none; }
+  .footer-logo em { font-style: italic; color: var(--gold); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; } .hero-right { display: none; } .hero-left { padding: 48px 24px; }
+    .page-wrap { padding: 0 24px; }
+    .challenge-grid, .questions-grid, .insight-grid, .outcome-grid { grid-template-columns: 1fr; }
+    .audit-grid, .content-types-grid { grid-template-columns: repeat(2, 1fr); }
+    .challenges-grid { grid-template-columns: 1fr; }
+    .copilot-phase { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Learning <em>Matters.</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="nav-cta">Let's talk</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Case Study</div>
+      <h1>The answer at the point of need — <em>building a virtual assistant for a pharmaceutical sales force</em></h1>
+      <p class="hero-sub">A Microsoft Copilot Studio-powered virtual assistant that gave 280 medical sales representatives instant access to product knowledge, clinical data, objection-handling guides, and regulatory information — right at the moment of a customer conversation.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Client</div>
+          <div class="hero-meta-value">Leading Pharmaceutical Organisation</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Sector</div>
+          <div class="hero-meta-value">Pharmaceutical / Life Sciences</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Timeline</div>
+          <div class="hero-meta-value">Five months</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-label">At a glance</div>
+      <div class="stat-list">
+        <div class="stat-item">
+          <div class="stat-num">280</div>
+          <div class="stat-desc">Medical sales representatives served by the virtual assistant</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">840<sup>+</sup></div>
+          <div class="stat-desc">Content assets created and ingested into the chatbot knowledge base</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">↓71<sup>%</sup></div>
+          <div class="stat-desc">Reduction in time reps spent searching for product information before calls</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">94<sup>%</sup></div>
+          <div class="stat-desc">Rep satisfaction with response accuracy after three months of live use</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CHALLENGE -->
+<section class="challenge-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The challenge</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="challenge-grid">
+      <div class="challenge-left">
+        <h2 class="reveal">Medical sales representatives making <em>critical customer calls with incomplete product knowledge.</em></h2>
+        <p class="reveal">The organisation's sales force covered a complex portfolio of six pharmaceutical products — including two recent launches — across 14 therapeutic areas. Representatives were expected to field highly technical questions from healthcare professionals, navigate clinical data, counter informed objections, and stay within tight regulatory boundaries, often in real-time conversations with no time to prepare.</p>
+        <p class="reveal">The existing approach was a folder-based intranet system — updated infrequently, difficult to search on a mobile device, and structured around how the organisation filed documents rather than how a rep needed information in the field. Representatives who could not find what they needed in 30 seconds either guessed, escalated to their manager, or simply did not answer the question — none of which were acceptable outcomes in a regulated selling environment.</p>
+        <p class="reveal">The brief was clear: build a virtual assistant that a rep could query mid-call preparation, between appointments, or in the field — and that would surface the right answer in under ten seconds, in plain language, with a source the rep could cite if needed.</p>
+      </div>
+      <ul class="constraint-list">
+        <li class="constraint-item reveal"><div class="dot"></div>All content surfaced by the assistant had to be pre-approved by the medical affairs and regulatory teams — the assistant could not generate responses, only retrieve and surface approved content</li>
+        <li class="constraint-item reveal"><div class="dot"></div>The assistant had to work seamlessly on mobile devices — the majority of rep queries would come from phones between appointments, not desktops</li>
+        <li class="constraint-item reveal"><div class="dot"></div>Responses had to include source citations so reps could verify and share the underlying approved materials with HCP customers where appropriate</li>
+        <li class="constraint-item reveal"><div class="dot"></div>The solution had to integrate within the organisation's existing Microsoft 365 environment — a new standalone platform would not receive IT approval</li>
+        <li class="constraint-item reveal"><div class="dot"></div>Content across six products existed in inconsistent formats across multiple teams — no single content owner, no unified library</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT AUDIT -->
+<section class="audit-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">Taking stock of what existed</span>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="audit-intro reveal">Before a single question was mapped or a piece of content created, we conducted a <em>full content landscape audit</em> — because you cannot build an intelligent assistant on a disorganised knowledge base.</p>
+    <div class="audit-grid">
+      <div class="audit-card reveal">
+        <div class="audit-card-accent"></div>
+        <div class="audit-card-icon">🗂️</div>
+        <div class="audit-card-title">Existing Asset Inventory</div>
+        <div class="audit-card-desc">Catalogued 1,240 existing documents across six product teams — clinical data summaries, detail aids, training decks, objection-handling guides, regulatory references, and internal FAQs. Assessed each for accuracy, currency, and suitability for chatbot ingestion.</div>
+      </div>
+      <div class="audit-card reveal">
+        <div class="audit-card-accent"></div>
+        <div class="audit-card-icon">✅</div>
+        <div class="audit-card-title">Regulatory Clearance Review</div>
+        <div class="audit-card-desc">Worked with medical affairs to classify every document: approved for rep use, approved with caveats, pending review, or retired. Only cleared content was eligible for chatbot ingestion — 487 documents cleared in full, 203 cleared with excerption, remainder excluded.</div>
+      </div>
+      <div class="audit-card reveal">
+        <div class="audit-card-accent"></div>
+        <div class="audit-card-icon">🕳️</div>
+        <div class="audit-card-title">Gap Identification</div>
+        <div class="audit-card-desc">Cross-referenced the cleared content library against the question map (developed in parallel with the sales team). Identified 214 question types that had no approved content to support them — requiring new content to be created from scratch before the assistant could go live.</div>
+      </div>
+    </div>
+    <div class="audit-finding reveal">
+      <div class="audit-finding-title">The audit finding that defined the project scope</div>
+      <div class="audit-finding-desc">Of the 1,240 documents in the existing library, fewer than 40% were both current and cleared for representative use. The audit revealed that the intranet was not just poorly organised — it was significantly out of date and in many cases contained superseded clinical data. Building the assistant on the existing content library without the audit would have created a tool that confidently gave representatives incorrect information. The audit added three weeks to the project. It saved the project.</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTION MAPPING -->
+<section class="questions-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">Mapping what reps actually ask</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="questions-grid">
+      <div class="questions-left">
+        <h2 class="reveal">Before building answers, we mapped <em>every question a rep would ever need to ask.</em></h2>
+        <p class="reveal">The question mapping process was the most critical — and most time-consuming — phase of the project. A virtual assistant is only as useful as its ability to recognise what a user is actually asking. To achieve this, we had to understand the full landscape of questions a sales representative might pose, in the language they would actually use, not in the language of product documentation.</p>
+        <p class="reveal">We ran structured question-elicitation sessions with 40 representatives across four regions — asking them to recall every question they had ever been asked by a healthcare professional, every piece of information they had ever struggled to find, and every situation in which they had wished they had a faster answer. Sessions were recorded, transcribed, and analysed for patterns.</p>
+        <div class="question-highlight reveal">
+          <strong>Why natural language mattered</strong>
+          <p>Reps do not ask "What is the mechanism of action of Product X?" They ask "How does it work in the body?" or "What happens when a patient takes the first dose?" The chatbot had to understand both — and map each to the same underlying answer. We catalogued over 340 natural language variants across the 580 distinct question types identified.</p>
+        </div>
+      </div>
+      <div class="question-clusters">
+        <div class="question-cluster reveal">
+          <div class="question-cluster-title">Product Mechanism & Clinical Profile <span class="question-cluster-count">112 questions</span></div>
+          <div class="question-cluster-examples">"How does this work?", "What's the evidence base?", "How does it compare to the NICE guidance?"</div>
+        </div>
+        <div class="question-cluster reveal">
+          <div class="question-cluster-title">Dosing, Administration & Titration <span class="question-cluster-count">89 questions</span></div>
+          <div class="question-cluster-examples">"What's the starting dose?", "Can it be used in renal impairment?", "How quickly do patients see results?"</div>
+        </div>
+        <div class="question-cluster reveal">
+          <div class="question-cluster-title">Safety, Side Effects & Contraindications <span class="question-cluster-count">104 questions</span></div>
+          <div class="question-cluster-examples">"What are the common adverse effects?", "Are there any black box warnings?", "What about pregnancy?"</div>
+        </div>
+        <div class="question-cluster reveal">
+          <div class="question-cluster-title">Competitive Landscape & Objection Handling <span class="question-cluster-count">97 questions</span></div>
+          <div class="question-cluster-examples">"Why should I prescribe this instead of [competitor]?", "The data isn't as strong — how do you respond to that?"</div>
+        </div>
+        <div class="question-cluster reveal">
+          <div class="question-cluster-title">Patient Access, Reimbursement & Formulary <span class="question-cluster-count">78 questions</span></div>
+          <div class="question-cluster-examples">"Is it on formulary?", "What does the patient pay?", "Is there a patient support programme?"</div>
+        </div>
+        <div class="question-cluster reveal">
+          <div class="question-cluster-title">Regulatory & Promotional Compliance <span class="question-cluster-count">100 questions</span></div>
+          <div class="question-cluster-examples">"Can I share this study off-label?", "What's the approved indication exactly?", "What can I say about the Phase III data?"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT CREATION -->
+<section class="content-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">Creating the knowledge base</span>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="content-intro reveal">Four types of content — each designed for a <em>different kind of question</em>, each structured for optimal chatbot retrieval.</p>
+    <div class="content-types-grid">
+      <div class="content-type-card reveal">
+        <div class="content-type-icon">🎬</div>
+        <div class="content-type-title">Product Explainer Videos</div>
+        <div class="content-type-desc">Short animated videos (2–4 min) covering mechanism of action, clinical rationale, and patient profile for each product. Produced with professional voiceover and motion graphics. Linked from chatbot responses when a question requires visual explanation rather than text alone.</div>
+        <div class="content-type-count">48 videos produced</div>
+      </div>
+      <div class="content-type-card reveal">
+        <div class="content-type-icon">📋</div>
+        <div class="content-type-title">Structured FAQ Library</div>
+        <div class="content-type-desc">580 approved Q&A pairs — each written to answer the question in the rep's natural language, not in clinical document language. Every answer includes a plain-language response, a supporting data point, and a link to the full approved source document. Medical affairs sign-off on every entry.</div>
+        <div class="content-type-count">580 Q&A pairs</div>
+      </div>
+      <div class="content-type-card reveal">
+        <div class="content-type-icon">📘</div>
+        <div class="content-type-title">Product Quick Reference Guides</div>
+        <div class="content-type-desc">Single-page digital reference cards for each product — covering dosing, key clinical data, approved indications, and top-line safety information in a format reps can skim in under 60 seconds. Available as chatbot-linked PDFs and as in-assistant formatted responses for the most frequently accessed content.</div>
+        <div class="content-type-count">24 product guides</div>
+      </div>
+      <div class="content-type-card reveal">
+        <div class="content-type-icon">🤝</div>
+        <div class="content-type-title">Objection-Handling Frameworks</div>
+        <div class="content-type-desc">Structured objection-handling guides for the 40 most common HCP objections — written as conversation frameworks, not scripts. Each includes the objection, the approved response approach, the supporting evidence, and the regulatory guardrails on what can and cannot be said. Accessible via natural language query or direct topic search.</div>
+        <div class="content-type-count">40 objection frameworks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COPILOT STUDIO BUILD -->
+<section class="copilot-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">Building the assistant in Microsoft Copilot Studio</span>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="copilot-intro reveal">Microsoft Copilot Studio was selected for its native integration with the organisation's Microsoft 365 environment, its <em>retrieval-augmented generation architecture</em>, and its ability to restrict responses strictly to approved content — a non-negotiable requirement in a regulated pharmaceutical context.</p>
+    <div class="copilot-phases">
+      <div class="copilot-phase reveal">
+        <div class="copilot-phase-label">Phase 1 — Foundation</div>
+        <div>
+          <div class="copilot-phase-title">Knowledge Base Configuration</div>
+          <div class="copilot-phase-desc">All approved content — Q&A pairs, product guides, objection frameworks, and video links — was structured and ingested into Copilot Studio's knowledge base using a consistent tagging taxonomy: product, topic category, question type, and regulatory clearance level. The taxonomy governed how the assistant retrieved and surfaced content.</div>
+        </div>
+        <div class="copilot-phase-detail">Content was ingested as structured SharePoint documents, with metadata tags driving retrieval precision. Untagged or ambiguously tagged content was held back until correctly classified — preventing the assistant from surfacing content it could not reliably categorise.</div>
+      </div>
+      <div class="copilot-phase reveal">
+        <div class="copilot-phase-label">Phase 2 — Dialogue Design</div>
+        <div>
+          <div class="copilot-phase-title">Conversation Flows & Intent Mapping</div>
+          <div class="copilot-phase-desc">The 580 Q&A pairs were mapped to 340+ natural language intents — covering the full range of phrasings a rep might use for the same underlying question. Copilot Studio's natural language understanding engine was trained on product-specific terminology and pharmaceutical sales language, reducing misinterpretation on technical queries.</div>
+        </div>
+        <div class="copilot-phase-detail">Fallback flows were designed for queries outside the knowledge base — rather than generating a response, the assistant acknowledged the gap, routed the rep to the relevant product manager, and logged the unanswered query for knowledge base expansion review.</div>
+      </div>
+      <div class="copilot-phase reveal">
+        <div class="copilot-phase-label">Phase 3 — Compliance Layer</div>
+        <div>
+          <div class="copilot-phase-title">Regulatory Guardrails & Source Citation</div>
+          <div class="copilot-phase-desc">Every response was configured to include a source reference — the specific approved document the response was drawn from, with a direct link. The assistant was programmed to surface compliance warnings on sensitive topic categories (off-label queries, comparative claims, safety questions) — reminding reps of what they could and could not say to HCP customers.</div>
+        </div>
+        <div class="copilot-phase-detail">Medical affairs retained editorial control via a review dashboard — flagging high-volume queries, reviewing the accuracy of responses, and pushing content updates through a structured approval workflow that bypassed the full IT release cycle for minor content corrections.</div>
+      </div>
+      <div class="copilot-phase reveal">
+        <div class="copilot-phase-label">Phase 4 — Deployment</div>
+        <div>
+          <div class="copilot-phase-title">Phased Rollout & Feedback Loop</div>
+          <div class="copilot-phase-desc">The assistant was deployed first to a pilot cohort of 40 representatives across two regions for a four-week period. Usage data, unanswered query logs, and rep feedback were reviewed weekly. Forty-two new Q&A pairs were added and 18 existing responses were refined before full deployment to all 280 representatives.</div>
+        </div>
+        <div class="copilot-phase-detail">The pilot cohort included representatives from both high-performing and average-performing segments — ensuring the assistant was tested against the full range of query types, not just the questions that top performers already knew how to find answers to.</div>
+      </div>
+    </div>
+    <div class="copilot-badge reveal">
+      <div class="copilot-badge-icon">🔒</div>
+      <div>
+        <div class="copilot-badge-title">Why Microsoft Copilot Studio — and not a general-purpose chatbot</div>
+        <div class="copilot-badge-desc">The critical requirement in a regulated pharmaceutical environment is retrieval, not generation. General-purpose AI chatbots can generate plausible-sounding answers that are not grounded in approved content — an unacceptable risk when a medical sales representative might share a response with a healthcare professional. Copilot Studio's architecture retrieves from the knowledge base and generates responses grounded strictly in that content. Combined with source citation and fallback routing for out-of-scope queries, this made it the only viable solution for a pharmaceutical deployment without a full custom build.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES -->
+<section class="challenges-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The challenges</span>
+      <div class="section-label-line"></div>
+    </div>
+    <h2 class="reveal">What made this project <em>genuinely hard</em> — and how each obstacle was navigated.</h2>
+    <div class="challenges-grid">
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">01</div>
+        <div class="challenge-card-title">Regulatory sign-off at speed</div>
+        <div class="challenge-card-body">Medical affairs approval is thorough but slow. With 580 Q&A pairs requiring review, standard sequential approval would have extended the project by months and created a bottleneck that threatened the go-live timeline.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We introduced a tiered review system — low-risk factual content (dosing, approved indication) through an expedited 48-hour review track; complex or sensitive content (safety, comparative claims) through the full medical affairs review cycle. This reduced average approval time by 60% without compromising rigour on high-risk content.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">02</div>
+        <div class="challenge-card-title">Content fragmentation across product teams</div>
+        <div class="challenge-card-body">Six product teams had developed content independently over several years — in different formats, different naming conventions, and with different levels of medical affairs oversight. There was no single content owner, no master library, and no version control system.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We appointed a single content custodian from each product team as the point of contact and version authority. All content was migrated into a unified SharePoint library with standardised naming, metadata, and review date fields. The chatbot content structure effectively became the organisation's first properly governed product knowledge library.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">03</div>
+        <div class="challenge-card-title">Reps asking questions the chatbot could not answer</div>
+        <div class="challenge-card-body">Even after the question mapping exercise, real-world use during the pilot revealed a long tail of queries the assistant could not match — highly specific clinical edge cases, regional formulary questions, or queries that combined multiple topics in a single sentence.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>The fallback flow was designed to capture, not just decline. Every unanswered query was logged with the exact phrasing used, routed to the relevant product manager for response within 24 hours, and added to the knowledge base if the answer was approvable. Within eight weeks of go-live, the unanswered query rate dropped from 14% to 4%.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">04</div>
+        <div class="challenge-card-title">Rep adoption: convincing the field to trust it</div>
+        <div class="challenge-card-body">Experienced sales representatives who had spent years building their own product knowledge systems — personal notes, saved emails, informal networks — were initially sceptical. "Why would I trust a chatbot over my own experience?" was a common pilot feedback theme.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We involved high-credibility representatives in the content validation process — asking them to review Q&A pairs in their therapeutic area for accuracy and practical usefulness. Their names appeared in the assistant's onboarding as "validated by field experts." Peer credibility drove adoption far more effectively than a management mandate would have.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">05</div>
+        <div class="challenge-card-title">Keeping content current after go-live</div>
+        <div class="challenge-card-body">A pharmaceutical product portfolio does not stand still. New clinical data, updated labels, revised formulary positions, and evolving competitive landscape meant the knowledge base required continuous maintenance — something the initial project budget had not fully accounted for.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We designed a lightweight quarterly review process with each product team — a structured two-hour session to identify any content requiring update, retirement, or addition. The Copilot Studio management interface allowed approved content updates to be published without IT involvement, reducing the maintenance overhead to a manageable ongoing commitment.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">06</div>
+        <div class="challenge-card-title">Balancing helpfulness with regulatory safety</div>
+        <div class="challenge-card-body">There was a persistent tension between making the assistant maximally helpful — giving reps rich, detailed answers — and keeping responses within the boundaries of what had been approved for promotional use. Too restrictive and reps would abandon it; too liberal and it created compliance risk.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>The solution was a response architecture that separated the plain-language answer (always concise and safe) from supporting detail (available on request, with a compliance flag where relevant). Reps who needed more depth could request it; the system surfaced the depth with an explicit regulatory context label so reps always understood what they could and could not share with an HCP.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN INSIGHT -->
+<section class="insight-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The design insight</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="insight-grid">
+      <div class="insight-card reveal">
+        <div class="insight-label">What made this work</div>
+        <h3>The content came first — the technology came second</h3>
+        <p>The most common failure mode for chatbot projects is leading with the technology and retrofitting the content. The assistant's intelligence is entirely a function of the quality, structure, and completeness of its knowledge base. We spent 60% of the project on content — auditing, creating, tagging, and approving — before the Copilot Studio build began in earnest. The technology build took six weeks. The content foundation took fourteen.</p>
+        <p>This sequencing felt uncomfortable for stakeholders who wanted to see the chatbot working quickly. The pilot results — 94% response accuracy and a 71% reduction in information search time — vindicated the approach comprehensively.</p>
+      </div>
+      <div class="insight-card reveal">
+        <div class="insight-label">The unexpected outcome</div>
+        <h3>The assistant became the organisation's first single source of truth</h3>
+        <p>A side effect of building the knowledge base was that it forced the organisation to resolve content conflicts that had existed for years unnoticed — cases where two product teams had different approved data points for the same clinical question, or where the intranet contained both a current and a superseded version of a product guide.</p>
+        <p>The chatbot could not have two answers to the same question. This forced decisions. And those decisions — made by medical affairs and product teams together — produced a governed, versioned, single-source content library that the organisation had needed for years but had never had a compelling reason to build.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME -->
+<section class="outcome-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The outcome</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="outcome-grid">
+      <div class="outcome-left">
+        <h2 class="reveal">The right answer, in ten seconds, <em>wherever in the world a rep needed it.</em></h2>
+        <p class="reveal">Within three months of full deployment, the virtual assistant was handling an average of 1,400 queries per week from 280 representatives. The 94% accuracy rating — assessed through a monthly sample review conducted by the medical affairs team — held steady across all six product areas and all query categories.</p>
+        <p class="reveal">The operational impact extended beyond individual rep performance. The regional sales managers reported that call preparation time dropped significantly, post-call query escalations fell by over two-thirds, and new representatives reached full product knowledge competency two weeks faster than the prior cohort — because they had a tool that could answer their questions immediately rather than waiting for their manager's availability.</p>
+        <div class="quote-block reveal">
+          <p class="quote-text">"I used to spend 20 minutes before every important call digging through the intranet trying to find a clinical reference I half-remembered. Now I ask the assistant and I have it in 10 seconds. I have genuinely changed how I prepare for calls because of this tool."</p>
+          <p class="quote-attr">— Senior Medical Sales Representative</p>
+        </div>
+      </div>
+      <div class="result-cards">
+        <div class="result-card reveal">
+          <div class="result-num">94<sup>%</sup></div>
+          <div class="result-label"><strong>Response accuracy</strong><span>Maintained across all six product areas and all query categories after three months of live use</span></div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-num">↓71<sup>%</sup></div>
+          <div class="result-label"><strong>Information search time</strong><span>Reduction in time reps spent locating product information before and between calls</span></div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-num">↓68<sup>%</sup></div>
+          <div class="result-label"><strong>Post-call escalations</strong><span>Reduction in queries escalated to product managers or medical affairs after customer calls</span></div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-num">1,400<sup>+</sup></div>
+          <div class="result-label"><strong>Weekly queries handled</strong><span>Average weekly query volume across all 280 representatives within 90 days of full deployment</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="page-wrap">
+    <h2 class="reveal">Have a sales force that needs the right answer <em>at the moment it matters most?</em></h2>
+    <p class="cta-tagline reveal">Learning matters. Let's build something that travels with your people — and answers when it counts.</p>
+    <div class="cta-buttons reveal">
+      <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="btn-primary">Let's talk ↗</a>
+      <a href="index.html#work" class="btn-secondary">View all case studies</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">Learning <em>Matters.</em></a>
+  <ul class="footer-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Learning Matters. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .section-label-line').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

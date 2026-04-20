@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Application Training eLearning | Case Study — Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest:      #0d3b2e;
+    --forest-mid:  #174d3c;
+    --green:       #1e7a5a;
+    --green-light: #2d9e74;
+    --sage:        #e4f0eb;
+    --sage-mid:    #c2ddd2;
+    --ink:         #151f1b;
+    --ink-mid:     #3a4a43;
+    --ink-light:   #6b7d75;
+    --white:       #ffffff;
+    --warm-white:  #f6f8f7;
+    --rule:        #d0ddd8;
+    --gold:        #c8922a;
+    --gold-light:  #fdf4e3;
+    --slate:       #1e3a5f;
+    --slate-mid:   #2a4f7c;
+    --slate-light: #e8f0f8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Outfit', system-ui, sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--warm-white); color: var(--ink); -webkit-font-smoothing: antialiased; padding-top: 64px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(17,24,32,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-logo { font-family: 'DM Serif Display', Georgia, serif; font-size: 20px; color: #fff; text-decoration: none; display: flex; align-items: baseline; gap: 6px; }
+  .nav-logo em { font-style: italic; color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { font-size: 12px; font-weight: 500; color: var(--ink); background: var(--gold); padding: 8px 20px; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: #d9a033; }
+  @media (max-width: 768px) { nav { padding: 0 24px; } .nav-links { display: none; } }
+
+  /* HERO */
+  .hero { background: var(--slate); padding-top: 64px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; top: 0; right: 0; width: 480px; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(30,90,150,0.15) 100%); pointer-events: none; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 360px; max-width: 1100px; margin: 0 auto; }
+  .hero-left { padding: 72px 56px 72px 48px; display: flex; flex-direction: column; justify-content: center; animation: fadeUp 0.9s var(--ease) both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--gold); }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(30px, 3.8vw, 52px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: #7ec5e8; font-weight: 400; }
+  .hero-sub { font-size: 15px; font-weight: 300; color: #7aaabb; line-height: 1.75; max-width: 500px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 28px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: #3d6a7a; }
+  .hero-meta-value { font-size: 13px; font-weight: 300; color: #9ec9d7; }
+  .hero-right { background: var(--slate-mid); border-left: 1px solid rgba(255,255,255,0.05); padding: 56px 36px; display: flex; flex-direction: column; justify-content: center; animation: fadeUp 0.9s 0.12s var(--ease) both; }
+  .hero-right-label { font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: #3d6a7a; margin-bottom: 28px; }
+  .stat-list { display: flex; flex-direction: column; gap: 22px; }
+  .stat-item { display: flex; align-items: flex-start; gap: 14px; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-num { font-family: var(--font-display); font-size: 38px; font-weight: 500; color: var(--white); line-height: 1; min-width: 88px; }
+  .stat-num sup { font-size: 20px; color: var(--gold); vertical-align: super; line-height: 0; }
+  .stat-desc { font-size: 13px; font-weight: 300; color: #7aaabb; line-height: 1.55; padding-top: 6px; }
+
+  /* LAYOUT */
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+  .section-label-text { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); white-space: nowrap; }
+  .section-label-line { flex: 1; height: 1px; background: var(--rule); transform: scaleX(0); transform-origin: left; transition: transform 0.9s var(--ease) 0.2s; }
+  .section-label-line.visible { transform: scaleX(1); }
+
+  /* CHALLENGE */
+  .challenge-section { padding: 80px 0 72px; }
+  .challenge-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+  .challenge-left h2 { font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 500; color: var(--forest); line-height: 1.2; margin-bottom: 22px; }
+  .challenge-left h2 em { font-style: italic; color: var(--green); font-weight: 400; }
+  .challenge-left p { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; margin-bottom: 18px; }
+  .constraint-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .constraint-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: var(--white); border: 1px solid var(--rule); border-radius: 8px; font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.65; transition: border-color 0.2s; }
+  .constraint-item:hover { border-color: var(--sage-mid); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-light); flex-shrink: 0; margin-top: 5px; }
+
+  /* CONTENT AUDIT */
+  .audit-section { padding: 72px 0; background: var(--slate); position: relative; overflow: hidden; }
+  .audit-section::before { content: ''; position: absolute; bottom: -100px; right: -100px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(30,90,150,0.2) 0%, transparent 70%); pointer-events: none; }
+  .audit-section .section-label-text { color: var(--gold); }
+  .audit-section .section-label-line { background: rgba(255,255,255,0.08); }
+  .audit-intro { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 30px); font-weight: 400; color: var(--white); line-height: 1.45; max-width: 620px; margin-bottom: 48px; }
+  .audit-intro em { font-style: italic; color: #7ec5e8; }
+  .audit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 40px; }
+  .audit-card { background: var(--slate-mid); padding: 28px 22px; position: relative; transition: background 0.25s; }
+  .audit-card:hover { background: #2e5a8a; }
+  .audit-card-accent { position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); opacity: 0; transition: opacity 0.25s; }
+  .audit-card:hover .audit-card-accent { opacity: 1; }
+  .audit-card-icon { font-size: 24px; margin-bottom: 14px; }
+  .audit-card-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
+  .audit-card-desc { font-size: 11px; font-weight: 300; color: #7aaabb; line-height: 1.6; }
+  .audit-finding { background: rgba(200,146,42,0.1); border: 1px solid rgba(200,146,42,0.25); border-radius: 8px; padding: 22px 28px; display: flex; align-items: flex-start; gap: 20px; }
+  .audit-finding-icon { font-size: 22px; flex-shrink: 0; }
+  .audit-finding-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+  .audit-finding-desc { font-size: 12px; font-weight: 300; color: #7aaabb; line-height: 1.6; }
+
+  /* APPROACH */
+  .approach-section { padding: 72px 0; }
+  .approach-section .section-label-text { color: var(--green); }
+  .approach-intro { font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 32px); font-weight: 500; color: var(--forest); line-height: 1.35; max-width: 680px; margin-bottom: 52px; }
+  .approach-intro em { font-style: italic; color: var(--green); font-weight: 400; }
+
+  /* Learning component cards */
+  .components-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 48px; }
+  .component-card { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 32px; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s var(--ease); }
+  .component-card:hover { border-color: var(--sage-mid); transform: translateY(-3px); }
+  .component-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
+  .component-card.video::before { background: linear-gradient(90deg, var(--slate), var(--slate-mid)); }
+  .component-card.showme::before { background: linear-gradient(90deg, var(--green), var(--green-light)); }
+  .component-card.tryme::before { background: linear-gradient(90deg, var(--gold), #e8a830); }
+  .component-card.assess::before { background: linear-gradient(90deg, var(--forest), var(--green)); }
+  .component-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 16px; }
+  .component-badge.video { background: var(--slate-light); color: var(--slate); border: 1px solid rgba(30,58,95,0.2); }
+  .component-badge.showme { background: var(--sage); color: var(--green); border: 1px solid rgba(30,122,90,0.2); }
+  .component-badge.tryme { background: var(--gold-light); color: #8a6010; border: 1px solid rgba(200,146,42,0.25); }
+  .component-badge.assess { background: var(--sage); color: var(--forest); border: 1px solid rgba(13,59,46,0.2); }
+  .component-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--forest); margin-bottom: 12px; line-height: 1.3; }
+  .component-card p { font-size: 14px; font-weight: 300; color: var(--ink-mid); line-height: 1.8; margin-bottom: 16px; }
+  .component-details { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .component-details li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.55; }
+  .component-details li::before { content: '→'; color: var(--green); font-weight: 500; flex-shrink: 0; }
+
+  /* FAQ LIBRARY */
+  .faq-section { padding: 72px 0; background: var(--white); border-top: 1px solid var(--rule); }
+  .faq-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
+  .faq-left h2 { font-family: var(--font-display); font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; color: var(--forest); line-height: 1.2; margin-bottom: 18px; }
+  .faq-left h2 em { font-style: italic; color: var(--green); font-weight: 400; }
+  .faq-left p { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; margin-bottom: 16px; }
+  .faq-categories { display: flex; flex-direction: column; gap: 10px; }
+  .faq-category { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 20px; transition: border-color 0.2s; }
+  .faq-category:hover { border-color: var(--sage-mid); }
+  .faq-category-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+  .faq-category-count { font-size: 11px; font-weight: 400; color: var(--ink-light); background: var(--sage); padding: 2px 8px; border-radius: 10px; }
+  .faq-category-desc { font-size: 12px; font-weight: 300; color: var(--ink-light); line-height: 1.5; }
+  .faq-highlight { background: var(--gold-light); border: 1px solid rgba(200,146,42,0.25); border-radius: 8px; padding: 20px 24px; margin-top: 24px; }
+  .faq-highlight strong { display: block; font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .faq-highlight p { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.65; margin: 0; }
+
+  /* CHALLENGES */
+  .challenges-section { padding: 72px 0; background: var(--slate); }
+  .challenges-section .section-label-text { color: var(--gold); }
+  .challenges-section .section-label-line { background: rgba(255,255,255,0.08); }
+  .challenges-section h2 { font-family: var(--font-display); font-size: clamp(24px, 2.8vw, 36px); font-weight: 500; color: var(--white); line-height: 1.25; margin-bottom: 40px; }
+  .challenges-section h2 em { font-style: italic; color: #7ec5e8; font-weight: 400; }
+  .challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .challenge-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 28px 24px; transition: background 0.25s; }
+  .challenge-card:hover { background: rgba(255,255,255,0.07); }
+  .challenge-card-num { font-family: var(--font-display); font-size: 36px; font-weight: 500; color: rgba(200,146,42,0.3); line-height: 1; margin-bottom: 12px; }
+  .challenge-card-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 10px; }
+  .challenge-card-body { font-size: 13px; font-weight: 300; color: #7aaabb; line-height: 1.7; }
+  .challenge-card-resolve { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; font-weight: 400; color: #7ec5e8; line-height: 1.55; }
+  .challenge-card-resolve strong { color: var(--gold); font-weight: 500; display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+
+  /* DESIGN INSIGHT */
+  .insight-section { padding: 72px 0; }
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .insight-card { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 32px; position: relative; overflow: hidden; transition: border-color 0.2s; }
+  .insight-card:hover { border-color: var(--sage-mid); }
+  .insight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--green), var(--green-light)); }
+  .insight-label { font-size: 10px; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+  .insight-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--forest); margin-bottom: 14px; line-height: 1.3; }
+  .insight-card p { font-size: 14px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; }
+
+  /* OUTCOME */
+  .outcome-section { padding: 72px 0; background: var(--white); }
+  .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+  .outcome-left h2 { font-family: var(--font-display); font-size: clamp(24px, 2.8vw, 38px); font-weight: 500; color: var(--forest); line-height: 1.25; margin-bottom: 20px; }
+  .outcome-left h2 em { font-style: italic; color: var(--green); font-weight: 400; }
+  .outcome-left p { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.85; margin-bottom: 18px; }
+  .quote-block { border-left: 3px solid var(--green); padding: 20px 24px; background: var(--sage); border-radius: 0 8px 8px 0; margin-top: 28px; }
+  .quote-text { font-family: var(--font-display); font-size: 18px; font-style: italic; font-weight: 400; color: var(--forest); line-height: 1.65; margin-bottom: 12px; }
+  .quote-attr { font-size: 12px; font-weight: 500; color: var(--green); letter-spacing: 0.05em; }
+  .result-cards { display: flex; flex-direction: column; gap: 12px; }
+  .result-card { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 8px; padding: 20px 24px; display: flex; align-items: center; gap: 20px; transition: border-color 0.2s; }
+  .result-card:hover { border-color: var(--sage-mid); }
+  .result-num { font-family: var(--font-display); font-size: 42px; font-weight: 500; color: var(--forest); line-height: 1; min-width: 96px; }
+  .result-num sup { font-size: 20px; color: var(--green); vertical-align: super; line-height: 0; }
+  .result-label strong { display: block; font-weight: 500; color: var(--ink); margin-bottom: 4px; font-size: 14px; }
+  .result-label span { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.5; }
+
+  /* CTA */
+  .cta-section { background: var(--forest); padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 500px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(30,122,90,0.2) 0%, transparent 70%); pointer-events: none; }
+  .cta-section h2 { font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 42px); font-weight: 500; color: var(--white); line-height: 1.3; margin-bottom: 14px; }
+  .cta-section h2 em { font-style: italic; color: #7ec5a8; font-weight: 400; }
+  .cta-tagline { font-size: 15px; font-weight: 300; color: #7aaa93; margin-bottom: 40px; }
+  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--forest); font-family: var(--font-body); font-size: 13px; font-weight: 500; padding: 13px 30px; border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: #d9a033; transform: translateY(-1px); }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #9ec9b7; font-family: var(--font-body); font-size: 13px; font-weight: 400; padding: 13px 30px; border-radius: 6px; text-decoration: none; border: 1px solid rgba(158,201,183,0.3); transition: border-color 0.2s, color 0.2s, transform 0.15s; }
+  .btn-secondary:hover { border-color: rgba(158,201,183,0.6); color: var(--white); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer { background: #0a1510; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: 'DM Serif Display', Georgia, serif; font-size: 18px; color: rgba(255,255,255,0.7); text-decoration: none; }
+  .footer-logo em { font-style: italic; color: var(--gold); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; } .hero-right { display: none; } .hero-left { padding: 48px 24px; }
+    .page-wrap { padding: 0 24px; }
+    .challenge-grid, .faq-grid, .insight-grid, .outcome-grid { grid-template-columns: 1fr; }
+    .audit-grid { grid-template-columns: repeat(2, 1fr); }
+    .components-grid, .challenges-grid { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Learning <em>Matters.</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="nav-cta">Let's talk</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Case Study</div>
+      <h1>From manual to mastery — <em>training 400 users on a new enterprise application</em></h1>
+      <p class="hero-sub">A multi-format eLearning programme combining produced video explainers, Show Me demonstrations, Try Me practice activities, and a structured assessment framework — built to take users from zero to confident across a complex system rollout.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Client</div>
+          <div class="hero-meta-value">Leading Financial Services Organisation</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Sector</div>
+          <div class="hero-meta-value">Financial Services / Operations</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Timeline</div>
+          <div class="hero-meta-value">Four months</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-label">At a glance</div>
+      <div class="stat-list">
+        <div class="stat-item">
+          <div class="stat-num">18</div>
+          <div class="stat-desc">eLearning modules across six role-based pathways</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">42</div>
+          <div class="stat-desc">Produced video explainers with voiceover and animation</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">96<sup>%</sup></div>
+          <div class="stat-desc">Post-assessment pass rate at first attempt across all pathways</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">400<sup>+</sup></div>
+          <div class="stat-desc">Users trained and certified before go-live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CHALLENGE -->
+<section class="challenge-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The challenge</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="challenge-grid">
+      <div class="challenge-left">
+        <h2 class="reveal">A system go-live date that would not move — and <em>400 users who had never seen the application.</em></h2>
+        <p class="reveal">The organisation had completed a major ERP implementation — a new finance and operations platform that would replace three legacy systems simultaneously. The go-live date was fixed. The pressure was absolute. And the user training programme, which should have begun six weeks earlier, was still unbuilt.</p>
+        <p class="reveal">The challenge was not just speed. Different user groups needed different training — finance teams, operations managers, and front-line processing staff each had distinct workflows within the same system. A single generic programme would not work. Six bespoke role-based pathways had to be designed, built, and deployed in under four months.</p>
+      </div>
+      <ul class="constraint-list">
+        <li class="constraint-item reveal"><div class="dot"></div>No existing training materials — the system had been implemented by a third-party vendor whose documentation was technical, not instructional</li>
+        <li class="constraint-item reveal"><div class="dot"></div>Six distinct user roles, each requiring a separate learning pathway with role-relevant workflows and scenarios</li>
+        <li class="constraint-item reveal"><div class="dot"></div>Users were geographically dispersed across four office locations and two countries — no single classroom solution was viable</li>
+        <li class="constraint-item reveal"><div class="dot"></div>The application interface was still being finalised during early development, requiring an iterative build approach as screens changed</li>
+        <li class="constraint-item reveal"><div class="dot"></div>Assessment completion and pass rates had to be reported to senior leadership as evidence of readiness before go-live approval</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT AUDIT -->
+<section class="audit-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">Taking stock</span>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="audit-intro reveal">Before a single screen was built, we conducted a full <em>content and capability audit</em> — mapping what existed, what was missing, and what each user role actually needed to be able to do on day one.</p>
+    <div class="audit-grid">
+      <div class="audit-card reveal">
+        <div class="audit-card-accent"></div>
+        <div class="audit-card-icon">📋</div>
+        <div class="audit-card-title">Vendor Documentation Review</div>
+        <div class="audit-card-desc">Reviewed 340 pages of technical system documentation. Identified the 12% that was instructionally usable. The rest was configuration and IT reference material.</div>
+      </div>
+      <div class="audit-card reveal">
+        <div class="audit-card-accent"></div>
+        <div class="audit-card-icon">🎯</div>
+        <div class="audit-card-title">Role & Task Analysis</div>
+        <div class="audit-card-desc">Ran structured interviews with 18 SMEs across six user groups. Mapped every task each role would perform in the system, frequency of use, and consequence of error.</div>
+      </div>
+      <div class="audit-card reveal">
+        <div class="audit-card-accent"></div>
+        <div class="audit-card-icon">🗺️</div>
+        <div class="audit-card-title">Workflow Mapping</div>
+        <div class="audit-card-desc">Produced six end-to-end workflow maps — one per user role — covering every screen, input field, and decision point a user would encounter in their day-to-day operation of the system.</div>
+      </div>
+      <div class="audit-card reveal">
+        <div class="audit-card-accent"></div>
+        <div class="audit-card-icon">⚡</div>
+        <div class="audit-card-title">Priority Triage</div>
+        <div class="audit-card-desc">Applied a must-know / need-to-know / nice-to-know framework to every identified task. Only must-know and need-to-know tasks made it into the training programme. This cut scope by 38%.</div>
+      </div>
+    </div>
+    <div class="audit-finding reveal">
+      <div class="audit-finding-icon">💡</div>
+      <div>
+        <div class="audit-finding-title">The audit finding that changed everything</div>
+        <div class="audit-finding-desc">The SME interviews revealed that the most common errors users were expected to make were not about understanding the system — they were about understanding the underlying business process the system was designed to support. This shifted the instructional strategy: the programme had to teach the process first, then the system. Every video, every Show Me, every Try Me was sequenced accordingly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The approach</span>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="approach-intro reveal">A four-layer learning architecture — <em>explain, demonstrate, practise, assess</em> — applied consistently across all six role pathways, with every layer designed to build directly on the one before it.</p>
+
+    <div class="components-grid">
+      <!-- Video explainers -->
+      <div class="component-card video reveal">
+        <div class="component-badge video">📹 Video Explainers</div>
+        <h3>Produced videos with voiceover and animation</h3>
+        <p>Each module opened with a short produced explainer — typically three to five minutes — that established the business context before introducing the system. These were not screen recordings. They were purpose-built animations with professional voiceover, combining process diagrams, annotated interface previews, and scenario narration.</p>
+        <ul class="component-details">
+          <li>42 videos produced across the six pathways, averaging 3.8 minutes each</li>
+          <li>Each video introduced the business process, then connected it to what the user would see in the system</li>
+          <li>Deliberately non-technical in tone — designed to be watched, not studied</li>
+          <li>Accessible with closed captions and script transcripts for all users</li>
+        </ul>
+      </div>
+
+      <!-- Show Me -->
+      <div class="component-card showme reveal">
+        <div class="component-badge showme">👁️ Show Me</div>
+        <h3>Guided demonstrations of every key workflow</h3>
+        <p>Following each video, users were taken into a fully interactive Show Me demonstration — a step-by-step guided walkthrough of the actual system interface, with hotspots, callout annotations, and audio commentary at each stage. Users watched and read; they did not yet interact.</p>
+        <ul class="component-details">
+          <li>Built in Articulate Storyline using captured screen recordings overlaid with interactive layers</li>
+          <li>Every click, field entry, and navigation step annotated with purpose — not just instruction</li>
+          <li>Pause points built in at decision nodes where users commonly make errors</li>
+          <li>Branching commentary for role variants — finance users saw finance-specific annotations within shared workflows</li>
+        </ul>
+      </div>
+
+      <!-- Try Me -->
+      <div class="component-card tryme reveal">
+        <div class="component-badge tryme">🖱️ Try Me</div>
+        <h3>Guided practice with real system simulation</h3>
+        <p>The Try Me activity placed users inside a pixel-accurate simulation of the application interface — built using captured screens — and asked them to complete real tasks independently. The simulation provided contextual hints when users stalled, and tracked errors without penalising exploration.</p>
+        <ul class="component-details">
+          <li>Three levels of support: full hints available, hints on request, no hints (mastery mode)</li>
+          <li>Errors triggered contextual feedback — not generic "incorrect" messages, but specific guidance on what went wrong and why</li>
+          <li>Each Try Me mapped directly to the preceding Show Me — same workflow, same screens, no surprises</li>
+          <li>Completion of Try Me in mastery mode unlocked a readiness badge per module</li>
+        </ul>
+      </div>
+
+      <!-- Assessment -->
+      <div class="component-card assess reveal">
+        <div class="component-badge assess">✅ Assessment</div>
+        <h3>Scenario-based assessment with structured reporting</h3>
+        <p>Each pathway concluded with a summative assessment — not a knowledge quiz, but a scenario-based evaluation in which users were presented with realistic work situations and asked to make the right decision within the system. Results fed into a live dashboard visible to learning administrators and line managers.</p>
+        <ul class="component-details">
+          <li>Scenario questions drawn directly from the most common real-world errors identified in the SME interviews</li>
+          <li>80% pass threshold required; users who failed received targeted remediation pointing to specific modules, not the whole programme</li>
+          <li>Results reported by role, location, and team — giving managers visibility of individual and group readiness</li>
+          <li>Completion certificates auto-generated and logged in the LMS as evidence of pre-go-live readiness</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ LIBRARY -->
+<section class="faq-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The performance support layer</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-left">
+        <h2 class="reveal">A structured FAQ library built for <em>the moment users get stuck</em></h2>
+        <p class="reveal">Alongside the formal learning modules, the project included a structured FAQ library — a searchable, role-filtered reference resource designed for use after training, at the point of need. This was not an afterthought. It was a deliberate decision made during the content audit, when SMEs were asked not just what users needed to learn, but what they would need to look up six weeks after go-live.</p>
+        <p class="reveal">The FAQ library was built from a structured question-gathering process — SMEs were asked to anticipate every question a user might ask in their first 90 days, grouped by workflow, role, and frequency. Over 220 questions were catalogued. Each was answered concisely, with a link to the relevant module for users who needed a deeper refresher.</p>
+        <div class="faq-highlight reveal">
+          <strong>How we gathered the questions</strong>
+          <p>Rather than writing FAQs in isolation, we ran structured Q&A simulation workshops with SMEs — asking them to roleplay as confused users asking questions after go-live. This produced far richer, more realistic questions than a straightforward document review would have generated.</p>
+        </div>
+      </div>
+      <div class="faq-categories">
+        <div class="faq-category reveal">
+          <div class="faq-category-title">Navigation &amp; Access <span class="faq-category-count">34 questions</span></div>
+          <div class="faq-category-desc">Login issues, permission errors, dashboard layout, finding features within the system</div>
+        </div>
+        <div class="faq-category reveal">
+          <div class="faq-category-title">Data Entry &amp; Validation <span class="faq-category-count">58 questions</span></div>
+          <div class="faq-category-desc">Field formats, mandatory fields, error messages, saving and submitting records</div>
+        </div>
+        <div class="faq-category reveal">
+          <div class="faq-category-title">Approvals &amp; Workflow Routing <span class="faq-category-count">41 questions</span></div>
+          <div class="faq-category-desc">What happens after submission, who approves what, how to chase or escalate</div>
+        </div>
+        <div class="faq-category reveal">
+          <div class="faq-category-title">Reports &amp; Exports <span class="faq-category-count">29 questions</span></div>
+          <div class="faq-category-desc">Running standard reports, filtering data, exporting to Excel, scheduling automated outputs</div>
+        </div>
+        <div class="faq-category reveal">
+          <div class="faq-category-title">Exceptions &amp; Error Handling <span class="faq-category-count">38 questions</span></div>
+          <div class="faq-category-desc">What to do when something goes wrong, who to contact, how to reverse or amend entries</div>
+        </div>
+        <div class="faq-category reveal">
+          <div class="faq-category-title">Role-Specific Queries <span class="faq-category-count">22 questions</span></div>
+          <div class="faq-category-desc">Questions unique to each user group, filtered by role in the deployed version</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES -->
+<section class="challenges-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The challenges</span>
+      <div class="section-label-line"></div>
+    </div>
+    <h2 class="reveal">What made this project <em>genuinely difficult</em> — and how we resolved it.</h2>
+    <div class="challenges-grid">
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">01</div>
+        <div class="challenge-card-title">A moving target: the system kept changing</div>
+        <div class="challenge-card-body">Screen captures taken during early development became obsolete as the vendor made interface changes right up to four weeks before go-live. Show Me demonstrations and Try Me simulations built against earlier builds had to be rebuilt from scratch in some cases.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We introduced a screen freeze policy with the client — no interface changes after week ten without formal impact assessment. We also built a rapid-rebuild workflow that could update a Show Me within 48 hours of a confirmed screen change.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">02</div>
+        <div class="challenge-card-title">SME availability: knowledge locked inside busy people</div>
+        <div class="challenge-card-body">The subject matter experts who held all the knowledge were also the people implementing the system. Their time was fractured across the project, and long review cycles threatened to compress the build phase into an unworkable window.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We replaced sequential review with a targeted sign-off model: each SME was assigned to specific modules only, with a 48-hour turnaround expectation and a structured review template that focused their attention on factual accuracy, not editorial preference.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">03</div>
+        <div class="challenge-card-title">Role overlap: shared screens, different purposes</div>
+        <div class="challenge-card-body">Many screens in the system were shared across multiple user roles, but used differently by each. Building separate Show Me sequences for every role would have tripled build time. Building a single generic version would have confused users who encountered fields and options irrelevant to their role.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We introduced layered branching within shared modules — a single core Show Me with role-specific annotation layers that activated based on the user's pathway. Users saw the same interface walkthrough, but with commentary, callouts, and focus areas tailored to their role.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">04</div>
+        <div class="challenge-card-title">Engagement: making system training feel relevant</div>
+        <div class="challenge-card-body">Application training has a reputation problem. Users approach it as a box-ticking obligation rather than genuine preparation. Early pilot feedback confirmed this risk — participants were clicking through Show Me sequences without reading the annotations.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We embedded consequence moments into every module — brief scenarios showing what happens when a common error is made in the real system. These were placed before the Show Me, not after. Users who understood the cost of getting it wrong paid far more attention to the demonstration of how to get it right.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">05</div>
+        <div class="challenge-card-title">Video production at volume and speed</div>
+        <div class="challenge-card-body">Forty-two produced videos in four months — alongside the eLearning build itself — was an aggressive production schedule. Script approvals, voiceover recording, animation, and client review cycles all had to run in parallel without compressing quality.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>We established a modular video production system — a library of reusable animation components, a pre-approved script template that reduced review cycles to a single round, and a dedicated voiceover artist on retainer who could turn around recordings within 24 hours of script sign-off.</div>
+      </div>
+      <div class="challenge-card reveal">
+        <div class="challenge-card-num">06</div>
+        <div class="challenge-card-title">Assessment integrity: preventing box-ticking</div>
+        <div class="challenge-card-body">Early assessment designs were flagged by the client as too easy — users could pass by eliminating obviously wrong options without genuinely understanding the system. The assessment had to function as a real measure of readiness, not a completion certificate dressed up as a test.</div>
+        <div class="challenge-card-resolve"><strong>How we resolved it</strong>All knowledge-recall questions were replaced with scenario-based situational questions that required users to apply understanding, not retrieve information. Distractors were written to be plausible — close-but-wrong options that would catch users who had a vague rather than solid understanding of the workflow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN INSIGHT -->
+<section class="insight-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The design insight</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="insight-grid">
+      <div class="insight-card reveal">
+        <div class="insight-label">What made this work</div>
+        <h3>Process before system — always</h3>
+        <p>The single most important design decision was sequencing. Every module taught the underlying business process before introducing the system interface. Users who understood why a workflow existed navigated the how far more confidently than users who were simply shown which buttons to press. The videos carried the process narrative. The Show Me and Try Me carried the system navigation. Neither worked without the other.</p>
+      </div>
+      <div class="insight-card reveal">
+        <div class="insight-label">The unexpected lesson</div>
+        <h3>The FAQ library became the most used asset post go-live</h3>
+        <p>In the three months following go-live, the structured FAQ library recorded more user interactions than any individual eLearning module. Users who had completed their training returned to it repeatedly when they encountered real tasks for the first time under production conditions. This validated the decision to invest in performance support as a formal deliverable rather than an informal afterthought — and it is now a standard component of every application training programme we design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME -->
+<section class="outcome-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The outcome</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="outcome-grid">
+      <div class="outcome-left">
+        <h2 class="reveal">Four hundred users. One go-live date. <em>Zero production incidents in the first thirty days.</em></h2>
+        <p class="reveal">Every user completed their role-based pathway and cleared the summative assessment before the go-live date. The project was the first major system rollout in the organisation's recent history to achieve 100% pre-go-live training completion across all user groups.</p>
+        <p class="reveal">In the 30 days following go-live, the support desk logged 62% fewer system-related queries than equivalent rollouts. Users attributed this directly to the Try Me practice activities — having completed tasks in the simulation meant the real system felt familiar, not foreign, on day one.</p>
+        <div class="quote-block reveal">
+          <p class="quote-text">"Our previous system rollout generated weeks of support tickets and frustrated users. This time, people arrived at go-live knowing exactly what they were doing. The difference was visible within hours."</p>
+          <p class="quote-attr">— Head of Operations Transformation, Financial Services Organisation</p>
+        </div>
+      </div>
+      <div class="result-cards">
+        <div class="result-card reveal">
+          <div class="result-num">100<sup>%</sup></div>
+          <div class="result-label"><strong>Pre-go-live completion</strong><span>All 400+ users completed their pathway and passed their assessment before system launch</span></div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-num">96<sup>%</sup></div>
+          <div class="result-label"><strong>First-attempt pass rate</strong><span>Across all six role pathways and all assessment scenarios</span></div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-num">↓62<sup>%</sup></div>
+          <div class="result-label"><strong>Support desk queries</strong><span>Compared to equivalent prior system rollouts in the first 30 days post go-live</span></div>
+        </div>
+        <div class="result-card reveal">
+          <div class="result-num">42</div>
+          <div class="result-label"><strong>Videos produced</strong><span>All delivered on time with a single round of revisions per script</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="page-wrap">
+    <h2 class="reveal">Rolling out a new system and need your <em>users ready before day one?</em></h2>
+    <p class="cta-tagline reveal">Learning matters. Let's build something your people will actually use — and remember.</p>
+    <div class="cta-buttons reveal">
+      <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="btn-primary">Let's talk ↗</a>
+      <a href="index.html#work" class="btn-secondary">View all case studies</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html" class="footer-logo">Learning <em>Matters.</em></a>
+  <ul class="footer-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Learning Matters. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .section-label-line').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
