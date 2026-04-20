@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Case Study 9 — Interview Prep Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal:       #006d77;
+  --teal-dark:  #004d55;
+  --teal-mid:   #008891;
+  --teal-light: #e0f4f5;
+  --teal-pale:  #f0fafb;
+  --gold:       #c8922a;
+  --gold-light: #fdf4e3;
+  --ink:        #0f1e20;
+  --ink-mid:    #2d4a4e;
+  --ink-light:  #5a7a7e;
+  --white:      #ffffff;
+  --warm:       #f7fafa;
+  --rule:       #c8dfe0;
+  --red:        #c0303a;
+  --red-light:  #fdecea;
+  --green:      #1e7a4a;
+  --green-light:#e4f0ea;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--warm);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* ── STICKY PROGRESS NAV ── */
+.progress-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--teal-dark);
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 2px 16px rgba(0,77,85,0.3);
+}
+.progress-nav-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.progress-nav-title span { color: #7ee8f0; }
+.progress-steps {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.progress-steps::-webkit-scrollbar { display: none; }
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+.progress-step:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.15); }
+.progress-step.active { color: #7ee8f0; border-color: rgba(126,232,240,0.4); background: rgba(126,232,240,0.08); }
+.progress-step-num {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.progress-step.active .progress-step-num { background: rgba(126,232,240,0.3); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--teal-dark);
+  padding: 100px 48px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,136,145,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 900px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  background: rgba(200,146,42,0.12);
+  border: 1px solid rgba(200,146,42,0.3);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: #7ee8f0; font-weight: 300; }
+.hero-desc {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-stat {}
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-num sup { font-size: 16px; color: var(--gold); }
+.hero-stat-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+  max-width: 120px;
+}
+
+/* ── HOW TO USE ── */
+.how-to-use {
+  background: var(--gold-light);
+  border: 1px solid rgba(200,146,42,0.25);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 900px;
+  margin: 32px auto 0;
+  border-radius: 8px;
+}
+.how-to-use-icon { font-size: 22px; flex-shrink: 0; }
+.how-to-use p { font-size: 13px; color: #6a4010; line-height: 1.55; }
+.how-to-use strong { color: #3a2005; }
+
+/* ── MAIN LAYOUT ── */
+main { max-width: 900px; margin: 0 auto; padding: 64px 48px; }
+
+/* ── CHAPTER ── */
+.chapter {
+  margin-bottom: 80px;
+  scroll-margin-top: 72px;
+}
+.chapter-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--teal-light);
+}
+.chapter-num {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.chapter-header-text {}
+.chapter-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.chapter-title em { font-style: italic; color: var(--teal-mid); }
+
+/* ── STORY BLOCK ── */
+.story {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ink-mid);
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+.story strong { font-weight: 500; color: var(--ink); }
+.story em { font-style: italic; }
+
+/* ── KEY FACT BOX ── */
+.key-fact {
+  background: var(--teal-light);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--teal-dark);
+  line-height: 1.65;
+}
+.key-fact strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+
+/* ── CHALLENGE CARD ── */
+.challenge-box {
+  background: var(--red-light);
+  border: 1px solid rgba(192,48,58,0.2);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+.challenge-box-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.challenge-box-icon { font-size: 18px; }
+.challenge-box-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.challenge-box p { font-size: 14px; font-weight: 300; color: #5a1a1e; line-height: 1.65; }
+
+/* ── RESOLUTION BOX ── */
+.resolution-box {
+  background: var(--green-light);
+  border: 1px solid rgba(30,122,74,0.2);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 12px 0 20px;
+}
+.resolution-box-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.resolution-box-icon { font-size: 18px; }
+.resolution-box-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.resolution-box p { font-size: 14px; font-weight: 300; color: #0f3a22; line-height: 1.65; }
+
+/* ── NUMBERED STEPS ── */
+.steps { display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
+.step { display: flex; gap: 16px; align-items: flex-start; }
+.step-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-text { font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; }
+.step-text strong { font-weight: 500; color: var(--ink); }
+
+/* ── REMEMBER THIS ── */
+.remember {
+  background: var(--teal-dark);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+.remember-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7ee8f0;
+  margin-bottom: 10px;
+}
+.remember p {
+  font-size: 15px;
+  font-style: italic;
+  font-family: var(--font-display);
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+}
+
+/* ── QA SECTION ── */
+.qa-section { margin: 32px 0; }
+.qa-section-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.qa-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.qa-item {
+  margin-bottom: 16px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.qa-question {
+  padding: 16px 20px;
+  background: var(--white);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s;
+}
+.qa-question:hover { background: var(--teal-pale); }
+.qa-question-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.qa-chevron {
+  font-size: 12px;
+  color: var(--ink-light);
+  transition: transform 0.25s var(--ease);
+  flex-shrink: 0;
+}
+.qa-item.open .qa-chevron { transform: rotate(180deg); }
+.qa-answer {
+  display: none;
+  padding: 0 20px 18px;
+  background: var(--white);
+  border-top: 1px solid var(--teal-light);
+}
+.qa-item.open .qa-answer { display: block; padding-top: 16px; }
+.qa-answer p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.qa-answer p:last-child { margin-bottom: 0; }
+.qa-answer strong { font-weight: 500; color: var(--ink); }
+
+/* ── OBJECTION / REBUTTAL ── */
+.objection-item {
+  margin-bottom: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(192,48,58,0.2);
+}
+.objection-q {
+  padding: 16px 20px;
+  background: var(--red-light);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.objection-q:hover { background: #fad5d7; }
+.objection-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.objection-text { font-size: 14px; font-weight: 500; color: #5a1a1e; line-height: 1.4; flex: 1; }
+.objection-chevron { font-size: 12px; color: var(--red); transition: transform 0.25s; flex-shrink: 0; margin-top: 2px; }
+.objection-item.open .objection-chevron { transform: rotate(180deg); }
+.rebuttal {
+  display: none;
+  padding: 16px 20px;
+  background: var(--green-light);
+  border-top: 1px solid rgba(30,122,74,0.15);
+}
+.objection-item.open .rebuttal { display: block; }
+.rebuttal-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.rebuttal p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #0f3a22;
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+.rebuttal p:last-child { margin-bottom: 0; }
+.rebuttal strong { font-weight: 500; }
+
+/* ── LEARNING RESOURCES ── */
+.resources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.resource-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 16px 18px;
+  text-decoration: none;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.resource-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+.resource-type {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.resource-type.article { background: rgba(0,109,119,0.1); color: var(--teal); border: 1px solid rgba(0,109,119,0.2); }
+.resource-type.video { background: rgba(192,48,58,0.08); color: var(--red); border: 1px solid rgba(192,48,58,0.15); }
+.resource-type.podcast { background: rgba(61,26,36,0.08); color: #6a3040; border: 1px solid rgba(61,26,36,0.15); }
+.resource-type.guide { background: rgba(200,146,42,0.1); color: #7a5010; border: 1px solid rgba(200,146,42,0.2); }
+.resource-title { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 3px; }
+.resource-source { font-size: 11px; font-weight: 300; color: var(--ink-light); }
+
+/* ── SUMMARY CARD ── */
+.summary-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 32px;
+  margin: 32px 0;
+}
+.summary-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.summary-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-mid);
+  line-height: 1.5;
+}
+.summary-item::before { content: '✓'; color: var(--teal); font-weight: 600; flex-shrink: 0; }
+
+/* ── QUOTE ── */
+.pull-quote {
+  border-left: 4px solid var(--gold);
+  padding: 16px 24px;
+  background: var(--gold-light);
+  border-radius: 0 8px 8px 0;
+  margin: 24px 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* ── SECTION DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 40px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ── TIMELINE ROW ── */
+.timeline { display: flex; flex-direction: column; gap: 0; margin: 24px 0; }
+.timeline-item { display: flex; gap: 0; }
+.timeline-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  flex-shrink: 0;
+}
+.timeline-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 3px solid var(--teal-light);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.timeline-line {
+  flex: 1;
+  width: 2px;
+  background: var(--teal-light);
+  margin: 4px 0;
+  min-height: 24px;
+}
+.timeline-item:last-child .timeline-line { display: none; }
+.timeline-content { padding: 0 0 28px 16px; flex: 1; }
+.timeline-phase {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.timeline-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.timeline-desc { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.65; }
+
+/* ── CLOSING CARD ── */
+.closing-card {
+  background: var(--teal-dark);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 64px;
+}
+.closing-card h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.closing-card h2 em { font-style: italic; color: #7ee8f0; font-weight: 300; }
+.closing-card p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.65; max-width: 500px; margin: 0 auto; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  main { padding: 40px 24px; }
+  .hero { padding: 80px 24px 48px; }
+  .progress-nav { padding: 0 16px; }
+  .resources-grid, .summary-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 20px; }
+  .progress-step-label { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY PROGRESS NAV -->
+<nav class="progress-nav">
+  <div class="progress-nav-title">CS9 — <span>Interview Prep</span></div>
+  <div class="progress-steps">
+    <a href="#ch1" class="progress-step active"><div class="progress-step-num">1</div><span class="progress-step-label">The Brief</span></a>
+    <a href="#ch2" class="progress-step"><div class="progress-step-num">2</div><span class="progress-step-label">Discovery</span></a>
+    <a href="#ch3" class="progress-step"><div class="progress-step-num">3</div><span class="progress-step-label">Content Audit</span></a>
+    <a href="#ch4" class="progress-step"><div class="progress-step-num">4</div><span class="progress-step-label">Question Map</span></a>
+    <a href="#ch5" class="progress-step"><div class="progress-step-num">5</div><span class="progress-step-label">HLD</span></a>
+    <a href="#ch6" class="progress-step"><div class="progress-step-num">6</div><span class="progress-step-label">Content Build</span></a>
+    <a href="#ch7" class="progress-step"><div class="progress-step-num">7</div><span class="progress-step-label">Copilot Build</span></a>
+    <a href="#ch8" class="progress-step"><div class="progress-step-num">8</div><span class="progress-step-label">Challenges</span></a>
+    <a href="#ch9" class="progress-step"><div class="progress-step-num">9</div><span class="progress-step-label">Outcomes</span></a>
+    <a href="#ch10" class="progress-step"><div class="progress-step-num">Q</div><span class="progress-step-label">Q&amp;A</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📋 Interview Preparation Guide</div>
+    <h1>Case Study 9 — <em>The Pharma Virtual Assistant</em></h1>
+    <p class="hero-desc">How I built a Microsoft Copilot Studio-powered virtual assistant for 280 pharmaceutical sales representatives — giving them instant, approved answers to product, clinical, and regulatory questions at the exact moment they needed them.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">280</div>
+        <div class="hero-stat-label">Sales reps served</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">840<sup>+</sup></div>
+        <div class="hero-stat-label">Content assets created</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">94<sup>%</sup></div>
+        <div class="hero-stat-label">Response accuracy</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">↓71<sup>%</sup></div>
+        <div class="hero-stat-label">Search time reduction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">Months to deliver</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="how-to-use" style="max-width:900px; margin: 32px auto 0;">
+    <div class="how-to-use-icon">💡</div>
+    <p><strong>How to use this guide:</strong> Read through the story once from top to bottom. Then use the numbered nav above to jump between sections when you want to rehearse specific parts. Click any interview question or objection to reveal the answer. Read it. Close it. Try to recall it. That is how you build recall.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 1 — THE CLIENT BRIEF
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch1">
+  <div class="chapter-header">
+    <div class="chapter-num">1</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">Where the story begins</div>
+      <h2 class="chapter-title">The client had a problem — <em>and a 30-second window to solve it.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">Imagine you are a pharmaceutical sales representative. You have just parked outside a hospital. In ten minutes you will be sitting across from a senior cardiologist who has prescribed your competitor's product for fifteen years. She is going to ask you a very specific question about your drug's interaction with a particular renal condition. You half-remember the answer. You need the full answer. Right now.</p>
+
+  <p class="story">That was the situation 280 sales representatives at a leading pharmaceutical organisation faced every single day. They covered a portfolio of <strong>six products</strong> across 14 therapeutic areas. The questions healthcare professionals asked them were technical, nuanced, and sometimes unpredictable. And the tool they had to find answers? A folder-based intranet that was slow, hard to search on a mobile phone, and — critically — <strong>frequently out of date</strong>.</p>
+
+  <div class="key-fact">
+    <strong>The core problem in one sentence</strong>
+    Reps who could not find the right answer in 30 seconds either guessed, escalated to their manager, or simply did not answer the question — none of which were acceptable in a regulated pharmaceutical selling environment.
+  </div>
+
+  <p class="story">The brief that came to me was clear: build a virtual assistant that a rep could query on their phone — before a call, between appointments, or standing in a hospital corridor — and get a <strong>precise, approved, citable answer</strong> in under ten seconds.</p>
+
+  <div class="remember">
+    <div class="remember-label">🧠 Remember This</div>
+    <p>"The problem was not that reps didn't know their products. It was that they couldn't access what they knew fast enough, in the right format, at the right moment. This was a performance support problem — not a training problem."</p>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Interview Questions — Chapter 1</div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">Walk me through how this project came to you. What was the initial brief?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>The organisation came to me with a workforce performance challenge rather than a training request. Their 280 medical sales representatives were struggling to access product knowledge quickly enough at the point of need — before and during customer calls with healthcare professionals. They had an intranet, but it was designed around how the organisation filed documents, not how a rep needed information in the field. The brief was to build a virtual assistant that could answer any product-related question in under ten seconds, from a mobile device, with a source the rep could cite if needed.</p>
+        <p><strong>Key point to make:</strong> I always position this as a performance support solution rather than a training solution — because the problem was access speed, not knowledge deficit. That distinction drove every design decision that followed.</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">How did you diagnose that this was a performance support problem and not a training problem?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>I asked one key question early on: "Do the reps know the information they need — they just can't find it fast enough? Or do they genuinely not know it?" The answer from managers was overwhelmingly the first. Reps had done the product training. They had sat through the launch materials. The problem was retrieval speed under field conditions — which is a classic performance support gap, not a learning gap.</p>
+        <p>This matters because the intervention design is completely different. A training solution would have meant building more modules. A performance support solution meant building a tool that travels with the rep and answers questions on demand. The second is far more valuable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 2 — DISCOVERY & SME SESSIONS
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch2">
+  <div class="chapter-header">
+    <div class="chapter-num">2</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">Understanding the landscape</div>
+      <h2 class="chapter-title">Before I touched the tool, <em>I needed to understand the field.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">My first priority was not building anything. It was listening. I set up structured discovery sessions with three groups: <strong>medical affairs managers</strong> who owned the product content, <strong>regional sales managers</strong> who knew what their reps struggled with, and <strong>the reps themselves</strong> — specifically a cross-section across different products, regions, and performance levels.</p>
+
+  <p class="story">The conversations with the reps were the most revealing. I did not just ask them what they needed to know. I asked them to walk me through a typical day — from the moment they parked outside a hospital to the moment they filed their call report. I was listening for the gaps: the moments they felt uncertain, the questions they scrambled to answer, the times they wished they had something faster.</p>
+
+  <div class="key-fact">
+    <strong>What the discovery sessions revealed</strong>
+    Reps were spending an average of 20 minutes before every important call searching the intranet for clinical references they half-remembered. Many had their own informal systems — personal notes, saved emails, WhatsApp messages from colleagues — because the official system was too slow. The problem was real and universal.
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header">
+      <div class="challenge-box-icon">⚠️</div>
+      <div class="challenge-box-label">Challenge at this stage</div>
+    </div>
+    <p>Getting time with medical affairs was difficult. They were busy people who were sceptical that a learning designer could build something that met their regulatory standards. There was a perception that this was an IT project, not an L&D project — and some stakeholders thought the solution was simply to "fix the intranet."</p>
+  </div>
+
+  <div class="resolution-box">
+    <div class="resolution-box-header">
+      <div class="resolution-box-icon">✅</div>
+      <div class="resolution-box-label">How I resolved it</div>
+    </div>
+    <p>I framed the discovery sessions around their risks, not my deliverable. Instead of asking for their time to "build a chatbot," I asked for 45 minutes to understand what compliance risks existed when reps could not find accurate information quickly. That reframe got me in the room. Once medical affairs understood I was trying to solve a regulatory accuracy problem — not just a convenience problem — they became allies rather than obstacles.</p>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Interview Questions — Chapter 2</div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">How did you conduct your needs analysis for this project?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>I ran structured discovery sessions with three stakeholder groups. With medical affairs, I focused on regulatory risk — what happened when reps gave inaccurate or outdated information to HCPs. With regional sales managers, I focused on performance gaps — what questions reps consistently struggled to answer, and what the business cost of those gaps was. With the reps themselves, I ran job shadowing-style conversations, asking them to walk me through a typical day and narrate every moment they felt uncertain.</p>
+        <p>The combination of those three perspectives gave me the full picture: the content existed, the reps mostly knew it, but the system for accessing it at speed was broken. That diagnosis directly shaped the solution.</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">How did you handle stakeholders who were resistant or sceptical at the start?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>The key was reframing the conversation around their concerns rather than my solution. Medical affairs were worried about regulatory risk — I positioned the virtual assistant as a tool that would reduce rogue information sharing, not introduce it. By making their concern the driver of the solution, I turned resistance into sponsorship.</p>
+        <p>With the IT team, who initially felt this was their territory, I was transparent about the boundary: I was not building infrastructure, I was building the content and conversation design that would sit inside a Microsoft platform they already managed. That clarity of scope removed the turf tension.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 3 — THE CONTENT AUDIT
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch3">
+  <div class="chapter-header">
+    <div class="chapter-num">3</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">The most critical step nobody expected</div>
+      <h2 class="chapter-title">1,240 documents. <em>And fewer than 40% were usable.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">Before I could build the chatbot's knowledge base, I had to understand what content actually existed. I catalogued <strong>1,240 documents</strong> across six product teams — clinical data summaries, detail aids, training decks, objection-handling guides, regulatory references, and internal FAQs. The audit took three weeks. And it was the most important three weeks of the project.</p>
+
+  <p class="story">Why? Because what I found would have killed the project if I had discovered it six months later. Of those 1,240 documents, <strong>fewer than 40% were both current and cleared for representative use</strong>. Many were outdated — some contained superseded clinical data. Others had never been formally approved by medical affairs and existed in a grey zone nobody had audited. Several were outright retired.</p>
+
+  <div class="pull-quote">
+    "Building the assistant on the existing content library without the audit would have created a tool that confidently gave representatives incorrect information. The audit added three weeks. It saved the project."
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Document inventory:</strong> Listed all 1,240 documents with product, date, author, and last-review date.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Regulatory classification:</strong> Worked with medical affairs to classify each document as fully approved, approved with caveats, pending review, or retired.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Usability assessment:</strong> Assessed whether each approved document was in a format suitable for chatbot ingestion — structured, searchable, and concise enough to surface as a response.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Gap identification:</strong> Cross-referenced cleared content against the question map (built in parallel) to find topics where no approved content existed — requiring new creation.</div>
+    </div>
+  </div>
+
+  <div class="key-fact">
+    <strong>The audit outcome</strong>
+    487 documents cleared in full. 203 cleared with excerption (only specific sections were approved for use). The remainder were excluded entirely. 214 question types had no approved content at all — requiring new content to be purpose-built before the assistant could go live.
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header">
+      <div class="challenge-box-icon">⚠️</div>
+      <div class="challenge-box-label">Challenge at this stage</div>
+    </div>
+    <p>The audit uncovered a content governance problem that predated this project by years. Multiple product teams had created content independently, with no central version control and no consistent approval process. Nobody owned the problem — and nobody wanted to be the one who had to fix years of accumulated disorder in three weeks.</p>
+  </div>
+
+  <div class="resolution-box">
+    <div class="resolution-box-header">
+      <div class="resolution-box-icon">✅</div>
+      <div class="resolution-box-label">How I resolved it</div>
+    </div>
+    <p>I appointed a single content custodian from each product team — not to fix the historic problem, but to be the point of authority for their product going forward. I gave each custodian a structured classification template that made the review process fast. And I was explicit: we were not auditing the past to assign blame. We were creating a clean baseline for a tool that would directly affect what reps said to HCPs. That framing made people move quickly.</p>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Interview Questions — Chapter 3</div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">What was the biggest risk in this project — and how did you manage it?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>The biggest risk was content accuracy. In a pharmaceutical environment, if a virtual assistant gives a rep incorrect clinical data and that rep passes it on to a healthcare professional, the consequences range from regulatory breach to patient harm. The content audit was entirely driven by this risk. We only ingested content that had been formally approved by medical affairs — nothing else. Every response in the assistant cited its source document, so reps could verify and trace answers.</p>
+        <p>The second layer of risk management was the fallback design. When the assistant could not find an approved answer, it did not guess — it flagged the gap, routed the query to the relevant product manager, and logged the unanswered question for knowledge base review. A tool that says "I don't know, here is who does" is far safer than one that generates a plausible-sounding wrong answer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 4 — QUESTION MAPPING
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch4">
+  <div class="chapter-header">
+    <div class="chapter-num">4</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">The intelligence layer</div>
+      <h2 class="chapter-title">580 questions. <em>340 ways to ask them.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">A chatbot is only as useful as its ability to understand what a user is actually asking. A medical sales rep does not ask "What is the mechanism of action of Product X?" They ask "How does it work?" or "What happens in the body when someone takes the first dose?" The words matter. The chatbot has to understand both phrasings as the same question.</p>
+
+  <p class="story">To achieve this, I ran <strong>structured question-elicitation sessions</strong> with 40 representatives across four regions. I did not ask them to write a list of questions. Instead, I asked them to recall specific field moments: "Think of the last time an HCP asked you something you weren't sure about. What exactly did they ask?" This produced natural language — real-world phrasing, not textbook phrasing.</p>
+
+  <div class="key-fact">
+    <strong>The question map at a glance</strong>
+    580 distinct question types identified across six topic clusters. Over 340 natural language variants catalogued — different ways real reps would ask the same question. Each question mapped to the approved content that could answer it. Questions with no approved answer flagged for new content creation.
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Product Mechanism &amp; Clinical Profile</strong> — 112 questions. "How does it work? What's the evidence? How does it compare to guidelines?"</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Dosing, Administration &amp; Titration</strong> — 89 questions. "Starting dose? Can it be used in renal impairment? How quickly do patients respond?"</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Safety, Side Effects &amp; Contraindications</strong> — 104 questions. "Common adverse effects? Black box warnings? What about pregnancy?"</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Competitive Landscape &amp; Objection Handling</strong> — 97 questions. "Why this over the competitor? The data isn't as strong — how do you respond?"</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text"><strong>Patient Access &amp; Reimbursement</strong> — 78 questions. "Is it on formulary? What does the patient pay? Is there a support programme?"</div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-text"><strong>Regulatory &amp; Promotional Compliance</strong> — 100 questions. "Can I share this study? What's the approved indication exactly? What can I say about the Phase III data?"</div>
+    </div>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header">
+      <div class="challenge-box-icon">⚠️</div>
+      <div class="challenge-box-label">Challenge at this stage</div>
+    </div>
+    <p>The compliance cluster was the most sensitive. Reps regularly asked questions that strayed into off-label territory — not out of bad intent, but because HCPs asked them things they were not supposed to answer. Building the question map meant acknowledging these questions existed, which made medical affairs uncomfortable.</p>
+  </div>
+
+  <div class="resolution-box">
+    <div class="resolution-box-header">
+      <div class="resolution-box-icon">✅</div>
+      <div class="resolution-box-label">How I resolved it</div>
+    </div>
+    <p>I reframed it: "The reps are being asked these questions whether or not we map them. If we map them, the assistant can give a regulatory-safe response — a clear, approved explanation of what the rep can and cannot say. If we don't map them, the rep is on their own." That argument won. The compliance questions became some of the most valuable content in the knowledge base.</p>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Interview Questions — Chapter 4</div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">How did you ensure the chatbot understood natural language rather than just keywords?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>The question-mapping process was the foundation. By cataloguing over 340 natural language variants for the 580 distinct question types, I gave the Copilot Studio NLU engine a rich set of example phrasings to train on. The variants came directly from real reps describing real conversations — not from me writing alternatives at a desk.</p>
+        <p>I also built the Q&A pairs in the knowledge base using the natural language phrasing, not the clinical document phrasing. So if a rep typed "how does it work in the body," the answer was written in plain language, not clinical document language — and cited the clinical document as its source for reps who needed the technical version.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 5 — HIGH-LEVEL DESIGN
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch5">
+  <div class="chapter-header">
+    <div class="chapter-num">5</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">The blueprint</div>
+      <h2 class="chapter-title">High-level design — <em>the architecture before the build.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">Before writing a single Q&A pair or recording a single video, I produced a high-level design document — a blueprint that defined what the solution would be, how it would work, what it would not do, and why. This document was the contract between me and the organisation. It prevented scope creep, resolved disagreements before they became blockers, and gave medical affairs the confidence to approve the approach before content creation began.</p>
+
+  <div class="key-fact">
+    <strong>What the high-level design covered</strong>
+    Solution rationale (why a chatbot, why Copilot Studio), scope definition (what the assistant would and would not answer), content architecture (four content types and their role), technical integration (how it would connect to the Microsoft 365 environment), compliance framework (how regulatory requirements would be met), and pilot plan (who, when, and what success looked like).
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Layer 1 — Retrieval Architecture</div>
+        <div class="timeline-title">Knowledge base ingestion via SharePoint</div>
+        <div class="timeline-desc">All approved content structured and tagged in SharePoint with a consistent taxonomy: product, topic category, question type, and regulatory clearance level. The taxonomy governed how Copilot Studio retrieved and ranked content.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Layer 2 — Conversation Design</div>
+        <div class="timeline-title">Intent mapping and dialogue flows</div>
+        <div class="timeline-desc">580 Q&A pairs mapped to 340+ natural language intents. Fallback flows for out-of-scope queries. Compliance warning triggers for sensitive topic categories. Source citation requirement for every response.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Layer 3 — Compliance Controls</div>
+        <div class="timeline-title">Guardrails and audit trail</div>
+        <div class="timeline-desc">Every response includes a source citation. Compliance warning messages on sensitive queries. Medical affairs dashboard for monitoring response accuracy. No generative AI — retrieval only from approved content.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Layer 4 — Deployment</div>
+        <div class="timeline-title">Phased rollout with feedback loop</div>
+        <div class="timeline-desc">40-rep pilot before full deployment. Weekly review of usage data and unanswered queries. Iterative knowledge base expansion before scaling to all 280 reps.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Interview Questions — Chapter 5</div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">How do you approach high-level versus low-level design? What goes in each?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>High-level design is the strategic blueprint — the "what and why." It answers: what is the solution, why this approach over alternatives, what is in scope and out of scope, how will it integrate with existing systems, and what does success look like. This is the document that gets stakeholder sign-off before any content is created.</p>
+        <p>Low-level design is the instructional blueprint — the "how." It specifies: the exact content architecture (how many Q&A pairs, what format, what taxonomy), the conversation flow logic (what happens at each decision node), the fallback and escalation rules, the response format standards (length, tone, citation format), and the quality assurance process. Where the HLD is a boardroom document, the LLD is a working document for the build team.</p>
+        <p>For this project, the HLD was approved by medical affairs, legal, and the Head of Sales before a single piece of content was created. That approval process was what prevented the content from being challenged later.</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">Why Microsoft Copilot Studio specifically — and not a different chatbot platform?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>Three reasons drove the decision. First, the organisation was already on Microsoft 365 — Copilot Studio integrated natively without requiring a new platform procurement, IT security review, or additional vendor contract. Second, Copilot Studio's architecture is retrieval-based — it retrieves from a defined knowledge base and generates responses grounded in that content, rather than generating freely from a language model. In a regulated pharmaceutical environment, where every response needs to be traced to an approved source, that distinction was non-negotiable. Third, it gave medical affairs a management dashboard where they could monitor query volumes, review responses, and push content updates without involving IT for every change.</p>
+        <p><strong>What I would say if asked why not a general-purpose chatbot like ChatGPT:</strong> General-purpose AI models generate responses based on everything they were trained on — including potentially inaccurate or outdated pharmaceutical information from the internet. A rep cannot cite "ChatGPT said so" to a cardiologist. With Copilot Studio, every response is grounded in approved content, cited to a specific document, and auditable. That is the difference between a convenient tool and a professionally safe one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 6 — CONTENT CREATION
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch6">
+  <div class="chapter-header">
+    <div class="chapter-num">6</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">Building the knowledge base</div>
+      <h2 class="chapter-title">Four content types. <em>One purpose — the right answer, instantly.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">The chatbot's intelligence comes entirely from the quality of its content. This is the principle I held throughout: <strong>the technology is the vessel, the content is the value.</strong> We spent 60% of the project building content before the Copilot Studio build began in earnest. This felt uncomfortable to some stakeholders who wanted to see the chatbot working quickly. The results validated the priority.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Product Explainer Videos (48 videos):</strong> Short animated videos, 2–4 minutes each, covering mechanism of action, clinical rationale, and patient profile for each of the six products. Produced with professional voiceover and motion graphics. Linked from chatbot responses when a question required visual explanation rather than text alone. These were not screen recordings — they were purpose-built explainers in plain language, designed for a rep who had 90 seconds between appointments.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Structured FAQ Library (580 Q&amp;A pairs):</strong> Each Q&amp;A pair written in the rep's natural language, not in clinical document language. Every answer had three components: a plain-language response, a supporting data point, and a link to the full approved source document. Medical affairs signed off on every single entry before ingestion.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Product Quick Reference Guides (24 guides):</strong> One-page digital reference cards per product — covering dosing, key clinical data, approved indications, and top-line safety in a format reps could skim in under 60 seconds. Available as chatbot-linked PDFs and as formatted in-assistant responses for the most frequently accessed content.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Objection-Handling Frameworks (40 frameworks):</strong> Structured guides for the 40 most common HCP objections — written as conversation frameworks, not scripts. Each included the objection, the approved response approach, the supporting evidence, and the regulatory guardrails on what could and could not be said.</div>
+    </div>
+  </div>
+
+  <div class="key-fact">
+    <strong>Total content created for the knowledge base</strong>
+    48 videos + 580 Q&A pairs + 24 product guides + 40 objection frameworks = 840+ content assets ingested into the Copilot Studio knowledge base, all approved by medical affairs before go-live.
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header">
+      <div class="challenge-box-icon">⚠️</div>
+      <div class="challenge-box-label">Challenge at this stage</div>
+    </div>
+    <p>Medical affairs approval was thorough but slow. With 580 Q&A pairs requiring review, sequential approval would have extended the project by months. There was a risk of the entire content build stalling in a review queue.</p>
+  </div>
+
+  <div class="resolution-box">
+    <div class="resolution-box-header">
+      <div class="resolution-box-icon">✅</div>
+      <div class="resolution-box-label">How I resolved it</div>
+    </div>
+    <p>I introduced a tiered review system. Low-risk factual content — approved indication text, standard dosing information — went through an expedited 48-hour review track. Complex or sensitive content — safety comparisons, competitive claims, off-label-adjacent queries — went through the full medical affairs review cycle. This reduced average approval time by 60% without compromising rigour on high-risk content.</p>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Interview Questions — Chapter 6</div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">How did you manage the video production at this scale and speed?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>Forty-eight videos in the context of a five-month project required a production system, not an ad hoc approach. I established three things: a pre-approved script template that standardised format and reduced review cycles to a single round per script, a modular animation component library that meant common elements — molecular diagrams, process flows, patient journey animations — could be reused and adapted rather than rebuilt from scratch, and a dedicated voiceover artist on retainer who could turn around recordings within 24 hours of script sign-off.</p>
+        <p>The result was a production rhythm where a script could go from first draft to finished video in five working days. That pace was only possible because the template and component library removed the creative decisions that typically slow production down.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 7 — BUILDING IN COPILOT STUDIO
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch7">
+  <div class="chapter-header">
+    <div class="chapter-num">7</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">The technical build</div>
+      <h2 class="chapter-title">Four phases. <em>Six weeks. One live virtual assistant.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">With the content built and approved, the Copilot Studio build itself took six weeks — a relatively short period, because the preparation had been so thorough. The build was not the hard part. The content was the hard part. But getting the build right still required careful attention to four distinct phases.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Phase 1 — Knowledge Base Configuration (Weeks 1–2)</div>
+        <div class="timeline-title">Ingesting and tagging all content</div>
+        <div class="timeline-desc">All 840+ approved assets structured in SharePoint with a consistent tagging taxonomy: product name, topic category, question type, and regulatory clearance level. The taxonomy was the intelligence layer — it determined how precisely Copilot Studio could retrieve the right content for the right query. Any content that could not be cleanly tagged was held back until correctly classified.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Phase 2 — Conversation Design (Weeks 2–3)</div>
+        <div class="timeline-title">Intent mapping and dialogue flows</div>
+        <div class="timeline-desc">580 Q&A pairs mapped to 340+ natural language intents within Copilot Studio's NLU engine. Pharmaceutical-specific terminology training to reduce misinterpretation on technical queries. Fallback flows designed: when the assistant could not match a query, it acknowledged the gap, routed the rep to the relevant product manager, and logged the unanswered query for knowledge base expansion.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Phase 3 — Compliance Layer (Weeks 3–4)</div>
+        <div class="timeline-title">Guardrails and source citation</div>
+        <div class="timeline-desc">Every response configured to include a source reference — the specific approved document the response was drawn from, with a direct link. Compliance warning messages triggered on sensitive categories: off-label queries, comparative claims, safety questions. Medical affairs retained editorial control via a review dashboard for monitoring query patterns and pushing content updates.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-phase">Phase 4 — Pilot and Refinement (Weeks 5–6)</div>
+        <div class="timeline-title">40-rep pilot before full deployment</div>
+        <div class="timeline-desc">Pilot cohort deliberately mixed: high-performers and average-performers, multiple products, multiple regions. Four weeks of usage data, unanswered query logs, and rep feedback reviewed weekly. 42 new Q&A pairs added. 18 existing responses refined. Unanswered query rate dropped from 14% to 4% before full rollout began.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="remember">
+    <div class="remember-label">🧠 Remember This</div>
+    <p>"We spent 14 weeks on content and 6 weeks on the technology build. Most people assume it's the other way around. That ratio is the most important thing I tell anyone who asks about this project."</p>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 8 — KEY CHALLENGES
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch8">
+  <div class="chapter-header">
+    <div class="chapter-num">8</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">What made this genuinely hard</div>
+      <h2 class="chapter-title">Six challenges. <em>Six resolutions. All of them worth knowing.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">No project of this complexity runs smoothly. These were the six moments that could have derailed the project — and the decisions that kept it on track.</p>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header"><div class="challenge-box-icon">⚠️</div><div class="challenge-box-label">Challenge 1 — Regulatory sign-off velocity</div></div>
+    <p>580 Q&A pairs through a standard sequential review would have taken months and created a bottleneck that threatened go-live.</p>
+  </div>
+  <div class="resolution-box">
+    <div class="resolution-box-header"><div class="resolution-box-icon">✅</div><div class="resolution-box-label">Resolution</div></div>
+    <p>Tiered review: low-risk factual content through a 48-hour expedited track; sensitive content through full review. Average approval time reduced by 60%.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header"><div class="challenge-box-icon">⚠️</div><div class="challenge-box-label">Challenge 2 — Content fragmentation across product teams</div></div>
+    <p>Six product teams, different formats, no version control, no central ownership. No single person could tell me what the authoritative version of any document was.</p>
+  </div>
+  <div class="resolution-box">
+    <div class="resolution-box-header"><div class="resolution-box-icon">✅</div><div class="resolution-box-label">Resolution</div></div>
+    <p>One content custodian appointed per product team. All content migrated into a unified, metadata-tagged SharePoint library. The chatbot became the catalyst for the organisation's first properly governed product knowledge library.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header"><div class="challenge-box-icon">⚠️</div><div class="challenge-box-label">Challenge 3 — Questions the chatbot could not answer</div></div>
+    <p>Even after exhaustive question mapping, the pilot revealed a long tail of queries — highly specific clinical edge cases, region-specific formulary questions — that the assistant could not match.</p>
+  </div>
+  <div class="resolution-box">
+    <div class="resolution-box-header"><div class="resolution-box-icon">✅</div><div class="resolution-box-label">Resolution</div></div>
+    <p>The fallback flow was designed to capture, not just decline. Every unanswered query was logged, routed to the product manager within 24 hours, and added to the knowledge base if approvable. Unanswered query rate dropped from 14% to 4% within 8 weeks of go-live.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header"><div class="challenge-box-icon">⚠️</div><div class="challenge-box-label">Challenge 4 — Rep adoption</div></div>
+    <p>Experienced reps who had built their own informal information systems over years were sceptical. "Why would I trust a chatbot over my own experience?" was common pilot feedback.</p>
+  </div>
+  <div class="resolution-box">
+    <div class="resolution-box-header"><div class="resolution-box-icon">✅</div><div class="resolution-box-label">Resolution</div></div>
+    <p>Involved high-credibility reps in the content validation process. Their names appeared in the assistant's onboarding as "validated by field experts." Peer credibility drove adoption far more effectively than a management mandate would have.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header"><div class="challenge-box-icon">⚠️</div><div class="challenge-box-label">Challenge 5 — Keeping content current post go-live</div></div>
+    <p>A pharmaceutical product portfolio does not stand still. New clinical data, updated labels, and revised formulary positions meant the knowledge base required continuous maintenance — not fully accounted for in the initial budget.</p>
+  </div>
+  <div class="resolution-box">
+    <div class="resolution-box-header"><div class="resolution-box-icon">✅</div><div class="resolution-box-label">Resolution</div></div>
+    <p>Lightweight quarterly review process — a structured two-hour session per product team. Copilot Studio's management interface allowed approved updates to be published without IT involvement, reducing ongoing maintenance to a manageable commitment.</p>
+  </div>
+
+  <div class="challenge-box">
+    <div class="challenge-box-header"><div class="challenge-box-icon">⚠️</div><div class="challenge-box-label">Challenge 6 — Balancing helpfulness with regulatory safety</div></div>
+    <p>Too restrictive and reps would abandon the tool. Too liberal and it created compliance risk. Every response design decision existed on this tension.</p>
+  </div>
+  <div class="resolution-box">
+    <div class="resolution-box-header"><div class="resolution-box-icon">✅</div><div class="resolution-box-label">Resolution</div></div>
+    <p>Two-layer response architecture: a concise, always-safe plain-language answer, with deeper detail available on request with an explicit regulatory context label. Reps who needed depth could access it — but always with a visible compliance frame.</p>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 9 — OUTCOMES
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch9">
+  <div class="chapter-header">
+    <div class="chapter-num">9</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">What it achieved</div>
+      <h2 class="chapter-title">Numbers that tell the story. <em>And one quote that tells it better.</em></h2>
+    </div>
+  </div>
+
+  <div class="summary-card">
+    <h3>The outcomes — know these cold</h3>
+    <div class="summary-grid">
+      <div class="summary-item">94% response accuracy after 3 months of live use across all six products</div>
+      <div class="summary-item">71% reduction in time reps spent searching for information before calls</div>
+      <div class="summary-item">68% reduction in post-call escalations to product managers or medical affairs</div>
+      <div class="summary-item">1,400+ queries handled per week within 90 days of full deployment</div>
+      <div class="summary-item">Unanswered query rate dropped from 14% to 4% within 8 weeks of go-live</div>
+      <div class="summary-item">The chatbot became the organisation's first single, governed source of product truth</div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    "I used to spend 20 minutes before every important call digging through the intranet trying to find a clinical reference I half-remembered. Now I ask the assistant and I have it in 10 seconds." — Senior Medical Sales Representative
+  </div>
+
+  <div class="key-fact">
+    <strong>The unexpected outcome — and why it matters in an interview</strong>
+    Building the knowledge base forced the organisation to resolve content conflicts that had existed for years unnoticed — two product teams with different approved data points for the same clinical question, live and superseded documents coexisting. The chatbot could not have two answers to the same question. This forced a decision process that produced the organisation's first properly governed, single-source product content library. The chatbot delivered more than a virtual assistant — it delivered content governance reform.
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Interview Questions — Chapter 9</div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">How did you measure the success of this project?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>I measured success at three levels. First, usage — query volume, most-accessed content, and unanswered query rate. These told me whether reps were using the tool and whether it was answering their needs. Second, accuracy — medical affairs conducted a monthly sample review of 50 responses. The 94% accuracy rate was their assessment, not mine. Third, impact — we measured pre-call preparation time reduction through a rep survey at 30 and 90 days, and escalation rates through the product manager logs. The 71% reduction in search time and 68% reduction in escalations were directly attributable to the assistant.</p>
+      </div>
+    </div>
+
+    <div class="qa-item">
+      <div class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-question-text">What would you do differently if you ran this project again?</span>
+        <span class="qa-chevron">▾</span>
+      </div>
+      <div class="qa-answer">
+        <p>Two things. First, I would involve medical affairs in the question mapping from week one rather than week three. They had deep insight into the most dangerous knowledge gaps — the questions reps got wrong with regulatory consequences — that would have made the question map richer if gathered earlier.</p>
+        <p>Second, I would budget formally for ongoing content maintenance from the start. We solved it pragmatically with the quarterly review process, but the absence of a formal maintenance budget created unnecessary tension with the client at the six-month mark when content updates were needed. A learning asset of this kind is not a one-time build — it requires ongoing stewardship, and that needs to be contracted and resourced from the outset.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────────────────────
+     CHAPTER 10 — OBJECTIONS & REBUTTALS
+──────────────────────────────────────────── -->
+<section class="chapter" id="ch10">
+  <div class="chapter-header">
+    <div class="chapter-num">Q</div>
+    <div class="chapter-header-text">
+      <div class="chapter-eyebrow">Be ready for pushback</div>
+      <h2 class="chapter-title">The tough questions. <em>And how to answer them with confidence.</em></h2>
+    </div>
+  </div>
+
+  <p class="story">Interviewers will probe your decisions. They will ask why you did not choose a different approach. They will challenge your methodology. They will test whether you truly own this story or are just describing it. Here are the objections you are most likely to face — and the responses that demonstrate genuine expertise.</p>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Platform Objections</div>
+
+    <div class="objection-item">
+      <div class="objection-q" onclick="toggleObj(this)">
+        <div class="objection-icon">🤔</div>
+        <div class="objection-text">"Why not just use ChatGPT or a general AI assistant? That would have been faster and cheaper."</div>
+        <div class="objection-chevron">▾</div>
+      </div>
+      <div class="rebuttal">
+        <div class="rebuttal-label">Your response</div>
+        <p>General-purpose AI models like ChatGPT generate responses based on everything they were trained on — including potentially inaccurate, outdated, or unapproved pharmaceutical information from the internet. A rep cannot cite "ChatGPT said so" to a senior cardiologist. More importantly, in a regulated pharmaceutical environment, an AI that generates a plausible-sounding but incorrect clinical statement is not just unhelpful — it creates regulatory and patient safety risk.</p>
+        <p><strong>Microsoft Copilot Studio uses a retrieval-augmented generation architecture</strong> — it retrieves from a defined, approved knowledge base and generates responses grounded strictly in that content. Every response is cited to a specific approved document. Medical affairs can monitor query patterns and update content without IT involvement. Those capabilities do not exist in a general-purpose chatbot — and in this context, they were non-negotiable requirements, not nice-to-haves.</p>
+      </div>
+    </div>
+
+    <div class="objection-item">
+      <div class="objection-q" onclick="toggleObj(this)">
+        <div class="objection-icon">🤔</div>
+        <div class="objection-text">"Why not just fix the intranet instead? That would have been simpler."</div>
+        <div class="objection-chevron">▾</div>
+      </div>
+      <div class="rebuttal">
+        <div class="rebuttal-label">Your response</div>
+        <p>The intranet problem was structural, not cosmetic. The reps' core issue was retrieval speed under field conditions — finding the right answer in 30 seconds on a mobile phone, often mid-journey between appointments. An improved intranet would still require the rep to know what to search for, navigate a folder structure, and read a lengthy document to extract the relevant section.</p>
+        <p><strong>A virtual assistant inverts this process</strong> — the rep asks a question in natural language and receives a specific, pre-extracted answer in seconds. That is a fundamentally different interaction model. Fixing the intranet would have been cheaper. It would not have solved the problem.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Methodology Objections</div>
+
+    <div class="objection-item">
+      <div class="objection-q" onclick="toggleObj(this)">
+        <div class="objection-icon">🤔</div>
+        <div class="objection-text">"You spent 60% of the project on content before building anything. Wasn't that a risk — what if the platform didn't work?"</div>
+        <div class="objection-chevron">▾</div>
+      </div>
+      <div class="rebuttal">
+        <div class="rebuttal-label">Your response</div>
+        <p>The platform risk was low because we were building on a Microsoft enterprise tool that the organisation already used and that had an established track record in regulated industries. The content risk was the opposite — if we built the platform first and then discovered the content was insufficient, we would have had an empty chatbot and a project that could not go live.</p>
+        <p><strong>In this type of project, the content is the product.</strong> The platform is the delivery mechanism. Delivering a sophisticated platform with poor or insufficient content produces a tool that reps try once, get a bad answer, and never use again. Getting the content right — approved, comprehensive, clearly tagged — was the investment that made the technology worth building.</p>
+      </div>
+    </div>
+
+    <div class="objection-item">
+      <div class="objection-q" onclick="toggleObj(this)">
+        <div class="objection-icon">🤔</div>
+        <div class="objection-text">"Why did you include the reps in the content validation? Isn't that a medical affairs responsibility?"</div>
+        <div class="objection-chevron">▾</div>
+      </div>
+      <div class="rebuttal">
+        <div class="rebuttal-label">Your response</div>
+        <p>Medical affairs validated accuracy — that was their role and their responsibility. The reps validated utility and usability — whether the response was in language they would actually use, whether the answer addressed the real question behind the question, and whether the format worked on a mobile screen in the field.</p>
+        <p><strong>These are different types of expertise.</strong> A clinically accurate response that is written in scientific journal language is not useful to a rep who has 90 seconds before a call. The rep input was what made the content clinically accurate and practically useful. Both criteria had to be met. And the adoption benefit — reps who felt they had shaped the tool were far more likely to use it — was a welcome secondary outcome.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-section">
+    <div class="qa-section-title">Impact &amp; Scale Objections</div>
+
+    <div class="objection-item">
+      <div class="objection-q" onclick="toggleObj(this)">
+        <div class="objection-icon">🤔</div>
+        <div class="objection-text">"How do you know the 71% reduction in search time was because of the chatbot and not something else?"</div>
+        <div class="objection-chevron">▾</div>
+      </div>
+      <div class="rebuttal">
+        <div class="rebuttal-label">Your response</div>
+        <p>We established a baseline before the pilot — a rep survey measuring average pre-call preparation time specifically attributed to information searching. We ran the same survey at 30 and 90 days post-deployment, with the same question, to the same rep cohort. No other significant change in tools or processes happened in that window. The correlation was strong and the reps themselves attributed the change directly to the assistant in open-ended survey responses.</p>
+        <p>I am also comfortable saying this: <strong>a 71% figure from a self-reported survey in a controlled window is indicative, not scientifically controlled.</strong> I do not present it as laboratory data. I present it as meaningful evidence from a consistent measurement approach, supported by corroborating data — the 68% drop in escalations to product managers, which was measured from manager call logs rather than rep self-report.</p>
+      </div>
+    </div>
+
+    <div class="objection-item">
+      <div class="objection-q" onclick="toggleObj(this)">
+        <div class="objection-icon">🤔</div>
+        <div class="objection-text">"This sounds like an IT project, not an L&D project. Why is this in your portfolio?"</div>
+        <div class="objection-chevron">▾</div>
+      </div>
+      <div class="rebuttal">
+        <div class="rebuttal-label">Your response</div>
+        <p>The technology build — configuring Copilot Studio, integrating SharePoint, setting up the management dashboard — was done in collaboration with IT. That part was six weeks. The other fourteen weeks were entirely L&D work: needs analysis, content audit, question mapping, instructional design of 580 Q&A pairs and 40 objection-handling frameworks, production of 48 explainer videos, conversation flow design, and the pilot evaluation.</p>
+        <p><strong>The reason this is in my portfolio</strong> is that the value of the tool is entirely a function of the learning design decisions that shaped its content. An L&D professional who is not involved in projects like this is leaving the most impactful performance support work to people who are not trained to do it. The result tends to be a technically impressive tool that does not actually change behaviour. That is the gap I was there to close.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEARNING RESOURCES -->
+  <div class="divider">Further reading &amp; viewing</div>
+
+  <p class="story" style="margin-bottom: 20px;">Use these to deepen your understanding of the concepts behind this case study. Knowing the theoretical grounding behind your decisions makes your answers more credible in senior interviews.</p>
+
+  <div class="resources-grid">
+    <a href="https://www.gartner.com/en/articles/what-is-a-virtual-assistant" target="_blank" class="resource-card">
+      <div class="resource-type article">Article</div>
+      <div><div class="resource-title">What is a Virtual Assistant? — Gartner</div><div class="resource-source">Gartner Research</div></div>
+    </a>
+    <a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/fundamentals-what-is-copilot-studio" target="_blank" class="resource-card">
+      <div class="resource-type guide">Guide</div>
+      <div><div class="resource-title">Microsoft Copilot Studio — Official Documentation</div><div class="resource-source">Microsoft Learn</div></div>
+    </a>
+    <a href="https://www.td.org/atd-blog/performance-support-what-it-is-and-how-to-use-it" target="_blank" class="resource-card">
+      <div class="resource-type article">Article</div>
+      <div><div class="resource-title">Performance Support — What It Is and How to Use It</div><div class="resource-source">ATD (Association for Talent Development)</div></div>
+    </a>
+    <a href="https://www.youtube.com/watch?v=T-D1OfcDW1M" target="_blank" class="resource-card">
+      <div class="resource-type video">Video</div>
+      <div><div class="resource-title">Building Knowledge Bases for AI Chatbots</div><div class="resource-source">Microsoft Mechanics — YouTube</div></div>
+    </a>
+    <a href="https://www.shiftelearning.com/blog/performance-support-tools" target="_blank" class="resource-card">
+      <div class="resource-type article">Article</div>
+      <div><div class="resource-title">Performance Support Tools in the Workplace</div><div class="resource-source">Shift eLearning</div></div>
+    </a>
+    <a href="https://www.nngroup.com/articles/ai-chatbot-user-experience/" target="_blank" class="resource-card">
+      <div class="resource-type article">Article</div>
+      <div><div class="resource-title">AI Chatbot UX — Designing for Natural Language</div><div class="resource-source">Nielsen Norman Group</div></div>
+    </a>
+  </div>
+
+</section>
+
+<!-- CLOSING -->
+<div class="closing-card">
+  <h2>You know this story. <em>Now tell it.</em></h2>
+  <p>The best interview answer is not a recitation of facts — it is a coherent narrative that shows how you think. Use this guide to rehearse the story out loud, not just read it. Close the page. Tell the story to yourself. Then come back and check what you missed. That is how you make it yours.</p>
+</div>
+
+</main>
+
+<script>
+function toggleQA(btn) {
+  const item = btn.closest('.qa-item');
+  item.classList.toggle('open');
+}
+
+function toggleObj(btn) {
+  const item = btn.closest('.objection-item');
+  item.classList.toggle('open');
+}
+
+// Update active nav on scroll
+const chapters = document.querySelectorAll('.chapter');
+const navLinks = document.querySelectorAll('.progress-step');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+chapters.forEach(ch => observer.observe(ch));
+</script>
+</body>
+</html>
