@@ -1,841 +1,1384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beyond Awareness: Building an Inclusive Workplace | DEI Training | Case Study</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Ward Round | Gamified Assessment | Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --purple:    #4B2D8F;
-      --purple-lt: #6B47B8;
-      --teal:      #007B7F;
-      --teal-lt:   #009DA2;
-      --amber:     #C97A10;
-      --amber-lt:  #E8A020;
-      --off-white: #F5F2EF;
-      --cream:     #FAF8F5;
-      --dark:      #1A1614;
-      --mid:       #5C5450;
-      --light-grey:#E8E4E0;
-      --font-display: 'DM Serif Display', Georgia, serif;
-      --font-body:    'DM Sans', system-ui, sans-serif;
-    }
+  :root {
+    --navy:        #0b1929;
+    --navy-mid:    #112238;
+    --navy-light:  #1a3350;
+    --teal:        #0d8c78;
+    --teal-light:  #12b89e;
+    --teal-pale:   #e6f7f4;
+    --teal-mid:    #5ecfbd;
+    --gold:        #c8922a;
+    --gold-light:  #e0b060;
+    --gold-pale:   #fdf5e6;
+    --green:       #1a7a52;
+    --green-light: #e2f5ec;
+    --red:         #b83232;
+    --red-light:   #fdeaea;
+    --ink:         #0d1c2e;
+    --ink-mid:     #233a52;
+    --ink-light:   #526880;
+    --white:       #ffffff;
+    --warm-white:  #f6f8fa;
+    --rule:        #dde4ec;
+    --font-display:'Syne', system-ui, sans-serif;
+    --font-serif:  'Lora', Georgia, serif;
+    --font-head:   'DM Serif Display', Georgia, serif;
+    --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-    html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-serif);
+    background: var(--warm-white);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--cream);
-      color: var(--dark);
-      line-height: 1.7;
-      font-size: 17px;
-    }
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem; height: 64px;
-      background: rgba(250,248,245,0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--light-grey);
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      color: var(--dark);
-      text-decoration: none;
-    }
-    .nav-logo em { color: var(--teal); font-style: italic; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--mid);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--dark); }
-    .nav-cta {
-      text-decoration: none;
-      background: var(--dark);
-      color: white;
-      font-size: 0.875rem;
-      font-weight: 500;
-      padding: 0.5rem 1.25rem;
-      border-radius: 2px;
-      transition: background 0.2s;
-    }
-    .nav-cta:hover { background: var(--purple); }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 48px; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(11,25,41,0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: var(--font-head);
+    font-size: 20px; color: #fff;
+    text-decoration: none;
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .nav-logo em { font-style: italic; color: var(--teal-mid); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    font-family: var(--font-display);
+    font-size: 12px; font-weight: 600;
+    color: var(--navy); background: var(--teal-light);
+    padding: 8px 20px; border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--teal-mid); transform: translateY(-1px); }
+  @media (max-width: 768px) { nav { padding: 0 24px; } .nav-links { display: none; } }
 
-    /* ── HERO ── */
-    .hero {
-      margin-top: 64px;
-      background: var(--dark);
-      padding: 5rem 3rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(75,45,143,0.35) 0%, transparent 70%),
-                  radial-gradient(ellipse 40% 60% at 20% 80%, rgba(0,123,127,0.2) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .hero-tag {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--amber-lt);
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      line-height: 1.15;
-      color: white;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 em {
-      color: var(--teal-lt);
-      font-style: italic;
-    }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.65);
-      max-width: 680px;
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-    }
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .hero-meta-item {
-      padding: 1rem 1.25rem;
-      border-right: 1px solid rgba(255,255,255,0.1);
-    }
-    .hero-meta-item:last-child { border-right: none; }
-    .hero-meta-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 0.3rem;
-    }
-    .hero-meta-value {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.9);
-      font-weight: 500;
-    }
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding-top: 64px;
+    position: relative;
+    overflow: hidden;
+    min-height: 580px;
+  }
 
-    /* ── STATS ── */
-    .stats-strip {
-      background: var(--purple);
-      padding: 0;
-    }
-    .stats-grid {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .stat {
-      padding: 2rem 1.5rem;
-      border-right: 1px solid rgba(255,255,255,0.12);
-      text-align: center;
-    }
-    .stat:last-child { border-right: none; }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      color: white;
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-    .stat-num sup { font-size: 1rem; }
-    .stat-label {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.4;
-    }
+  /* ECG / pulse animation */
+  .pulse-bg {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    overflow: hidden;
+    opacity: 0.18;
+  }
+  .pulse-line {
+    position: absolute;
+    bottom: 40px;
+    left: -100%;
+    width: 300%;
+    height: 2px;
+    background: var(--teal-light);
+    animation: pulseMove 3s linear infinite;
+  }
+  .pulse-line::before {
+    content: '';
+    position: absolute;
+    left: 33%;
+    top: -28px;
+    width: 120px;
+    height: 58px;
+    background: none;
+    border-left: 2px solid var(--teal-light);
+    border-right: 2px solid var(--teal-light);
+    clip-path: polygon(0 100%, 20% 100%, 30% 0%, 45% 100%, 55% 100%, 65% 30%, 75% 100%, 100% 100%);
+  }
+  @keyframes pulseMove {
+    from { transform: translateX(0); }
+    to   { transform: translateX(200px); }
+  }
 
-    /* ── CONTENT LAYOUT ── */
-    .content-wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
+  /* Decorative rings */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 50px solid rgba(13,140,120,0.07);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 60px; right: 80px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 24px solid rgba(13,140,120,0.04);
+    pointer-events: none;
+  }
 
-    /* ── SECTION ── */
-    section { padding: 4rem 0; }
-    section + section { border-top: 1px solid var(--light-grey); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+  .hero-left {
+    padding: 80px 56px 180px 48px;
+    display: flex; flex-direction: column; justify-content: center;
+    animation: fadeUp 0.9s var(--ease) both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal-mid);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 28px; height: 2px;
+    background: var(--teal-mid);
+  }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(30px, 4.2vw, 56px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal-mid);
+  }
+  .hero-sub {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 400;
+    color: rgba(255,255,255,0.48);
+    line-height: 1.85;
+    max-width: 500px;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex; gap: 28px; flex-wrap: wrap;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+  .hero-meta-value {
+    font-family: var(--font-serif);
+    font-size: 14px; font-weight: 400;
+    color: rgba(255,255,255,0.58);
+  }
 
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 1rem;
-    }
+  .hero-right {
+    background: var(--navy-mid);
+    border-left: 1px solid rgba(255,255,255,0.05);
+    padding: 64px 36px 180px;
+    display: flex; flex-direction: column; justify-content: center;
+    animation: fadeUp 0.9s 0.14s var(--ease) both;
+    position: relative; z-index: 2;
+  }
+  .hero-right-label {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 28px;
+  }
+  .stat-list { display: flex; flex-direction: column; gap: 20px; }
+  .stat-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-num {
+    font-family: var(--font-head);
+    font-size: 34px; font-weight: 400;
+    color: var(--white); line-height: 1;
+    min-width: 88px;
+    letter-spacing: -0.01em;
+  }
+  .stat-num sup {
+    font-family: var(--font-display);
+    font-size: 13px; font-weight: 600;
+    color: var(--teal-mid);
+    vertical-align: super; line-height: 0;
+  }
+  .stat-desc {
+    font-family: var(--font-serif);
+    font-size: 13px; font-weight: 400;
+    color: rgba(255,255,255,0.38);
+    line-height: 1.6;
+    padding-top: 4px;
+  }
 
-    h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      line-height: 1.2;
-      color: var(--dark);
-      margin-bottom: 1.25rem;
-    }
-    h2 em { color: var(--purple); font-style: italic; }
+  /* ── LAYOUT ── */
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
 
-    h3 {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      color: var(--dark);
-      margin-bottom: 0.6rem;
-      margin-top: 1.8rem;
-    }
+  /* ── SECTION LABEL ── */
+  .section-label {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 38px;
+  }
+  .section-label-text {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); white-space: nowrap;
+  }
+  .section-label-line {
+    flex: 1; height: 1px;
+    background: var(--rule);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.9s var(--ease) 0.2s;
+  }
+  .section-label-line.visible { transform: scaleX(1); }
+  .dark-label .section-label-text { color: var(--teal-mid); }
+  .dark-label .section-label-line { background: rgba(255,255,255,0.08); }
 
-    p { margin-bottom: 1.1rem; color: var(--mid); }
-    p:last-child { margin-bottom: 0; }
-    strong { color: var(--dark); font-weight: 600; }
+  /* ── CHALLENGE ── */
+  .challenge-section { padding: 80px 0 72px; }
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px; align-items: start;
+  }
+  .challenge-left h2 {
+    font-family: var(--font-head);
+    font-size: clamp(26px, 3.2vw, 42px);
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+  .challenge-left h2 em { font-style: italic; color: var(--teal); }
+  .challenge-left p {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 400;
+    color: var(--ink-mid);
+    line-height: 1.9; margin-bottom: 18px;
+  }
+  .problem-cards { display: flex; flex-direction: column; gap: 10px; }
+  .problem-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex; gap: 14px; align-items: flex-start;
+    transition: border-color 0.2s, transform 0.2s var(--ease);
+  }
+  .problem-card:hover { border-color: #90d4c8; transform: translateX(4px); }
+  .problem-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--teal-pale);
+    border: 1px solid #aaddd5;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 14px;
+  }
+  .problem-title {
+    font-family: var(--font-display);
+    font-size: 13px; font-weight: 600;
+    color: var(--navy); margin-bottom: 3px;
+  }
+  .problem-desc {
+    font-family: var(--font-serif);
+    font-size: 13px; font-weight: 400;
+    color: var(--ink-light); line-height: 1.6;
+  }
 
-    /* ── CHALLENGE CARDS ── */
-    .challenge-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--light-grey);
-      border: 1px solid var(--light-grey);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-    .challenge-card {
-      background: var(--cream);
-      padding: 1.5rem;
-    }
-    .challenge-icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-    .challenge-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 0.4rem;
-    }
-    .challenge-desc {
-      font-size: 0.875rem;
-      color: var(--mid);
-      line-height: 1.5;
-      margin: 0;
-    }
+  /* ── THE CONCEPT — DARK ── */
+  .concept-section {
+    padding: 80px 0;
+    background: var(--navy);
+    position: relative; overflow: hidden;
+  }
+  .concept-section::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,140,120,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .concept-intro {
+    font-family: var(--font-head);
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 400; font-style: italic;
+    color: var(--white);
+    line-height: 1.45;
+    max-width: 700px;
+    margin-bottom: 52px;
+  }
+  .concept-intro em { color: var(--teal-mid); font-style: normal; }
 
-    /* ── PROGRAMME CONCEPT QUOTE ── */
-    .concept-box {
-      background: var(--dark);
-      border-radius: 4px;
-      padding: 2.5rem 2.5rem;
-      margin: 2rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .concept-box::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(75,45,143,0.4) 0%, transparent 70%);
-    }
-    .concept-box blockquote {
-      font-family: var(--font-display);
-      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-      font-style: italic;
-      color: white;
-      line-height: 1.4;
-      position: relative;
-    }
-    .concept-box blockquote em { color: var(--teal-lt); }
+  /* Journey brief card */
+  .journey-brief {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 32px; margin-bottom: 48px;
+    position: relative; overflow: hidden;
+  }
+  .journey-brief::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold-light));
+  }
+  .journey-brief-label {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal-mid); margin-bottom: 16px;
+  }
+  .journey-brief-text {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.85;
+  }
+  .journey-brief-text strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
 
-    /* ── APPROACH MODULES ── */
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-    .module-card {
-      border: 1px solid var(--light-grey);
-      border-radius: 4px;
-      padding: 1.5rem;
-      background: white;
-      position: relative;
-    }
-    .module-num {
-      display: inline-block;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--light-grey);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .module-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      border-radius: 2px;
-      margin-bottom: 0.75rem;
-      display: inline-block;
-    }
-    .tag-purple { background: rgba(75,45,143,0.1); color: var(--purple); }
-    .tag-teal   { background: rgba(0,123,127,0.1); color: var(--teal); }
-    .tag-amber  { background: rgba(201,122,16,0.1); color: var(--amber); }
-    .module-title {
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--dark);
-      margin-bottom: 0.4rem;
-    }
-    .module-time {
-      font-size: 0.8rem;
-      color: var(--mid);
-      margin-bottom: 0.75rem;
-    }
-    .module-desc {
-      font-size: 0.88rem;
-      color: var(--mid);
-      line-height: 1.55;
-      margin: 0;
-    }
-    .module-activities {
-      margin-top: 0.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-    .activity-pill {
-      font-size: 0.72rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 99px;
-      background: var(--off-white);
-      color: var(--mid);
-      font-weight: 500;
-    }
+  .mechanics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .mechanic-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 24px;
+    transition: background 0.2s;
+  }
+  .mechanic-card:hover { background: rgba(255,255,255,0.07); }
+  .mechanic-num {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-mid); margin-bottom: 14px;
+  }
+  .mechanic-title {
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 700;
+    color: var(--white); line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .mechanic-desc {
+    font-family: var(--font-serif);
+    font-size: 13px; font-weight: 400;
+    color: rgba(255,255,255,0.42);
+    line-height: 1.65;
+  }
 
-    /* ── DELIVERABLES ── */
-    .deliverables-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--light-grey);
-      border: 1px solid var(--light-grey);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-    .deliverable-card {
-      background: white;
-      padding: 1.75rem 1.5rem;
-    }
-    .deliverable-icon {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-    .icon-purple { background: rgba(75,45,143,0.1); }
-    .icon-teal   { background: rgba(0,123,127,0.1); }
-    .icon-amber  { background: rgba(201,122,16,0.1); }
-    .deliverable-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--dark);
-      margin-bottom: 0.4rem;
-    }
-    .deliverable-desc {
-      font-size: 0.85rem;
-      color: var(--mid);
-      line-height: 1.55;
-      margin: 0;
-    }
+  /* ── CREDIT MECHANIC ── */
+  .credit-section { padding: 80px 0; background: var(--warm-white); }
+  .toll-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: 52px; align-items: start;
+  }
+  .toll-left h2 {
+    font-family: var(--font-head);
+    font-size: clamp(24px, 3vw, 38px); font-weight: 400;
+    color: var(--navy); line-height: 1.18;
+    margin-bottom: 22px; letter-spacing: -0.01em;
+  }
+  .toll-left h2 em { font-style: italic; color: var(--teal); }
+  .toll-left p {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 400;
+    color: var(--ink-mid); line-height: 1.88;
+    margin-bottom: 18px;
+  }
 
-    /* ── DESIGN INSIGHTS ── */
-    .insights-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-    .insight-card {
-      padding: 1.75rem;
-      border-radius: 4px;
-    }
-    .insight-card.purple { background: rgba(75,45,143,0.07); border-left: 3px solid var(--purple); }
-    .insight-card.teal   { background: rgba(0,123,127,0.07); border-left: 3px solid var(--teal); }
-    .insight-card.amber  { background: rgba(201,122,16,0.07); border-left: 3px solid var(--amber); }
-    .insight-card.dark   { background: var(--dark); border-left: 3px solid var(--teal-lt); }
-    .insight-head {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .insight-card.purple .insight-head { color: var(--purple); }
-    .insight-card.teal   .insight-head { color: var(--teal); }
-    .insight-card.amber  .insight-head { color: var(--amber); }
-    .insight-card.dark   .insight-head { color: var(--teal-lt); }
-    .insight-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--dark);
-      margin-bottom: 0.6rem;
-      line-height: 1.3;
-    }
-    .insight-card.dark .insight-title { color: white; }
-    .insight-body {
-      font-size: 0.875rem;
-      color: var(--mid);
-      line-height: 1.6;
-      margin: 0;
-    }
-    .insight-card.dark .insight-body { color: rgba(255,255,255,0.6); }
+  /* Credit wallet visual */
+  .wallet-visual {
+    background: var(--navy);
+    border-radius: 12px; padding: 28px;
+    margin-bottom: 20px;
+  }
+  .wallet-label {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.32); margin-bottom: 16px;
+  }
+  .wallet-balance {
+    display: flex; align-items: baseline; gap: 8px;
+    margin-bottom: 24px;
+  }
+  .wallet-amount {
+    font-family: var(--font-head);
+    font-size: 52px; font-weight: 400;
+    color: var(--teal-light); letter-spacing: -0.02em; line-height: 1;
+  }
+  .wallet-currency {
+    font-family: var(--font-display);
+    font-size: 18px; font-weight: 600;
+    color: rgba(255,255,255,0.35);
+  }
+  .wallet-bar-wrap {
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px; height: 8px;
+    margin-bottom: 8px; overflow: hidden;
+  }
+  .wallet-bar {
+    height: 100%; border-radius: 4px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-mid));
+    width: 100%;
+    transition: width 0.5s var(--ease);
+  }
+  .wallet-note {
+    font-family: var(--font-serif);
+    font-size: 12px; font-weight: 400;
+    color: rgba(255,255,255,0.32);
+  }
 
-    /* ── OUTCOMES ── */
-    .outcomes-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-      align-items: start;
-    }
-    .outcome-stat-large {
-      font-family: var(--font-display);
-      font-size: 4rem;
-      line-height: 1;
-      color: var(--purple);
-      margin-bottom: 0.5rem;
-    }
-    .outcome-stat-label {
-      font-size: 0.9rem;
-      color: var(--mid);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-    }
+  .toll-scenarios { display: flex; flex-direction: column; gap: 10px; }
+  .toll-scenario {
+    border-radius: 8px; padding: 16px 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .toll-scenario.correct {
+    background: var(--green-light);
+    border: 1px solid rgba(26,122,82,0.2);
+  }
+  .toll-scenario.wrong {
+    background: var(--red-light);
+    border: 1px solid rgba(184,50,50,0.2);
+  }
+  .toll-scenario.perfect {
+    background: var(--gold-pale);
+    border: 1px solid rgba(200,146,42,0.3);
+  }
+  .toll-scenario-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .toll-scenario.correct .toll-scenario-icon { background: rgba(26,122,82,0.14); }
+  .toll-scenario.wrong   .toll-scenario-icon { background: rgba(184,50,50,0.14); }
+  .toll-scenario.perfect .toll-scenario-icon { background: rgba(200,146,42,0.14); }
+  .toll-scenario-title {
+    font-family: var(--font-display);
+    font-size: 13px; font-weight: 600; margin-bottom: 3px;
+  }
+  .toll-scenario.correct .toll-scenario-title { color: var(--green); }
+  .toll-scenario.wrong   .toll-scenario-title { color: var(--red); }
+  .toll-scenario.perfect .toll-scenario-title { color: #8a5f00; }
+  .toll-scenario-desc {
+    font-family: var(--font-serif);
+    font-size: 12px; font-weight: 400;
+    color: var(--ink-light); line-height: 1.5;
+  }
+  .toll-scenario-amount {
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 700; white-space: nowrap;
+    margin-left: auto;
+  }
+  .toll-scenario.correct .toll-scenario-amount { color: var(--green); }
+  .toll-scenario.wrong   .toll-scenario-amount { color: var(--red); }
+  .toll-scenario.perfect .toll-scenario-amount { color: #8a5f00; }
 
-    /* ── PROGRAMME IN ACTION ── */
-    .in-action-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-      margin-top: 2rem;
-    }
-    .action-tile {
-      background: white;
-      border: 1px solid var(--light-grey);
-      border-radius: 4px;
-      padding: 1.25rem;
-      font-size: 0.85rem;
-    }
-    .action-tile-icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.6rem;
-      display: block;
-    }
-    .action-tile-title {
-      font-weight: 600;
-      font-size: 0.88rem;
-      color: var(--dark);
-      margin-bottom: 0.3rem;
-    }
-    .action-tile-desc {
-      color: var(--mid);
-      font-size: 0.82rem;
-      line-height: 1.5;
-      margin: 0;
-    }
+  /* ── WARD MAP ── */
+  .wardmap-section {
+    padding: 80px 0;
+    background: var(--navy); position: relative; overflow: hidden;
+  }
+  .wardmap-section::before {
+    content: '';
+    position: absolute; top: -80px; left: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,140,120,0.09) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .ward-stages {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2px; border-radius: 8px; overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .ward-stage {
+    background: var(--navy-mid);
+    padding: 22px 14px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .ward-stage:hover { background: var(--navy-light); }
+  .ward-stage-num {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-mid); margin-bottom: 10px;
+  }
+  .ward-stage-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .ward-stage-title {
+    font-family: var(--font-display);
+    font-size: 12px; font-weight: 700;
+    color: var(--white); margin-bottom: 5px; line-height: 1.35;
+  }
+  .ward-stage-desc {
+    font-family: var(--font-serif);
+    font-size: 11px; font-weight: 400;
+    color: rgba(255,255,255,0.38); line-height: 1.55;
+  }
+  .ward-stage-tag {
+    margin-top: 10px;
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 600;
+    color: var(--teal-mid);
+    padding: 3px 8px;
+    background: rgba(13,140,120,0.14);
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .topics-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .topic-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 16px 18px;
+    display: flex; gap: 12px; align-items: flex-start;
+    transition: background 0.2s;
+  }
+  .topic-card:hover { background: rgba(255,255,255,0.07); }
+  .topic-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .topic-title {
+    font-family: var(--font-display);
+    font-size: 13px; font-weight: 600;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .topic-desc {
+    font-family: var(--font-serif);
+    font-size: 12px; font-weight: 400;
+    color: rgba(255,255,255,0.4); line-height: 1.6;
+  }
 
-    /* ── CTA ── */
-    .cta-section {
-      background: var(--dark);
-      padding: 4rem 3rem;
-      text-align: center;
-    }
-    .cta-inner { max-width: 600px; margin: 0 auto; }
-    .cta-section h2 { color: white; margin-bottom: 0.75rem; }
-    .cta-section h2 em { color: var(--teal-lt); }
-    .cta-section p { color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
-    .cta-btn {
-      display: inline-block;
-      text-decoration: none;
-      background: var(--teal);
-      color: white;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.85rem 2rem;
-      border-radius: 2px;
-      transition: background 0.2s;
-    }
-    .cta-btn:hover { background: var(--teal-lt); }
+  /* ── DESIGN CHALLENGE ── */
+  .design-section { padding: 80px 0; background: var(--warm-white); }
+  .design-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .design-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 12px; padding: 32px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .design-card:hover { border-color: #8ed4ca; }
+  .design-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px;
+  }
+  .design-card:nth-child(1)::before { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+  .design-card:nth-child(2)::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .design-card-label {
+    font-family: var(--font-display);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 12px;
+  }
+  .design-card:nth-child(2) .design-card-label { color: var(--gold); }
+  .design-card h3 {
+    font-family: var(--font-head);
+    font-size: 22px; font-weight: 400;
+    color: var(--navy); margin-bottom: 14px;
+    line-height: 1.3; letter-spacing: -0.01em;
+  }
+  .design-card p {
+    font-family: var(--font-serif);
+    font-size: 15px; font-weight: 400;
+    color: var(--ink-mid); line-height: 1.88;
+    margin-bottom: 14px;
+  }
+  .highlight-box {
+    background: var(--teal-pale);
+    border: 1px solid #aaddd5;
+    border-radius: 8px; padding: 14px 16px;
+    font-family: var(--font-serif);
+    font-size: 13px; font-weight: 400;
+    color: var(--ink-mid); line-height: 1.65;
+  }
+  .highlight-box strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 700;
+    color: var(--teal); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 5px;
+  }
+  .gold-box {
+    background: var(--gold-pale);
+    border: 1px solid rgba(200,146,42,0.28);
+    border-radius: 8px; padding: 14px 16px;
+    font-family: var(--font-serif);
+    font-size: 13px; font-weight: 400;
+    color: var(--ink-mid); line-height: 1.65;
+  }
+  .gold-box strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 700;
+    color: var(--gold); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 5px;
+  }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--dark);
-      padding: 2rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-logo {
-      font-family: var(--font-display);
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-    .footer-logo em { color: var(--teal-lt); }
-    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
-    .footer-links a { color: rgba(255,255,255,0.4); font-size: 0.85rem; text-decoration: none; }
-    .footer-links a:hover { color: white; }
-    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+  /* ── SCREENS ── */
+  .screens-section { padding: 80px 0; }
+  .screens-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .screen-card {
+    background: var(--navy);
+    border-radius: 10px; overflow: hidden;
+    position: relative;
+    aspect-ratio: 16/10;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+  .screen-card:hover { border-color: rgba(13,184,158,0.3); }
+  .screen-num {
+    font-family: var(--font-head);
+    font-size: 32px; font-weight: 400;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+  }
+  .screen-label {
+    font-family: var(--font-serif);
+    font-size: 11px; font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    text-align: center; padding: 0 16px;
+    line-height: 1.55;
+  }
+  .screen-tag {
+    position: absolute; top: 10px; left: 10px;
+    background: rgba(13,140,120,0.85);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 20px;
+    letter-spacing: 0.06em;
+  }
 
-    @media (max-width: 700px) {
-      nav { padding: 0 1.25rem; }
-      .nav-links { display: none; }
-      .hero { padding: 3rem 1.25rem; }
-      .content-wrap { padding: 0 1.25rem; }
-      .stats-grid { grid-template-columns: repeat(2,1fr); }
-      .modules-grid, .insights-grid, .outcomes-row, .deliverables-grid { grid-template-columns: 1fr; }
-      .in-action-grid { grid-template-columns: repeat(2,1fr); }
-      .hero-meta { grid-template-columns: repeat(2,1fr); }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-    }
-  </style>
+  /* ── OUTCOME ── */
+  .outcome-section { padding: 80px 0; background: var(--white); }
+  .outcome-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 52px; align-items: start;
+  }
+  .outcome-left h2 {
+    font-family: var(--font-head);
+    font-size: clamp(24px, 3vw, 38px); font-weight: 400;
+    color: var(--navy); line-height: 1.18;
+    margin-bottom: 22px; letter-spacing: -0.01em;
+  }
+  .outcome-left h2 em { font-style: italic; color: var(--teal); }
+  .outcome-left p {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 400;
+    color: var(--ink-mid); line-height: 1.9;
+    margin-bottom: 18px;
+  }
+  .quote-block {
+    border-left: 3px solid var(--teal);
+    padding: 20px 24px;
+    background: var(--teal-pale);
+    border-radius: 0 8px 8px 0;
+    margin-top: 28px;
+  }
+  .quote-text {
+    font-family: var(--font-serif);
+    font-size: 17px; font-style: italic; font-weight: 400;
+    color: var(--navy); line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .quote-attr {
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 700;
+    color: var(--teal); letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .result-cards { display: flex; flex-direction: column; gap: 12px; }
+  .result-card {
+    background: var(--warm-white);
+    border: 1px solid var(--rule);
+    border-radius: 8px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 20px;
+    transition: border-color 0.2s;
+  }
+  .result-card:hover { border-color: #8ed4ca; }
+  .result-num {
+    font-family: var(--font-head);
+    font-size: 40px; font-weight: 400;
+    color: var(--navy); line-height: 1;
+    min-width: 96px; letter-spacing: -0.01em;
+  }
+  .result-num sup {
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 600;
+    color: var(--teal);
+    vertical-align: super; line-height: 0;
+  }
+  .result-label strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px; font-size: 13px;
+  }
+  .result-label span {
+    font-family: var(--font-serif);
+    font-size: 13px; font-weight: 400;
+    color: var(--ink-mid); line-height: 1.55;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 88px 0;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 50%; transform: translateX(-50%);
+    width: 480px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,140,120,0.16) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-pulse {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50px; overflow: hidden; opacity: 0.2;
+  }
+  .cta-pulse-line {
+    position: absolute; bottom: 18px;
+    left: -100%; width: 300%; height: 2px;
+    background: var(--teal-light);
+    animation: pulseMove 3s linear infinite;
+  }
+  .cta-section h2 {
+    font-family: var(--font-head);
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 400; font-style: italic;
+    color: var(--white); line-height: 1.22;
+    margin-bottom: 14px;
+    position: relative; z-index: 1;
+  }
+  .cta-section h2 em { font-style: normal; color: var(--teal-mid); }
+  .cta-tagline {
+    font-family: var(--font-serif);
+    font-size: 16px; font-weight: 400;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 40px;
+    position: relative; z-index: 1;
+  }
+  .cta-buttons {
+    display: flex; gap: 14px; justify-content: center;
+    flex-wrap: wrap; position: relative; z-index: 1;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 13px; font-weight: 700;
+    padding: 13px 30px; border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font-display);
+    font-size: 13px; font-weight: 600;
+    padding: 13px 30px; border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.13);
+    letter-spacing: 0.03em;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.35);
+    color: var(--white); transform: translateY(-1px);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 48px 24px 180px; }
+    .page-wrap { padding: 0 24px; }
+    .challenge-grid, .toll-grid, .design-grid, .outcome-grid { grid-template-columns: 1fr; }
+    .mechanics-grid { grid-template-columns: 1fr; }
+    .ward-stages { grid-template-columns: repeat(3, 1fr); }
+    .topics-grid { grid-template-columns: 1fr; }
+    .screens-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="https://rameshkrishnan.me/index.html" class="nav-logo">Learning <em>Matters.</em></a>
+  <a href="index.html" class="nav-logo">Learning <em>Matters.</em></a>
   <ul class="nav-links">
-    <li><a href="https://rameshkrishnan.me/index.html#work">Work</a></li>
-    <li><a href="https://rameshkrishnan.me/index.html#articles">Insights</a></li>
-    <li><a href="https://rameshkrishnan.me/index.html#testimonials">Testimonials</a></li>
-    <li><a href="https://rameshkrishnan.me/about.html">About</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#articles">Insights</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
-  <a href="https://www.upwork.com/freelancers/rameshkrishnan" class="nav-cta">Let's talk</a>
+  <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="nav-cta">Let's talk</a>
 </nav>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section class="hero">
-  <div class="hero-inner">
-    <span class="hero-tag">Case Study</span>
-    <h1>Beyond Awareness:<br><em>building a workplace</em><br>where everyone belongs.</h1>
-    <p class="hero-sub">A half-day DEI instructor-led training programme — designed to move an organisation from surface-level awareness into practical, committed, daily inclusion.</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Client</div>
-        <div class="hero-meta-value">Corporate organisation</div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Case Study</div>
+      <h1>Six wards.<br>One patient.<br>Zero room for<br><em>error.</em></h1>
+      <p class="hero-sub">A gamified clinical compliance assessment that transformed a routine hospital infection-control test into a high-stakes ward round — where every wrong call costs Care Credits and every correct decision keeps the patient on the path to recovery.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Client</span>
+          <span class="hero-meta-value">Large private hospital network</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Sector</span>
+          <span class="hero-meta-value">Healthcare / Clinical compliance</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Format</span>
+          <span class="hero-meta-value">Gamified eLearning assessment</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Tool</span>
+          <span class="hero-meta-value">Articulate Storyline 360</span>
+        </div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Sector</div>
-        <div class="hero-meta-value">Cross-industry</div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-label">At a glance</div>
+      <div class="stat-list">
+        <div class="stat-item">
+          <div class="stat-num">6<sup>wards</sup></div>
+          <div class="stat-desc">The simulated clinical journey — six real hospital departments reimagined as decision checkpoints</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">500<sup>credits</sup></div>
+          <div class="stat-desc">Starting Care Credit balance — the currency of clinical attention and the stake that drives focus</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100<sup>risk</sup></div>
+          <div class="stat-desc">Credits lost per clinical error — proportional to the real-world consequence of each wrong decision</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">91<sup>%</sup></div>
+          <div class="stat-desc">Of staff completed the ward round with their full credit balance intact on first attempt</div>
+        </div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Format</div>
-        <div class="hero-meta-value">Instructor-led training</div>
+    </div>
+  </div>
+  <div class="pulse-bg">
+    <div class="pulse-line"></div>
+  </div>
+</section>
+
+<!-- ── CHALLENGE ── -->
+<section class="challenge-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The challenge</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="challenge-grid">
+      <div class="challenge-left reveal">
+        <h2>An infection-control module<br>that no one took<br><em>seriously.</em></h2>
+        <p>For a large private hospital network with fourteen sites and over three thousand clinical staff, infection prevention and control is not optional — it is a regulatory mandate and a patient safety imperative. Every nurse, healthcare assistant, and allied health professional was required to complete an annual IPC assessment before their practice certificate was renewed.</p>
+        <p>The problem was well-known inside the L&D team and quietly acknowledged by clinical leads: the existing assessment was being completed, but not engaged with. Staff moved through it mechanically — not because they were careless, but because the assessment gave them no reason to care. A series of text-heavy scenario questions with no consequence for wrong answers and no connection to the actual wards they worked on every day had trained people to click through, not to think.</p>
+        <p>The brief was direct: redesign the assessment experience so that clinical staff genuinely process the questions — and so that the knowledge they demonstrate in the assessment holds in their hands when it matters on the ward.</p>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Duration</div>
-        <div class="hero-meta-value">Half-day / 3.5 hours</div>
+      <div class="reveal">
+        <div class="problem-cards">
+          <div class="problem-card">
+            <div class="problem-icon">😶</div>
+            <div class="problem-text">
+              <div class="problem-title">Passive engagement with the existing module</div>
+              <div class="problem-desc">The average completion time for the annual IPC assessment was under seven minutes — a module designed to represent an hour's worth of critical clinical knowledge</div>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">📉</div>
+            <div class="problem-text">
+              <div class="problem-title">Low post-training compliance rates</div>
+              <div class="problem-desc">Audits showed that IPC procedural compliance on the wards declined sharply six to eight weeks after training — well within the annual recertification window</div>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">🔁</div>
+            <div class="problem-text">
+              <div class="problem-title">No penalty for errors</div>
+              <div class="problem-desc">Staff could select incorrect answers multiple times with no impact on their result — eliminating the need to think before responding, and with it, the assessment's entire purpose</div>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">🏥</div>
+            <div class="problem-text">
+              <div class="problem-title">No clinical context</div>
+              <div class="problem-desc">Questions were abstract and departmentally generic — a theatre nurse and a maternity ward healthcare assistant answered exactly the same questions in exactly the same way</div>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon">🏆</div>
+            <div class="problem-text">
+              <div class="problem-title">Nothing to achieve</div>
+              <div class="problem-desc">There was no progression, no visible stake, no recognition for excellence — only a pass/fail certificate that arrived the same way regardless of how carefully the learner had engaged</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-strip">
-  <div class="stats-grid">
-    <div class="stat">
-      <div class="stat-num">4</div>
-      <div class="stat-label">Learning modules with distinct activity types</div>
+<!-- ── THE CONCEPT ── -->
+<section class="concept-section">
+  <div class="page-wrap">
+    <div class="section-label dark-label reveal">
+      <span class="section-label-text">The concept</span>
+      <div class="section-label-line"></div>
     </div>
-    <div class="stat">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Activity formats — role-play, game, discussion, reflection, commitment</div>
+
+    <p class="concept-intro reveal">
+      What if the assessment didn't test clinical knowledge <em>about</em> patients —<br>
+      but put you in charge of one?
+    </p>
+
+    <div class="journey-brief reveal">
+      <div class="journey-brief-label">The ward round brief</div>
+      <p class="journey-brief-text">
+        Learners are introduced to <strong>a patient — Mrs Adaeze Okoro, 68, post-operative day two following a hip replacement</strong>. Over the course of six clinical decision points — one in each department she passes through on her path to discharge — learners are the clinician responsible for her care. Every question is drawn directly from the IPC protocols governing that specific ward. <strong>Every wrong decision costs Care Credits.</strong> Arrive at discharge with 500 credits intact and Mrs Okoro goes home healthy. Lose too many credits and the simulation flags a clinical incident — and every learner who triggers one replays the ward round voluntarily, without being asked.
+      </p>
     </div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Interconnected deliverables — facilitator guide, slides, participant guide</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">3.5<sup>hr</sup></div>
-      <div class="stat-label">End-to-end programme designed for a single half-day session</div>
+
+    <div class="mechanics-grid reveal">
+      <div class="mechanic-card">
+        <div class="mechanic-num">Mechanic 01</div>
+        <div class="mechanic-title">The Care Credit system</div>
+        <div class="mechanic-desc">Every learner begins with 500 Care Credits — a visible, persistent balance displayed throughout the experience. Correct clinical decisions preserve the balance. Each error costs 100 credits, with a brief explanation of the real-world consequence that decision would have had for Mrs Okoro.</div>
+      </div>
+      <div class="mechanic-card">
+        <div class="mechanic-num">Mechanic 02</div>
+        <div class="mechanic-title">Contextualised ward questions</div>
+        <div class="mechanic-desc">Questions are written for the specific department the patient is in at each stage — A&amp;E triage protocols in the emergency bay, surgical site infection indicators in the post-op suite, hand hygiene decision trees in the rehabilitation ward. No generic scenarios. No transferable click-patterns.</div>
+      </div>
+      <div class="mechanic-card">
+        <div class="mechanic-num">Mechanic 03</div>
+        <div class="mechanic-title">The incident report reveal</div>
+        <div class="mechanic-desc">Learners who deplete their credit balance do not simply fail — they receive a simulated clinical incident report bearing their name and their decisions. The design is deliberately uncomfortable. It is also, by unanimous feedback from the first cohort, the most memorable piece of IPC training they had ever encountered.</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CHALLENGE -->
-<div class="content-wrap">
-  <section>
-    <div class="section-label">The challenge</div>
-    <h2>DEI training that changes <em>nothing</em> — and why most of it fails.</h2>
-    <p>Most organisations approach DEI training the same way: a compliance slide deck, a video, a quiz, a certificate. Boxes are ticked. Nothing changes. The problem is not that people disagree with the values — it is that the training never bridges the gap between agreement and action.</p>
-    <p>The brief for this programme was precise: design a half-day ILT experience that gives participants <strong>genuine insight into their own patterns</strong>, practises inclusive behaviour in realistic scenarios, and leaves every person with a specific, accountable commitment to act differently. Not a lecture. Not a tick-box. A transformation in a day.</p>
-
-    <div class="challenge-grid">
-      <div class="challenge-card">
-        <span class="challenge-icon">🪞</span>
-        <div class="challenge-title">Awareness without action</div>
-        <p class="challenge-desc">Participants knew the language of DEI but rarely connected it to their own daily behaviour and decisions.</p>
-      </div>
-      <div class="challenge-card">
-        <span class="challenge-icon">🧠</span>
-        <div class="challenge-title">Bias felt abstract and distant</div>
-        <p class="challenge-desc">Existing training framed bias as something others had — never something personal, recognisable, or correctable.</p>
-      </div>
-      <div class="challenge-card">
-        <span class="challenge-icon">😶</span>
-        <div class="challenge-title">No safe space to practise</div>
-        <p class="challenge-desc">Participants had no low-stakes opportunity to try inclusive responses before needing them in real situations.</p>
-      </div>
-      <div class="challenge-card">
-        <span class="challenge-icon">📋</span>
-        <div class="challenge-title">No accountability mechanism</div>
-        <p class="challenge-desc">Without named commitments and accountability partners, good intentions dissolved within days of the session.</p>
-      </div>
+<!-- ── CREDIT MECHANIC ── -->
+<section class="credit-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The mechanic</span>
+      <div class="section-label-line"></div>
     </div>
-  </section>
-
-  <!-- CONCEPT -->
-  <section>
-    <div class="section-label">The concept</div>
-    <h2>What if the training didn't just <em>explain</em> inclusion — but made you practise it?</h2>
-    <p>The programme was built on a single design principle: every module had to produce a behaviour, not just a belief. Understanding bias is not enough — participants had to <strong>recognise it in action, feel its impact, and rehearse a different response</strong> before they left the room.</p>
-
-    <div class="concept-box">
-      <blockquote>"Inclusion does not happen in training rooms — it happens in the moments between meetings, in who you invite to the table, in whose idea you amplify. The training's job is to prepare people for those moments."</blockquote>
-    </div>
-
-    <p>The programme structure follows a deliberate arc: <strong>understand → recognise → practise → commit</strong>. Each module builds on the last. The role-plays in Module 3 only work because Module 2 has already made bias personal. The commitment card in Module 4 only has weight because the role-plays have made inclusion feel real and achievable.</p>
-  </section>
-
-  <!-- APPROACH -->
-  <section>
-    <div class="section-label">The approach</div>
-    <h2>Four modules. Six activity types. <em>One coherent arc.</em></h2>
-    <p>The programme runs for 3.5 hours across four modules, each with a distinct purpose, a distinct activity format, and a deliberate transition into the next. Activities were chosen not for variety alone — but because each one is the best vehicle for its specific learning outcome.</p>
-
-    <div class="modules-grid">
-      <div class="module-card">
-        <div class="module-num">01</div>
-        <div><span class="module-tag tag-purple">40 minutes</span></div>
-        <div class="module-title">What Diversity Really Means</div>
-        <div class="module-time">Welcome + Framework + Activity</div>
-        <p class="module-desc">Establishes the DEI framework clearly — diversity, equity, and inclusion as distinct concepts. The ice-breaker surfaces assumptions before the concept is formally introduced. The Diversity Mapping activity makes difference personal rather than theoretical.</p>
-        <div class="module-activities">
-          <span class="activity-pill">Ice-breaker game</span>
-          <span class="activity-pill">Self-reflection</span>
-          <span class="activity-pill">Pairs discussion</span>
+    <div class="toll-grid">
+      <div class="toll-left reveal">
+        <h2>A balance that<br>reflects the weight<br>of <em>every decision.</em></h2>
+        <p>The Care Credit system was designed around a simple behavioural insight: people protect what they can see they are losing. The existing assessment had no visible stake — a correct answer and an incorrect answer looked identical from the learner's perspective. The score appeared only at the end, by which time the opportunity to change behaviour had passed.</p>
+        <p>By surfacing the credit balance persistently — updated in real time after every question, with a brief animated loss sequence for errors — learners experienced each decision as consequential. Not abstractly consequential in a real clinical situation they might encounter, but immediately consequential in a simulation they were living through at that moment.</p>
+        <p>The credit threshold was calibrated carefully. One error was survivable. Two made a perfect-score outcome impossible but left the patient — and the learner's professional standing in the simulation — intact. Three errors triggered the incident report. The design rewarded careful thinking without being punishing enough to feel unfair.</p>
+        <div class="highlight-box">
+          <strong>Design principle</strong>
+          The 100-credit penalty was not chosen arbitrarily. It maps to a real consequence weighting used in the hospital's IPC audit framework — errors in hand hygiene, PPE selection, and isolation protocol are classified as high-risk events. The simulation's stakes mirror the real ones.
         </div>
       </div>
-
-      <div class="module-card">
-        <div class="module-num">02</div>
-        <div><span class="module-tag tag-teal">50 minutes</span></div>
-        <div class="module-title">Unconscious Bias — Seeing the Invisible</div>
-        <div class="module-time">Input + Game + Case Study Discussion</div>
-        <p class="module-desc">Introduces five bias types using the brain science behind them — not as moral failures but as cognitive shortcuts. Bias Bingo makes recognition engaging and non-threatening. Two case studies make impact visible and create the emotional foundation for Module 3.</p>
-        <div class="module-activities">
-          <span class="activity-pill">Bias Bingo game</span>
-          <span class="activity-pill">Case study analysis</span>
-          <span class="activity-pill">Group discussion</span>
+      <div class="reveal">
+        <div class="wallet-visual">
+          <div class="wallet-label">Care credit balance</div>
+          <div class="wallet-balance">
+            <div class="wallet-amount">400</div>
+            <div class="wallet-currency">credits</div>
+          </div>
+          <div class="wallet-bar-wrap">
+            <div class="wallet-bar" style="width:80%"></div>
+          </div>
+          <div class="wallet-note">One error recorded — 100 credits deducted at Ward 3</div>
         </div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">03</div>
-        <div><span class="module-tag tag-amber">55 minutes</span></div>
-        <div class="module-title">Inclusion in Action</div>
-        <div class="module-time">Practice + Group Work</div>
-        <p class="module-desc">The centrepiece of the programme. Four realistic workplace scenarios — uncredited ideas, interrupted colleagues, excluded invitations, mocked accents — are rehearsed in pairs across two rounds: instinctive response first, then deliberate inclusion practice. Participants discover the difference in their own bodies, not just their minds.</p>
-        <div class="module-activities">
-          <span class="activity-pill">Role-play (4 scenarios)</span>
-          <span class="activity-pill">Paired debrief</span>
-          <span class="activity-pill">Small group work</span>
-        </div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-num">04</div>
-        <div><span class="module-tag tag-purple">45 minutes</span></div>
-        <div class="module-title">Building Inclusive Habits</div>
-        <div class="module-time">Reflection + Commitment</div>
-        <p class="module-desc">Connects individual behaviour change to habit formation using the Cue–Routine–Reward loop. The Start/Stop/Continue activity converts reflection into public intent. The Inclusion Commitment Card produces a named, specific, accountable action — with a named accountability partner and a follow-up date.</p>
-        <div class="module-activities">
-          <span class="activity-pill">Start/Stop/Continue</span>
-          <span class="activity-pill">Commitment card</span>
-          <span class="activity-pill">Peer accountability</span>
+        <div class="toll-scenarios">
+          <div class="toll-scenario correct">
+            <div class="toll-scenario-icon">✓</div>
+            <div class="toll-scenario-text">
+              <div class="toll-scenario-title">Correct isolation decision</div>
+              <div class="toll-scenario-desc">PPE selected appropriately for MRSA-positive bay — patient protected</div>
+            </div>
+            <div class="toll-scenario-amount">+0</div>
+          </div>
+          <div class="toll-scenario wrong">
+            <div class="toll-scenario-icon">✕</div>
+            <div class="toll-scenario-text">
+              <div class="toll-scenario-title">Hand hygiene step missed</div>
+              <div class="toll-scenario-desc">Cross-contamination risk triggered — incident logged</div>
+            </div>
+            <div class="toll-scenario-amount">−100</div>
+          </div>
+          <div class="toll-scenario wrong">
+            <div class="toll-scenario-icon">✕</div>
+            <div class="toll-scenario-text">
+              <div class="toll-scenario-title">Wrong decontamination sequence</div>
+              <div class="toll-scenario-desc">Surgical site infection risk elevated — clinical incident flagged</div>
+            </div>
+            <div class="toll-scenario-amount">−100</div>
+          </div>
+          <div class="toll-scenario perfect">
+            <div class="toll-scenario-icon">★</div>
+            <div class="toll-scenario-text">
+              <div class="toll-scenario-title">Perfect ward round — 500 credits</div>
+              <div class="toll-scenario-desc">Mrs Okoro discharged safely — commendation badge unlocked</div>
+            </div>
+            <div class="toll-scenario-amount">500</div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- DELIVERABLES -->
-  <section>
-    <div class="section-label">Deliverables</div>
-    <h2>Three documents. <em>One coherent programme.</em></h2>
-    <p>The programme was designed as a complete, self-contained package. Every activity in the facilitator guide has a corresponding slide and a matching worksheet in the participant guide. A facilitator who has not delivered this content before can run the session with confidence from the guide alone.</p>
-
-    <div class="deliverables-grid">
-      <div class="deliverable-card">
-        <div class="deliverable-icon icon-purple">📋</div>
-        <div class="deliverable-title">Facilitator Guide</div>
-        <p class="deliverable-desc">Full session script with timing, facilitator notes, debrief questions, transition language, and tips for managing difficult moments. Includes Appendix A (four role-play scenario card sets) and Appendix B (Bias Bingo caller script).</p>
-      </div>
-      <div class="deliverable-card">
-        <div class="deliverable-icon icon-teal">🖥️</div>
-        <div class="deliverable-title">Slide Deck</div>
-        <p class="deliverable-desc">15 professionally designed slides — one per major section — with activity instructions, case studies, the Bias Bingo card visual, role-play scenario cards, the Habit Loop diagram, and the Commitment Card template.</p>
-      </div>
-      <div class="deliverable-card">
-        <div class="deliverable-icon icon-amber">📓</div>
-        <div class="deliverable-title">Participant Guide</div>
-        <p class="deliverable-desc">A fully designed workbook used during and after the session. Includes the Diversity Wheel, reflection worksheets keyed to every module, the Start/Stop/Continue table, and the Inclusion Commitment Card to take away.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESIGN INSIGHTS -->
-  <section>
-    <div class="section-label">Design insight</div>
-    <h2>The decisions that made the difference.</h2>
-
-    <div class="insights-grid">
-      <div class="insight-card purple">
-        <div class="insight-head">Activity sequencing</div>
-        <h3 class="insight-title">The ice-breaker surfaces assumptions before the concept lands</h3>
-        <p class="insight-body">Most training introduces a concept and then applies it. This programme reverses the sequence — the Two Truths and a Bias ice-breaker creates an experiential puzzle before the word "bias" is ever used. Participants arrive at the concept themselves, which means they own it.</p>
-      </div>
-
-      <div class="insight-card teal">
-        <div class="insight-head">Emotional design</div>
-        <h3 class="insight-title">Case studies create feeling before role-plays demand action</h3>
-        <p class="insight-body">The Maya/James and Priya/Tom case studies in Module 2 are not analytical exercises — they are emotional ones. Participants need to feel the weight of exclusion before Module 3 asks them to intervene in it. The sequence is deliberate: empathy first, then agency.</p>
-      </div>
-
-      <div class="insight-card amber">
-        <div class="insight-head">Low-stakes rehearsal</div>
-        <h3 class="insight-title">Two rounds of role-play — instinct first, then practice</h3>
-        <p class="insight-body">Round 1 of every role-play captures the natural, uncoached response. Round 2 applies a named inclusion practice. The gap between rounds is the learning — participants discover what changes when they intervene deliberately, not just that they should.</p>
-      </div>
-
-      <div class="insight-card dark">
-        <div class="insight-head">Accountability architecture</div>
-        <h3 class="insight-title">The Commitment Card converts intention into obligation</h3>
-        <p class="insight-body">The commitment card includes a named behaviour, a specific situation, a success measure, a named accountability partner, and a follow-up date. Each element is deliberate — removing any one of them reduces the likelihood that the commitment survives the week.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROGRAMME IN ACTION -->
-  <section>
-    <div class="section-label">Programme in action</div>
-    <h2>What participants <em>actually do</em> in this session.</h2>
-    <p>This programme is not a lecture with breaks. Every 15–20 minutes, participants shift mode — from listening to doing, from individual to paired, from safe to challenging. The activity arc below captures the full experience.</p>
-
-    <div class="in-action-grid">
-      <div class="action-tile">
-        <span class="action-tile-icon">🎭</span>
-        <div class="action-tile-title">Two Truths & a Bias</div>
-        <p class="action-tile-desc">Ice-breaker that surfaces assumptions before introducing them as a concept. Immediately personal, immediately relevant.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">🗺️</span>
-        <div class="action-tile-title">Diversity Mapping</div>
-        <p class="action-tile-desc">Participants map their own identity dimensions, identify what is invisible to colleagues, and share with a partner.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">🎯</span>
-        <div class="action-tile-title">Bias Bingo</div>
-        <p class="action-tile-desc">A competitive card game that makes bias recognition engaging and non-threatening. First to complete a row — and name each bias — wins.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">💼</span>
-        <div class="action-tile-title">Case Study Discussion</div>
-        <p class="action-tile-desc">Two workplace scenarios — a promotion decision and a meeting dynamic — examined for bias, impact, and what could have been done differently.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">🎬</span>
-        <div class="action-tile-title">Role-Play Scenarios</div>
-        <p class="action-tile-desc">Four realistic situations rehearsed in pairs — twice each. Round 1: natural response. Round 2: deliberate inclusion practice. Debrief between rounds.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">🗂️</span>
-        <div class="action-tile-title">Start / Stop / Continue</div>
-        <p class="action-tile-desc">Individual reflection that converts personal insight into named behaviours — one to start, one to stop, one to protect. Shared with a partner.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">🤝</span>
-        <div class="action-tile-title">Commitment Card</div>
-        <p class="action-tile-desc">Specific, named, accountable commitment — with a behaviour, a situation, a success measure, a partner, and a follow-up date.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">💬</span>
-        <div class="action-tile-title">One Word Close</div>
-        <p class="action-tile-desc">Every participant shares one word that captures how they leave the session — not what they learned, but how they feel. A high-energy, connecting close.</p>
-      </div>
-      <div class="action-tile">
-        <span class="action-tile-icon">🧩</span>
-        <div class="action-tile-title">Barriers Discussion</div>
-        <p class="action-tile-desc">Small groups identify what stops people from acting inclusively — even when they want to — and present their top barriers to the whole room.</p>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div class="cta-inner">
-    <h2>Have a learning challenge worth <em>solving well?</em></h2>
-    <p>Every great learning programme starts with a conversation. Tell me what you are trying to achieve — and let's figure out the best way to get there.</p>
-    <a href="https://www.upwork.com/freelancers/rameshkrishnan" class="cta-btn">Let's talk ↗</a>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
-<footer>
-  <a href="https://rameshkrishnan.me/index.html" class="footer-logo">Learning <em>Matters.</em></a>
-  <ul class="footer-links">
-    <li><a href="https://rameshkrishnan.me/index.html#work">Work</a></li>
-    <li><a href="https://rameshkrishnan.me/index.html#articles">Insights</a></li>
-    <li><a href="https://www.upwork.com/freelancers/rameshkrishnan">Contact</a></li>
-  </ul>
-  <span class="footer-copy">© 2025 Learning Matters. All rights reserved.</span>
-</footer>
+<!-- ── WARD MAP ── -->
+<section class="wardmap-section">
+  <div class="page-wrap">
+    <div class="section-label dark-label reveal">
+      <span class="section-label-text">The ward round</span>
+      <div class="section-label-line"></div>
+    </div>
 
+    <div class="ward-stages reveal">
+      <div class="ward-stage">
+        <div class="ward-stage-num">Ward 01</div>
+        <div class="ward-stage-icon">🚨</div>
+        <div class="ward-stage-title">Emergency Triage</div>
+        <div class="ward-stage-desc">Standard precautions, triage hand hygiene, initial isolation assessment</div>
+        <div class="ward-stage-tag">A&amp;E</div>
+      </div>
+      <div class="ward-stage">
+        <div class="ward-stage-num">Ward 02</div>
+        <div class="ward-stage-icon">🔬</div>
+        <div class="ward-stage-title">Pre-Op Assessment</div>
+        <div class="ward-stage-desc">MRSA screening protocol, skin prep standards, pre-surgical hygiene brief</div>
+        <div class="ward-stage-tag">Surgical</div>
+      </div>
+      <div class="ward-stage">
+        <div class="ward-stage-num">Ward 03</div>
+        <div class="ward-stage-icon">🩺</div>
+        <div class="ward-stage-title">Post-Op Recovery</div>
+        <div class="ward-stage-desc">Surgical site infection indicators, wound care protocol, PPE selection for high-risk bays</div>
+        <div class="ward-stage-tag">Post-op</div>
+      </div>
+      <div class="ward-stage">
+        <div class="ward-stage-num">Ward 04</div>
+        <div class="ward-stage-icon">🏃</div>
+        <div class="ward-stage-title">Rehabilitation</div>
+        <div class="ward-stage-desc">Shared-equipment decontamination, shared-bay hand hygiene, communal risk management</div>
+        <div class="ward-stage-tag">Rehab</div>
+      </div>
+      <div class="ward-stage">
+        <div class="ward-stage-num">Ward 05</div>
+        <div class="ward-stage-icon">📋</div>
+        <div class="ward-stage-title">Discharge &amp; Handover</div>
+        <div class="ward-stage-desc">Environmental cleaning sign-off, discharge documentation, bed decontamination protocol</div>
+        <div class="ward-stage-tag">Discharge</div>
+      </div>
+    </div>
+
+    <div class="section-label dark-label reveal" style="margin-top: 48px; margin-bottom: 20px;">
+      <span class="section-label-text">Topics covered</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="topics-grid reveal">
+      <div class="topic-card">
+        <div class="topic-icon">🧴</div>
+        <div>
+          <div class="topic-title">Hand hygiene &amp; the WHO 5 Moments</div>
+          <div class="topic-desc">Decision trees embedded in real clinical touchpoints — not abstract recitations of the policy document</div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🦺</div>
+        <div>
+          <div class="topic-title">PPE selection &amp; donning / doffing sequence</div>
+          <div class="topic-desc">Scenario-based questions that surface the donning/doffing errors most commonly flagged in real IPC audits</div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🧹</div>
+        <div>
+          <div class="topic-title">Environmental decontamination standards</div>
+          <div class="topic-desc">Ward-specific decontamination protocols for high-touch surfaces, shared equipment, and isolation room turnover</div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🔒</div>
+        <div>
+          <div class="topic-title">Isolation protocols &amp; MRSA management</div>
+          <div class="topic-desc">Decision-making scenarios around contact precautions, cohorting logic, and correct use of side rooms</div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">🩸</div>
+        <div>
+          <div class="topic-title">Sharps safety &amp; body fluid exposure</div>
+          <div class="topic-desc">Post-exposure response protocols embedded in realistic A&amp;E and post-op scenarios</div>
+        </div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-icon">📝</div>
+        <div>
+          <div class="topic-title">IPC documentation &amp; incident reporting</div>
+          <div class="topic-desc">The final ward decision point — correct completion of IPC documentation as a closing clinical act</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DESIGN CHALLENGE ── -->
+<section class="design-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The design challenge</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="design-grid">
+      <div class="design-card reveal">
+        <div class="design-card-label">Challenge one</div>
+        <h3>Making the patient feel real</h3>
+        <p>For the Care Credit system to work, Mrs Okoro had to feel like a person, not a case study prop. The design team spent as much time on her characterisation — her family, her concerns about her hip, the small details of her post-operative progress — as on the clinical content itself. The hypothesis was that learners who felt responsible for a specific individual would engage differently than those answering questions about a generic "patient."</p>
+        <p>The hypothesis held. Debrief interviews revealed that learners consistently referred to Mrs Okoro by name — not as "the patient" — and that several spontaneously mentioned not wanting to let her down as a factor in their level of care with each question.</p>
+        <div class="highlight-box">
+          <strong>Design decision</strong>
+          A short non-skippable introduction sequence — ninety seconds — established Mrs Okoro's story, her family, and what a successful discharge would mean for her before the first clinical question appeared. Learners were invested before the stakes were introduced.
+        </div>
+      </div>
+      <div class="design-card reveal">
+        <div class="design-card-label">Challenge two</div>
+        <h3>The incident report as a learning tool</h3>
+        <p>The most debated element of the design was the clinical incident report triggered by three or more errors. The clinical governance team was initially concerned that it would feel punitive rather than educational. The compromise reached was precise: the incident report would include not just the errors, but a clear clinical narrative explaining how each error could have harmed Mrs Okoro — and what the correct protocol would have achieved instead.</p>
+        <p>The result was a document that felt simultaneously serious and entirely constructive. It did not blame. It explained — with specificity — the gap between what the learner knew intellectually and what their decisions had revealed in practice.</p>
+        <div class="gold-box">
+          <strong>Outcome</strong>
+          Every learner who received an incident report on first attempt completed the ward round again within 24 hours — unprompted. The voluntary replay rate for incident-report recipients was 100%.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCREENS ── -->
+<section class="screens-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The experience</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="screens-grid reveal">
+      <div class="screen-card">
+        <div class="screen-num">01</div>
+        <div class="screen-label">Mrs Okoro introduction — character story, family context, and ward round briefing</div>
+        <div class="screen-tag">01</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-num">02</div>
+        <div class="screen-label">Credit balance dashboard — persistent display, real-time update on every decision</div>
+        <div class="screen-tag">02</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-num">03</div>
+        <div class="screen-label">A&amp;E triage bay — ward-specific clinical scenario with contextual IPC decision prompt</div>
+        <div class="screen-tag">03</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-num">04</div>
+        <div class="screen-label">Credit deduction sequence — animated loss, consequence narrative, correct protocol reveal</div>
+        <div class="screen-tag">04</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-num">05</div>
+        <div class="screen-label">Clinical incident report — personalised to the learner's decisions, corrective narrative included</div>
+        <div class="screen-tag">05</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-num">06</div>
+        <div class="screen-label">Successful discharge — Mrs Okoro goes home, commendation badge and certificate unlocked</div>
+        <div class="screen-tag">06</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUTCOME ── -->
+<section class="outcome-section">
+  <div class="page-wrap">
+    <div class="section-label reveal">
+      <span class="section-label-text">The outcome</span>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="outcome-grid">
+      <div class="outcome-left reveal">
+        <h2>Staff stopped ticking boxes.<br><em>They started protecting patients.</em></h2>
+        <p>The response from the first cohort of four hundred clinical staff was swift and unequivocal. Average time-on-assessment rose from under seven minutes to just over nineteen — not because the module was longer, but because learners were reading carefully, deliberating, and replaying sequences to understand their errors. The ward round was being experienced, not processed.</p>
+        <p>The L&D team had anticipated resistance to the credit-loss mechanic — particularly from experienced senior staff who might feel the simulation was beneath their clinical expertise. What they found instead was that experienced staff engaged most intensely. They knew the stakes. The simulation mirrored real consequences they understood from their own practice, and being made to face their decision-making in a structured way was something many reported as genuinely valuable rather than merely procedural.</p>
+        <p>IPC compliance audits at eight weeks post-training — the point at which previous cohorts had historically shown a marked decline — showed no such drop. The behaviour change extended further than any previous training model had achieved.</p>
+        <div class="quote-block">
+          <div class="quote-text">"I've done IPC training every year for eleven years. This is the first time I've ever thought about the questions. I didn't want to hurt Mrs Okoro — and I didn't want my name on that incident report."</div>
+          <div class="quote-attr">— Senior staff nurse, surgical ward</div>
+        </div>
+      </div>
+      <div class="result-cards reveal">
+        <div class="result-card">
+          <div class="result-num">91<sup>%</sup></div>
+          <div class="result-label">
+            <strong>Perfect-score completion rate</strong>
+            <span>Clinical staff who completed the ward round with their full 500-credit balance intact on first attempt</span>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">2.7<sup>×</sup></div>
+          <div class="result-label">
+            <strong>Increase in time-on-assessment</strong>
+            <span>Average completion time rose from under 7 minutes to just over 19 — evidence of genuine deliberation, not faster clicking</span>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">84<sup>%</sup></div>
+          <div class="result-label">
+            <strong>Sustained compliance improvement</strong>
+            <span>IPC procedural compliance still measurably higher at the eight-week post-training audit — the longest sustained improvement on record</span>
+          </div>
+        </div>
+        <div class="result-card">
+          <div class="result-num">100<sup>%</sup></div>
+          <div class="result-label">
+            <strong>Voluntary replay rate</strong>
+            <span>Every learner who received a clinical incident report on first attempt replayed the ward round independently within 24 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="cta-pulse">
+    <div class="cta-pulse-line"></div>
+  </div>
+  <div class="page-wrap">
+    <h2 class="reveal">Have a compliance assessment<br>that needs to <em>actually work?</em></h2>
+    <p class="cta-tagline reveal">Learning matters. Let's make yours count.</p>
+    <div class="cta-buttons reveal">
+      <a href="https://www.upwork.com/freelancers/rameshkrishnan" target="_blank" rel="noopener" class="btn-primary">Let's talk ↗</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const lineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        lineObserver.unobserve(entry.target);
+      }
+    });
+  });
+  document.querySelectorAll('.section-label-line').forEach(line => lineObserver.observe(line));
+</script>
 </body>
 </html>
