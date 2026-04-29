@@ -1,102 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Case Study 2 &#8212; Interview Prep | Learning Matters</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--primary:#0d3b2e;--primary-dark:#061f18;--accent-text:#7ec5a8;--gold:#c8922a;--gold-light:#fdf4e3;--ink:#0f1e20;--ink-mid:#2d4a4e;--ink-light:#5a7a7e;--white:#ffffff;--warm:#f7fafa;--rule:#c8dfe0;--red:#c0303a;--red-light:#fdecea;--green:#1e7a4a;--green-light:#e4f0ea;--font-display:'Fraunces',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);}
-html{scroll-behavior:smooth;}body{font-family:var(--font-body);background:var(--warm);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
-.progress-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--primary-dark);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 2px 16px rgba(0,0,0,0.25);}
-.progress-nav-title{font-family:var(--font-display);font-size:14px;color:rgba(255,255,255,0.9);white-space:nowrap;flex-shrink:0;}.progress-nav-title span{color:var(--accent-text);}
-.progress-steps{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none;}.progress-steps::-webkit-scrollbar{display:none;}
-.progress-step{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);cursor:pointer;transition:all 0.2s;white-space:nowrap;text-decoration:none;border:1px solid transparent;}
-.progress-step:hover{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.15);}.progress-step.active{color:var(--accent-text);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);}
-.progress-step-num{width:17px;height:17px;border-radius:50%;background:rgba(255,255,255,0.1);font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}.progress-step.active .progress-step-num{background:rgba(255,255,255,0.25);}
-.hero{background:var(--primary);padding:96px 48px 60px;position:relative;overflow:hidden;}.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);pointer-events:none;}
-.hero-inner{max-width:880px;margin:0 auto;}.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;background:rgba(200,146,42,0.15);border:1px solid rgba(200,146,42,0.3);padding:5px 13px;border-radius:20px;}
-.hero h1{font-family:var(--font-display);font-size:clamp(27px,3.8vw,46px);font-weight:500;color:var(--white);line-height:1.15;margin-bottom:15px;}.hero h1 em{font-style:italic;color:var(--accent-text);font-weight:300;}
-.hero-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7;max-width:640px;margin-bottom:30px;}
-.hero-stats{display:flex;gap:26px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);}
-.hero-stat-num{font-family:var(--font-display);font-size:27px;font-weight:500;color:var(--white);line-height:1;margin-bottom:3px;}.hero-stat-num sup{font-size:13px;color:var(--gold);}
-.hero-stat-label{font-size:11px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.4;max-width:100px;}
-.how-to-use{background:var(--gold-light);border:1px solid rgba(200,146,42,0.25);padding:15px 24px;display:flex;align-items:center;gap:13px;max-width:880px;margin:24px auto 0;border-radius:8px;}
-.how-to-use p{font-size:12.5px;color:#6a4010;line-height:1.55;}.how-to-use strong{color:#3a2005;}
-main{max-width:880px;margin:0 auto;padding:52px 48px;}
-.chapter{margin-bottom:64px;scroll-margin-top:72px;}
-.chapter-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;padding-bottom:18px;border-bottom:2px solid rgba(0,0,0,0.07);}
-.chapter-num{width:42px;height:42px;border-radius:50%;background:var(--primary);color:var(--white);font-family:var(--font-display);font-size:17px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.chapter-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--primary);margin-bottom:4px;}
-.chapter-title{font-family:var(--font-display);font-size:clamp(18px,2.2vw,26px);font-weight:500;color:var(--ink);line-height:1.2;}.chapter-title em{font-style:italic;color:var(--primary);}
-.story{font-size:14.5px;font-weight:300;color:var(--ink-mid);line-height:1.85;margin-bottom:16px;}.story strong{font-weight:500;color:var(--ink);}
-.key-fact{background:rgba(0,0,0,0.04);border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:13px;color:var(--ink-mid);line-height:1.65;}
-.key-fact strong{display:block;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);margin-bottom:4px;}
-.challenge-box{background:var(--red-light);border:1px solid rgba(192,48,58,0.2);border-radius:9px;padding:15px 19px;margin:12px 0;}
-.challenge-box-header{display:flex;align-items:center;gap:9px;margin-bottom:7px;}.challenge-box-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);}
-.challenge-box p{font-size:13px;font-weight:300;color:#5a1a1e;line-height:1.65;}
-.resolution-box{background:var(--green-light);border:1px solid rgba(30,122,74,0.2);border-radius:9px;padding:15px 19px;margin:8px 0 14px;}
-.resolution-box-header{display:flex;align-items:center;gap:9px;margin-bottom:7px;}.resolution-box-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);}
-.resolution-box p{font-size:13px;font-weight:300;color:#0f3a22;line-height:1.65;}
-.steps{display:flex;flex-direction:column;gap:10px;margin:16px 0;}.step{display:flex;gap:12px;align-items:flex-start;}
-.step-num{width:24px;height:24px;border-radius:50%;background:var(--primary);color:var(--white);font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.step-text{font-size:13.5px;font-weight:300;color:var(--ink-mid);line-height:1.7;}.step-text strong{font-weight:500;color:var(--ink);}
-.remember{background:var(--primary);border-radius:9px;padding:19px 23px;margin:20px 0;}.remember-label{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--accent-text);margin-bottom:7px;}
-.remember p{font-size:14px;font-style:italic;font-family:var(--font-display);color:rgba(255,255,255,0.9);line-height:1.6;}
-.pull-quote{border-left:4px solid var(--gold);padding:13px 19px;background:var(--gold-light);border-radius:0 8px 8px 0;margin:18px 0;font-family:var(--font-display);font-size:16px;font-style:italic;color:var(--ink);line-height:1.6;}
-.qa-section{margin:24px 0;}.qa-section-title{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink-light);margin-bottom:11px;display:flex;align-items:center;gap:9px;}.qa-section-title::after{content:'';flex:1;height:1px;background:var(--rule);}
-.qa-item{margin-bottom:9px;border:1px solid var(--rule);border-radius:9px;overflow:hidden;}
-.qa-question{padding:12px 16px;background:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background 0.2s;}.qa-question:hover{background:#f0f8f8;}
-.qa-question-text{font-size:12.5px;font-weight:500;color:var(--ink);line-height:1.4;}.qa-chevron{font-size:10px;color:var(--ink-light);transition:transform 0.25s var(--ease);flex-shrink:0;}
-.qa-item.open .qa-chevron{transform:rotate(180deg);}.qa-answer{display:none;padding:0 16px 13px;background:var(--white);border-top:1px solid rgba(0,0,0,0.06);}
-.qa-item.open .qa-answer{display:block;padding-top:11px;}.qa-answer p{font-size:12.5px;font-weight:300;color:var(--ink-mid);line-height:1.75;margin-bottom:7px;}.qa-answer p:last-child{margin-bottom:0;}.qa-answer strong{font-weight:500;color:var(--ink);}
-.objection-item{margin-bottom:9px;border-radius:9px;overflow:hidden;border:1px solid rgba(192,48,58,0.2);}
-.objection-q{padding:12px 16px;background:var(--red-light);display:flex;align-items:flex-start;gap:9px;cursor:pointer;transition:background 0.2s;}.objection-q:hover{background:#fad5d7;}
-.objection-icon{font-size:13px;flex-shrink:0;margin-top:1px;}.objection-text{font-size:12.5px;font-weight:500;color:#5a1a1e;line-height:1.4;flex:1;}
-.objection-chevron{font-size:10px;color:var(--red);transition:transform 0.25s;flex-shrink:0;}.objection-item.open .objection-chevron{transform:rotate(180deg);}
-.rebuttal{display:none;padding:12px 16px;background:var(--green-light);border-top:1px solid rgba(30,122,74,0.15);}.objection-item.open .rebuttal{display:block;}
-.rebuttal-label{font-size:10px;font-weight:500;letter-spacing:0.11em;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
-.rebuttal p{font-size:12.5px;font-weight:300;color:#0f3a22;line-height:1.75;margin-bottom:6px;}.rebuttal p:last-child{margin-bottom:0;}.rebuttal strong{font-weight:500;}
-.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0;}
-.resource-card{background:var(--white);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;text-decoration:none;display:flex;gap:9px;align-items:flex-start;transition:border-color 0.2s,transform 0.2s;}.resource-card:hover{border-color:var(--primary);transform:translateY(-2px);}
-.resource-type{font-size:9px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;padding:2px 5px;border-radius:3px;flex-shrink:0;margin-top:2px;}
-.resource-type.article{background:rgba(0,109,119,0.1);color:#006d77;border:1px solid rgba(0,109,119,0.2);}
-.resource-type.video{background:rgba(192,48,58,0.08);color:#c0303a;border:1px solid rgba(192,48,58,0.15);}
-.resource-type.guide{background:rgba(200,146,42,0.1);color:#7a5010;border:1px solid rgba(200,146,42,0.2);}
-.resource-title{font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:2px;}.resource-source{font-size:10.5px;font-weight:300;color:var(--ink-light);}
-.summary-card{background:var(--white);border:1px solid var(--rule);border-radius:11px;padding:24px;margin:24px 0;}.summary-card h3{font-family:var(--font-display);font-size:17px;font-weight:500;color:var(--ink);margin-bottom:12px;}
-.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.summary-item{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;font-weight:300;color:var(--ink-mid);line-height:1.5;}.summary-item::before{content:'✓';color:var(--primary);font-weight:600;flex-shrink:0;}
-.divider{display:flex;align-items:center;gap:12px;margin:32px 0 26px;font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink-light);}.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--rule);}
-.closing-card{background:var(--primary);border-radius:11px;padding:32px;text-align:center;margin-top:48px;}.closing-card h2{font-family:var(--font-display);font-size:23px;font-weight:500;color:var(--white);margin-bottom:9px;line-height:1.25;}.closing-card h2 em{font-style:italic;color:var(--accent-text);font-weight:300;}.closing-card p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.65;max-width:440px;margin:0 auto;}
-@media(max-width:768px){main{padding:30px 16px;}.hero{padding:70px 16px 38px;}.progress-nav{padding:0 10px;}.resources-grid,.summary-grid{grid-template-columns:1fr;}}</style></head>
-<body>
-<nav class="progress-nav"><div class="progress-nav-title">CS2 &#8212; <span>Interview Prep</span></div><div class="progress-steps"><a href="#ch1" class="progress-step"><div class="progress-step-num">1</div><span>Brief</span></a><a href="#ch2" class="progress-step"><div class="progress-step-num">2</div><span>Discovery</span></a><a href="#ch3" class="progress-step"><div class="progress-step-num">3</div><span>Design</span></a><a href="#ch4" class="progress-step"><div class="progress-step-num">4</div><span>Outcomes</span></a><a href="#chQ" class="progress-step"><div class="progress-step-num">Q</div><span>Q&amp;A</span></a></div></nav>
-<header class="hero"><div class="hero-inner">
-<div class="hero-badge">&#128203; Interview Preparation Guide</div>
-<h1>Case Study 2 &#8212; <em>The Clinical Simulation</em></h1>
-<p class="hero-desc">A nine-stage business simulation with gamification that trained Clinical Research Associates to manage hospital monitoring visits — built from a two-page brief with no existing source material.</p>
-<div class="hero-stats"><div class="hero-stat"><div class="hero-stat-num">9</div><div class="hero-stat-label">Simulation stages</div></div><div class="hero-stat"><div class="hero-stat-num">95<sup>%+</sup></div><div class="hero-stat-label">Post-assessment scores</div></div><div class="hero-stat"><div class="hero-stat-num">2pg</div><div class="hero-stat-label">Source material at project start</div></div><div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Months to delivery</div></div></div>
-</div>
-<div class="how-to-use"><div style="font-size:19px;flex-shrink:0;">&#128161;</div><p><strong>How to use:</strong> Read top to bottom first. Use the nav to jump when rehearsing. Click any question or objection to reveal the answer &#8212; read, close, recall. That builds retention.</p></div>
-</header>
-<main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study 2 — Interview Prep | Learning Matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #111827; --ink-2: #374151; --mid: #6B7280; --faint: #9CA3AF;
+      --rule: #E5E7EB; --surface: #F9FAFB; --surface-2: #F3F4F6;
+      --blue: #2563EB; --blue-light: #EFF6FF; --blue-mid: #BFDBFE;
+      --teal: #0D9488; --teal-light: #F0FDFA; --teal-mid: #99F6E4;
+      --dark: #0F1C2E; --gold: #F59E0B; --red: #EF4444;
+      --green: #10B981; --green-light: #ECFDF5;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--ink); background: #fff; font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
 
-<section class="chapter" id="ch1"><div class="chapter-header"><div class="chapter-num">1</div><div class="chapter-header-text"><div class="chapter-eyebrow">Where the story begins</div><h2 class="chapter-title">A two-page brief. <em>No manuals. No guides. No existing training.</em></h2></div></div><p>The client was a leading Contract Research Organisation. Their new Clinical Research Associates &#8212; the people responsible for monitoring live pharmaceutical clinical trials in hospitals &#8212; were being deployed to trial sites with no structured preparation. Onboarding was informal, inconsistent, and left entirely to the line manager's discretion. There was no training programme, no defined learning path, and no mechanism to verify readiness before a new CRA stood in a hospital corridor with a patient record in their hands.</p><p>When I asked for the source material, the client handed me <strong>a two-page document</strong> listing nine workflow steps with brief descriptions. That was everything. There were no manuals, no reference guides, no process documentation, and no existing training materials of any kind. All knowledge resided with experienced CRAs and their managers.</p><div class="key-fact"><strong>The core challenge in one sentence</strong>Build a nine-stage simulation of the complete CRA monitoring workflow &#8212; to a clinical accuracy standard that could withstand regulatory scrutiny &#8212; from a two-page brief, with a four-month deadline.</div><div class="remember"><div class="remember-label">&#129504; Remember This</div><p>"The brief was two pages. The simulation was nine stages. Everything in between was extracted from people&#8217;s heads through structured conversation &#8212; and shaped into content that could survive a regulatory audit."</p></div></section>
-<section class="chapter" id="ch2"><div class="chapter-header"><div class="chapter-num">2</div><div class="chapter-header-text"><div class="chapter-eyebrow">Understanding the workflow</div><h2 class="chapter-title">Structured SME sessions. <em>Six weeks of extraction before a single screen was built.</em></h2></div></div><p>With no documents to draw from, the entire curriculum had to be built from expert knowledge. I ran structured SME extraction sessions with experienced CRAs and clinical operations managers &#8212; working through each of the nine workflow stages in sequence, asking not just &#8216;what do you do&#8217; but &#8216;what do you decide, and what happens if you decide wrong.&#8217;</p><p>The decision-consequence mapping was critical. CRA errors in the field carry <strong>direct regulatory and patient safety implications</strong>. The simulation had to teach not just the steps, but the stakes. That required understanding not just what the right action was, but what the realistic wrong actions were &#8212; and why they were wrong.</p><div class="steps"><div class="step"><div class="step-num">1</div><div class="step-text"><strong>Arranging the Visit</strong> Scheduling and coordinating with hospital staff ahead of the monitoring visit</div></div><div class="step"><div class="step-num">2</div><div class="step-text"><strong>Visit Preparation</strong> Activity prioritisation, documentation review, and pre-visit checklist completion</div></div><div class="step"><div class="step-num">3</div><div class="step-text"><strong>Arriving at the Hospital</strong> Physically navigating the site and connecting with the right personnel</div></div><div class="step"><div class="step-num">4</div><div class="step-text"><strong>Patient Records Review</strong> ICF review and Source Data Verification for all enrolled trial patients</div></div><div class="step"><div class="step-num">5</div><div class="step-text"><strong>eCRF Data Confirmation</strong> Cross-checking that patient data has been accurately entered into the trial database</div></div><div class="step"><div class="step-num">6</div><div class="step-text"><strong>Meeting with Hospital Staff</strong> Structured discussions with clinical team members to address findings</div></div><div class="step"><div class="step-num">7</div><div class="step-text"><strong>Pharmacy Inspection</strong> Inspection of investigational drug supply, storage, and accountability records</div></div><div class="step"><div class="step-num">8</div><div class="step-text"><strong>Regulatory Document Review</strong> Audit of administrative and regulatory files cross-checked against patient records</div></div><div class="step"><div class="step-num">9</div><div class="step-text"><strong>Write &amp; Submit the Report</strong> Compiling findings from all eight stages into a compliant monitoring report</div></div></div><div class="challenge-box"><div class="challenge-box-header"><div style="font-size:15px">&#9888;&#65039;</div><div class="challenge-box-label">Challenge: time zone and availability</div></div><p>The development team operated in a different time zone from the client, and SMEs were field staff with unpredictable schedules. Review cycles were at constant risk of delay.</p></div><div class="resolution-box"><div class="resolution-box-header"><div style="font-size:15px">&#9989;</div><div class="resolution-box-label">Resolution</div></div><p>I introduced an asynchronous review protocol &#8212; structured review templates with yes/no accuracy gates and a 48-hour response expectation. SMEs reviewed specific stages, not the whole programme. This kept the project moving without requiring real-time availability.</p></div></section>
-<section class="chapter" id="ch3"><div class="chapter-header"><div class="chapter-num">3</div><div class="chapter-header-text"><div class="chapter-eyebrow">The instructional strategy</div><h2 class="chapter-title">Simulation designed around <em>real workflow &#8212; not theory.</em></h2></div></div><p>The central design decision was to build the programme as a simulation rather than an informational eLearning. Each stage recreated the actual decisions, documents, and interactions a CRA would encounter in the field &#8212; from scheduling hospital visits to reconciling patient data in the eCRF system.</p><p>The gamification system reinforced progression. Learners earned <strong>reward points within each stage</strong>, with summative assessment gates that had to be cleared before the next stage unlocked. Each stage was a separate SCORM package, enabling flexible deployment and granular tracking. The big-picture workflow was presented at the outset and revisited at regular intervals &#8212; reinforcing the mental model of the full process even as learners worked through individual stages.</p><div class="key-fact"><strong>The early prototype that changed the project</strong>A working prototype of Stage 1 was built from the two-page brief alone &#8212; before full content had been agreed &#8212; to give the client something concrete to react to. The response was immediate and positive. It unlocked deeper collaboration and a steady flow of expert knowledge that fuelled the full programme build.</div><div class="pull-quote">"For the first time, our new CRAs arrive at sites already knowing the process. The simulation made it real for them before they&#8217;d even taken their first visit." &#8212; Head of Clinical Operations</div></section>
-<section class="chapter" id="ch4"><div class="chapter-header"><div class="chapter-num">4</div><div class="chapter-header-text"><div class="chapter-eyebrow">What it achieved</div><h2 class="chapter-title">Learners who arrived <em>at live trial sites already knowing the process.</em></h2></div></div><div class="summary-card"><h3>Know these numbers</h3><div class="summary-grid"><div class="summary-item">9 stages simulated end-to-end within a single coherent programme</div><div class="summary-item">95%+ post-assessment scores across all learners at rollout</div><div class="summary-item">Built from a 2-page source brief with no existing training materials</div><div class="summary-item">Modular SCORM architecture for flexible deployment and refresher access</div><div class="summary-item">Gamification with reward points and assessment gates at every stage</div><div class="summary-item">Served both new hires and experienced CRAs seeking structured reinforcement</div></div></div><div class="pull-quote">"For the first time, our new CRAs arrive at clinical trial sites already knowing the monitoring process inside out. The simulation felt close enough to the real thing that it removed the anxiety of the first visit entirely." &#8212; Head of Clinical Operations</div></section>
-<section class="chapter" id="chQ">
-<div class="chapter-header"><div class="chapter-num">Q</div><div class="chapter-header-text"><div class="chapter-eyebrow">Be ready for pushback</div><h2 class="chapter-title">The tough questions. <em>Answer them with confidence.</em></h2></div></div>
-<p class="story">Interviewers will probe your decisions and test whether you genuinely own this story. Here are the objections you are most likely to face.</p>
-<div class="qa-section"><div class="qa-section-title">Approach &amp; Design</div><div class="objection-item"><div class="objection-q" onclick="toggleObj(this)"><div class="objection-icon">&#129300;</div><div class="objection-text">Why a simulation instead of a standard eLearning with scenarios?</div><div class="objection-chevron">&#9662;</div></div><div class="rebuttal"><div class="rebuttal-label">Your response</div><p>Standard eLearning teaches information, then tests recall. A simulation places the learner inside the workflow &#8212; making decisions, experiencing consequences, and building the procedural memory that a CRA needs to operate under regulatory pressure in a real hospital. The CRA monitoring visit is not a knowledge task. It is a performance task. The only way to prepare for a performance task is to practise it. The simulation was the practise environment.</p><p><strong>The additional design advantage:</strong> because each stage mirrored a real step in the workflow, experienced CRAs could use the programme as a structured refresher &#8212; returning to specific stages rather than repeating the whole programme. A standard eLearning course cannot offer that level of targeted remediation.</p></div></div><div class="objection-item"><div class="objection-q" onclick="toggleObj(this)"><div class="objection-icon">&#129300;</div><div class="objection-text">You had a two-page brief and a four-month deadline. How do you defend that as sufficient discovery time?</div><div class="objection-chevron">&#9662;</div></div><div class="rebuttal"><div class="rebuttal-label">Your response</div><p>The two pages were the starting point for discovery, not the source material for the programme. The entire curriculum was extracted through structured SME sessions over six weeks &#8212; those sessions produced everything the two pages could not contain: the decisions within each step, the common errors, the regulatory stakes, the real-world context. The brief told me what stages existed. The SME sessions told me what actually happened inside them.</p></div></div></div><div class="qa-section"><div class="qa-section-title">Instructional Design</div><div class="qa-item"><div class="qa-question" onclick="toggleQA(this)"><span class="qa-question-text">How did you handle the regulatory accuracy requirement?</span><span class="qa-chevron">&#9662;</span></div><div class="qa-answer">Every piece of clinical content &#8212; every simulation scenario, every document displayed in the eCRF or patient records stages &#8212; was reviewed for accuracy by clinical SMEs before inclusion. Where clinical accuracy was non-negotiable, I built in formal sign-off checkpoints rather than relying on informal review. The assessment pass threshold was set at 95% precisely because the regulatory stakes required a high bar.</div></div><div class="qa-item"><div class="qa-question" onclick="toggleQA(this)"><span class="qa-question-text">What was the gamification rationale?</span><span class="qa-chevron">&#9662;</span></div><div class="qa-answer">The gamification was not decoration &#8212; it was a structural mechanism. Stage-based reward points created a sense of achievement at every step, not just at programme completion. The assessment gate mechanism meant that progression was earned rather than assumed &#8212; which mirrored the real-world reality that a CRA does not move to the next monitoring visit task until the previous one is complete. The gamification design was instructionally grounded, not motivationally bolted on.</div></div></div>
-<div class="divider">Further reading &amp; viewing</div>
-<div class="resources-grid"><a href="https://elearningindustry.com/scenario-based-learning" target="_blank" class="resource-card"><div class="resource-type article">Article</div><div><div class="resource-title">Scenario-Based Learning: Design Principles</div><div class="resource-source">eLearning Industry</div></div></a><a href="https://www.youtube.com/results?search_query=articulate+storyline+simulation" target="_blank" class="resource-card"><div class="resource-type video">Video</div><div><div class="resource-title">How to Build Effective eLearning Simulations</div><div class="resource-source">Articulate 360 &#8212; YouTube</div></div></a><a href="https://www.td.org" target="_blank" class="resource-card"><div class="resource-type guide">Guide</div><div><div class="resource-title">Gamification in Learning Design</div><div class="resource-source">ATD Research</div></div></a><a href="https://learningsolutionsmag.com" target="_blank" class="resource-card"><div class="resource-type article">Article</div><div><div class="resource-title">Instructional Design for High-Stakes Performance</div><div class="resource-source">Learning Solutions Magazine</div></div></a></div>
+    /* ── TOP BAND ── */
+    .top-band {
+      background: var(--dark);
+      padding: 0 40px; height: 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 300;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .top-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); }
+    .chapter-nav { display: flex; gap: 4px; }
+    .ch-btn {
+      width: 36px; height: 28px; border-radius: 6px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5); font-size: 11px; font-weight: 600;
+      cursor: pointer; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1px;
+      text-decoration: none; transition: all .2s; line-height: 1;
+    }
+    .ch-btn span { font-size: 8px; font-weight: 400; opacity: 0.7; }
+    .ch-btn:hover, .ch-btn.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      background-image: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(37,99,235,0.15) 0%, transparent 60%);
+      padding: 52px 40px 48px;
+    }
+    .hero-inner { max-width: 820px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.6); margin-bottom: 20px;
+    }
+    .hero-badge span { color: var(--teal); font-weight: 700; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(28px,4vw,44px); font-weight: 700; line-height: 1.18; color: #fff; margin-bottom: 16px; }
+    .hero h1 em { color: #60A5FA; font-style: italic; font-weight: 400; }
+    .hero-sub { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.65; max-width: 620px; margin-bottom: 36px; }
+    .stats-row { display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
+    .stat-num { font-family: var(--serif); font-size: 32px; font-weight: 700; color: #fff; line-height: 1; }
+    .stat-desc { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 3px; line-height: 1.35; }
+    .how-to-box {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0;
+      padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; max-width: 620px;
+    }
+    .how-to-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .how-to-text { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .how-to-text strong { color: rgba(255,255,255,0.85); }
+
+    /* ── CONTENT ── */
+    .content { max-width: 820px; margin: 0 auto; padding: 0 40px 80px; }
+    @media(max-width:640px){ .content { padding: 0 20px 60px; } }
+
+    /* ── CHAPTER ── */
+    .chapter { padding-top: 72px; }
+    .ch-number { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .ch-number::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--teal); }
+    h2.ch-title { font-family: var(--serif); font-size: clamp(24px,3.5vw,36px); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 12px; }
+    h2.ch-title em { color: var(--blue); font-style: italic; font-weight: 400; }
+    .ch-intro { font-size: 17px; font-weight: 300; color: var(--ink-2); line-height: 1.7; margin-bottom: 28px; max-width: 680px; }
+    .body-p { font-size: 16px; color: var(--ink-2); line-height: 1.8; margin-bottom: 16px; }
+    .rule { border: none; border-top: 1px solid var(--rule); margin: 56px 0; }
+
+    /* ── BRAIN BOX ── */
+    .brain-box {
+      background: linear-gradient(135deg, #0F1C2E 0%, #1E3A5F 100%);
+      border: 1px solid rgba(96,165,250,0.2); border-radius: 12px;
+      padding: 22px 24px; margin: 28px 0;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .bb-icon { font-size: 22px; flex-shrink: 0; }
+    .bb-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #60A5FA; margin-bottom: 6px; }
+    .bb-text { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.65; font-style: italic; }
+
+    /* ── PHASE LIST ── */
+    .phase-list { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 0; }
+    .phase-item { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+    .phase-item:last-child { border-bottom: none; }
+    .phase-num { width: 30px; height: 30px; border-radius: 8px; background: var(--blue-light); border: 1px solid var(--blue-mid); color: var(--blue); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .phase-body { flex: 1; }
+    .phase-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+    .phase-desc { font-size: 14px; color: var(--mid); line-height: 1.55; }
+    .phase-tag { display: inline-block; background: var(--blue-light); border: 1px solid var(--blue-mid); color: var(--blue); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-top: 4px; }
+
+    /* ── CHALLENGE / RESOLUTION ── */
+    .cr-block { border-radius: 12px; overflow: hidden; margin: 24px 0; border: 1px solid var(--rule); }
+    .cr-challenge { background: #FFF7ED; border-left: 3px solid var(--gold); padding: 16px 20px; display: flex; gap: 12px; align-items: flex-start; }
+    .cr-resolution { background: var(--green-light); border-left: 3px solid var(--green); padding: 16px 20px; display: flex; gap: 12px; align-items: flex-start; border-top: 1px solid var(--rule); }
+    .cr-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 5px; }
+    .cr-challenge .cr-label { color: #92400E; }
+    .cr-resolution .cr-label { color: #065F46; }
+    .cr-text { font-size: 14px; line-height: 1.65; }
+    .cr-challenge .cr-text { color: #78350F; }
+    .cr-resolution .cr-text { color: #064E3B; }
+    .cr-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── KEY NUMBERS ── */
+    .key-numbers { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 28px 0; }
+    @media(max-width:600px){ .key-numbers { grid-template-columns: 1fr 1fr; } }
+    .kn-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 16px; text-align: center; }
+    .kn-num { font-family: var(--serif); font-size: 36px; font-weight: 700; color: var(--blue); line-height: 1; }
+    .kn-desc { font-size: 12px; color: var(--mid); margin-top: 6px; line-height: 1.45; }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote { border-left: 3px solid var(--blue); padding-left: 22px; margin: 28px 0; }
+    .pq-text { font-family: var(--serif); font-size: 19px; color: var(--ink); font-style: italic; line-height: 1.55; margin-bottom: 8px; }
+    .pq-source { font-size: 13px; color: var(--mid); }
+
+    /* ── GAMIFICATION CARDS ── */
+    .gami-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 24px 0; }
+    @media(max-width:640px){ .gami-grid { grid-template-columns: 1fr; } }
+    .gami-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; }
+    .gami-icon { font-size: 24px; margin-bottom: 10px; }
+    .gami-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .gami-text { font-size: 13px; color: var(--mid); line-height: 1.55; }
+
+    /* ── Q&A ── */
+    .qa-intro { font-size: 17px; font-weight: 300; color: var(--ink-2); line-height: 1.7; margin-bottom: 28px; }
+    .qa-group { margin-bottom: 36px; }
+    .qa-group-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+    .qa-item { border: 1px solid var(--rule); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+    .qa-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); gap: 14px; transition: background .2s; }
+    .qa-question:hover { background: var(--surface-2); }
+    .qa-q-text { font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.45; }
+    .qa-q-text::before { content: '🤔 '; }
+    .qa-arrow { font-size: 18px; color: var(--mid); flex-shrink: 0; transition: transform .3s; }
+    .qa-item.open .qa-arrow { transform: rotate(180deg); }
+    .qa-answer { display: none; padding: 20px; border-top: 1px solid var(--rule); background: #fff; }
+    .qa-item.open .qa-answer { display: block; }
+    .qa-answer-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .qa-answer-text { font-size: 15px; color: var(--ink-2); line-height: 1.75; }
+    .qa-answer-text p { margin-bottom: 12px; }
+    .qa-answer-text p:last-child { margin-bottom: 0; }
+    .qa-answer-text strong { color: var(--ink); font-weight: 600; }
+
+    /* ── CLOSE ── */
+    .close-band {
+      background: var(--dark);
+      background-image: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(37,99,235,0.15) 0%, transparent 60%);
+      padding: 56px 40px; text-align: center; margin-top: 72px;
+    }
+    .close-inner { max-width: 540px; margin: 0 auto; }
+    .close-title { font-family: var(--serif); font-size: clamp(22px,3vw,30px); font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .close-title em { color: #60A5FA; font-style: italic; font-weight: 400; }
+    .close-text { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAND -->
+<div class="top-band">
+  <div class="top-label">CS2 — Interview Prep</div>
+  <nav class="chapter-nav">
+    <a class="ch-btn active" href="#ch1">1<span>Brief</span></a>
+    <a class="ch-btn" href="#ch2">2<span>Discovery</span></a>
+    <a class="ch-btn" href="#ch3">3<span>Simulation</span></a>
+    <a class="ch-btn" href="#ch4">4<span>Gamification</span></a>
+    <a class="ch-btn" href="#ch5">5<span>Outcomes</span></a>
+    <a class="ch-btn" href="#chQ">Q<span>Q&amp;A</span></a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span>📋</span> Interview Preparation Guide</div>
+    <h1>Case Study 2 — <em>The Business Simulation</em></h1>
+    <p class="hero-sub">An eight-phase business simulation with live gamification — built from nothing — that replaced a fragmented management development programme with a rigorous, decision-driven leadership experience.</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-desc">Simulation phases —<br>each a real decision point</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">97%</div>
+        <div class="stat-desc">Post-programme readiness<br>confidence across all participants</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-desc">Source content at<br>project start</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-desc">Months from brief<br>to delivery</div>
+      </div>
+    </div>
+    <div class="how-to-box">
+      <div class="how-to-icon">💡</div>
+      <div class="how-to-text"><strong>How to use:</strong> Read top to bottom first. Use the nav to jump when rehearsing. Click any question or objection to reveal the answer — read, close, recall. That builds retention.</div>
+    </div>
+  </div>
 </section>
-<div class="closing-card"><h2>You know this story. <em>Now tell it.</em></h2><p>The best interview answer is not a recitation of facts &#8212; it is a coherent narrative that shows how you think. Rehearse this story out loud. Close the page. Tell it to yourself. Then come back and check what you missed.</p></div>
-</main>
+
+<div class="content">
+
+  <!-- CHAPTER 1: THE BRIEF -->
+  <section class="chapter" id="ch1">
+    <div class="ch-number">1 &nbsp; Where the story begins</div>
+    <h2 class="ch-title">Managers being asked to make senior decisions <em>without ever having practised them.</em></h2>
+    <p class="ch-intro">The client was a leading consumer goods organisation expanding rapidly into Southeast Asia. Mid-level managers needed to operate at business unit level — owning P&Ls, negotiating with CFOs, designing routes to market under real pressure.</p>
+
+    <p class="body-p">The problem was that most of them had never done any of those things. They had the potential. They had not had the experience. Classroom training had been tried. It produced knowledge — not capability. The organisation needed managers to actually experience the complexity of senior decision-making, not read about it.</p>
+
+    <p class="body-p">The brief that came to my team was straightforward in intent and daunting in scope: design a learning experience that gives mid-level managers the genuine feel of operating at business unit level — in a way that produces measurable behavioural change, generates data HR can act on, and works within a five-month delivery window.</p>
+
+    <div class="brain-box">
+      <div class="bb-icon">🧠</div>
+      <div>
+        <div class="bb-label">Remember This</div>
+        <div class="bb-text">"The organisation did not need training. It needed a practice environment — a space where managers could make senior decisions, experience real consequences, and develop the capability that only comes from repeated practice under pressure. That framing shaped every design decision that followed."</div>
+      </div>
+    </div>
+
+    <p class="body-p">Five constraints made this harder than a standard commission:</p>
+
+    <ul class="phase-list">
+      <li class="phase-item">
+        <div class="phase-num">①</div>
+        <div class="phase-body">
+          <div class="phase-title">Zero source content</div>
+          <div class="phase-desc">The client had a competency framework and a list of target behaviours. No case library, no process documentation, no existing training materials of any kind. The entire curriculum had to be built from scratch.</div>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">②</div>
+        <div class="phase-body">
+          <div class="phase-title">Dual purpose — development and assessment</div>
+          <div class="phase-desc">The programme had to function as a development experience and as an assessment. HR needed data they could actually use — not just participant satisfaction scores.</div>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">③</div>
+        <div class="phase-body">
+          <div class="phase-title">Fictionalised but credible business context</div>
+          <div class="phase-desc">Scenarios had to feel real enough to be challenging, but fictionalised to avoid competitive sensitivity. A fictional market had to carry real commercial weight.</div>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">④</div>
+        <div class="phase-body">
+          <div class="phase-title">Three-time-zone build team</div>
+          <div class="phase-desc">The development team was distributed across three time zones. Everything ran on tight asynchronous sprints with no margin for misalignment.</div>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">⑤</div>
+        <div class="phase-body">
+          <div class="phase-title">Multiple cohort types</div>
+          <div class="phase-desc">The programme had to serve first-time cohorts and re-deployment groups seeking an advanced-level challenge — without building two separate programmes.</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- CHAPTER 2: DISCOVERY -->
+  <section class="chapter" id="ch2">
+    <div class="ch-number">2 &nbsp; Building the content from scratch</div>
+    <h2 class="ch-title">Six SME workshops in three weeks. <em>Before a single screen was built.</em></h2>
+    <p class="ch-intro">With no documents to draw from, the entire curriculum had to be extracted from expert knowledge. I ran six intensive SME workshops over three weeks — working through each phase of the simulation in sequence, asking not just what decisions were made, but what the real trade-offs were and what happened when managers got them wrong.</p>
+
+    <p class="body-p">The workshops were structured around decision mapping — not content delivery. For each simulation phase, the key question was: what are the two or three decisions that determine whether this phase succeeds or fails, and what does the realistic wrong decision look like? That framing produced far richer content than asking SMEs to describe best practice.</p>
+
+    <div class="cr-block">
+      <div class="cr-challenge">
+        <div class="cr-icon">⚠️</div>
+        <div>
+          <div class="cr-label">Challenge — time zone and SME availability</div>
+          <div class="cr-text">SMEs were senior commercial leaders with unpredictable schedules. The build team operated across three time zones. Review cycles were at constant risk of delay, and any slip compressed the remaining build window.</div>
+        </div>
+      </div>
+      <div class="cr-resolution">
+        <div class="cr-icon">✅</div>
+        <div>
+          <div class="cr-label">Resolution</div>
+          <div class="cr-text">I introduced an asynchronous review protocol — structured templates with specific yes/no accuracy gates and a 48-hour response expectation. SMEs reviewed specific phases, not the full programme. This kept the project moving without requiring real-time availability from people who could not reliably provide it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="brain-box">
+      <div class="bb-icon">🧠</div>
+      <div>
+        <div class="bb-label">Remember This</div>
+        <div class="bb-text">"A working prototype of Phase 01 was built in week two — before any content was finalised — and shared with the client. That decision turned out to be the most important one of the project. It gave the client something real to react to, sparked the best content conversations of the entire engagement, and dramatically accelerated the SME sessions that followed."</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- CHAPTER 3: THE SIMULATION -->
+  <section class="chapter" id="ch3">
+    <div class="ch-number">3 &nbsp; The simulation design</div>
+    <h2 class="ch-title">Eight phases. Each one <em>a real leadership crucible.</em></h2>
+    <p class="ch-intro">The simulation placed participants inside a single coherent business scenario — taking a new consumer goods brand from market entry analysis through to full performance review. Every phase recreated a real leadership decision with real commercial consequences.</p>
+
+    <ul class="phase-list">
+      <li class="phase-item">
+        <div class="phase-num">01</div>
+        <div class="phase-body">
+          <div class="phase-title">Market Entry Analysis</div>
+          <div class="phase-desc">Teams analyse a $4.2B market opportunity, assess competitive dynamics, and make an entry recommendation against a 40-minute clock.</div>
+          <span class="phase-tag">Strategic Thinking</span>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">02</div>
+        <div class="phase-body">
+          <div class="phase-title">Competitive Intelligence</div>
+          <div class="phase-desc">Deep-dive into two dominant incumbents using curated market intelligence. Teams must identify exploitable gaps and build a differentiation thesis.</div>
+          <span class="phase-tag">Analytical Rigour</span>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">03</div>
+        <div class="phase-body">
+          <div class="phase-title">Financial Modelling</div>
+          <div class="phase-desc">Build a three-scenario P&amp;L, stress-test assumptions live, then defend the financial model in a Board Challenge with a sceptical CFO.</div>
+          <span class="phase-tag">Financial Acumen</span>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">04</div>
+        <div class="phase-body">
+          <div class="phase-title">Stakeholder Negotiation</div>
+          <div class="phase-desc">Reach alignment with four stakeholders — each with conflicting agendas and specific levers that must be discovered and deployed in real time.</div>
+          <span class="phase-tag">Influence &amp; Persuasion</span>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">05</div>
+        <div class="phase-body">
+          <div class="phase-title">Operations Design</div>
+          <div class="phase-desc">Design the supply chain, distribution architecture, and operating model for the new business unit within fixed cost and lead-time constraints.</div>
+          <span class="phase-tag">Operational Thinking</span>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">06</div>
+        <div class="phase-body">
+          <div class="phase-title">Risk &amp; Compliance</div>
+          <div class="phase-desc">Navigate three live regulatory scenarios — including an unexpected policy change mid-phase — while keeping the launch timeline intact.</div>
+          <span class="phase-tag">Risk Management</span>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">07</div>
+        <div class="phase-body">
+          <div class="phase-title">Go-to-Market Launch</div>
+          <div class="phase-desc">Execute market entry. Allocate budget across channels, respond to a competitive counter-move, and hit Q1 milestones under Board scrutiny.</div>
+          <span class="phase-tag">Commercial Execution</span>
+        </div>
+      </li>
+      <li class="phase-item">
+        <div class="phase-num">08</div>
+        <div class="phase-body">
+          <div class="phase-title">Performance Review</div>
+          <div class="phase-desc">Teams present full business unit performance to the Board, connecting every prior decision to the final P&amp;L outcome. Nothing is forgotten.</div>
+          <span class="phase-tag">Accountability &amp; Reflection</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="brain-box">
+      <div class="bb-icon">🧠</div>
+      <div>
+        <div class="bb-label">The critical design decision — decisions compound</div>
+        <div class="bb-text">"Unlike simulations that reset between modules, this one carries decisions forward. An aggressive market entry in Phase 01 creates tighter margins in Phase 03 and a harder CFO challenge in Phase 07. The compounding consequence architecture was the feature that made the simulation feel real — and the feedback that participants cited most often."</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- CHAPTER 4: GAMIFICATION -->
+  <section class="chapter" id="ch4">
+    <div class="ch-number">4 &nbsp; The gamification system</div>
+    <h2 class="ch-title">Gamification engineered to sustain intensity <em>across 32 hours of programme runtime.</em></h2>
+    <p class="ch-intro">Motivation in a multi-phase programme is not a given. Without deliberate design, engagement peaks early and fades. The gamification system was built to sustain competitive energy, reward the right behaviours, and create the psychological weight of genuine accountability at every stage.</p>
+
+    <div class="gami-grid">
+      <div class="gami-card">
+        <div class="gami-icon">🏆</div>
+        <div class="gami-title">Live team leaderboard</div>
+        <div class="gami-text">Four competing teams accumulate points across all eight phases. Rankings update in real time, creating genuine competitive tension that sharpens every decision.</div>
+      </div>
+      <div class="gami-card">
+        <div class="gami-icon">🏅</div>
+        <div class="gami-title">Achievement badge system</div>
+        <div class="gami-text">Six unlockable badges reward behaviours beyond correct answers — speed, collaboration, precision, and consistency — ensuring engagement at every level of capability.</div>
+      </div>
+      <div class="gami-card">
+        <div class="gami-icon">🔒</div>
+        <div class="gami-title">Summative assessment gates</div>
+        <div class="gami-text">Each phase locks until the assessment is cleared. Progression is earned, not assumed — creating the psychological weight of real-world accountability at every stage.</div>
+      </div>
+    </div>
+
+    <p class="body-p">The gamification design was instructionally grounded, not motivationally bolted on. Each element was tied to a learning outcome: the leaderboard rewarded decision quality under time pressure; the badge system surfaced behaviours that scoring alone could not capture; the assessment gates mirrored the real-world reality that a business unit leader does not move to the next decision until the current one is resolved.</p>
+
+    <div class="cr-block">
+      <div class="cr-challenge">
+        <div class="cr-icon">⚠️</div>
+        <div>
+          <div class="cr-label">Design risk — gamification that undermines learning</div>
+          <div class="cr-text">Leaderboards can shift focus from learning to winning. There was a risk that teams would game the scoring system rather than engage with the underlying commercial complexity.</div>
+        </div>
+      </div>
+      <div class="cr-resolution">
+        <div class="cr-icon">✅</div>
+        <div>
+          <div class="cr-label">Resolution</div>
+          <div class="cr-text">Points were awarded for decision rationale, not just correct answers. Teams had to justify their choices in structured format before the score was released. This meant that gaming the system required engaging with the content — which was the point.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- CHAPTER 5: OUTCOMES -->
+  <section class="chapter" id="ch5">
+    <div class="ch-number">5 &nbsp; What it achieved</div>
+    <h2 class="ch-title">Managers who arrived at the next level <em>already knowing how it felt.</em></h2>
+
+    <div class="key-numbers">
+      <div class="kn-card"><div class="kn-num">8</div><div class="kn-desc">Simulation phases, each a distinct leadership competency domain</div></div>
+      <div class="kn-card"><div class="kn-num">97%</div><div class="kn-desc">Post-programme readiness confidence across all participants</div></div>
+      <div class="kn-card"><div class="kn-num">0</div><div class="kn-desc">Source documents at project start — entire curriculum built from expert knowledge</div></div>
+      <div class="kn-card"><div class="kn-num">32hrs</div><div class="kn-desc">Total programme runtime sustained by the gamification system</div></div>
+      <div class="kn-card"><div class="kn-num">6</div><div class="kn-desc">SME workshops in three weeks to extract all curriculum content</div></div>
+      <div class="kn-card"><div class="kn-num">5</div><div class="kn-desc">Months from initial brief to full programme delivery</div></div>
+    </div>
+
+    <p class="body-p">The programme replaced a classroom-based management development course that had consistently produced positive feedback and negligible behavioural change. The simulation produced neither — it produced discomfort, pressure, mistakes, recovery, and the kind of capability that only comes from actually making decisions under consequence.</p>
+
+    <p class="body-p">HR had usable data for the first time. The scoring system, decision logs, and badge records gave talent leads a granular picture of where each manager was strong and where they needed further development — something no classroom programme had ever produced.</p>
+
+    <div class="pull-quote">
+      <div class="pq-text">"For the first time, our managers arrived at business unit roles already knowing what it felt like to make those decisions. The simulation removed the anxiety of the first real P&amp;L conversation because they had already had one."</div>
+      <div class="pq-source">— Commercial Capability Lead, Consumer Goods Organisation</div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- Q&A -->
+  <section class="chapter" id="chQ">
+    <div class="ch-number">Q &nbsp; Be ready for pushback</div>
+    <h2 class="ch-title">The tough questions. <em>Answer them with confidence.</em></h2>
+    <p class="qa-intro">Interviewers will probe your decisions and test whether you genuinely own this story. Here are the objections and questions you are most likely to face.</p>
+
+    <!-- GROUP 1 -->
+    <div class="qa-group">
+      <div class="qa-group-label">Approach &amp; Design</div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">Why a simulation instead of a standard case-study-based programme or leadership workshop?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>A workshop teaches frameworks. A case study teaches analysis. A simulation teaches decision-making under pressure — which is the actual capability the organisation needed to develop. The managers in this programme were being asked to own P&Ls, negotiate with CFOs, and design go-to-market strategies. None of those are knowledge tasks. They are performance tasks. And the only way to prepare for a performance task is to practise it.</p>
+            <p><strong>The additional design advantage:</strong> a simulation generates data. Decision logs, time-on-task, scoring patterns — these gave HR a granular picture of individual capability that no workshop or case study discussion could produce. That dual function — development and assessment — was built into the brief from the start, and the simulation format was the only one that could deliver both.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">You had zero source content and a five-month deadline. How do you defend the front-end investment in discovery?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>The six SME workshops over three weeks were not a luxury — they were a prerequisite. Without them, there was nothing to build. The client had a competency framework and a set of behaviours, not content. Every scenario, every stakeholder persona, every financial model, every decision node had to be extracted from the knowledge of people who had lived these decisions in the real business.</p>
+            <p>The more important design decision was building a Phase 01 prototype in week two — before the full content was agreed — and putting it in front of the client immediately. That prototype unlocked the best content conversations of the entire project. SMEs could react to something real rather than describe something abstract. It accelerated every review cycle that followed and was the single most effective thing I did to protect the timeline.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">How did you ensure the fictionalised business context carried enough credibility to be challenging?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>Credibility in a simulation comes from specificity, not from using real company names. The $4.2B market figure, the two named incumbent competitors, the three-scenario P&amp;L with specific margin targets, the CFO with a documented set of objections — these details made the scenario feel real because they forced the kind of thinking that real commercial decisions require.</p>
+            <p>The SME workshops were essential here. Every specific number and every stakeholder behaviour in the simulation was grounded in something an experienced commercial leader had actually encountered. The context was fictionalised. The decisions were not. That combination — safe to fail, but realistic enough to learn from — is the design sweet spot for this kind of programme.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP 2 -->
+    <div class="qa-group">
+      <div class="qa-group-label">Instructional Design</div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">What was the rationale for making decisions compound across phases?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>Real business decisions compound. A market entry choice creates constraints that persist for years. A stakeholder relationship managed poorly in one quarter affects what is possible in the next. If the simulation reset between phases, it would have taught managers to optimise each phase independently — which is precisely the wrong mental model for business unit leadership.</p>
+            <p><strong>The compounding architecture</strong> meant that every decision carried forward. An aggressive entry recommendation in Phase 01 created tighter margins in Phase 03 and a harder CFO challenge in Phase 07. Teams that had not thought strategically early paid for it repeatedly. That cascading consequence structure was the feature that participants cited most consistently as what made the experience feel genuinely challenging — and genuinely educational.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">How did you prevent the leaderboard from undermining the learning by turning it into a competition?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>This was a real design risk and one I took seriously. A leaderboard that rewards correct answers alone will produce teams that game the scoring logic rather than engage with the underlying complexity. The design solution was to award points for decision rationale, not just for decisions. Teams had to justify their choices in a structured format before the score was released.</p>
+            <p>This meant that gaming the system required actually engaging with the content — which was the point. The competitive energy the leaderboard created was real and valuable. The design challenge was ensuring it was directed at the quality of thinking rather than the mechanics of scoring. The badge system reinforced this further — rewarding collaboration, consistency, and speed-under-pressure in addition to correctness, so that the full range of leadership behaviours had explicit recognition in the scoring architecture.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">How did the SCORM architecture serve the programme's goals?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>Each phase was packaged as a separate SCORM module within a single coherent programme. That modular architecture served three purposes: it enabled granular LMS tracking at the phase level, so HR could see exactly where individual managers were struggling; it allowed re-deployment groups to return to specific phases for targeted reinforcement without repeating the full programme; and it created natural assessment gates — the LMS could enforce phase-locking based on completion and score thresholds.</p>
+            <p>The alternative — a single monolithic SCORM package — would have given LMS administrators a completion record and nothing else. The modular approach gave them a capability map. That distinction was important to a client whose stated purpose was to generate data HR could act on, not just programme completion records.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP 3 -->
+    <div class="qa-group">
+      <div class="qa-group-label">Your Role &amp; Ownership</div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">This is a complex project. What specifically did you personally own versus your team?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>I owned the overall design architecture — the decision to use a simulation format, the eight-phase structure and the competency mapping across phases, the compounding consequence mechanism, and the gamification design rationale. I personally led all six SME workshops, built the Phase 01 prototype that shaped the client relationship, and designed the assessment and scoring framework.</p>
+            <p>The team's contribution was in content development — building out the Storyline modules for Phases 02 through 08, creating the financial models and stakeholder personas, and managing the logistics of the asynchronous review protocol. My role was design-led and strategy-led. The team executed a design that was fully specified before they began building. The division was deliberate — it kept design intent coherent across eight phases built in parallel.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-question" onclick="toggle(this)">
+          <div class="qa-q-text">What would you do differently on a project like this?</div>
+          <div class="qa-arrow">▾</div>
+        </div>
+        <div class="qa-answer">
+          <div class="qa-answer-label">Your response</div>
+          <div class="qa-answer-text">
+            <p>Two things. First, I would build the Phase 01 prototype even earlier — ideally before the SME workshop series rather than during it. The prototype changed the quality of the client conversation so dramatically that I wish it had been available from the very first session. An early tangible artefact is the fastest way to align on direction when you are building from nothing.</p>
+            <p>Second, I would design a formal transfer measurement plan before delivery rather than after. We captured readiness confidence data and LMS performance data, but we did not have a structured plan for measuring on-the-job behaviour change at 60 and 90 days post-programme. The 97% readiness confidence figure is compelling. A before/after measure of the quality of commercial decisions in the field would have been more compelling still — and would have strengthened the business case for the next phase of the programme.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- CLOSE BAND -->
+<div class="close-band">
+  <div class="close-inner">
+    <div class="close-title">You know this story. <em>Now tell it.</em></div>
+    <p class="close-text">The best interview answer is not a recitation of facts — it is a coherent narrative that shows how you think. Rehearse this story out loud. Close the page. Tell it to yourself. Then come back and check what you missed.</p>
+  </div>
+</div>
+
 <script>
-function toggleQA(btn){const item=btn.closest('.qa-item');item.classList.toggle('open');}
-function toggleObj(btn){const item=btn.closest('.objection-item');item.classList.toggle('open');}
-const chs=document.querySelectorAll('.chapter'),nls=document.querySelectorAll('.progress-step');
-new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting){const id=en.target.id;nls.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+id)l.classList.add('active');});}});},{rootMargin:'-20% 0px -70% 0px'}).observe&&chs.forEach(c=>new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting){const id=en.target.id;nls.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+id)l.classList.add('active');})}})},{rootMargin:'-20% 0px -70% 0px'}).observe(c));
+  function toggle(el) {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.qa-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+  const chapters = document.querySelectorAll('.chapter');
+  const btns = document.querySelectorAll('.ch-btn');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(chapters).indexOf(e.target);
+        btns.forEach(b => b.classList.remove('active'));
+        if (btns[idx]) btns[idx].classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  chapters.forEach(c => observer.observe(c));
 </script>
-</body></html>
+
+</body>
+</html>
