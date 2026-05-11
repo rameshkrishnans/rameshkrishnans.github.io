@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>STAR Stories — Interview Preparation | Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest: #1e4a3a; --forest-mid: #2d6b52; --forest-light: #e8f2ed;
+  --gold: #a37c3b; --gold-light: #f5edd8; --gold-pale: #faf6ee;
+  --ink: #1c1c1a; --ink-mid: #3d3d38; --ink-light: #6b6b62;
+  --smoke: #f7f5f0; --border: #ddd9ce; --white: #ffffff;
+  --danger: #8b2e2e; --danger-light: #fdf0f0;
+  --blue: #2d4a6b; --blue-light: #e8eef5;
+  --green: #3d6b2d; --green-light: #eef5e8;
+  --radius: 10px; --shadow: 0 2px 16px rgba(30,74,58,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--smoke);color:var(--ink);line-height:1.7;font-size:16px;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 40px;height:56px;gap:32px;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;}
+.nav-brand span{color:var(--forest);} .nav-brand em{color:var(--gold);font-style:normal;}
+.nav-right{display:flex;gap:20px;margin-left:auto;align-items:center;}
+.nav-right a{font-size:0.78rem;color:var(--ink-light);text-decoration:none;}
+.nav-right a:hover{color:var(--forest);}
+
+/* ── CS NAV STRIP ── */
+.cs-nav{background:var(--forest);display:flex;overflow-x:auto;scrollbar-width:none;}
+.cs-nav::-webkit-scrollbar{display:none;}
+.cs-nav a{color:rgba(255,255,255,0.55);font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:11px 20px;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.1);transition:all 0.2s;display:flex;align-items:center;gap:7px;}
+.cs-nav a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.cs-nav .num{background:rgba(255,255,255,0.15);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:0.68rem;flex-shrink:0;}
+
+/* ── HERO ── */
+.hero{background:var(--forest);padding:64px 48px 52px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(163,124,59,0.12) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{max-width:860px;position:relative;}
+.hero-label{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.hero-label::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.6rem);font-weight:400;color:var(--white);line-height:1.15;margin-bottom:10px;}
+.hero h1 em{font-style:italic;color:#c9a96e;}
+.hero-sub{font-size:0.9rem;color:rgba(255,255,255,0.6);max-width:580px;line-height:1.65;margin-bottom:36px;}
+.hero-how{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:16px 20px;max-width:640px;font-size:0.82rem;color:rgba(255,255,255,0.75);line-height:1.65;}
+.hero-how strong{color:#c9a96e;display:block;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+
+/* ── TRACKER ── */
+.tracker-wrap{max-width:960px;margin:48px auto;padding:0 40px;}
+.tracker-wrap h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--ink);margin-bottom:16px;}
+.tracker{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.tracker thead th{background:var(--forest);color:var(--white);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:12px 16px;text-align:left;}
+.tracker tbody tr:nth-child(even){background:var(--smoke);}
+.tracker tbody tr:nth-child(odd){background:var(--white);}
+.tracker tbody td{padding:10px 16px;font-size:0.82rem;color:var(--ink-mid);border-bottom:1px solid var(--border);}
+.tracker tbody td:first-child{color:var(--forest);font-weight:600;}
+.tracker tbody a{color:var(--forest);text-decoration:none;font-weight:500;}
+.tracker tbody a:hover{text-decoration:underline;}
+
+/* ── MAIN ── */
+.main{max-width:960px;margin:0 auto;padding:0 40px 80px;}
+
+/* ── CASE STUDY BLOCK ── */
+.cs-block{scroll-margin-top:80px;padding:56px 0;border-bottom:1px solid var(--border);}
+.cs-block:last-child{border-bottom:none;}
+.cs-eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:8px;}
+.cs-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:var(--forest);line-height:1.2;margin-bottom:6px;}
+.cs-meta{font-size:0.8rem;color:var(--ink-light);margin-bottom:24px;}
+.cs-meta span{color:var(--ink-mid);font-weight:500;}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;box-shadow:var(--shadow);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--forest);line-height:1;}
+.stat-lbl{font-size:0.72rem;color:var(--ink-light);margin-top:4px;line-height:1.35;}
+
+/* trigger */
+.trigger-label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:8px;margin-top:24px;}
+.trigger{background:var(--smoke);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:14px 18px;font-size:0.9rem;font-style:italic;color:var(--ink);line-height:1.6;margin-bottom:28px;}
+
+/* STAR */
+.star-section{margin-bottom:8px;}
+.star-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;margin-top:20px;}
+.star-badge{width:32px;height:32px;border-radius:8px;font-size:0.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.star-s{background:var(--forest-light);color:var(--forest);}
+.star-t{background:var(--blue-light);color:var(--blue);}
+.star-a{background:var(--gold-light);color:var(--gold);}
+.star-r{background:var(--green-light);color:var(--green);}
+.star-label-text{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+.s-label{color:var(--forest);} .t-label{color:var(--blue);} .a-label{color:var(--gold);} .r-label{color:var(--green);}
+.star-content{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;font-size:0.875rem;color:var(--ink-mid);line-height:1.8;box-shadow:var(--shadow);}
+
+/* remember */
+.remember{background:var(--forest);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:24px 0;display:flex;gap:12px;align-items:flex-start;}
+.remember-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
+.remember-body{font-size:0.875rem;color:rgba(255,255,255,0.88);line-height:1.7;font-style:italic;}
+.remember-body strong{color:#c9a96e;display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;font-style:normal;margin-bottom:4px;}
+
+/* tough Q&A */
+.qa-heading{font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-light);margin:28px 0 12px;}
+.qa-list{display:flex;flex-direction:column;gap:10px;}
+.qa-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.qa-q{width:100%;background:var(--white);border:none;padding:14px 18px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;transition:background 0.2s;}
+.qa-q:hover{background:var(--smoke);}
+.qa-q-text{font-size:0.85rem;font-weight:500;color:var(--ink);line-height:1.5;}
+.qa-icon{color:var(--gold);font-size:0.9rem;flex-shrink:0;transition:transform 0.25s;}
+.qa-a{display:none;padding:14px 18px;background:var(--gold-pale);border-top:1px solid var(--border);font-size:0.85rem;color:var(--ink-mid);line-height:1.75;}
+.qa-card.open .qa-a{display:block;}
+.qa-card.open .qa-icon{transform:rotate(180deg);}
+
+/* section heading */
+.section-h{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--ink);margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+
+/* footer */
+footer{background:var(--forest);color:rgba(255,255,255,0.6);text-align:center;padding:28px 40px;font-size:0.78rem;}
+footer a{color:#c9a96e;text-decoration:none;}
+footer strong{color:var(--white);}
+
+/* mobile */
+@media(max-width:640px){
+  nav,hero,tracker-wrap,.main{padding-left:20px;padding-right:20px;}
+  .hero{padding:48px 20px 40px;}
+  .tracker-wrap{padding:0 20px;}
+  .main{padding:0 20px 60px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/">Learning <span>Matters</span><em>.</em></a>
+  <div class="nav-right">
+    <a href="/">← Portfolio</a>
+  </div>
+</nav>
+
+<!-- CS NAV STRIP -->
+<div class="cs-nav">
+  <a href="#cs1"><span class="num">1</span>ID Function</a>
+  <a href="#cs2"><span class="num">2</span>FMCG Sim</a>
+  <a href="#cs3"><span class="num">3</span>DEI / ILT</a>
+  <a href="#cs4"><span class="num">4</span>HEART vILT</a>
+  <a href="#cs5"><span class="num">5</span>Competency</a>
+  <a href="#cs6"><span class="num">6</span>Gamified IPC</a>
+  <a href="#cs7"><span class="num">7</span>ERP Training</a>
+  <a href="#cs8"><span class="num">8</span>AI-Curated</a>
+  <a href="#cs9"><span class="num">9</span>Pharma VA</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Interview Preparation</p>
+    <h1>STAR Stories<br><em>Nine Case Studies</em></h1>
+    <p class="hero-sub">Lead Instructional Designer · Senior IC & Lead/Manager tracks · Built for sprint preparation</p>
+    <div class="hero-how">
+      <strong>How to use this page</strong>
+      Read the STAR answer once. Close the page. Tell the story out loud. Return and check what you missed. Click the tough questions to reveal model responses — rehearse until you can answer without reading. In all nine stories you are the Lead ID — use "I" for decisions; "my team" or "we" for execution.
+    </div>
+  </div>
+</section>
+
+<!-- TRACKER -->
+<div class="tracker-wrap">
+  <h2>Case study tracker</h2>
+  <table class="tracker">
+    <thead>
+      <tr><th>#</th><th>Project</th><th>Sector</th><th>Primary interview angle</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="#cs1">CS1</a></td><td>ID Function Design</td><td>L&D Consultancy</td><td>Systems-level ID thinking</td></tr>
+      <tr><td><a href="#cs2">CS2</a></td><td>FMCG Business Simulation</td><td>Consumer Goods / FMCG</td><td>Building from zero — complexity by design</td></tr>
+      <tr><td><a href="#cs3">CS3</a></td><td>DEI Programme</td><td>Cross-industry</td><td>Behaviour change by design</td></tr>
+      <tr><td><a href="#cs4">CS4</a></td><td>HEART Virtual ILT</td><td>Non-profit / Dev sector</td><td>Virtual engagement architecture</td></tr>
+      <tr><td><a href="#cs5">CS5</a></td><td>Competency Architecture</td><td>Automotive Manufacturing</td><td>Complex learning systems at scale</td></tr>
+      <tr><td><a href="#cs6">CS6</a></td><td>Gamified IPC Assessment</td><td>Healthcare</td><td>Gamification as instructional mechanism</td></tr>
+      <tr><td><a href="#cs7">CS7</a></td><td>ERP Application Training</td><td>Financial Services</td><td>Reframing the real problem</td></tr>
+      <tr><td><a href="#cs8">CS8</a></td><td>AI-Curated Learning</td><td>Humanitarian</td><td>Beyond the course — live knowledge</td></tr>
+      <tr><td><a href="#cs9">CS9</a></td><td>Pharma Virtual Assistant</td><td>Life Sciences</td><td>Performance support over training</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ═══════════ CS1 ═══════════ -->
+<div class="cs-block" id="cs1">
+  <p class="cs-eyebrow">Case Study 01 · Corporate L&D / Learning Consultancy</p>
+  <h2 class="cs-title">Building the ID Function from Scratch</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — framework, assessments, and training design</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">60</div><div class="stat-lbl">New IDs trained in year one</div></div>
+    <div class="stat-card"><div class="stat-num">4</div><div class="stat-lbl">ILT cohorts delivered</div></div>
+    <div class="stat-card"><div class="stat-num">25 days</div><div class="stat-lbl">Per new hire programme</div></div>
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Seniority levels defined</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about a time you identified a systemic problem and designed a solution that went beyond a single training programme."</div>
+
+  <p class="section-h">Your STAR answer</p>
+
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">A learning and development consultancy was facing an existential talent crisis. The external ID market had tightened sharply — qualified instructional designers were scarce and expensive. Internally, attrition had accelerated, with experienced IDs leaving not for better pay but for clearer career paths and structured development the organisation couldn't yet offer. The brief was deceptively simple to state and enormous in scope.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I was commissioned to build the entire infrastructure to hire, train, and develop instructional designers from scratch — with no existing competency standard, no formal onboarding process, and a team already under attrition pressure. I led a small team of IDs through four interdependent workstreams that had to function as a coherent system.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I structured the solution in four phases. First, I led the design of a competency framework built from the ground up with senior stakeholders and practising IDs — not imported from a generic model, but shaped by the organisation's actual project demands. It covered five domains across three seniority levels, with every competency written as an observable behaviour a manager could see and a programme could teach. Second, my team designed a structured hiring assessment system in three tiers — one per role level — replacing unstructured interviews with evidence-based design challenges. I also ran calibration sessions with hiring managers to make the rubric usable rather than decorative. Third, I designed a 25-day facilitator-led ILT programme for new hires with no prior ID experience, capped at 15 participants per cohort, with every session producing a practical deliverable. A 90-day mentoring period followed each cohort. Fourth, I built a rolling microlearning library for practising IDs — 15-minute modules driven by a competency gap register from project quality reviews, not a generic curriculum.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">Within twelve months the organisation trained and deployed 60 new instructional designers across four cohorts. The competency framework gave hiring managers a consistent, defensible standard — reducing mis-hires and shortening time to productive deployment. Senior IDs reported spending significantly less time correcting junior work. Most significantly, the organisation expanded into major new markets — not because the talent market changed, but because it had built the infrastructure to produce its own talent.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"The brief was not about one training programme. It was about building the function that makes all other programmes possible."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 This feels more like an HR project than an ID project. Why is it in your portfolio?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Instructional design is the practice of designing experiences that change what people know, do, or believe. This project did exactly that — the subject matter was instructional design itself, and the audience was instructional designers. The competency framework, the hiring assessments, the five-week programme, the microlearning library — all of these are instructional design artefacts. What makes this worth highlighting is that it required applying ID principles at a systems level rather than just building a single course.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 How do you manage a four-workstream project while keeping quality consistent?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">The competency framework was the management mechanism. Every downstream artefact — the assessments, the training content, the microlearning modules — was anchored to the same framework. That structural coherence meant my team weren't making isolated decisions; we were all building from the same foundation. I also held a strict design principle for the training programme: every session had to produce a practical deliverable. Theory that couldn't be immediately applied was deferred or removed.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS2 ═══════════ -->
+<div class="cs-block" id="cs2">
+  <p class="cs-eyebrow">Case Study 02 · Consumer Goods / FMCG</p>
+  <h2 class="cs-title">From a Blank Slate to a Fully Simulated Business Challenge</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — simulation design, gamification architecture, and team delivery across three time zones</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">8</div><div class="stat-lbl">Simulation phases</div></div>
+    <div class="stat-card"><div class="stat-num">97%</div><div class="stat-lbl">Post-programme readiness confidence</div></div>
+    <div class="stat-card"><div class="stat-num">0</div><div class="stat-lbl">Source content at project start</div></div>
+    <div class="stat-card"><div class="stat-num">5 months</div><div class="stat-lbl">To full delivery</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about the most complex learning experience you have ever designed from scratch — and how you managed it."</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">A leading consumer goods organisation was expanding rapidly into Southeast Asia and needed mid-level managers ready to operate at business unit level. Most had never owned a P&L, negotiated with a CFO, or designed a route-to-market under real pressure. Classroom training had been tried — it produced knowledge, not capability. The brief was to replace a fragmented management development programme with something that made managers actually experience the complexity of senior decision-making, not read about it. There was no source content — just a high-level competency framework and a list of behaviours the organisation wanted to see.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I designed and delivered an eight-phase business simulation entirely from scratch in five months, leading a team spread across three time zones. The programme had to function simultaneously as a development experience and an assessment tool — generating data HR could actually use. The fictional business context had to feel real enough to be genuinely challenging while avoiding any competitive sensitivity.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I built the simulation around one core design principle: decisions compound, consequences cascade. Unlike simulations that reset between modules, every decision a participant made carried forward — an aggressive market entry in Phase 1 created tighter margins in Phase 3 and a harder CFO challenge in Phase 7. This meant the instructional architecture had to be designed end-to-end as a single coherent system before a single screen was built. I mapped all eight phases — Market Entry Analysis, Competitive Intelligence, Financial Modelling, Stakeholder Negotiation, Operations Design, Risk and Compliance, Go-to-Market Launch, and Performance Review — and identified every decision point where prior choices would affect future options. I designed a live team leaderboard and a six-badge achievement system to sustain competitive energy across 32 hours of runtime — with badges rewarding behaviours beyond correct answers: speed, collaboration, precision, consistency. Each phase was gated by a summative assessment, building the modular SCORM architecture to enable phase-by-phase deployment. Since the build team ran across three time zones, I structured the entire production pipeline on tight asynchronous sprints with clear handover protocols and a unified review template. The programme was also designed to serve re-deployment cohorts at an advanced level — the same simulation, harder parameters.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">97% post-programme readiness confidence across all participants. Managers who had never defended a P&L to a board were doing so by Phase 3 — and doing it under genuine time pressure with real competitive stakes from the leaderboard. The programme was re-deployed with advanced parameters for experienced cohorts, generating a second cycle of development value from the same architecture. The gamification system sustained engagement at full intensity across 32 hours of programme runtime.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"Managers don't develop capability by reading about complexity. They develop it by living inside it — where every decision they make becomes the context for the next one."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 You had zero source content. How did you build the curriculum?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Zero source content meant the curriculum had to come from two places: the competency framework the client provided, and structured discovery conversations with senior leaders and subject matter experts. I worked backwards from the eight behaviours the client wanted to see — strategic thinking, financial acumen, influence, operational rigour, risk management, commercial execution, accountability — and designed each simulation phase to make participants exercise exactly that behaviour under pressure. The business scenario was fictionalised but built from real market dynamics the client's own leaders recognised. The discovery conversations gave the scenarios their realism.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why gamification across a 32-hour programme? Isn't that a gimmick?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Gamification over 32 hours is not a gimmick — it is a management problem. Sustained engagement across multi-day programmes degrades without a structural mechanism to maintain competitive tension. The leaderboard did that. The badge system rewarded behaviours the leaderboard alone couldn't capture — like collaboration and consistency — ensuring participants who weren't leading on points still had something meaningful to compete for. Both mechanisms were instructionally grounded: the competitive pressure of the leaderboard was exactly the kind of pressure managers would face in a real business unit review.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS3 ═══════════ -->
+<div class="cs-block" id="cs3">
+  <p class="cs-eyebrow">Case Study 03 · Cross-industry / Corporate</p>
+  <h2 class="cs-title">The DEI Programme — Behaviour Change by Design</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — programme architecture, activities, and facilitator materials</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">3.5 hrs</div><div class="stat-lbl">Half-day ILT programme</div></div>
+    <div class="stat-card"><div class="stat-num">5</div><div class="stat-lbl">Modules, each activity-led</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Left with one named commitment</div></div>
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Industry sectors piloted</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about a time you had to design training that changed actual behaviour, not just attitudes or awareness."</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">The client had already run DEI awareness training. They could measure attitude shifts — but couldn't point to any change in how people behaved in meetings, in hiring decisions, or in everyday workplace interactions. The brief came with unusual self-awareness: awareness wasn't the problem. Practice was. They needed something different.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I was commissioned to design a half-day ILT programme that moved beyond awareness — placing participants inside real inclusion challenges, requiring them to respond, reflect, and commit to a specific behaviour change. The programme had to work for both supportive and resistant participants, and could not alienate anyone in the room.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I built the programme around one design principle: experience before explanation. No framework was introduced until participants had been placed inside a situation that made them feel the gap it addressed. My team developed five modules in sequence: an exclusion simulation that made the stakes personal before any statistics were shown; a card game that surfaced unconscious bias through participants' own choices — not accusation; role-play pairs practising the specific language of inclusion; small group policy analysis through an inclusion lens; and a personal commitment structure. The card game was the key design insight: bias is exposed through the participant's own card rankings rather than being told they are biased. The insight is self-generated, so the defensiveness dissolves. The programme closed with a commitment card that required each participant to name one specific behaviour, the context in which they'd practise it, and an accountability partner — aloud, in the room. Public commitment was deliberate: research on behaviour change consistently shows social accountability dramatically increases follow-through.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">Every participant left with one named, specific behaviour change and a named accountability partner. A follow-up at 4 weeks and 90 days tracked whether participants had applied their commitment in a real situation. The accountability partner structure made self-reporting more honest. The card game was cited by participants as the most memorable and effective element — the moment the session became genuinely personal rather than generic.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"You cannot argue someone into inclusion. You can give them an experience that makes exclusion feel real."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why ILT? Couldn't you reach more people with self-paced eLearning?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">DEI learning is fundamentally social. The most important learning in this programme happens in the room — when participants see how others respond to the same situation differently, when a peer's card selection reveals an assumption the whole table shares, when someone names their commitment and has to look a colleague in the eye. None of that is replicable in self-paced eLearning. Self-paced eLearning can deliver DEI information. It cannot deliver the interpersonal experience that produces behaviour change. The brief was specifically for something information-delivery had failed to achieve.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 How do you measure behaviour change from a half-day programme?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Through a structured 90-day follow-up — participants completed a check-in at 4 weeks and 90 days, reporting on their specific commitment and whether they had applied it. The accountability partner structure made this self-reporting more honest — participants knew their partner could verify their account. The honest caveat: a half-day programme cannot produce deep cultural change. What it can produce is one specific, observable behaviour change per participant. Multiply that by the number of participants, and you have meaningful cultural movement over time.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS4 ═══════════ -->
+<div class="cs-block" id="cs4">
+  <p class="cs-eyebrow">Case Study 04 · Non-profit / International Development</p>
+  <h2 class="cs-title">The HEART Programme — Virtual ILT on Zoom</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — framework design, virtual delivery architecture, facilitator materials</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">3.5 hrs</div><div class="stat-lbl">Half-day on Zoom</div></div>
+    <div class="stat-card"><div class="stat-num">78%</div><div class="stat-lbl">Applied HEART within 4 weeks</div></div>
+    <div class="stat-card"><div class="stat-num">5</div><div class="stat-lbl">Zoom engagement tools used</div></div>
+    <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Deployable programme assets</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about a time you designed a virtual training programme where engagement was a genuine challenge."</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">A large international organisation's donor and stakeholder feedback showed a persistent pattern: service interactions were technically adequate but emotionally flat. Staff responded promptly and accurately but failed to acknowledge the emotional context of difficult calls. Donors felt processed, not heard. Long-term supporters were quietly disengaging. The organisation had tried awareness content — policy documents, onboarding modules, generic eLearning — but nothing that changed behaviour. The training existed. The gap remained.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I was briefed to design a half-day virtual programme that built real behavioural fluency — not awareness — and that worked on Zoom, where distraction is constant and passive listening is the default. I was responsible for the instructional framework, the engagement architecture, and leading my team through the three-programme-asset build.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I designed the HEART framework — five consistent service orientations — to be memorable under pressure rather than a script. But the sequencing decision was more important than the framework itself: I introduced HEART experientially, asking participants to practise the behaviours in pairs before the acronym was revealed. By the time they learned the framework name, they recognised it as a label for something they had already done. That reversal made HEART feel like articulation of natural behaviour rather than an imposed checklist. For virtual engagement, I built a scheduled interaction point within every 10 minutes of content — Zoom polls before teaching, a chat waterfall technique, structured breakout rooms, role-play pairs, and a commitment card naming one behaviour and one accountability partner aloud. My team delivered three assets: a 15-slide vILT slide deck with facilitator cues, a full facilitator guide with exact Zoom management instructions, and a participant guide for post-session use.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">78% of participants applied at least one HEART step in a real service interaction within four weeks — verified through observation data. The accountability partner structure was cited as the highest-impact element influencing post-session follow-through. The Facilitator Guide was adopted without modification for subsequent cohorts, enabling internal facilitators to run the programme independently. The chat waterfall technique was adopted across the organisation's broader learning calendar.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"The client had already tried awareness training. The brief was for behavioural fluency — the ability to apply a framework automatically, under pressure, in the real moment of a difficult call."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why virtual ILT rather than self-paced eLearning?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">The specific behaviour this programme targeted — recognising and responding to emotional cues in real-time service interactions — cannot be developed through self-paced eLearning. It requires rehearsal under social pressure with real-time feedback and the cognitive load of a live interaction. Zoom ILT, when designed properly, creates those conditions. Self-paced eLearning cannot. The cost argument also requires a fuller accounting: the Facilitator Guide means internal facilitators can run future cohorts at near-zero additional cost. A well-designed live programme is often more cost-effective over time than repeated licensing.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 What was the instructional rationale for the chat waterfall?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">The chat waterfall solves a fundamental virtual learning problem: in standard Zoom chat, participants wait to see what others say before committing. The most automatic — and therefore most revealing — responses get suppressed. By requiring everyone to write and hold until the cue, the waterfall captures first-instinct thinking, which is exactly what happens in a real service interaction under pressure. It is simultaneously a learning tool and a diagnostic.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS5 ═══════════ -->
+<div class="cs-block" id="cs5">
+  <p class="cs-eyebrow">Case Study 05 · Automotive Manufacturing / South Asia</p>
+  <h2 class="cs-title">The Competency Architecture — Automotive Manufacturing</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — competency design, LMS architecture, blended learning pathways</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">42</div><div class="stat-lbl">Unique learning pathways</div></div>
+    <div class="stat-card"><div class="stat-num">8</div><div class="stat-lbl">Job roles mapped</div></div>
+    <div class="stat-card"><div class="stat-num">6</div><div class="stat-lbl">Learning modalities</div></div>
+    <div class="stat-card"><div class="stat-num">96%</div><div class="stat-lbl">Pathway completion rate</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about the most complex learning architecture you have ever designed. How did you manage the scale?"</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">A global automotive manufacturer's South Asia plant was scaling rapidly — expanding production capacity, onboarding a new vendor network, and evolving its quality standards. But growth had outpaced the ability to develop the workforce systematically. Training existed, but it was fragmented. New employees received different onboarding experiences depending on who they reported to. External vendors had no formal learning baseline at all. Skill gaps were managed reactively — problems surfaced on the production floor, not in a training room.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I was commissioned to build a competency framework and LMS architecture that could serve three distinct learner groups — internal production employees, supervisors and managers, and external vendors — through a single platform, with role-specific, competency-mapped, trackable pathways. I led the full eight-month engagement, from discovery workshops to deployment.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I began with structured workshops with department heads, production managers, and HR leadership — asking not just what people needed to know, but what they needed to do differently to make the operation safer, faster, and more quality-consistent. The framework I designed had three tiers: foundational competencies shared across all roles, functional competencies for each role family, and leadership competencies for supervisors. Each competency was written with observable behavioural indicators at three proficiency levels. I made a deliberate choice to build the framework with managers rather than present it to them — which shifted ownership from HR to the people who would actually use it. For the learning pathways, I led my team in designing six modalities — eLearning for compliance content, on-the-job learning guides for production floor application, video demonstrations watchable on a tablet, facilitated workshops for interpersonal competencies, structured mentoring assignments, and both automated and manager-observed assessments. Vendors accessed a subset of the LMS through a separate login tier with shared completion visibility. The 42 pathways were manageable because the competency framework was the architecture: every pathway was a variation on a consistent template, not a unique build from scratch.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">96% pathway completion rate in the first rollout cycle across all learner groups. The competency framework gave managers a shared language for development conversations — one that replaced the previous situation where every manager had a different idea of what good looked like. The vendor access tier with shared completion data was a first for the organisation. Eight months from discovery to full LMS deployment across two manufacturing sites and the vendor network.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"The instinct when facing this kind of scale is to simplify. The discipline is to simplify in the right places — and maintain complexity where it serves the learner."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 42 pathways sounds unmanageable. How did you control scope?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">The competency framework was the management mechanism. Because every pathway was built from the same underlying architecture — consistent structure, modality mapping, and assessment criteria — the 42 pathways were variations on a template, not 42 unique builds from scratch. Every pathway went through the same four-stage process: competency mapping, content identification, modality assignment, LMS configuration. Consistency in process meant consistency in output.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why build a competency framework at all? Why not just run a needs analysis and build the courses?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Training needs analysis tells you what people don't know. A competency framework tells you what people need to be able to do — and at what level. For a client with 42 roles and a vendor network, building courses without a framework would have produced duplication, inconsistency, and no way to measure whether training was actually closing the performance gap. The framework was the measurement instrument. Without it, the training had no performance accountability.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS6 ═══════════ -->
+<div class="cs-block" id="cs6">
+  <p class="cs-eyebrow">Case Study 06 · Healthcare / Clinical Compliance</p>
+  <h2 class="cs-title">Six Wards. Zero Room for Error. — Gamified IPC Assessment</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — game design, Storyline build, clinical content review coordination</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">91%</div><div class="stat-lbl">Perfect score rate</div></div>
+    <div class="stat-card"><div class="stat-num">6</div><div class="stat-lbl">Clinical ward environments</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Genuine completion rate</div></div>
+    <div class="stat-card"><div class="stat-num">58%→91%</div><div class="stat-lbl">Score improvement vs prior version</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about a time you used gamification not as decoration, but as a genuine instructional mechanism."</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">A healthcare organisation had identified a troubling gap: staff who passed the mandatory IPC assessment were still making the errors the test was designed to prevent. The assessment looked compliant. The behaviour didn't follow. The previous version had produced only a 58% compliance-level performance rate. The problem wasn't knowledge — it was the absence of consequence in the assessment environment. When nothing matters in a test, nothing changes in practice.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I was briefed to create an IPC assessment that felt real — where decisions carried weight, errors had visible consequences, and the experience was close enough to clinical reality to change how staff thought and acted on the ward. I led the full build in Articulate Storyline 360, including the game mechanic design, the scenario writing, and coordinating the clinical accuracy review.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I designed a Care Credits mechanic — a cumulative consequence system that tracked across all six wards and was visible on screen throughout the assessment. Every correct IPC decision maintained Credits; every incorrect decision cost them. The mechanic created cumulative jeopardy: a learner who depleted Credits early found later wards genuinely harder, mirroring the clinical reality that IPC failures compound. I worked with an IPC clinical specialist to calibrate the Credit values based on the clinical severity of each error, and to ensure every distractor was a real error that real staff make — plausible enough to catch vague understanding, but not so close to correct practice that it could reinforce incorrect behaviour. All distractors went through a formal clinical sign-off gate before inclusion. The six ward environments were built as photographic backdrops with animated characters. Learners who failed Ward 6 received targeted remediation pointing to the specific wards where their errors occurred, not a requirement to repeat the entire assessment.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">91% perfect score rate across all six wards — compared to 58% on the prior version. 100% genuine completion rate, with no skip-through behaviour. The Care Credits mechanic created investment in the outcome rather than the administrative compliance that characterised the previous tool. The client adopted the targeted remediation approach for all subsequent compliance assessments.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"The insight was simple: if you want someone to behave differently in high-stakes reality, give them a high-stakes experience in a safe environment. The gamification was not the point. The consequence was the point."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why gamification for a clinical compliance topic? Isn't this too serious for game mechanics?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">The premise that seriousness requires a serious format is false. The most serious patient safety topics deserve the most effective interventions — not the most earnest-looking ones. The previous assessment was very serious in appearance and produced 58% compliance-level performance. The gamified version — treating the learner as a capable clinical professional navigating real consequences — produced 91%. The Care Credits mechanic was not trivialisation. It was a patient safety consequence in game form. Losing Credits meant a patient couldn't go home. That emotional weight was far greater than a red screen saying 'incorrect.'</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 How do you ensure a gamified experience transfers to real ward behaviour?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Through the specificity of the scenarios. Every ward situation was drawn from actual IPC failure patterns documented in clinical incident reports — not invented situations but reconstructed versions of real problems. When a learner encounters a situation on the assessment that mirrors something they've seen on the ward, the recognition triggers the transfer. That recognition is the mechanism — not the game.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS7 ═══════════ -->
+<div class="cs-block" id="cs7">
+  <p class="cs-eyebrow">Case Study 07 · Financial Services / Operations</p>
+  <h2 class="cs-title">From Manual to Mastery — ERP Application Training</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — leading a team of 10 IDs through design, build, and delivery</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">400+</div><div class="stat-lbl">Users certified pre-go-live</div></div>
+    <div class="stat-card"><div class="stat-num">96%</div><div class="stat-lbl">First-attempt pass rate</div></div>
+    <div class="stat-card"><div class="stat-num">62%</div><div class="stat-lbl">Fewer support desk queries</div></div>
+    <div class="stat-card"><div class="stat-num">4 months</div><div class="stat-lbl">Design to delivery</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about a time you identified that the real problem wasn't what the client thought it was."</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">A financial services organisation had just completed a major ERP implementation — replacing three legacy systems simultaneously. The go-live date was fixed and immovable. When I came on board as Lead ID, there were 400 users across four locations and two countries who had never seen the system, and the training programme — which should have started six weeks earlier — was still unbuilt. I led a team of ten instructional designers through the full build.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">My responsibility was to design and deliver six bespoke role-based pathways for finance teams, operations managers, and front-line processing staff — and to produce a readiness dashboard that would give senior leadership the evidence they needed to approve go-live. Every pathway had to be completed and assessed before go-live day.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">Before a single screen was built, I led a content and capability audit. I reviewed 340 pages of vendor documentation and found that only about 12% was instructionally usable — the rest was configuration and IT reference material. More critically, I ran structured interviews with 18 SMEs across the six user groups. What those conversations revealed changed the entire design strategy: the errors users were most likely to make weren't about understanding the system — they were about not understanding the underlying business process the system was built to support. I restructured the entire programme around that insight: teach the process first, then the system. I also applied a must-know / need-to-know / nice-to-know filter to every task, cutting scope by 38% and making four-month delivery genuinely achievable. I then directed my team of ten through a four-layer architecture — produced video explainers, Show Me guided demonstrations, Try Me simulations with three levels of support, and scenario-based assessments drawing directly from the real error patterns the SME interviews had surfaced. When the vendor made interface changes mid-project, I introduced a screen freeze policy and a rapid-rebuild workflow — a changed Show Me could be rebuilt within 48 hours of a confirmed screen update.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">100% of 400+ users completed their pathway before go-live. 96% first-attempt pass rate across all six pathways. 62% fewer support desk queries in the first 30 days compared to equivalent prior system rollouts. The go-live itself was clean — no significant user errors attributed to training gaps. It was the first major system rollout in the organisation's history to achieve 100% pre-go-live training completion.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"The system is the tool. The business process is the task. If users don't understand the task, no amount of system training will produce the right behaviour."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why 42 produced videos? Couldn't screen recordings be faster and cheaper?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Screen recordings show what the system does. Produced videos explain why the system does what it does — and why the underlying business process demands it. A screen recording of a finance approval workflow shows the clicks. A produced video explains what an approval authorises, what happens if it's skipped, and how it connects to the payment run. That context is what makes the subsequent Show Me meaningful rather than mechanical. We also built a modular animation component library and a pre-approved script template — a video could go from first-draft script to finished output in five working days. That pace made 42 videos viable within four months.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 What is the instructional difference between a Show Me and a Try Me?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">A Show Me is a guided demonstration — the learner watches, reads, and listens. It builds a mental model of the workflow. A Try Me is guided practice — the learner completes the same task independently, with support available at three levels. The Show Me builds the schema. The Try Me tests and consolidates it. A Show Me without a Try Me produces recognition without production. A Try Me without a Show Me produces trial-and-error without a mental model to anchor to.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS8 ═══════════ -->
+<div class="cs-block" id="cs8">
+  <p class="cs-eyebrow">Case Study 08 · Humanitarian / International Development</p>
+  <h2 class="cs-title">The Learning That Never Stops — AI-Curated Humanitarian eLearning</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — LXP architecture, Storyline modules, xAPI integration</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">89%</div><div class="stat-lbl">Voluntary Degreed engagement</div></div>
+    <div class="stat-card"><div class="stat-num">340+</div><div class="stat-lbl">External resources per learner</div></div>
+    <div class="stat-card"><div class="stat-num">4×</div><div class="stat-lbl">Increase in total learning time</div></div>
+    <div class="stat-card"><div class="stat-num">3 months</div><div class="stat-lbl">To full deployment</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about a time you designed a learning solution that fundamentally changed the relationship between learners and learning."</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">An international humanitarian organisation deployed frontline staff across conflict zones, displacement corridors, and communities affected by trafficking. Their existing eLearning was a set of fixed modules, updated annually at best. By the time a new staff member completed it, landmark reports had been published, practice guidance had evolved, and the crisis situations referenced had moved on. The course was always, to some degree, already out of date — and it created a dangerous false sense of completeness.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I was commissioned to design a solution that held structured foundational learning alongside a live, constantly updated window into the field as it actually existed. The solution had to function on low-bandwidth connections across 28 countries, serve experienced professionals who would disengage from generic content instantly, and maintain full compliance tracking for mandatory completions.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I designed a two-layer architecture: six Storyline core modules delivering foundational frameworks, paired with Degreed LXP delivering live, AI-curated knowledge from the open web. I connected the two environments via xAPI — so both mandatory Storyline completions and voluntary Degreed engagement fed into a unified Learning Record Store, giving the organisation a single view of compliance and genuine learning behaviour. I configured the Degreed AI engine with a trusted source taxonomy — UN agency publications, major humanitarian journals, established NGO research outputs, reputable international journalism — so the curation was both live and safe. Each learner's feed was calibrated to their specific role and region. I also embedded selected Degreed content directly inside the Storyline modules via web objects — placing live-updated resources at the exact instructional moment where they added most value. Critically, I scoped the Storyline modules deliberately lean: each focused only on the foundational frameworks a staff member couldn't function without, then explicitly directed learners outward into Degreed. The course stopped trying to be the complete source of knowledge. It became the starting point.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">89% of learners voluntarily engaged with curated content beyond the required modules. Total learning time increased fourfold compared to the prior mandatory-only programme. The average learner consumed over 340 pieces of external content through Degreed in the first three months. An undesigned outcome emerged: staff began using Degreed's social features — bookmarking, commenting, sharing — spontaneously, forming a practitioner community the L&D team formalised into curated role-based pathways. The AI surfaced the content. The people decided what mattered.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"The goal was not a better course. It was a different relationship between the learner and learning — one that did not end when the modules were complete, because the world did not stop either."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why Degreed and not just a curated reading list?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">A curated reading list is static — selected once, by a person, using the knowledge available at that moment. Degreed is dynamic — it scans the web continuously and surfaces content based on each learner's role, engagement history, and the configured topic taxonomy. In a field where a landmark report or a crisis development can change practice guidance within days, static curation is structurally inadequate. The personalisation layer is also critical: a child protection officer received different recommendations from a programme manager. A reading list treats all staff the same.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 Why design a course that deliberately points learners away from the course?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Because the course is not the point. The performance is the point. If a Degreed article about trafficking routes in conflict contexts is more relevant to a field officer's current deployment than anything I could build into a Storyline module, pointing them there is the best instructional decision I can make. A course that treats itself as the final word on a complex, evolving field is not serving its learners — it is serving its own completeness.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CS9 ═══════════ -->
+<div class="cs-block" id="cs9">
+  <p class="cs-eyebrow">Case Study 09 · Pharmaceutical / Life Sciences</p>
+  <h2 class="cs-title">The Pharma Virtual Assistant — Microsoft Copilot Studio</h2>
+  <p class="cs-meta">Role: <span>Lead Instructional Designer — performance support design, content audit, knowledge base architecture</span></p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num">280</div><div class="stat-lbl">Sales reps served</div></div>
+    <div class="stat-card"><div class="stat-num">840+</div><div class="stat-lbl">Content assets created</div></div>
+    <div class="stat-card"><div class="stat-num">↓71%</div><div class="stat-lbl">Search time reduction</div></div>
+    <div class="stat-card"><div class="stat-num">94%</div><div class="stat-lbl">Response accuracy at 3 months</div></div>
+  </div>
+  <p class="trigger-label">Primary interview trigger</p>
+  <div class="trigger">"Tell me about a project where the most important work happened before any content was built."</div>
+
+  <p class="section-h">Your STAR answer</p>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-s">S</div><div class="star-label-text s-label">Situation</div></div>
+    <div class="star-content">A pharmaceutical organisation's 280 medical sales representatives covered six products across 14 therapeutic areas. They were expected to answer highly technical questions from healthcare professionals, handle clinical data, and stay within tight regulatory limits — often mid-conversation, with no time to look anything up. The existing tool was a folder-based intranet: slow, hard to search on a mobile phone, structured around how the organisation filed documents rather than how a rep needed information in the field. Reps were spending an average of 20 minutes before every important call searching for clinical references they half-remembered.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-t">T</div><div class="star-label-text t-label">Task</div></div>
+    <div class="star-content">As Lead ID, I was briefed to build a virtual assistant that reps could query on their phone — before a call, between appointments, or in a hospital corridor — and get a precise, approved, citable answer in under ten seconds. All content had to be pre-approved by medical affairs. The solution had to integrate within the existing Microsoft 365 environment. I led the full project: discovery, content audit, question mapping, knowledge base build, and Copilot Studio configuration.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-a">A</div><div class="star-label-text a-label">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I diagnosed this immediately as a performance support problem, not a training problem — the reps had done product training; the gap was access speed at the point of need. That distinction drove every design decision. I ran structured discovery sessions with three stakeholder groups: medical affairs, regional sales managers, and reps themselves through job-shadowing-style conversations. The content audit was the most critical step. I catalogued 1,240 documents across six product teams and found that fewer than 40% were both current and cleared for representative use — many contained superseded clinical data. The audit added three weeks to the project and saved it: building the assistant on the existing library would have created a tool that confidently gave reps incorrect information. I then mapped 580 distinct question types through sessions with 40 reps across four regions, capturing over 340 natural language variants — because reps don't ask "what is the mechanism of action," they ask "how does it work in the body?" I led my team in building four content types — explainer videos, structured FAQ documents, objection-handling guides, and escalation pathways — totalling 840+ assets. The Copilot Studio assistant was configured to retrieve and surface only cleared, approved content, with source citations included in every response.</div>
+  </div>
+  <div class="star-section">
+    <div class="star-header"><div class="star-badge star-r">R</div><div class="star-label-text r-label">Result</div></div>
+    <div class="star-content">71% reduction in time reps spent searching for product information before calls. 94% rep satisfaction with response accuracy after three months of live use. The assistant handled the full range of 580 question types in natural language. Reps reported arriving at customer calls more confident, with less preparation time required. The content governance baseline established during the audit became the organisation's ongoing standard for product content management.</div>
+  </div>
+
+  <div class="remember"><div class="remember-icon">🧠</div><div class="remember-body"><strong>Remember this</strong>"The problem was not that reps didn't know their products. It was that they couldn't access what they knew fast enough, in the right format, at the right moment. This was a performance support problem — not a training problem."</div></div>
+
+  <p class="qa-heading">Tough questions — be ready</p>
+  <div class="qa-list">
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 What was the biggest risk in this project, and how did you manage it?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">Content accuracy. In a pharmaceutical environment, if a virtual assistant gives a rep incorrect clinical data that gets passed to a healthcare professional, the consequences range from regulatory breach to patient harm. The content audit was entirely driven by this risk. We only ingested content that had been formally approved by medical affairs — nothing entered the knowledge base without a clear sign-off status. The audit finding that fewer than 40% of existing documents were usable wasn't a setback — it was the most important discovery of the project.</div>
+    </div>
+    <div class="qa-card">
+      <button class="qa-q" onclick="toggleQA(this)"><span class="qa-q-text">🤔 How did you handle resistant or sceptical stakeholders?</span><span class="qa-icon">▾</span></button>
+      <div class="qa-a">I reframed the conversation around their concerns rather than my solution. Medical affairs were worried about regulatory risk — I positioned the assistant as a tool that would reduce rogue information sharing, not introduce it. By making their risk the driver of the solution, I turned resistance into sponsorship. With the IT team, who initially felt this was their territory, I was transparent about the boundary: I wasn't building infrastructure, I was building the content and conversation design that would sit inside a Microsoft platform they already managed. That clarity of scope removed the turf tension.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<footer>
+  <p><strong>Learning Matters.</strong> &nbsp;·&nbsp; <a href="/">rameshkrishnan.me</a></p>
+  <p style="margin-top:6px;font-size:0.7rem;">STAR Stories · Nine Case Studies · Lead Instructional Designer · Interview Preparation</p>
+</footer>
+
+<script>
+function toggleQA(btn) {
+  btn.closest('.qa-card').classList.toggle('open');
+}
+
+// Highlight active CS in nav strip on scroll
+const blocks = document.querySelectorAll('.cs-block');
+const navLinks = document.querySelectorAll('.cs-nav a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.style.color = '');
+      const active = document.querySelector(`.cs-nav a[href="#${entry.target.id}"]`);
+      if (active) active.style.color = '#ffffff';
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+blocks.forEach(b => observer.observe(b));
+</script>
+</body>
+</html>
