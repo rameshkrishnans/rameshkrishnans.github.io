@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Case Study 12 — Interview Prep | Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest:#1e4a3a;--forest-mid:#2d6b52;--forest-light:#e8f2ed;
+  --gold:#a37c3b;--gold-light:#f5edd8;--gold-pale:#faf6ee;
+  --ink:#1c1c1a;--ink-mid:#3d3d38;--ink-light:#6b6b62;
+  --smoke:#f7f5f0;--border:#ddd9ce;--white:#ffffff;
+  --danger:#8b2e2e;--danger-light:#fdf0f0;
+  --blue:#2d4a6b;--blue-light:#e8eef5;
+  --green:#3d6b2d;--green-light:#eef5e8;
+  --radius:10px;--shadow:0 2px 16px rgba(30,74,58,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--smoke);color:var(--ink);line-height:1.7;font-size:16px;}
+
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 48px;height:56px;gap:40px;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--ink);text-decoration:none;}
+.nav-brand span{color:var(--forest);}.nav-brand em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:28px;margin-left:auto;}
+.nav-links a{font-size:0.82rem;color:var(--ink-light);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--forest);}
+.nav-cta{background:var(--forest);color:var(--white)!important;padding:7px 18px;border-radius:20px;font-weight:500!important;}
+
+.chapter-nav{background:var(--forest);display:flex;overflow-x:auto;scrollbar-width:none;}
+.chapter-nav::-webkit-scrollbar{display:none;}
+.chapter-nav a{color:rgba(255,255,255,0.6);font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:12px 24px;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.1);transition:all 0.2s;display:flex;align-items:center;gap:8px;}
+.chapter-nav a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.chapter-nav .ch-num{background:rgba(255,255,255,0.15);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;}
+
+.hero{background:var(--forest);padding:64px 48px 52px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(163,124,59,0.12) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{max-width:760px;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:0.75rem;color:rgba(255,255,255,0.8);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 em{font-style:italic;color:#c9a96e;}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:580px;margin-bottom:36px;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+.h-stat{display:flex;flex-direction:column;}
+.h-stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);line-height:1;}
+.h-stat-num span{color:#c9a96e;}
+.h-stat-label{font-size:0.72rem;color:rgba(255,255,255,0.5);}
+.h-stat-divider{width:1px;background:rgba(255,255,255,0.15);align-self:stretch;}
+
+.how-to{background:var(--gold-pale);border:1px solid #e8d9b8;border-radius:var(--radius);padding:20px 24px;margin:32px 48px;display:flex;gap:14px;align-items:flex-start;}
+.how-to-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.how-to-body{font-size:0.85rem;color:var(--ink-mid);line-height:1.65;}
+.how-to-body strong{color:var(--gold);display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+
+.layout{max-width:900px;margin:0 auto;padding:48px 48px 80px;display:flex;flex-direction:column;gap:56px;}
+
+.chapter{scroll-margin-top:80px;}
+.chapter-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.ch-badge{width:36px;height:36px;border-radius:50%;background:var(--forest);color:var(--white);font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chapter-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+.chapter h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,1.9rem);font-weight:400;color:var(--ink);line-height:1.25;}
+.chapter h2 em{font-style:italic;color:var(--forest);}
+.chapter p{color:var(--ink-mid);font-size:0.95rem;line-height:1.8;margin-bottom:14px;}
+.chapter p strong{color:var(--ink);font-weight:600;}
+
+.callout{border-radius:var(--radius);padding:20px 24px;margin:20px 0;display:flex;gap:14px;align-items:flex-start;}
+.callout-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.callout-body{font-size:0.875rem;line-height:1.7;}
+.callout-body strong{display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;}
+.callout.remember{background:var(--forest);color:rgba(255,255,255,0.9);border-left:4px solid var(--gold);}
+.callout.remember .callout-body strong{color:#c9a96e;}
+
+.star-block{margin:20px 0;}
+.star-label{display:flex;align-items:center;gap:10px;margin-bottom:10px;margin-top:20px;}
+.star-letter{width:34px;height:34px;border-radius:8px;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.star-s{background:var(--forest-light);color:var(--forest);}
+.star-t{background:var(--blue-light);color:var(--blue);}
+.star-a{background:var(--gold-light);color:var(--gold);}
+.star-r{background:var(--green-light);color:var(--green);}
+.star-label-text{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+.star-content{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;font-size:0.88rem;color:var(--ink-mid);line-height:1.75;box-shadow:var(--shadow);}
+
+.qa-section{display:flex;flex-direction:column;gap:12px;}
+.qa-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.qa-question{width:100%;background:var(--white);border:none;padding:16px 20px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background 0.2s;}
+.qa-question:hover{background:var(--smoke);}
+.qa-q-text{font-size:0.88rem;font-weight:500;color:var(--ink);line-height:1.5;}
+.qa-icon{color:var(--gold);font-size:1rem;flex-shrink:0;transition:transform 0.25s;}
+.qa-answer{display:none;padding:16px 20px;background:var(--gold-pale);border-top:1px solid var(--border);font-size:0.875rem;color:var(--ink-mid);line-height:1.75;}
+.qa-card.open .qa-answer{display:block;}
+.qa-card.open .qa-icon{transform:rotate(180deg);}
+.qa-category{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;margin-top:4px;}
+
+.numbers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0;}
+.number-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;box-shadow:var(--shadow);}
+.number-big{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--forest);line-height:1;}
+.number-label{font-size:0.72rem;color:var(--ink-light);margin-top:4px;line-height:1.4;}
+
+.cta-block{background:var(--forest);border-radius:var(--radius);padding:36px 40px;text-align:center;}
+.cta-block h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:8px;}
+.cta-block p{font-size:0.875rem;color:rgba(255,255,255,0.65);margin-bottom:20px;}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--white);padding:11px 28px;border-radius:24px;font-size:0.85rem;font-weight:500;text-decoration:none;}
+
+.divider{border:none;border-top:1px solid var(--border);}
+footer{background:var(--forest);color:rgba(255,255,255,0.6);text-align:center;padding:32px 48px;font-size:0.8rem;}
+footer a{color:#c9a96e;text-decoration:none;}
+footer strong{color:var(--white);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="/">Learning <span>Matters</span><em>.</em></a>
+  <div class="nav-links">
+    <a href="/">Work</a><a href="/">Insights</a><a href="/">Testimonials</a><a href="/">About</a>
+    <a href="/" class="nav-cta">Let's talk</a>
+  </div>
+</nav>
+
+<div class="chapter-nav">
+  <a href="#ch1"><span class="ch-num">1</span>Brief</a>
+  <a href="#ch2"><span class="ch-num">2</span>Architecture</a>
+  <a href="#ch3"><span class="ch-num">3</span>STAR Answer</a>
+  <a href="#ch4"><span class="ch-num">4</span>Numbers</a>
+  <a href="#chQ"><span class="ch-num">Q</span>Q&amp;A</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📋 Interview Preparation Guide</div>
+    <h1>Case Study 12 — <em>When the Data Finally Spoke</em></h1>
+    <p class="hero-sub">A learning analytics framework and Power BI dashboard built for an international university — identifying at-risk students early enough to intervene, improving retention by 19%.</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-num">19<span>%</span></div><div class="h-stat-label">Retention improvement</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">6</div><div class="h-stat-label">Data sources integrated</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">83<span>%</span></div><div class="h-stat-label">High-risk students who completed semester</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">3<span> weeks</span></div><div class="h-stat-label">Audit to live dashboard</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="how-to">
+  <div class="how-to-icon">💡</div>
+  <div class="how-to-body">
+    <strong>How to use this guide</strong>
+    Read top to bottom first. Use the nav to jump when rehearsing. Click any tough question to reveal the model answer — read, close, recall. That builds retention. In this story you are Lead ID on the L&D and Institutional Effectiveness team.
+  </div>
+</div>
+
+<div class="layout">
+
+<!-- CH1 -->
+<section class="chapter" id="ch1">
+  <div class="chapter-header">
+    <div class="ch-badge">1</div>
+    <div>
+      <div class="chapter-eyebrow">The brief in plain language</div>
+      <h2>The university had the data. <em>Nobody was reading it.</em></h2>
+    </div>
+  </div>
+  <p>Ashford International University — 8,400 students across three Southeast Asian campuses — had a climbing dropout rate over three consecutive years. Six data systems existed across the institution: LMS, Student Information System, library access logs, financial aid records, attendance tracking, and a student services CRM. None spoke to each other. By the time annual reports were compiled, the students who might have been saved had already left.</p>
+  <p>The brief from the Vice-Chancellor's office: build a cross-system analytics framework and dashboard that identifies at-risk students early enough for tutors to intervene — before the end of the semester, not after it.</p>
+  <div class="callout remember">
+    <div class="callout-icon">🧠</div>
+    <div class="callout-body">
+      <strong>Remember this</strong>
+      "The institution's problem was not a data problem. It was a visibility problem. The data existed — in six separate systems, read by six separate teams, none of whom could see what the others were seeing."
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CH2 -->
+<section class="chapter" id="ch2">
+  <div class="chapter-header">
+    <div class="ch-badge">2</div>
+    <div>
+      <div class="chapter-eyebrow">The design architecture</div>
+      <h2>Discovery, framework, dashboard. <em>In that order.</em></h2>
+    </div>
+  </div>
+  <p>Discovery ran across three concurrent workstreams: 14 structured stakeholder interviews across six departments (asking what decisions they needed to make, not what data they wanted), a full data audit across all six systems (surfacing a 23% attendance incompleteness rate and three incompatible student ID formats), and a research review of published attrition indicators to ground the risk model in evidence rather than institutional intuition.</p>
+  <p>The resulting framework centred on the <strong>Student Progression Index (SPI)</strong> — a composite risk score built from five evidence-based indicators: LMS engagement frequency, assignment submission rate, attendance patterns, cumulative GPA trend, and financial aid status changes. Each indicator was weighted by predictive strength, normalised to 0–100, and updated weekly from live system data. Students below 40 were flagged high risk; 40–65 moderate; above 65 on track.</p>
+  <p>The Power BI dashboard was built in four role-specific views: Institution (VC's office and academic leadership), School (deans and heads of department), Personal Tutor (tutee-level flag and intervention log), and Student Services (welfare and counselling). Role-based access controls ensured each user saw only the data relevant to their function — with sensitive financial and welfare data restricted to appropriate views only.</p>
+</section>
+
+<hr class="divider"/>
+
+<!-- CH3: STAR -->
+<section class="chapter" id="ch3">
+  <div class="chapter-header">
+    <div class="ch-badge">3</div>
+    <div>
+      <div class="chapter-eyebrow">Your STAR answer</div>
+      <h2>The full story. <em>In your words.</em></h2>
+    </div>
+  </div>
+
+  <p>Use this for: <strong>"Tell me about a time you used data to drive a learning or performance outcome."</strong> Also works for: <em>"Tell me about a complex stakeholder environment you had to navigate."</em> and <em>"Give me an example of a project where the discovery phase changed the design."</em></p>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-s">S</div><div class="star-label-text" style="color:var(--forest);">Situation</div></div>
+    <div class="star-content">Ashford International University had been experiencing rising student dropout rates for three consecutive years. The institution had six data systems capturing different dimensions of student behaviour — LMS engagement, attendance, academic performance, library access, financial aid status, and welfare interactions — but none of these systems were connected. Each department reported to its own leadership in isolation. The result was that a student who was quietly failing across all six dimensions simultaneously could remain invisible to everyone responsible for supporting them until it was too late to intervene. The Vice-Chancellor's office commissioned a learning analytics initiative to change that.</div>
+  </div>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-t">T</div><div class="star-label-text" style="color:var(--blue);">Task</div></div>
+    <div class="star-content">As Lead ID embedded in the L&D and Institutional Effectiveness team, I was commissioned to design the analytics framework, define the risk indicators, build the integration architecture, and deliver a Power BI dashboard that gave academic staff a real-time view of student progression — updated weekly, role-specific, and actionable. The dashboard had to be live within three weeks of completing the data audit, to give the institution a full semester of live data before the annual review cycle.</div>
+  </div>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-a">A</div><div class="star-label-text" style="color:var(--gold);">Action — your thinking, your decisions</div></div>
+    <div class="star-content">I started with discovery, not design. I ran 14 structured stakeholder interviews across six departments — asking not what data they wanted on a dashboard, but what decisions they needed to make, and what information was making those decisions harder than it should be. That distinction produced a completely different brief from what a standard requirements exercise would have generated.<br><br>
+    I then conducted a full audit of all six data systems. The audit surfaced two significant problems: attendance data was 23% incomplete due to manual entry inconsistency, and three systems used incompatible student ID formats that would prevent reliable data joining. I addressed the attendance data quality issue by reducing its weighting in the risk model and increasing the weighting of LMS engagement — which was captured automatically and had 100% coverage. I worked with the IT department to build a reconciliation mapping table linking all three ID formats to a common key, requiring a one-time manual verification of 600 edge cases before automated matching was reliable.<br><br>
+    I grounded the risk model in published research on student attrition rather than institutional intuition — which identified LMS engagement decline in the first four weeks as the single strongest early predictor of dropout, stronger than attendance. This was important for faculty credibility: the model had to be defensible, not just useful. I designed the Student Progression Index to update weekly from live data, with each indicator's contribution visible alongside the composite score so tutors could see exactly what was driving a flag and make their own pastoral judgement.<br><br>
+    I also worked with the institution's data protection officer to document the legal basis for processing under PDPA and designed role-based access controls into the dashboard architecture — restricting sensitive welfare and financial data to the student services view only. Before go-live, I ran two faculty enablement sessions to address resistance to the model, reframing the SPI explicitly as a prompt to have a conversation, not a prescription for what that conversation should be.</div>
+  </div>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-r">R</div><div class="star-label-text" style="color:var(--green);">Result</div></div>
+    <div class="star-content">19% improvement in year-on-year student retention — the first improvement in three years. 347 high-risk students were identified and contacted in semester one alone. 83% of those high-risk students who received a tutor intervention completed the semester. The dashboard went live within three weeks of the data audit completing. An undesigned outcome emerged six months in: the School of Humanities used the school-level SPI data to identify a structural assessment scheduling problem — three major assignments due in the same week for second-year students — which was addressed in the following curriculum review. The data protection officer subsequently cited the project as a model for responsible institutional analytics.</div>
+  </div>
+
+  <div class="callout remember">
+    <div class="callout-icon">🧠</div>
+    <div class="callout-body">
+      <strong>Remember this</strong>
+      "The dashboard did not save a single student on its own. It gave the people who could save students the information they needed to act — at the moment it was still possible to act."
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CH4: NUMBERS -->
+<section class="chapter" id="ch4">
+  <div class="chapter-header">
+    <div class="ch-badge">4</div>
+    <div>
+      <div class="chapter-eyebrow">Know these numbers</div>
+      <h2>The results. <em>In full.</em></h2>
+    </div>
+  </div>
+  <div class="numbers-grid">
+    <div class="number-card"><div class="number-big">19%</div><div class="number-label">Improvement in student retention, year-on-year</div></div>
+    <div class="number-card"><div class="number-big">347</div><div class="number-label">High-risk students identified and contacted, semester one</div></div>
+    <div class="number-card"><div class="number-big">83%</div><div class="number-label">Of intervened high-risk students completed the semester</div></div>
+    <div class="number-card"><div class="number-big">6</div><div class="number-label">Data sources integrated into one view</div></div>
+    <div class="number-card"><div class="number-big">23%</div><div class="number-label">Attendance data incompleteness rate — surfaced in audit</div></div>
+    <div class="number-card"><div class="number-big">3 weeks</div><div class="number-label">Data audit completion to live dashboard deployment</div></div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- QA -->
+<section class="chapter" id="chQ">
+  <div class="chapter-header">
+    <div class="ch-badge">Q</div>
+    <div>
+      <div class="chapter-eyebrow">Be ready for pushback</div>
+      <h2>The tough questions. <em>Answer them with confidence.</em></h2>
+    </div>
+  </div>
+
+  <p>Interviewers will probe the data decisions, the stakeholder dynamics, and your role specifically. Here are the questions most likely to come up.</p>
+
+  <div class="qa-section">
+
+    <div class="qa-category">Analytics methodology</div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 You're an instructional designer, not a data scientist. How do you justify leading this project?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Learning analytics is fundamentally a learning design problem before it is a data problem. The question is not "how do we query a database?" — it is "what does someone need to know, when do they need to know it, and in what format will they act on it?" Those are instructional design questions. The data science element — the SPI model weighting, the system integration architecture — I approached the same way I approach any content domain I don't own: through structured discovery, published research, and collaboration with subject matter experts in IT and data governance. I owned the framework design and the user experience. The technical implementation was collaborative.</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 How do you know the 19% retention improvement was caused by the dashboard and not something else?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Causal attribution in a live institutional environment is genuinely difficult, and I wouldn't claim clean causation. What the data showed was: 347 students were flagged high risk and received tutor interventions; 83% of those students completed the semester; the institution's overall retention improved 19% in the same period after three years of decline; and no other significant institutional change was introduced in that semester. The correlation is strong. The mechanism is plausible and documented — intervention logs show the specific conversations that happened as a result of dashboard flags. That's as close to a credible attribution as you can reasonably get in a real institutional setting without a controlled trial, which would have been ethically untenable.</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 Why did you reduce attendance weighting rather than fix the data quality problem first?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Because fixing the data quality problem required an institutional process change — moving from manual faculty entry to a digital attendance system — which had a procurement and implementation timeline of at least one semester. Waiting for perfect data before building the dashboard would have meant losing an entire semester of intervention opportunity for real students. The pragmatic decision was to build the model on the data that was reliable — LMS engagement had 100% automated coverage — while flagging the attendance quality issue formally to academic registry with a documented recommendation. That recommendation was acted on the following semester. The model was designed to be recalibrated as data quality improved.</p>
+      </div>
+    </div>
+
+    <div class="qa-category" style="margin-top:20px;">Stakeholder management</div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 Faculty resisted the SPI model. How did you overcome that without compromising the design?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>I didn't try to overcome the resistance — I tried to understand it. The faculty members who pushed back were making a legitimate point: a composite score without transparency into its components could produce formulaic pastoral responses rather than genuine human engagement. They were right. So I built the indicator breakdown into every student view — the SPI was never shown in isolation, always alongside the five contributing signals. That meant a tutor seeing a low score could immediately see whether the driver was LMS disengagement, missed submissions, or an attendance dip, and calibrate their response accordingly. I also invited two of the most vocal critics to review the first month of live data against their own pastoral knowledge. In every case, the students the model had flagged were students they had already been quietly concerned about. That validation shifted the conversation from "is this model right?" to "how do we use it well?"</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 How did you navigate the data privacy concerns across six systems?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>By treating privacy as a design requirement rather than a compliance checkbox. I brought the data protection officer in at the framework design stage — before any data was integrated — so that the legal basis for processing, the data minimisation decisions, and the access control architecture were all built into the system from the start, not retrofitted after. The role-based access control design was a direct product of those conversations: the decision to restrict financial aid and welfare data to the student services view only came from working through the likely consequences of making that data visible to academic staff who hadn't been trained to respond to it. The DPO's endorsement at the end of the project was not incidental — it was the result of genuine collaboration throughout.</p>
+      </div>
+    </div>
+
+    <div class="qa-category" style="margin-top:20px;">Power BI and technical decisions</div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 Why Power BI specifically? Were other tools considered?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Power BI was the right choice for three reasons that had nothing to do with the tool itself and everything to do with the context. First, the institution was already on Microsoft 365 — which meant no new platform licensing, no IT procurement cycle, and immediate access for 340 academic staff through credentials they already had. Second, the institution's IT team had existing Power BI capability, which meant the dashboard could be maintained and extended internally after handover without ongoing external dependency. Third, the data sources — Moodle, the SIS, and the other systems — all had Power BI connectors available, reducing custom integration development. The tool selection was context-driven, not preference-driven.</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 Three weeks from audit to live dashboard sounds very fast. What corners were cut?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>The three weeks was the build phase — it followed eight weeks of discovery and data audit. The speed of the build was a product of the rigour of the discovery: by the time I started building the dashboard, every design decision had already been made and validated. The data model was defined. The indicator weightings were agreed. The access control logic was documented. The four views were wireframed and signed off by stakeholder representatives. A fast build is not a shortcut — it is the dividend paid by thorough upfront work. The one thing I wouldn't have compromised on regardless of timeline was the data reconciliation mapping: incorrect student ID joins would have been a data integrity failure with real welfare consequences, and that was non-negotiable.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<div class="cta-block">
+  <h3>You know this story.<br><em>Now tell it.</em></h3>
+  <p>The best interview answer is not a recitation of facts — it is a coherent narrative that shows how you think. Rehearse this story out loud. Close the page. Tell it to yourself. Then come back and check what you missed.</p>
+  <a href="CaseStudy12.html" class="cta-btn">← Back to case study</a>
+</div>
+
+</div>
+
+<footer>
+  <p><strong>Learning Matters.</strong> &nbsp;·&nbsp; <a href="/">rameshkrishnan.me</a></p>
+  <p style="margin-top:6px;font-size:0.72rem;">Case Study 12 — Interview Prep Guide &nbsp;·&nbsp; Learning Analytics &amp; Power BI &nbsp;·&nbsp; Higher Education</p>
+</footer>
+
+<script>
+function toggleQA(btn){btn.closest('.qa-card').classList.toggle('open');}
+</script>
+</body>
+</html>
