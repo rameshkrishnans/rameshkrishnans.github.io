@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Study 11 — Interview Prep | Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --forest: #1e4a3a; --forest-mid: #2d6b52; --forest-light: #e8f2ed;
+    --gold: #a37c3b; --gold-light: #f5edd8; --gold-pale: #faf6ee;
+    --ink: #1c1c1a; --ink-mid: #3d3d38; --ink-light: #6b6b62;
+    --smoke: #f7f5f0; --border: #ddd9ce; --white: #ffffff;
+    --danger: #8b2e2e; --danger-light: #fdf0f0;
+    --radius: 10px; --shadow: 0 2px 16px rgba(30,74,58,0.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Outfit',sans-serif; background:var(--smoke); color:var(--ink); line-height:1.7; font-size:16px; }
+
+  nav { position:sticky; top:0; z-index:100; background:var(--white); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 48px; height:56px; gap:40px; }
+  .nav-brand { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:500; color:var(--ink); text-decoration:none; }
+  .nav-brand span { color:var(--forest); } .nav-brand em { color:var(--gold); font-style:normal; }
+  .nav-links { display:flex; gap:28px; margin-left:auto; }
+  .nav-links a { font-size:0.82rem; color:var(--ink-light); text-decoration:none; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--forest); }
+  .nav-cta { background:var(--forest); color:var(--white)!important; padding:7px 18px; border-radius:20px; font-weight:500!important; }
+
+  .chapter-nav { background:var(--forest); display:flex; align-items:center; overflow-x:auto; scrollbar-width:none; }
+  .chapter-nav::-webkit-scrollbar { display:none; }
+  .chapter-nav a { color:rgba(255,255,255,0.6); font-size:0.75rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; padding:12px 24px; white-space:nowrap; border-right:1px solid rgba(255,255,255,0.1); transition:all 0.2s; display:flex; align-items:center; gap:8px; }
+  .chapter-nav a:hover { color:var(--white); background:rgba(255,255,255,0.08); }
+  .chapter-nav a .ch-num { background:rgba(255,255,255,0.15); border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; flex-shrink:0; }
+
+  .hero { background:var(--forest); padding:64px 48px 52px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 50%, rgba(163,124,59,0.12) 0%, transparent 60%); pointer-events:none; }
+  .hero-inner { max-width:760px; position:relative; }
+  .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:5px 14px; font-size:0.75rem; color:rgba(255,255,255,0.8); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px; }
+  .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3rem); font-weight:400; color:var(--white); line-height:1.2; margin-bottom:10px; }
+  .hero h1 em { font-style:italic; color:#c9a96e; }
+  .hero-sub { font-size:0.95rem; color:rgba(255,255,255,0.65); font-weight:300; max-width:580px; margin-bottom:36px; }
+
+  .hero-stats { display:flex; gap:40px; flex-wrap:wrap; }
+  .h-stat { display:flex; flex-direction:column; }
+  .h-stat-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--white); line-height:1; }
+  .h-stat-num span { color:#c9a96e; }
+  .h-stat-label { font-size:0.72rem; color:rgba(255,255,255,0.5); }
+  .h-stat-divider { width:1px; background:rgba(255,255,255,0.15); align-self:stretch; }
+
+  .how-to { background:var(--gold-pale); border:1px solid #e8d9b8; border-radius:var(--radius); padding:20px 24px; margin:32px 48px; display:flex; gap:14px; align-items:flex-start; }
+  .how-to-icon { font-size:1.1rem; flex-shrink:0; margin-top:2px; }
+  .how-to-body { font-size:0.85rem; color:var(--ink-mid); line-height:1.65; }
+  .how-to-body strong { color:var(--gold); display:block; margin-bottom:4px; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; }
+
+  .layout { max-width:900px; margin:0 auto; padding:48px 48px 80px; display:flex; flex-direction:column; gap:56px; }
+
+  .chapter { scroll-margin-top:80px; }
+  .chapter-header { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+  .ch-badge { width:36px; height:36px; border-radius:50%; background:var(--forest); color:var(--white); font-size:0.8rem; font-weight:600; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .chapter-eyebrow { font-size:0.7rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:2px; }
+  .chapter h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.5vw,1.9rem); font-weight:400; color:var(--ink); line-height:1.25; }
+  .chapter h2 em { font-style:italic; color:var(--forest); }
+  .chapter p { color:var(--ink-mid); font-size:0.95rem; line-height:1.8; margin-bottom:14px; }
+  .chapter p strong { color:var(--ink); font-weight:600; }
+
+  .callout { border-radius:var(--radius); padding:20px 24px; margin:20px 0; display:flex; gap:14px; align-items:flex-start; }
+  .callout-icon { font-size:1.1rem; flex-shrink:0; margin-top:2px; }
+  .callout-body { font-size:0.875rem; line-height:1.7; }
+  .callout-body strong { display:block; margin-bottom:4px; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .callout.remember { background:var(--forest); color:rgba(255,255,255,0.9); border-left:4px solid var(--gold); }
+  .callout.remember .callout-body strong { color:#c9a96e; }
+
+  /* STAR sections */
+  .star-block { margin:20px 0; }
+  .star-label { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .star-letter { width:34px; height:34px; border-radius:8px; font-size:0.9rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .star-s { background:var(--forest-light); color:var(--forest); }
+  .star-t { background:#e8eef5; color:#2d4a6b; }
+  .star-a { background:var(--gold-light); color:var(--gold); }
+  .star-r { background:#eef5e8; color:#3d6b2d; }
+  .star-label-text { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; }
+  .star-s .star-label-text, .star-letter.star-s ~ .star-label-text { color:var(--forest); }
+  .star-content { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; font-size:0.88rem; color:var(--ink-mid); line-height:1.75; box-shadow:var(--shadow); }
+  .star-content strong { color:var(--ink); font-weight:600; }
+
+  /* Q&A accordion */
+  .qa-section { display:flex; flex-direction:column; gap:12px; }
+  .qa-card { border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); }
+  .qa-question { width:100%; background:var(--white); border:none; padding:16px 20px; text-align:left; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; transition:background 0.2s; }
+  .qa-question:hover { background:var(--smoke); }
+  .qa-q-text { font-size:0.88rem; font-weight:500; color:var(--ink); line-height:1.5; }
+  .qa-icon { color:var(--gold); font-size:1rem; flex-shrink:0; transition:transform 0.25s; }
+  .qa-answer { display:none; padding:16px 20px; background:var(--gold-pale); border-top:1px solid var(--border); font-size:0.875rem; color:var(--ink-mid); line-height:1.75; }
+  .qa-answer strong { color:var(--ink); font-weight:600; }
+  .qa-card.open .qa-answer { display:block; }
+  .qa-card.open .qa-icon { transform:rotate(180deg); }
+  .qa-category { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; margin-top:4px; }
+
+  .numbers-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:20px 0; }
+  .number-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:16px; text-align:center; box-shadow:var(--shadow); }
+  .number-big { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--forest); line-height:1; }
+  .number-label { font-size:0.72rem; color:var(--ink-light); margin-top:4px; line-height:1.4; }
+
+  .cta-block { background:var(--forest); border-radius:var(--radius); padding:36px 40px; text-align:center; }
+  .cta-block h3 { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:400; color:var(--white); margin-bottom:8px; }
+  .cta-block p { font-size:0.875rem; color:rgba(255,255,255,0.65); margin-bottom:20px; }
+  .cta-btn { display:inline-block; background:var(--gold); color:var(--white); padding:11px 28px; border-radius:24px; font-size:0.85rem; font-weight:500; text-decoration:none; transition:opacity 0.2s; }
+  .cta-btn:hover { opacity:0.88; }
+
+  .divider { border:none; border-top:1px solid var(--border); }
+
+  footer { background:var(--forest); color:rgba(255,255,255,0.6); text-align:center; padding:32px 48px; font-size:0.8rem; }
+  footer a { color:#c9a96e; text-decoration:none; }
+  footer strong { color:var(--white); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="/">Learning <span>Matters</span><em>.</em></a>
+  <div class="nav-links">
+    <a href="/">Work</a>
+    <a href="/">Insights</a>
+    <a href="/">Testimonials</a>
+    <a href="/">About</a>
+    <a href="/" class="nav-cta">Let's talk</a>
+  </div>
+</nav>
+
+<div class="chapter-nav">
+  <a href="#ch1"><span class="ch-num">1</span> Brief</a>
+  <a href="#ch2"><span class="ch-num">2</span> Architecture</a>
+  <a href="#ch3"><span class="ch-num">3</span> Challenges</a>
+  <a href="#ch4"><span class="ch-num">4</span> Outcomes</a>
+  <a href="#chQ"><span class="ch-num">Q</span> Q&amp;A</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📋 Interview Preparation Guide</div>
+    <h1>Case Study 11 — <em>From Guesswork to Strategy</em></h1>
+    <p class="hero-sub">A company-wide Training Needs Analysis, a three-tier competency framework, and a 12-month learning calendar — built for a mid-size hospitality group in six months.</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-num">420<span>+</span></div><div class="h-stat-label">Employees mapped</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">11</div><div class="h-stat-label">Role families defined</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">38<span>%</span></div><div class="h-stat-label">Reduction in ad-hoc training spend</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">6<span> months</span></div><div class="h-stat-label">TNA to framework launch</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="how-to">
+  <div class="how-to-icon">💡</div>
+  <div class="how-to-body">
+    <strong>How to use this guide</strong>
+    Read top to bottom first. Use the nav to jump when rehearsing. Click any question or objection to reveal the answer — read, close, recall. That builds retention.
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- CH1: BRIEF -->
+  <section class="chapter" id="ch1">
+    <div class="chapter-header">
+      <div class="ch-badge">1</div>
+      <div>
+        <div class="chapter-eyebrow">Where the story begins</div>
+        <h2>Training was happening. <em>Learning was not.</em></h2>
+      </div>
+    </div>
+
+    <p>Meridian Hospitality Group — a mid-size hotel and serviced apartment operator with eight properties across three cities — had scaled from 180 to 420+ staff in two years following rapid post-pandemic growth. Training existed but had no system. No needs analysis. No shared competency language. No mechanism to connect training spend to outcomes.</p>
+
+    <p>The brief: build a TNA methodology, a competency framework for eleven role families, and a 12-month learning calendar that the business could plan and budget against — in six months, before the next financial year's budget cycle.</p>
+
+    <div class="callout remember">
+      <div class="callout-icon">🧠</div>
+      <div class="callout-body">
+        <strong>Remember this</strong>
+        "Training without a needs analysis is just activity. A learning calendar without a framework is just a schedule. The brief was not to produce documents — it was to build the infrastructure that would make every training decision defensible."
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CH2: ARCHITECTURE -->
+  <section class="chapter" id="ch2">
+    <div class="chapter-header">
+      <div class="ch-badge">2</div>
+      <div>
+        <div class="chapter-eyebrow">The design architecture</div>
+        <h2>Three-layer TNA. <em>Three-tier framework. One integrated calendar.</em></h2>
+      </div>
+    </div>
+
+    <p>The TNA ran in three concurrent layers — organisational (strategy alignment with CEO/COO), functional (34 structured interviews with department heads), and individual (420+ paired self-assessments). The competency framework was built in three tiers: Foundation (all staff), Functional (role-family-specific, 11 families), and Leadership (supervisory to GM progression). The 12-month learning calendar was structured as a business planning instrument — not a content schedule — with every intervention tied to a TNA gap, a modality rationale, and a budget line.</p>
+
+    <p><strong>The key design decision:</strong> the framework was written in operational language, not L&D language. Behavioural indicators were validated by line managers in a rewrite workshop, ensuring they could be used in team briefings and one-to-ones without L&D involvement. This was the mechanism that moved the framework from a document to a tool.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CH3: YOUR STAR ANSWER -->
+  <section class="chapter" id="ch3">
+    <div class="chapter-header">
+      <div class="ch-badge">3</div>
+      <div>
+        <div class="chapter-eyebrow">Your STAR answer</div>
+        <h2>The full story. <em>In your words.</em></h2>
+      </div>
+    </div>
+
+    <p>Use this for: <strong>"Tell me about a time you conducted a training needs analysis and used it to shape an L&D strategy."</strong></p>
+
+    <div class="star-block">
+      <div class="star-label">
+        <div class="star-letter star-s">S</div>
+        <div class="star-label-text" style="color:var(--forest);">Situation</div>
+      </div>
+      <div class="star-content">
+        Meridian Hospitality Group had grown from 180 to 420+ staff in under two years following rapid post-pandemic expansion — two new property openings and two repositioned upmarket. Training was happening, but it was reactive and fragmented. Department heads booked external trainers when problems became undeniable. There was no needs analysis, no shared competency standard, and no way to connect training spend to business outcomes. The Head of HR told me: "We are spending money on training, but I could not tell you whether it is the right training for the right people at the right time."
+      </div>
+    </div>
+
+    <div class="star-block">
+      <div class="star-label">
+        <div class="star-letter star-t">T</div>
+        <div class="star-label-text" style="color:#2d4a6b;">Task</div>
+      </div>
+      <div class="star-content">
+        As Lead ID, I was commissioned to build three connected deliverables in six months: a company-wide TNA, a competency framework covering all eleven role families, and a 12-month learning calendar that the business could plan and budget against — before the next financial year's budget cycle. The framework had to be usable by line managers without L&D support, and the calendar had to be legible to finance and operations leadership, not just HR.
+      </div>
+    </div>
+
+    <div class="star-block">
+      <div class="star-label">
+        <div class="star-letter star-a">A</div>
+        <div class="star-label-text" style="color:var(--gold);">Action — your thinking, your decisions</div>
+      </div>
+      <div class="star-content">
+        I designed the TNA as a three-layer process running concurrently to compress the timeline. At the organisational level, I ran three structured sessions with the CEO, COO, and Head of HR, mapping business priorities to a priority skills register of nine critical competency clusters. At the functional level, I conducted 34 structured interviews with department heads and high performers — asking not what training they wanted, but what their role actually required and where observed performance fell short of that standard. At the individual level, I deployed paired self-assessments across all 420+ staff, achieving a 74% return rate by embedding completion into existing review processes. For housekeeping and maintenance, where the written format produced unreliable data, I replaced the assessment with structured observation checklists — translated into Tamil and Hindi — completed by team leaders during task observation.<br><br>
+        The competency framework I built from this data used three tiers — Foundation, Functional, and Leadership — with every behavioural indicator written in operational language. When the COO rejected the first draft as too theoretical, I ran a rewrite workshop with six department heads who translated each indicator into the language they would actually use in a briefing or a one-to-one. The revised version was signed off within 48 hours.<br><br>
+        The 12-month learning calendar was structured as a business planning instrument, not a content schedule — every intervention showing its TNA gap, modality rationale, audience, and cost. I introduced a formal change request process that required any ad-hoc training request to link to a TNA gap and a business priority. When the year-one budget came in 60% below what the full calendar required, I rebuilt it in three funding tiers — must-fund, should-fund, and could-fund — which brought the critical tier within 5% of available budget and gave the COO a documented business case for year-two investment.
+      </div>
+    </div>
+
+    <div class="star-block">
+      <div class="star-label">
+        <div class="star-letter star-r">R</div>
+        <div class="star-label-text" style="color:#3d6b2d;">Result</div>
+      </div>
+      <div class="star-content">
+        38% reduction in unplanned training spend in year one. All 420+ employees with a mapped development profile. 94% manager satisfaction with framework usability at the six-month review. Line managers began using the competency framework independently in one-to-ones — without prompting from HR. The L&D function was invited into the annual business planning cycle for the first time, presenting a capability roadmap rather than a training menu. And a 22% increase in internal promotions in year two, with managers citing development plan clarity as the enabling factor.
+      </div>
+    </div>
+
+    <div class="callout remember">
+      <div class="callout-icon">🧠</div>
+      <div class="callout-body">
+        <strong>Remember this</strong>
+        "The measure of a TNA is not the document it produces. It is whether the decisions made twelve months later are different — and better — because of it."
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CH4: OUTCOMES -->
+  <section class="chapter" id="ch4">
+    <div class="chapter-header">
+      <div class="ch-badge">4</div>
+      <div>
+        <div class="chapter-eyebrow">Know these numbers</div>
+        <h2>The results. <em>In full.</em></h2>
+      </div>
+    </div>
+
+    <div class="numbers-grid">
+      <div class="number-card"><div class="number-big">38%</div><div class="number-label">Reduction in unplanned training spend, year one</div></div>
+      <div class="number-card"><div class="number-big">420+</div><div class="number-label">Employees with mapped development profiles</div></div>
+      <div class="number-card"><div class="number-big">11</div><div class="number-label">Role families with observable competency standards</div></div>
+      <div class="number-card"><div class="number-big">94%</div><div class="number-label">Manager satisfaction with framework usability</div></div>
+      <div class="number-card"><div class="number-big">74%</div><div class="number-label">TNA paired assessment response rate</div></div>
+      <div class="number-card"><div class="number-big">+22%</div><div class="number-label">Internal promotions vs prior year</div></div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- QA -->
+  <section class="chapter" id="chQ">
+    <div class="chapter-header">
+      <div class="ch-badge">Q</div>
+      <div>
+        <div class="chapter-eyebrow">Be ready for pushback</div>
+        <h2>The tough questions. <em>Answer them with confidence.</em></h2>
+      </div>
+    </div>
+
+    <p>Interviewers will probe your decisions and test whether you genuinely own this story. Here are the objections you are most likely to face.</p>
+
+    <div class="qa-section">
+
+      <div class="qa-category">TNA Methodology</div>
+
+      <div class="qa-card">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-text">🤔 Why a three-layer TNA? Couldn't a survey have been faster and cheaper?</span>
+          <span class="qa-icon">▾</span>
+        </button>
+        <div class="qa-answer">
+          <p>A survey tells you what people think they need. A three-layer TNA tells you what the business requires, what the role demands, and where the individual falls short of that demand. Those are three different questions, and collapsing them into a single survey produces data that is fast to collect and useless to act on.</p>
+          <p><strong>The speed argument also misunderstands the cost of bad data.</strong> A training calendar built on survey data that reflects preference rather than performance need will spend money on interventions that generate activity but not capability change. The three-layer process took longer upfront. It prevented twelve months of misdirected investment.</p>
+        </div>
+      </div>
+
+      <div class="qa-card">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-text">🤔 How did you handle department heads who didn't want to participate?</span>
+          <span class="qa-icon">▾</span>
+        </button>
+        <div class="qa-answer">
+          <p>I reframed the conversation entirely. Rather than asking for an interview about training, I asked for 30 minutes to understand what was making their team's performance harder than it needed to be. That framing worked because performance problems — not training programmes — are what operational leaders care about. All three reluctant department heads subsequently participated, and produced some of the richest input in the entire TNA, because the conversation was anchored to something they were already thinking about.</p>
+          <p><strong>The practical lesson:</strong> resistance to a TNA process is almost always resistance to the framing, not the content. Connect it to their problem, not your process.</p>
+        </div>
+      </div>
+
+      <div class="qa-card">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-text">🤔 74% response rate is not 100%. How do you account for the missing 26%?</span>
+          <span class="qa-icon">▾</span>
+        </button>
+        <div class="qa-answer">
+          <p>For the departments where the written format was appropriate, non-completion was tracked at team level — and teams with low completion rates were flagged for a direct conversation with their line manager. In practice, most non-completion was operational (shift workers who missed the review window) rather than active refusal. For housekeeping and maintenance, I replaced the written format entirely with observation checklists, which produced more reliable data than a written assessment would have achieved at 100% completion.</p>
+          <p>The more important point: a TNA does not need perfect data — it needs representative data that is sufficient to identify the priority gaps. 312 paired assessments across 420 staff, combined with 34 structured functional interviews, produced that sufficiency.</p>
+        </div>
+      </div>
+
+      <div class="qa-category" style="margin-top:20px;">Competency Framework</div>
+
+      <div class="qa-card">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-text">🤔 The COO rejected your first draft. Doesn't that reflect a gap in your stakeholder management?</span>
+          <span class="qa-icon">▾</span>
+        </button>
+        <div class="qa-answer">
+          <p>I would describe it differently. The COO's feedback — that the framework used L&D language line managers would not recognise — was accurate and useful. The first draft was technically sound but not operationally usable, which is a real distinction. The feedback arrived early enough to act on without impacting the timeline.</p>
+          <p><strong>The rewrite workshop I ran in response was not damage control — it was better process.</strong> By having department heads translate the behavioural indicators into their own language, the revised framework had operational buy-in that a first-draft sign-off would never have produced. The COO signed off within 48 hours. And line managers adopted the framework without prompting, which was the real test.</p>
+        </div>
+      </div>
+
+      <div class="qa-card">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-text">🤔 Eleven role families across one framework — how do you prevent it becoming too generic to be useful?</span>
+          <span class="qa-icon">▾</span>
+        </button>
+        <div class="qa-answer">
+          <p>By building the framework in tiers rather than as a flat list. The Foundation tier — applicable to all staff — could be designed at a level of generality appropriate to a shared baseline. The Functional tier — where the real differentiation lived — was specific to each role family and written at the level of concrete task performance, not generic competency language. A Front Office Agent behavioural indicator read nothing like a Revenue Manager indicator, because the tasks are completely different.</p>
+          <p>The three-tier structure also meant line managers only ever worked with the sections relevant to their team — reducing cognitive load and making adoption more likely.</p>
+        </div>
+      </div>
+
+      <div class="qa-category" style="margin-top:20px;">Learning Calendar & Strategy</div>
+
+      <div class="qa-card">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-text">🤔 The budget was 60% short of what you needed. How do you justify that as a success?</span>
+          <span class="qa-icon">▾</span>
+        </button>
+        <div class="qa-answer">
+          <p>Because the deliverable was not a fully-funded calendar — it was a decision-making framework that made the available budget spend correctly, and made the business case for the remainder visible. The three-tier rebuild — must-fund, should-fund, could-fund — brought the critical interventions within 5% of available budget. The COO used the unfunded tiers to secure additional investment in Q3, which would not have been possible without a documented capability risk statement attached to each unfunded intervention.</p>
+          <p><strong>A fully-funded calendar built on incomplete analysis would have been a worse outcome than a partially-funded calendar built on sound evidence.</strong> The goal was defensible decision-making, not complete coverage in year one.</p>
+        </div>
+      </div>
+
+      <div class="qa-card">
+        <button class="qa-question" onclick="toggleQA(this)">
+          <span class="qa-q-text">🤔 How do you measure whether the learning calendar actually closed the capability gaps?</span>
+          <span class="qa-icon">▾</span>
+        </button>
+        <div class="qa-answer">
+          <p>Through a structured 12-month review that repeated the individual-level competency assessment from the original TNA, producing a before/after delta for each competency cluster by role family. The 38% reduction in unplanned training spend indicated that the gap-driven calendar was replacing reactive spend. The 22% increase in internal promotions — where managers cited development plan clarity as the enabling factor — indicated that the framework was changing development conversations, not just generating training activity.</p>
+          <p>The honest caveat: attributing capability change solely to a training programme is methodologically complex — operational factors, management quality, and team stability all affect performance. What the review data showed was directional improvement in the priority competency clusters, combined with structural changes in how the organisation made training decisions. That combination is the legitimate measure of an L&D strategy, not course completion rates.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <div class="cta-block">
+    <h3>You know this story.<br><em>Now tell it.</em></h3>
+    <p>The best interview answer is not a recitation of facts — it is a coherent narrative that shows how you think. Rehearse this story out loud. Close the page. Tell it to yourself. Then come back and check what you missed.</p>
+    <a href="CaseStudy11.html" class="cta-btn">← Back to case study</a>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Learning Matters.</strong> &nbsp;·&nbsp; <a href="/">rameshkrishnan.me</a></p>
+  <p style="margin-top:6px; font-size:0.72rem;">Case Study 11 — Interview Prep Guide &nbsp;·&nbsp; TNA &amp; L&D Strategy &nbsp;·&nbsp; Hospitality / Service Industry</p>
+</footer>
+
+<script>
+function toggleQA(btn) {
+  const card = btn.closest('.qa-card');
+  card.classList.toggle('open');
+}
+</script>
+</body>
+</html>
