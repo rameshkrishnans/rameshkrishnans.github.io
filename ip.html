@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Interview Preparation — 20 Generic Questions | Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest: #1e4a3a; --forest-mid: #2d6b52; --forest-light: #e8f2ed;
+  --gold: #a37c3b; --gold-light: #f5edd8; --gold-pale: #faf6ee;
+  --ink: #1c1c1a; --ink-mid: #3d3d38; --ink-light: #6b6b62;
+  --smoke: #f7f5f0; --border: #ddd9ce; --white: #ffffff;
+  --radius: 10px; --shadow: 0 2px 16px rgba(30,74,58,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--smoke);color:var(--ink);line-height:1.7;font-size:16px;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 48px;height:56px;gap:40px;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;}
+.nav-brand span{color:var(--forest);}.nav-brand em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:28px;margin-left:auto;}
+.nav-links a{font-size:0.82rem;color:var(--ink-light);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--forest);}
+.nav-cta{background:var(--forest);color:var(--white)!important;padding:7px 18px;border-radius:20px;font-weight:500!important;}
+
+/* CATEGORY NAV */
+.cat-nav{background:var(--forest);display:flex;overflow-x:auto;scrollbar-width:none;}
+.cat-nav::-webkit-scrollbar{display:none;}
+.cat-nav a{color:rgba(255,255,255,0.6);font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:11px 22px;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.1);transition:all 0.2s;display:flex;align-items:center;gap:7px;}
+.cat-nav a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.cat-nav .num{background:rgba(255,255,255,0.15);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:0.68rem;flex-shrink:0;}
+
+/* HERO */
+.hero{background:var(--forest);padding:72px 48px 56px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(163,124,59,0.12) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{max-width:860px;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:0.75rem;color:rgba(255,255,255,0.8);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:400;color:var(--white);line-height:1.15;margin-bottom:12px;}
+.hero h1 em{font-style:italic;color:#c9a96e;}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:600px;line-height:1.65;margin-bottom:40px;}
+.hero-stats{display:flex;gap:44px;flex-wrap:wrap;}
+.h-stat{display:flex;flex-direction:column;}
+.h-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--white);line-height:1;}
+.h-stat-num span{color:#c9a96e;}
+.h-stat-label{font-size:0.72rem;color:rgba(255,255,255,0.5);}
+.h-stat-div{width:1px;background:rgba(255,255,255,0.15);align-self:stretch;}
+
+/* HOW TO USE */
+.how-to{background:var(--gold-pale);border:1px solid #e8d9b8;border-radius:var(--radius);padding:20px 24px;margin:32px 48px;display:flex;gap:14px;align-items:flex-start;}
+.how-to-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.how-to-body{font-size:0.85rem;color:var(--ink-mid);line-height:1.65;}
+.how-to-body strong{color:var(--gold);display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+
+/* MAIN LAYOUT */
+.main{max-width:900px;margin:0 auto;padding:40px 48px 80px;}
+
+/* CATEGORY HEADINGS */
+.cat-section{scroll-margin-top:80px;margin-bottom:12px;}
+.cat-heading{display:flex;align-items:center;gap:12px;margin-bottom:20px;margin-top:48px;}
+.cat-badge{background:var(--forest);color:var(--white);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;}
+.cat-line{flex:1;height:1px;background:var(--border);}
+
+/* Q&A CARDS */
+.qa-list{display:flex;flex-direction:column;gap:10px;}
+.qa-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--white);}
+.qa-question{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;transition:background 0.2s;}
+.qa-question:hover{background:var(--smoke);}
+.qa-q-left{display:flex;align-items:flex-start;gap:12px;}
+.qa-num{background:var(--gold-light);color:var(--gold);font-size:0.72rem;font-weight:700;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.qa-q-text{font-size:0.9rem;font-weight:600;color:var(--forest);line-height:1.5;text-align:left;}
+.qa-icon{color:var(--gold);font-size:1rem;flex-shrink:0;transition:transform 0.25s;margin-top:4px;}
+.qa-answer{display:none;padding:0 22px 20px 62px;font-size:0.875rem;color:var(--ink-mid);line-height:1.8;}
+.qa-answer-inner{border-top:1px solid var(--border);padding-top:16px;}
+.qa-card.open .qa-answer{display:block;}
+.qa-card.open .qa-icon{transform:rotate(180deg);}
+.qa-card.open .qa-question{background:var(--forest-light);}
+.qa-card.open .qa-q-text{color:var(--forest);}
+
+/* CALLOUT */
+.callout{background:var(--forest);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:32px 0;display:flex;gap:12px;align-items:flex-start;}
+.callout-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
+.callout-body{font-size:0.875rem;color:rgba(255,255,255,0.9);line-height:1.7;font-style:italic;}
+.callout-body strong{color:#c9a96e;display:block;font-style:normal;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+
+/* PROGRESS */
+.progress-bar{background:var(--forest-light);border-radius:20px;height:8px;margin:24px 0;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest);border-radius:20px;width:0%;transition:width 0.4s ease;}
+
+/* CTA */
+.cta-block{background:var(--forest);border-radius:var(--radius);padding:36px 40px;text-align:center;margin-top:48px;}
+.cta-block h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:8px;}
+.cta-block h3 em{font-style:italic;color:#c9a96e;}
+.cta-block p{font-size:0.875rem;color:rgba(255,255,255,0.65);margin-bottom:20px;}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--white);padding:11px 28px;border-radius:24px;font-size:0.85rem;font-weight:500;text-decoration:none;}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--border);margin:0;}
+
+/* FOOTER */
+footer{background:var(--forest);color:rgba(255,255,255,0.6);text-align:center;padding:32px 48px;font-size:0.8rem;}
+footer a{color:#c9a96e;text-decoration:none;}
+footer strong{color:var(--white);}
+
+/* MOBILE */
+@media(max-width:640px){
+  nav,hero,.how-to,.main{padding-left:20px;padding-right:20px;}
+  .hero{padding:48px 20px 40px;}
+  .how-to{margin:24px 20px;}
+  .main{padding:32px 20px 60px;}
+  .qa-answer{padding:0 16px 16px 16px;}
+  .cat-nav a{padding:11px 16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/">Learning <span>Matters</span><em>.</em></a>
+  <div class="nav-links">
+    <a href="/">Work</a>
+    <a href="/">Insights</a>
+    <a href="/">Testimonials</a>
+    <a href="/">About</a>
+    <a href="/" class="nav-cta">Let's talk</a>
+  </div>
+</nav>
+
+<!-- CATEGORY NAV -->
+<div class="cat-nav">
+  <a href="#cat1"><span class="num">1</span>About You</a>
+  <a href="#cat2"><span class="num">2</span>Strengths &amp; Weaknesses</a>
+  <a href="#cat3"><span class="num">3</span>Domain &amp; Craft</a>
+  <a href="#cat4"><span class="num">4</span>Stakeholders</a>
+  <a href="#cat5"><span class="num">5</span>Leadership &amp; Process</a>
+  <a href="#cat6"><span class="num">6</span>Vision &amp; Future</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📋 Interview Preparation</div>
+    <h1>20 Generic Interview<br><em>Questions &amp; Answers</em></h1>
+    <p class="hero-sub">Authentic, experience-grounded answers built from 23 years of practice across instructional design, learning consultancy, and performance support. Use across all interviews — IC and lead/manager tracks.</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-num">20</div><div class="h-stat-label">Questions with full answers</div></div>
+      <div class="h-stat-div"></div>
+      <div class="h-stat"><div class="h-stat-num">6</div><div class="h-stat-label">Categories</div></div>
+      <div class="h-stat-div"></div>
+      <div class="h-stat"><div class="h-stat-num">2</div><div class="h-stat-label">Tracks — IC &amp; lead/manager</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<div class="how-to">
+  <div class="how-to-icon">💡</div>
+  <div class="how-to-body">
+    <strong>How to use this guide</strong>
+    Do not memorise these answers verbatim — they will sound rehearsed. Read each answer once, close the page, tell the story out loud in your own words, then come back and check what you missed. That is the version that will land in an interview. Click any question to expand the answer.
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div style="max-width:900px;margin:0 auto;padding:0 48px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+    <span style="font-size:0.75rem;color:var(--ink-light);font-weight:500;">Questions rehearsed</span>
+    <span id="progress-label" style="font-size:0.75rem;color:var(--forest);font-weight:600;">0 of 20</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ═══ CATEGORY 1: ABOUT YOU ═══ -->
+<div class="cat-section" id="cat1">
+  <div class="cat-heading">
+    <span class="cat-badge">About You</span>
+    <div class="cat-line"></div>
+  </div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">1</div><span class="qa-q-text">Tell me about yourself.</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I am an instructional designer and learning consultant with 23 years of experience working across two core practice areas — pre-sales learning consultancy, where I help organisations translate business challenges into defined learning solutions, and the end-to-end design and development of those solutions. My work spans eLearning, ILT, virtual ILT, business simulations, gamified assessments, and AI-powered performance support tools, across financial services, healthcare, FMCG, pharma, manufacturing, humanitarian, and higher education sectors. What has remained constant across all of it is a single principle: I work with the end in mind. For me, that means designing learning that produces measurable change — not just activity.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">2</div><span class="qa-q-text">Why are you looking for a new opportunity?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        After three years as a learning consultant at Ozemio and then a period of independent consultancy, I am at a point where I want to bring everything I have built — the pre-sales experience, the design craft, the growing focus on AI and learning analytics — into a sustained engagement with one organisation. Independent consultancy gives you breadth. A focused role gives you depth and the opportunity to see the long-term impact of your work. That is what I am looking for next.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">3</div><span class="qa-q-text">What do you know about our organisation and why do you want to work here?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I would answer this specifically for each organisation I am interviewing with — and I always do my research before an interview rather than offering a generic answer. What I can say as a general principle is that I look for organisations where learning is treated as a strategic function rather than a compliance obligation — where there is genuine interest in connecting learning investment to measurable performance outcomes, and where a senior instructional designer or lead is expected to bring both craft and strategic thinking to the work. I am also drawn to organisations with genuinely complex learning challenges — the kind that require diagnosis before design, and where the answer is not obvious from the brief.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ CATEGORY 2: STRENGTHS & WEAKNESSES ═══ -->
+<div class="cat-section" id="cat2">
+  <div class="cat-heading">
+    <span class="cat-badge">Strengths &amp; Weaknesses</span>
+    <div class="cat-line"></div>
+  </div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">4</div><span class="qa-q-text">What is your greatest professional strength?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        The ability to identify what the real problem is before designing anything. Most clients arrive with a solution already in mind — they want a course, a workshop, a module. My instinct is always to ask three questions first: what is the motivation behind this? What do you want learners to know or do at the end? And how will you define success? Those questions consistently change the direction of the project — and they consistently produce better outcomes than starting with the brief at face value. That diagnostic instinct, developed over 23 years, is the thing I bring that is hardest to replicate.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">5</div><span class="qa-q-text">What is your greatest professional weakness?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I have a tendency to invest more time in the discovery and diagnosis phase than clients sometimes expect. I ask a lot of questions before I start designing — which occasionally creates friction with stakeholders who want to move quickly to production. Over the years I have learned to manage this better — framing the discovery phase as a risk management step rather than a delay, and showing clients early on how the questions I am asking will save time and rework later. But the underlying instinct — to understand before I build — is one I have never wanted to lose entirely, because it is also the thing that produces the best work.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">6</div><span class="qa-q-text">How do you stay current with trends in learning and development?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Through active practice rather than passive consumption. The AI and learning analytics capabilities I have developed over the last two years came from building live projects — a Microsoft Copilot Studio virtual assistant for a pharma sales team, an LXP integration using xAPI for a humanitarian organisation, and a Power BI learning analytics dashboard for a higher education institution. I also follow research from the Learning and Performance Institute, ATD, and key academic journals on instructional design and adult learning. But my honest answer is that the most reliable way I stay current is by taking on projects that push me into territory I have not worked in before — and treating each one as a learning engagement as much as a delivery engagement.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ CATEGORY 3: DOMAIN & CRAFT ═══ -->
+<div class="cat-section" id="cat3">
+  <div class="cat-heading">
+    <span class="cat-badge">Domain &amp; Craft</span>
+    <div class="cat-line"></div>
+  </div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">7</div><span class="qa-q-text">Describe your experience with eLearning tools and technologies.</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        My primary authoring tool is Articulate Storyline, which I have used across the full range of eLearning formats — linear modules, scenario-based branching, software simulations, and gamified assessments. I have also worked extensively with Adobe Captivate for software training, Vyond for animated explainer content, and iSpring for rapid development. On the infrastructure side I have designed and deployed content across multiple LMS platforms, built xAPI-compliant courses tracked through Learning Record Stores, and integrated eLearning content with LXP environments. More recently I have been working with Microsoft Copilot Studio to build AI-powered performance support tools, and with Power BI to build learning analytics dashboards. My approach to tools has always been to let the performance context drive the technology choice — not the other way around.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">8</div><span class="qa-q-text">How do you conduct a Training Needs Analysis?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I run TNA as a three-layer process. At the organisational level, I work with senior stakeholders to understand where the business is going and what capabilities the strategy requires that the organisation does not currently demonstrate consistently. At the functional level, I conduct structured interviews with department heads and high performers — asking not what training they want, but what the role actually requires and where observed performance falls short of that standard. At the individual level, I use paired self-assessments — where both the employee and their manager rate performance against the same competency indicators — with the delta between the two serving as a data point in itself. The three layers together produce a priority gap register that is both evidence-based and stakeholder-owned — which is critical for the learning calendar and budget conversations that follow.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">9</div><span class="qa-q-text">How do you measure the effectiveness of a learning programme?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I start from Kirkpatrick, but I apply it selectively based on what the client actually needs to know. Level 1 reaction data is the least useful and I try not to make it the headline metric. Level 2 assessment data is more useful — but only if the assessment is designed to test performance rather than recall. Level 3 behaviour change — are people doing things differently on the job — is where the real evidence of impact lives, and I build post-programme observation frameworks or manager verification structures into the design wherever possible. Level 4 business impact I approach through correlation — connecting training completion and assessment data to the business KPIs the client identified in the discovery phase. I have also built xAPI tracking systems and Power BI dashboards to make this data visible in real time rather than in a quarterly report.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">10</div><span class="qa-q-text">What is your experience with gamification in learning?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I distinguish carefully between gamification — applying game mechanics to a learning experience — and game-based learning, which involves building an actual game. My experience is with gamification. The most significant example is an IPC compliance assessment I designed for a healthcare organisation, where the previous version had produced only a 58% compliance-level performance rate. I designed a Care Credits mechanic — a cumulative consequence system across six clinical ward environments — where every incorrect decision cost Credits that carried forward across the entire assessment, mirroring the clinical reality that IPC failures compound. The result was a 91% perfect score rate — compared to 58% on the prior version. The insight was not about making it fun. It was about making the consequences feel real in a safe environment. That is what gamification, done properly, achieves.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">11</div><span class="qa-q-text">How do you approach learning design differently for virtual delivery versus face-to-face?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        The fundamental difference is that virtual delivery strips away the ambient social pressure that keeps people engaged in a room — the eye contact, the peer awareness, the physical presence of a facilitator. Without deliberate design to replace those mechanisms, virtual learning defaults to passive watching. My approach is to build a structured interaction point within every ten minutes of content — Zoom polls before teaching rather than after, chat waterfall techniques that capture first-instinct thinking before groupthink forms, breakout rooms with specific tasks rather than open discussion, and role-play pairs with clear observation frameworks. I also design the facilitator guide very differently for virtual delivery — specifying the exact platform management instructions alongside the instructional moves, because a technically uncertain facilitator loses the room immediately in a virtual environment.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">12</div><span class="qa-q-text">How do you approach designing for a global, multicultural audience?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        With the assumption that my defaults are wrong until proven otherwise. I have designed learning for audiences across Southeast Asia, the Middle East, Europe, North America, and sub-Saharan Africa — and the most consistent lesson across all of them is that the instructional conventions I might take for granted in one context are either invisible or counterproductive in another. Practically, this means involving regional SMEs and target audience representatives in the review process, building flexibility into scenarios so they can be localised without rebuilding the architecture, and being conservative about humour, idiom, and cultural reference. I have also designed programmes that had to function on low-bandwidth connections across 28 countries — which taught me a great deal about designing for constraint rather than for optimal conditions.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">13</div><span class="qa-q-text">Describe your experience with learning analytics.</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        My most substantial analytics project was a learning analytics framework and Power BI dashboard for an international university, integrating data across six previously siloed systems — LMS, Student Information System, library access logs, financial aid records, attendance tracking, and a student services CRM. I designed a Student Progression Index — a composite risk score built from five evidence-based indicators, updated weekly from live system data — that identified at-risk students early enough for tutors to intervene. 347 high-risk students were identified and contacted in the first semester. 83% of those who received an intervention completed the semester. The institution's overall retention improved by 19% year-on-year — the first improvement in three years. The project also taught me that data governance and stakeholder trust are as important as the technical build — the analytics only created value because tutors trusted the model enough to act on it.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ CATEGORY 4: STAKEHOLDERS ═══ -->
+<div class="cat-section" id="cat4">
+  <div class="cat-heading">
+    <span class="cat-badge">Stakeholders</span>
+    <div class="cat-line"></div>
+  </div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">14</div><span class="qa-q-text">How do you handle a situation where the client disagrees with your design recommendation?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I treat disagreement as a diagnostic opportunity rather than a negotiation. If a client pushes back on a design recommendation, my first response is to understand what is driving the pushback — is it a budget concern, a timeline constraint, a cultural preference, or a genuine belief that my approach is wrong? In most cases it is one of the first three, and those can be addressed directly. Where the client genuinely believes the approach is wrong, I present the evidence for my recommendation — research, precedent from similar projects, or a prototype — and then make the decision transparent: here is what the data suggests, here is what you are asking for, and here is what the likely outcome of each approach is. I have rarely lost a client to that conversation. I have occasionally been overruled — and in a few of those cases, the client's instinct turned out to be right.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">15</div><span class="qa-q-text">How do you manage stakeholder relationships, especially difficult ones?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        The most important thing I have learned about difficult stakeholders is that resistance is almost always about framing, not substance. When a department head at a hospitality group I was working with refused to participate in a TNA — describing it as "another HR exercise that won't change anything" — I did not try to persuade him with process arguments. I reframed the conversation entirely: instead of asking for an interview about training, I asked for 30 minutes to understand what was making his team's performance harder than it needed to be. That framing worked immediately. He subsequently provided some of the richest input in the entire TNA. The lesson: connect the conversation to what the stakeholder cares about — their results, not your process.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ CATEGORY 5: LEADERSHIP & PROCESS ═══ -->
+<div class="cat-section" id="cat5">
+  <div class="cat-heading">
+    <span class="cat-badge">Leadership &amp; Process</span>
+    <div class="cat-line"></div>
+  </div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">16</div><span class="qa-q-text">Tell me about a time you managed a complex, large-scale learning project.</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        One of the most complex projects I have led was an ERP application training programme for a financial services organisation — 400 users, six role-based pathways, a fixed go-live deadline, and a team of ten instructional designers working under my direction. Before building anything, I ran a content and capability audit — reviewing 340 pages of vendor documentation and conducting structured interviews with 18 SMEs. What those conversations revealed changed the entire design strategy: the errors users were most likely to make were not about understanding the system, but about not understanding the underlying business process the system was built around. I restructured the entire programme around that insight. The result was 100% pathway completion before go-live, a 96% first-attempt pass rate, and a 62% reduction in support desk queries in the first 30 days — the first time in the organisation's history that a major system rollout had achieved full pre-go-live training completion.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">17</div><span class="qa-q-text">How do you prioritise when you have multiple projects running simultaneously?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By impact and dependency, in that order. Impact — which project, if delayed, causes the greatest downstream consequence for the client or the business? Dependency — which project is blocking other people's work if I do not deliver my component on time? Everything else — personal preference, ease of execution, interest level — comes after those two filters. Practically, I maintain a live project dashboard that shows the status of every deliverable, every stakeholder dependency, and every deadline across all active projects. That visibility means I am managing by exception rather than by memory — I do not need to keep everything in my head because it is all visible in one place.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">18</div><span class="qa-q-text">How do you ensure quality in learning design, especially when leading a team?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Through standards, not supervision. When I lead a team of instructional designers, I do not review everything — I build a shared design framework that makes good decisions the default. That means establishing agreed templates for storyboards and scripts, a must-know/need-to-know/nice-to-know content filter applied at the outline stage before anything is built, and a structured SME review protocol that gives reviewers specific accuracy gates to respond to rather than open-ended feedback. I also hold a design principle review at the start of every project — making sure every team member understands the instructional rationale behind the choices we are making, not just the production requirements. Quality comes from shared understanding, not from checking other people's work.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ CATEGORY 6: VISION & FUTURE ═══ -->
+<div class="cat-section" id="cat6">
+  <div class="cat-heading">
+    <span class="cat-badge">Vision &amp; Future</span>
+    <div class="cat-line"></div>
+  </div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">19</div><span class="qa-q-text">Where do you see the future of learning and development heading?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Three directions, all converging. First, AI will fundamentally change the economics of content development — making certain types of production faster and cheaper, which will shift the premium skill from building content to designing the learning architecture and measuring its impact. Second, the skills-based organisation model is putting pressure on L&amp;D to move from programme-based thinking to capability-based thinking — which requires a much tighter connection between learning design, competency frameworks, and business performance data. Third, learning analytics will mature from a reporting function into a predictive one — identifying performance gaps before they become visible on the production floor or in the customer satisfaction data. I am actively building capabilities across all three of these areas, which is part of why this is still an interesting field to be in after 23 years.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">20</div><span class="qa-q-text">Do you have any questions for us?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Yes — always. There are three questions I find genuinely useful in understanding whether a role is the right fit. First: how does the organisation currently define the success of its L&amp;D function — and how is that measured? The answer tells me whether learning is treated strategically or operationally. Second: what is the most complex learning challenge the team is currently facing — the one that has been hardest to solve? The answer tells me where I would add the most value, and whether the challenge genuinely interests me. Third: how much of the work is upstream — needs analysis, solution design, stakeholder consultation — versus downstream production and delivery? The balance of that answer tells me whether my pre-sales consultancy experience will be valued or underutilised in this role.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- REMEMBER THIS -->
+<div class="callout" style="margin-top:40px;">
+  <div class="callout-icon">🧠</div>
+  <div class="callout-body">
+    <strong>Remember this</strong>
+    The best interview answer is not a recitation of facts — it is a coherent narrative that shows how you think. Memorise the structure and the examples. Tell the story in your own voice. That is the version that stays with the interviewer after the room empties.
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <h3>You know these answers.<br><em>Now make them yours.</em></h3>
+  <p>The portfolio behind every answer — twelve case studies across twelve real challenges.</p>
+  <a href="/" class="cta-btn">View portfolio →</a>
+</div>
+
+</div><!-- end .main -->
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Learning Matters.</strong> &nbsp;·&nbsp; <a href="/">rameshkrishnan.me</a></p>
+  <p style="margin-top:6px;font-size:0.72rem;">Interview Preparation · 20 Generic Questions · IC &amp; Lead/Manager Tracks</p>
+</footer>
+
+<script>
+// Toggle Q&A
+const answered = new Set();
+
+function toggleQA(btn) {
+  const card = btn.closest('.qa-card');
+  const num = parseInt(card.querySelector('.qa-num').textContent);
+  card.classList.toggle('open');
+  if (card.classList.contains('open')) {
+    answered.add(num);
+  }
+  updateProgress();
+}
+
+function updateProgress() {
+  const pct = (answered.size / 20) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = answered.size + ' of 20';
+}
+
+// Keyboard shortcut: Escape closes all
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.qa-card.open').forEach(c => c.classList.remove('open'));
+  }
+});
+
+// Highlight active category in nav on scroll
+const sections = document.querySelectorAll('.cat-section');
+const navLinks = document.querySelectorAll('.cat-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.style.color = '');
+      const href = '#' + entry.target.id;
+      const active = document.querySelector(`.cat-nav a[href="${href}"]`);
+      if (active) active.style.color = '#ffffff';
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
