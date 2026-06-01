@@ -56,11 +56,19 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .how-to-body{font-size:0.85rem;color:var(--ink-mid);line-height:1.65;}
 .how-to-body strong{color:var(--gold);display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
 
-/* MAIN LAYOUT */
+/* PROGRESS */
+.progress-wrap{max-width:900px;margin:0 auto;padding:0 48px;}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.progress-top span{font-size:0.75rem;color:var(--ink-light);font-weight:500;}
+.progress-count{color:var(--forest)!important;font-weight:600!important;}
+.progress-bar{background:var(--forest-light);border-radius:20px;height:8px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest);border-radius:20px;width:0%;transition:width 0.4s ease;}
+
+/* MAIN */
 .main{max-width:900px;margin:0 auto;padding:40px 48px 80px;}
 
 /* CATEGORY HEADINGS */
-.cat-section{scroll-margin-top:80px;margin-bottom:12px;}
+.cat-section{scroll-margin-top:80px;}
 .cat-heading{display:flex;align-items:center;gap:12px;margin-bottom:20px;margin-top:48px;}
 .cat-badge{background:var(--forest);color:var(--white);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;}
 .cat-line{flex:1;height:1px;background:var(--border);}
@@ -81,15 +89,19 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .qa-card.open .qa-question{background:var(--forest-light);}
 .qa-card.open .qa-q-text{color:var(--forest);}
 
+/* FOLLOW-UP SCENARIOS */
+.followup{margin-top:18px;border-top:1px dashed var(--border);padding-top:14px;}
+.followup-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.followup-label::before{content:'↩';font-size:0.85rem;}
+.followup-q{font-size:0.82rem;font-style:italic;color:var(--ink-light);margin-bottom:10px;padding:8px 12px;background:var(--smoke);border-radius:6px;border-left:3px solid var(--gold);}
+.followup-a{font-size:0.875rem;color:var(--ink-mid);line-height:1.8;}
+.followup+.followup{margin-top:14px;}
+
 /* CALLOUT */
 .callout{background:var(--forest);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:32px 0;display:flex;gap:12px;align-items:flex-start;}
 .callout-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
 .callout-body{font-size:0.875rem;color:rgba(255,255,255,0.9);line-height:1.7;font-style:italic;}
 .callout-body strong{color:#c9a96e;display:block;font-style:normal;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
-
-/* PROGRESS */
-.progress-bar{background:var(--forest-light);border-radius:20px;height:8px;margin:24px 0;overflow:hidden;}
-.progress-fill{height:100%;background:var(--forest);border-radius:20px;width:0%;transition:width 0.4s ease;}
 
 /* CTA */
 .cta-block{background:var(--forest);border-radius:var(--radius);padding:36px 40px;text-align:center;margin-top:48px;}
@@ -98,9 +110,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .cta-block p{font-size:0.875rem;color:rgba(255,255,255,0.65);margin-bottom:20px;}
 .cta-btn{display:inline-block;background:var(--gold);color:var(--white);padding:11px 28px;border-radius:24px;font-size:0.85rem;font-weight:500;text-decoration:none;}
 
-/* DIVIDER */
-.divider{border:none;border-top:1px solid var(--border);margin:0;}
-
 /* FOOTER */
 footer{background:var(--forest);color:rgba(255,255,255,0.6);text-align:center;padding:32px 48px;font-size:0.8rem;}
 footer a{color:#c9a96e;text-decoration:none;}
@@ -108,12 +117,12 @@ footer strong{color:var(--white);}
 
 /* MOBILE */
 @media(max-width:640px){
-  nav,hero,.how-to,.main{padding-left:20px;padding-right:20px;}
+  nav{padding:0 20px;}
   .hero{padding:48px 20px 40px;}
   .how-to{margin:24px 20px;}
+  .progress-wrap{padding:0 20px;}
   .main{padding:32px 20px 60px;}
   .qa-answer{padding:0 16px 16px 16px;}
-  .cat-nav a{padding:11px 16px;}
 }
 </style>
 </head>
@@ -162,15 +171,15 @@ footer strong{color:var(--white);}
   <div class="how-to-icon">💡</div>
   <div class="how-to-body">
     <strong>How to use this guide</strong>
-    Do not memorise these answers verbatim — they will sound rehearsed. Read each answer once, close the page, tell the story out loud in your own words, then come back and check what you missed. That is the version that will land in an interview. Click any question to expand the answer.
+    Do not memorise these answers verbatim — they will sound rehearsed. Read each answer once, close the page, tell the story out loud in your own words, then come back and check what you missed. That is the version that will land in an interview. Click any question to expand the answer. Where follow-up scenarios appear, they show how to handle the most likely counter-questions.
   </div>
 </div>
 
 <!-- PROGRESS -->
-<div style="max-width:900px;margin:0 auto;padding:0 48px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-    <span style="font-size:0.75rem;color:var(--ink-light);font-weight:500;">Questions rehearsed</span>
-    <span id="progress-label" style="font-size:0.75rem;color:var(--forest);font-weight:600;">0 of 20</span>
+<div class="progress-wrap" style="margin-top:24px;">
+  <div class="progress-top">
+    <span>Questions rehearsed</span>
+    <span id="progress-label" class="progress-count">0 of 20</span>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
 </div>
@@ -180,12 +189,10 @@ footer strong{color:var(--white);}
 
 <!-- ═══ CATEGORY 1: ABOUT YOU ═══ -->
 <div class="cat-section" id="cat1">
-  <div class="cat-heading">
-    <span class="cat-badge">About You</span>
-    <div class="cat-line"></div>
-  </div>
+  <div class="cat-heading"><span class="cat-badge">About You</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
+    <!-- Q1 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">1</div><span class="qa-q-text">Tell me about yourself.</span></div>
@@ -193,26 +200,43 @@ footer strong{color:var(--white);}
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
         I am an instructional designer and learning consultant with 23 years of experience working across two core practice areas — pre-sales learning consultancy, where I help organisations translate business challenges into defined learning solutions, and the end-to-end design and development of those solutions. My work spans eLearning, ILT, virtual ILT, business simulations, gamified assessments, and AI-powered performance support tools, across financial services, healthcare, FMCG, pharma, manufacturing, humanitarian, and higher education sectors. What has remained constant across all of it is a single principle: I work with the end in mind. For me, that means designing learning that produces measurable change — not just activity.
+        <div class="followup">
+          <div class="followup-label">Possible follow-up</div>
+          <div class="followup-q">"Has there been a situation where things didn't go as planned or you weren't able to produce measurable change?"</div>
+          <div class="followup-a">Yes — and I think anyone who claims otherwise either hasn't been doing this long enough or isn't being honest.<br><br>Early in my career, I designed a soft skills programme for a mid-size organisation — well-structured, well-received, strong reaction scores. Participants liked it. Managers thought it was useful. We called it a success.<br><br>About six months later I had an honest conversation with the HR head, who told me that she couldn't point to a single thing that had changed on the floor. Behaviour was the same. The problem the programme was supposed to address was still there.<br><br>What had gone wrong was straightforward in hindsight: I had designed for the training room, not for the workplace. There was no transfer mechanism — no manager briefing before the programme, no on-the-job application structure after it, no accountability for whether anyone actually tried the new behaviours in a real situation. I had built a good learning experience and a poor performance intervention. Those are two very different things.<br><br>That failure changed how I design. Every programme I build now has a transfer architecture — something that bridges what happens in the room and what happens back at the desk. The post-programme commitment structure, the manager follow-up, the 30-day application challenge — those elements exist in my work today because of a programme that worked in the room and failed in the world.<br><br>I am a better designer because that happened. And I would rather tell you that story than pretend it didn't.</div>
+        </div>
       </div></div>
     </div>
 
+    <!-- Q2 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">2</div><span class="qa-q-text">Why are you looking for a new opportunity?</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        After three years as a learning consultant at Ozemio and then a period of independent consultancy, I am at a point where I want to bring everything I have built — the pre-sales experience, the design craft, the growing focus on AI and learning analytics — into a sustained engagement with one organisation. Independent consultancy gives you breadth. A focused role gives you depth and the opportunity to see the long-term impact of your work. That is what I am looking for next.
+        Freelancing was a deliberate choice — it gave me the flexibility to work remotely while taking on genuinely complex, varied work across multiple industries. That combination has been valuable, and I have no regrets about it.<br><br>What I am looking for now is that same flexibility within a more sustained engagement — a role where I can bring depth and focus to one organisation's learning challenges over time, rather than moving from brief to brief. The remote work aspect remains important to me, which is part of why this opportunity stood out. The chance to do serious, meaningful design work from wherever I am — that is the combination I am looking for.
+        <div class="followup">
+          <div class="followup-label">Possible follow-up</div>
+          <div class="followup-q">"This role is purely instructional design — there is no consultancy component."</div>
+          <div class="followup-a">That actually works very well for me — and let me explain why.<br><br>The consultancy experience I am describing is not something I am looking to replicate in a new role. It is the lens through which I approach design work. The habit of asking what the real problem is before building anything, of understanding the business outcome before deciding on the modality — that thinking does not require a consultancy title. It just requires space to ask the right questions before the brief is locked.<br><br>What I am genuinely looking for is a sustained creative and intellectual challenge — a place where the instructional design work is complex enough to be interesting, and where the impact of what I build is visible over time rather than handed off the moment a project closes. That is the part independent consultancy cannot give me, regardless of what the role is called.<br><br>So no — I am not looking for a consultancy role. I am looking for design work that is taken seriously. If that is what this role offers, then the title is the least important part of the conversation.</div>
+        </div>
+        <div class="followup">
+          <div class="followup-label">Possible follow-up</div>
+          <div class="followup-q">"We don't deal with AI-based learning interventions here. I'm not sure this role will match your growing aspirations."</div>
+          <div class="followup-a">I appreciate you being direct about that — and I want to be equally direct in return.<br><br>When I talk about AI in learning, I am not describing a destination I have arrived at. I am describing a direction I am moving in — and that direction does not require every organisation I work with to be at the same stage. Some of my most satisfying work has been in organisations where the starting point was straightforward — a compliance module, a product training programme — and the satisfaction came from doing that work exceptionally well, not from the sophistication of the technology.<br><br>What I have found, consistently, is that the fundamentals of good instructional design — understanding the real problem, designing for behaviour change, measuring what actually changes — matter far more than the tools used to deliver the solution. AI is one more tool in that kit. If this role does not require it, I design without it. The thinking does not change.<br><br>What I would ask you is this — is the work here genuinely complex and meaningful? Are there real performance challenges the organisation is trying to solve through learning? If the answer to those questions is yes, then I am interested — regardless of where the organisation sits on the technology curve.<br><br>I have never been in this for the tools. I am in it for the work.</div>
+        </div>
       </div></div>
     </div>
 
+    <!-- Q3 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">3</div><span class="qa-q-text">What do you know about our organisation and why do you want to work here?</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        I would answer this specifically for each organisation I am interviewing with — and I always do my research before an interview rather than offering a generic answer. What I can say as a general principle is that I look for organisations where learning is treated as a strategic function rather than a compliance obligation — where there is genuine interest in connecting learning investment to measurable performance outcomes, and where a senior instructional designer or lead is expected to bring both craft and strategic thinking to the work. I am also drawn to organisations with genuinely complex learning challenges — the kind that require diagnosis before design, and where the answer is not obvious from the brief.
+        I always do my research before an interview — so my answer to the first part will always be specific to you.<br><br>On the second part — I am deliberately targeting organisations whose core business is the design and development of learning. That is where the craft is taken most seriously, where the quality bar is highest, and where I will be working alongside people who think about this the way I do.<br><br>Twenty-three years in this field have given me a clear picture of where I do my best work. This is that environment.
       </div></div>
     </div>
 
@@ -221,22 +245,21 @@ footer strong{color:var(--white);}
 
 <!-- ═══ CATEGORY 2: STRENGTHS & WEAKNESSES ═══ -->
 <div class="cat-section" id="cat2">
-  <div class="cat-heading">
-    <span class="cat-badge">Strengths &amp; Weaknesses</span>
-    <div class="cat-line"></div>
-  </div>
+  <div class="cat-heading"><span class="cat-badge">Strengths &amp; Weaknesses</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
+    <!-- Q4 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">4</div><span class="qa-q-text">What is your greatest professional strength?</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        The ability to identify what the real problem is before designing anything. Most clients arrive with a solution already in mind — they want a course, a workshop, a module. My instinct is always to ask three questions first: what is the motivation behind this? What do you want learners to know or do at the end? And how will you define success? Those questions consistently change the direction of the project — and they consistently produce better outcomes than starting with the brief at face value. That diagnostic instinct, developed over 23 years, is the thing I bring that is hardest to replicate.
+        Resilience — and the adaptability that comes with it.<br><br>Over 23 years I have worked across large consultancies, mid-size agencies, in-house teams, and for the last year and a half, independently. Each environment required a different way of working. Adapting across those contexts — without losing the thread of who I am as a designer — is something I have had to develop deliberately.<br><br>The projects have tested that resilience in their own ways too. Briefs that changed mid-build. Go-live dates that would not move. Source material that turned out to be unusable. Each time, the work got done — not because the conditions were favourable, but because I have learned to work well precisely when they are not.<br><br>That resilience is not stubbornness. It is the ability to stay focused on the outcome when everything around the project is in flux.
       </div></div>
     </div>
 
+    <!-- Q5 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">5</div><span class="qa-q-text">What is your greatest professional weakness?</span></div>
@@ -247,6 +270,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q6 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">6</div><span class="qa-q-text">How do you stay current with trends in learning and development?</span></div>
@@ -262,12 +286,10 @@ footer strong{color:var(--white);}
 
 <!-- ═══ CATEGORY 3: DOMAIN & CRAFT ═══ -->
 <div class="cat-section" id="cat3">
-  <div class="cat-heading">
-    <span class="cat-badge">Domain &amp; Craft</span>
-    <div class="cat-line"></div>
-  </div>
+  <div class="cat-heading"><span class="cat-badge">Domain &amp; Craft</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
+    <!-- Q7 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">7</div><span class="qa-q-text">Describe your experience with eLearning tools and technologies.</span></div>
@@ -278,26 +300,29 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q8 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">8</div><span class="qa-q-text">How do you conduct a Training Needs Analysis?</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        I run TNA as a three-layer process. At the organisational level, I work with senior stakeholders to understand where the business is going and what capabilities the strategy requires that the organisation does not currently demonstrate consistently. At the functional level, I conduct structured interviews with department heads and high performers — asking not what training they want, but what the role actually requires and where observed performance falls short of that standard. At the individual level, I use paired self-assessments — where both the employee and their manager rate performance against the same competency indicators — with the delta between the two serving as a data point in itself. The three layers together produce a priority gap register that is both evidence-based and stakeholder-owned — which is critical for the learning calendar and budget conversations that follow.
+        A TNA always starts with a performance gap — but that gap has more than one origin. Sometimes it surfaces as a problem: error rates climbing, customer complaints increasing, a compliance failure that should not have happened. Sometimes it surfaces as a strategic opportunity: the organisation is moving in a new direction and needs capabilities it does not yet have. Both are legitimate triggers, and both deserve a different type of investigation.<br><br>At the organisational level, I work with senior leadership to understand where the business is heading and what the strategy requires that the current workforce cannot yet deliver. This is less about training and more about capability forecasting — what does the organisation need to be able to do in 12 to 18 months that it cannot do today?<br><br>At the functional level, the gap usually surfaces through data that already exists — quality metrics, error rates, customer feedback, manager observations, process audits. The TNA's job is not to discover this data from scratch but to formalise and validate what the organisation is already seeing informally, and to connect it to a specific performance standard that the training can be designed to close.<br><br>At the individual level, I am cautious about relying on self-assessments — particularly when the data is anywhere near the appraisal cycle. People do not rate themselves accurately under those conditions, and the data becomes unreliable. I prefer structured observation, work sample reviews, or short skills challenges that surface the gap directly rather than asking someone to declare it. Where I do use manager assessments, I run calibration sessions first — to ensure that different managers are applying the same standard, not just their own interpretation of it.<br><br>The output is always the same: a priority gap register that shows what needs to change, by role, by level of urgency, and linked to the business outcome the training is expected to support.
       </div></div>
     </div>
 
+    <!-- Q9 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">9</div><span class="qa-q-text">How do you measure the effectiveness of a learning programme?</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        I start from Kirkpatrick, but I apply it selectively based on what the client actually needs to know. Level 1 reaction data is the least useful and I try not to make it the headline metric. Level 2 assessment data is more useful — but only if the assessment is designed to test performance rather than recall. Level 3 behaviour change — are people doing things differently on the job — is where the real evidence of impact lives, and I build post-programme observation frameworks or manager verification structures into the design wherever possible. Level 4 business impact I approach through correlation — connecting training completion and assessment data to the business KPIs the client identified in the discovery phase. I have also built xAPI tracking systems and Power BI dashboards to make this data visible in real time rather than in a quarterly report.
+        My approach to measuring effectiveness depends on the context — and I deliberately choose the framework based on what the client actually needs to know and what decision the data will inform.<br><br>For most programmes, I start with Kirkpatrick as a structural guide — but I apply it selectively. Level 1 reaction data rarely tells me anything useful, so I do not make it the headline metric. Where I focus most of my energy is Level 3 — are people actually doing things differently on the job? I build post-programme observation frameworks or manager verification structures into the design to capture this, rather than leaving it to an end-of-year survey.<br><br>Where a client needs to make a financial case for learning investment, I bring in the Phillips ROI methodology — converting Level 4 business impact data into a cost-benefit ratio. I used this approach on an ERP rollout where the 62% reduction in support desk queries after go-live gave the L&amp;D team a clear, defensible return on the training investment.<br><br>When I need a faster read on whether learning is transferring — without a full evaluation study — I use Brinkerhoff's Success Case Method. I identify the learners who applied the learning well and those who did not, compare them, and surface what is enabling or blocking transfer. It is quicker than a formal Level 3 study and often more actionable.<br><br>And increasingly, I connect learning data directly to business KPIs through xAPI tracking and Power BI dashboards — which moves measurement from a post-programme report into a live, ongoing view of whether the learning is producing the outcomes it was designed to produce.<br><br>The framework is always a means to an end. The question I am always trying to answer is the same one regardless of which model I use: did something actually change?
       </div></div>
     </div>
 
+    <!-- Q10 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">10</div><span class="qa-q-text">What is your experience with gamification in learning?</span></div>
@@ -308,6 +333,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q11 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">11</div><span class="qa-q-text">How do you approach learning design differently for virtual delivery versus face-to-face?</span></div>
@@ -318,6 +344,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q12 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">12</div><span class="qa-q-text">How do you approach designing for a global, multicultural audience?</span></div>
@@ -328,6 +355,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q13 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">13</div><span class="qa-q-text">Describe your experience with learning analytics.</span></div>
@@ -343,12 +371,10 @@ footer strong{color:var(--white);}
 
 <!-- ═══ CATEGORY 4: STAKEHOLDERS ═══ -->
 <div class="cat-section" id="cat4">
-  <div class="cat-heading">
-    <span class="cat-badge">Stakeholders</span>
-    <div class="cat-line"></div>
-  </div>
+  <div class="cat-heading"><span class="cat-badge">Stakeholders</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
+    <!-- Q14 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">14</div><span class="qa-q-text">How do you handle a situation where the client disagrees with your design recommendation?</span></div>
@@ -359,6 +385,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q15 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">15</div><span class="qa-q-text">How do you manage stakeholder relationships, especially difficult ones?</span></div>
@@ -374,12 +401,10 @@ footer strong{color:var(--white);}
 
 <!-- ═══ CATEGORY 5: LEADERSHIP & PROCESS ═══ -->
 <div class="cat-section" id="cat5">
-  <div class="cat-heading">
-    <span class="cat-badge">Leadership &amp; Process</span>
-    <div class="cat-line"></div>
-  </div>
+  <div class="cat-heading"><span class="cat-badge">Leadership &amp; Process</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
+    <!-- Q16 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">16</div><span class="qa-q-text">Tell me about a time you managed a complex, large-scale learning project.</span></div>
@@ -390,6 +415,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q17 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">17</div><span class="qa-q-text">How do you prioritise when you have multiple projects running simultaneously?</span></div>
@@ -400,6 +426,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q18 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">18</div><span class="qa-q-text">How do you ensure quality in learning design, especially when leading a team?</span></div>
@@ -415,12 +442,10 @@ footer strong{color:var(--white);}
 
 <!-- ═══ CATEGORY 6: VISION & FUTURE ═══ -->
 <div class="cat-section" id="cat6">
-  <div class="cat-heading">
-    <span class="cat-badge">Vision &amp; Future</span>
-    <div class="cat-line"></div>
-  </div>
+  <div class="cat-heading"><span class="cat-badge">Vision &amp; Future</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
+    <!-- Q19 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">19</div><span class="qa-q-text">Where do you see the future of learning and development heading?</span></div>
@@ -431,6 +456,7 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
+    <!-- Q20 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">20</div><span class="qa-q-text">Do you have any questions for us?</span></div>
@@ -469,16 +495,13 @@ footer strong{color:var(--white);}
 </footer>
 
 <script>
-// Toggle Q&A
 const answered = new Set();
 
 function toggleQA(btn) {
   const card = btn.closest('.qa-card');
   const num = parseInt(card.querySelector('.qa-num').textContent);
   card.classList.toggle('open');
-  if (card.classList.contains('open')) {
-    answered.add(num);
-  }
+  if (card.classList.contains('open')) answered.add(num);
   updateProgress();
 }
 
@@ -488,22 +511,17 @@ function updateProgress() {
   document.getElementById('progress-label').textContent = answered.size + ' of 20';
 }
 
-// Keyboard shortcut: Escape closes all
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.qa-card.open').forEach(c => c.classList.remove('open'));
-  }
+  if (e.key === 'Escape') document.querySelectorAll('.qa-card.open').forEach(c => c.classList.remove('open'));
 });
 
-// Highlight active category in nav on scroll
 const sections = document.querySelectorAll('.cat-section');
 const navLinks = document.querySelectorAll('.cat-nav a');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(l => l.style.color = '');
-      const href = '#' + entry.target.id;
-      const active = document.querySelector(`.cat-nav a[href="${href}"]`);
+      const active = document.querySelector(`.cat-nav a[href="#${entry.target.id}"]`);
       if (active) active.style.color = '#ffffff';
     }
   });
