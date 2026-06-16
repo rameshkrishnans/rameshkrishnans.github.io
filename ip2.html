@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Interview Preparation — ID Team & Processes | Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest: #1e4a3a; --forest-mid: #2d6b52; --forest-light: #e8f2ed;
+  --gold: #a37c3b; --gold-light: #f5edd8; --gold-pale: #faf6ee;
+  --ink: #1c1c1a; --ink-mid: #3d3d38; --ink-light: #6b6b62;
+  --smoke: #f7f5f0; --border: #ddd9ce; --white: #ffffff;
+  --radius: 10px; --shadow: 0 2px 16px rgba(30,74,58,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--smoke);color:var(--ink);line-height:1.7;font-size:16px;}
+
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 48px;height:56px;gap:40px;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;}
+.nav-brand span{color:var(--forest);}.nav-brand em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:28px;margin-left:auto;}
+.nav-links a{font-size:0.82rem;color:var(--ink-light);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--forest);}
+.nav-cta{background:var(--forest);color:var(--white)!important;padding:7px 18px;border-radius:20px;font-weight:500!important;}
+
+.cat-nav{background:var(--forest);display:flex;overflow-x:auto;scrollbar-width:none;}
+.cat-nav::-webkit-scrollbar{display:none;}
+.cat-nav a{color:rgba(255,255,255,0.6);font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:11px 22px;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.1);transition:all 0.2s;display:flex;align-items:center;gap:7px;}
+.cat-nav a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.cat-nav .num{background:rgba(255,255,255,0.15);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:0.68rem;flex-shrink:0;}
+
+.hero{background:var(--forest);padding:72px 48px 56px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(163,124,59,0.12) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{max-width:860px;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:0.75rem;color:rgba(255,255,255,0.8);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:400;color:var(--white);line-height:1.15;margin-bottom:12px;}
+.hero h1 em{font-style:italic;color:#c9a96e;}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:600px;line-height:1.65;margin-bottom:40px;}
+.hero-stats{display:flex;gap:44px;flex-wrap:wrap;}
+.h-stat{display:flex;flex-direction:column;}
+.h-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--white);line-height:1;}
+.h-stat-num span{color:#c9a96e;}
+.h-stat-label{font-size:0.72rem;color:rgba(255,255,255,0.5);}
+.h-stat-div{width:1px;background:rgba(255,255,255,0.15);align-self:stretch;}
+
+.how-to{background:var(--gold-pale);border:1px solid #e8d9b8;border-radius:var(--radius);padding:20px 24px;margin:32px 48px;display:flex;gap:14px;align-items:flex-start;}
+.how-to-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.how-to-body{font-size:0.85rem;color:var(--ink-mid);line-height:1.65;}
+.how-to-body strong{color:var(--gold);display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+
+.progress-wrap{max-width:900px;margin:0 auto;padding:0 48px;}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.progress-top span{font-size:0.75rem;color:var(--ink-light);font-weight:500;}
+.progress-count{color:var(--forest)!important;font-weight:600!important;}
+.progress-bar{background:var(--forest-light);border-radius:20px;height:8px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--forest);border-radius:20px;width:0%;transition:width 0.4s ease;}
+
+.main{max-width:900px;margin:0 auto;padding:40px 48px 80px;}
+
+.cat-section{scroll-margin-top:80px;}
+.cat-heading{display:flex;align-items:center;gap:12px;margin-bottom:20px;margin-top:48px;}
+.cat-badge{background:var(--forest);color:var(--white);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;}
+.cat-line{flex:1;height:1px;background:var(--border);}
+
+.qa-list{display:flex;flex-direction:column;gap:10px;}
+.qa-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--white);}
+.qa-question{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;transition:background 0.2s;}
+.qa-question:hover{background:var(--smoke);}
+.qa-q-left{display:flex;align-items:flex-start;gap:12px;}
+.qa-num{background:var(--gold-light);color:var(--gold);font-size:0.72rem;font-weight:700;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.qa-q-text{font-size:0.9rem;font-weight:600;color:var(--forest);line-height:1.5;text-align:left;}
+.qa-icon{color:var(--gold);font-size:1rem;flex-shrink:0;transition:transform 0.25s;margin-top:4px;}
+.qa-answer{display:none;padding:0 22px 20px 62px;font-size:0.875rem;color:var(--ink-mid);line-height:1.8;}
+.qa-answer-inner{border-top:1px solid var(--border);padding-top:16px;}
+.qa-card.open .qa-answer{display:block;}
+.qa-card.open .qa-icon{transform:rotate(180deg);}
+.qa-card.open .qa-question{background:var(--forest-light);}
+.qa-card.open .qa-q-text{color:var(--forest);}
+
+.callout{background:var(--forest);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:32px 0;display:flex;gap:12px;align-items:flex-start;}
+.callout-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
+.callout-body{font-size:0.875rem;color:rgba(255,255,255,0.9);line-height:1.7;font-style:italic;}
+.callout-body strong{color:#c9a96e;display:block;font-style:normal;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+
+.cta-block{background:var(--forest);border-radius:var(--radius);padding:36px 40px;text-align:center;margin-top:48px;}
+.cta-block h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:8px;}
+.cta-block h3 em{font-style:italic;color:#c9a96e;}
+.cta-block p{font-size:0.875rem;color:rgba(255,255,255,0.65);margin-bottom:20px;}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--white);padding:11px 28px;border-radius:24px;font-size:0.85rem;font-weight:500;text-decoration:none;}
+
+footer{background:var(--forest);color:rgba(255,255,255,0.6);text-align:center;padding:32px 48px;font-size:0.8rem;}
+footer a{color:#c9a96e;text-decoration:none;}
+footer strong{color:var(--white);}
+
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .hero{padding:48px 20px 40px;}
+  .how-to{margin:24px 20px;}
+  .progress-wrap{padding:0 20px;}
+  .main{padding:32px 20px 60px;}
+  .qa-answer{padding:0 16px 16px 16px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="/">Learning <span>Matters</span><em>.</em></a>
+  <div class="nav-links">
+    <a href="/">Work</a>
+    <a href="/">Insights</a>
+    <a href="/">Testimonials</a>
+    <a href="/">About</a>
+    <a href="/" class="nav-cta">Let's talk</a>
+  </div>
+</nav>
+
+<div class="cat-nav">
+  <a href="#catA"><span class="num">A</span>Team Leadership</a>
+  <a href="#catB"><span class="num">B</span>Client Needs</a>
+  <a href="#catC"><span class="num">C</span>Design Process</a>
+  <a href="#catD"><span class="num">D</span>ID Models</a>
+  <a href="#catE"><span class="num">E</span>Quality &amp; Delivery</a>
+  <a href="#catF"><span class="num">F</span>Team Development</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📋 Interview Preparation — Part 2</div>
+    <h1>Managing ID Teams<br><em>&amp; Design Processes</em></h1>
+    <p class="hero-sub">40 questions covering team leadership, client needs uncovering, design methodology, ID models and theories, quality assurance, and keeping current. Built for lead and manager-level interviews.</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-num">40</div><div class="h-stat-label">Questions with full answers</div></div>
+      <div class="h-stat-div"></div>
+      <div class="h-stat"><div class="h-stat-num">6</div><div class="h-stat-label">Categories</div></div>
+      <div class="h-stat-div"></div>
+      <div class="h-stat"><div class="h-stat-num">Lead</div><div class="h-stat-label">& Manager track</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="how-to">
+  <div class="how-to-icon">💡</div>
+  <div class="how-to-body">
+    <strong>How to use this guide</strong>
+    Read each answer once. Close the page. Tell it out loud in your own words. Return and check what you missed. The answers are grounded in real projects — reference specific case studies where relevant. Click any question to expand.
+  </div>
+</div>
+
+<div class="progress-wrap" style="margin-top:24px;">
+  <div class="progress-top">
+    <span>Questions rehearsed</span>
+    <span id="progress-label" class="progress-count">0 of 40</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+</div>
+
+<div class="main">
+
+<!-- ═══ A: TEAM LEADERSHIP & MANAGEMENT ═══ -->
+<div class="cat-section" id="catA">
+  <div class="cat-heading"><span class="cat-badge">A · Team Leadership &amp; Management</span><div class="cat-line"></div></div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">1</div><span class="qa-q-text">How do you structure and lead an instructional design team across a large-scale project?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I structure the team around workstreams, not individuals. On the ERP project — 400 users, six role-based pathways, four months — I organised a team of ten designers into three workstreams: content development, media production, and quality review. Each workstream had a lead responsible for their output and their team's pace. My role was to hold the design architecture, manage the client relationship, and resolve blockers before they became delays. The design framework — agreed templates, shared style guides, a must-know/need-to-know content filter — was established in week one so that all ten designers were making consistent decisions without needing me to review every screen. I also ran a daily fifteen-minute stand-up — not to check on people, but to surface blockers early. A problem raised on day one is a conversation. The same problem raised on day ten is a crisis.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">2</div><span class="qa-q-text">How do you allocate work across a team of designers with varying skill levels?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By matching task complexity to capability while deliberately stretching each person slightly beyond their current comfort zone. I map three things at the start of every project: what each designer does well, what they are developing, and what they should not be doing unsupported on a live deliverable. The most complex scenario writing and branching logic goes to the most experienced designers. Standard linear modules go to mid-level designers. Template-based content adaptation goes to junior designers who are building their production fluency. The stretch comes from pairing — a junior designer working alongside a senior on a complex module learns far more than they would from a formal training session. I also rotate responsibilities across projects so no one becomes siloed in one type of work.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">3</div><span class="qa-q-text">How do you onboard a new instructional designer and get them productive quickly?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I run onboarding in three stages. The first week is immersion — the new designer reads existing project documentation, attends client calls without contributing, and reviews a sample of completed deliverables across different quality levels. I ask them to write a short critique of each sample. That critique tells me immediately how they think. The second week is supervised production — they build one module end-to-end with a senior designer reviewing each stage before they move forward. The feedback is specific and immediate, not batched at the end. The third week is independent production with a structured review at the output stage. By week four they are contributing independently. The goal is not to protect them from difficulty — it is to ensure they have enough context to make good decisions when difficulty arrives.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">4</div><span class="qa-q-text">How do you mentor a junior designer who is technically capable but struggles with instructional thinking?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Technical capability without instructional thinking produces content that is well-built but poorly designed. The most effective intervention I have found is to make the thinking visible rather than just correcting the output. When I review a storyboard from a junior designer who has defaulted to information dump — good visuals, technically accurate, but no learning architecture — I do not rewrite it. I sit with them and ask a series of questions: what decision does the learner need to make after this screen? What happens if they make the wrong decision? Where is the consequence? Those questions force the designer to think about the learner's experience rather than the content's structure. Over time, they start asking those questions before they build, not after I ask them. That is when the shift has happened.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">5</div><span class="qa-q-text">How do you handle underperformance within your design team without disrupting delivery?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Early and direct. Underperformance that is addressed in week two of a project is manageable. The same underperformance addressed in week eight — when it has already affected delivery — is both a people problem and a project problem simultaneously. My first step is always to understand the root cause: is it a skill gap, a motivation issue, a personal circumstance, or a mismatch between the person and the task they have been assigned? Each requires a different response. A skill gap is addressed with targeted support and a clearer brief. A motivation issue requires a direct conversation about expectations and consequences. A task mismatch is a management error — I reassign. What I do not do is quietly redistribute the work to other team members without addressing the person directly. That is unfair to the team and it solves nothing.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">6</div><span class="qa-q-text">How do you build and maintain team morale on a long, complex project with a demanding client?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By making progress visible and protecting the team from noise that is not their problem to solve. On long projects, morale degrades when people cannot see that the work is moving — when every day feels like the same amount of effort with no sense of momentum. I use visible progress markers: a milestone board, a completion tracker, a weekly summary of what shipped. When the team can see that their work is accumulating into something real, the energy sustains. The second thing I do is absorb client friction before it reaches the team. When a client is frustrated, I handle that conversation. My team's job is to design well, not to manage a difficult relationship. They hear the outcome of that conversation — a changed brief, an adjusted timeline — but not the emotional content. Protecting that boundary is part of leading well.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">7</div><span class="qa-q-text">Have you ever had to make a difficult personnel decision on a project? How did you handle it?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Yes. On a large content development project, a senior designer was producing technically acceptable work but consistently missing the design standard the client had agreed to — and was resistant to feedback. After two direct conversations that produced no change, I made the decision to reassign the most complex modules to another designer and give this person a more structured, template-driven scope where the design decisions were pre-made. I was direct with them about the reason: the work I was asking of them required a level of independent design judgment they were not currently demonstrating, and I needed the project to succeed. It was an uncomfortable conversation. They were not pleased. But the project delivered on time and to standard, and the designer subsequently asked for more structured development support — which I provided. The difficult decision was not the reassignment. The difficult decision was having the honest conversation rather than avoiding it.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">8</div><span class="qa-q-text">How do you manage a remote instructional design team across different time zones?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Through asynchronous-first discipline and synchronous time used well. On the FMCG business simulation project — three time zones, five months — I structured the production pipeline around tight asynchronous sprints with a unified handover protocol. Every designer started their day by reading the previous shift's update, flagging blockers in a shared tracker, and posting their own plan for the day. Synchronous calls happened twice a week — one for design decisions that needed live discussion, one for quality review. Everything else was asynchronous. The key to making this work was a shared design framework precise enough that designers could make good decisions independently without needing to wait for me. When the framework is clear, time zone difference becomes a production advantage — the work moves around the clock — rather than a coordination problem.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ B: UNCOVERING CLIENT LEARNING NEEDS ═══ -->
+<div class="cat-section" id="catB">
+  <div class="cat-heading"><span class="cat-badge">B · Uncovering Client Learning Needs Post-Onboarding</span><div class="cat-line"></div></div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">9</div><span class="qa-q-text">Once a client is onboarded, how do you go about uncovering what they actually need — beyond what they have asked for?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I start by separating what the client has asked for from what the client is trying to achieve. These are rarely the same thing. A client who asks for a product knowledge module is trying to achieve something — faster ramp time for new hires, fewer errors in customer conversations, higher conversion rates. Once I understand the outcome they are trying to drive, I can evaluate whether what they have asked for is the right vehicle to get there. My first structured conversation after onboarding is built around three questions: what does success look like for the people who complete this learning? What are they doing differently afterwards? And how will you know? Those three questions surface the real performance expectation — and from there I can design backward, which always produces a better solution than designing forward from a content list.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">10</div><span class="qa-q-text">How do you conduct a discovery session with a new client to understand their learning landscape?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I run discovery in layers. The first layer is context — I ask the client to describe their organisation, their learners, and the business situation that has triggered this learning request. I listen for the problem underneath the problem. The second layer is performance — what are the target learners currently doing, what should they be doing instead, and what is the gap between those two things? The third layer is history — what has been tried before? What worked, what did not, and why? This layer is the most revealing. If a client has already run three workshops on the same topic with no behaviour change, the solution is not a fourth workshop. The fourth layer is constraints — budget, timeline, technology, governance. Constraints shape the solution as much as the learning need does. By the end of a well-run discovery session, I can write the design rationale before I have written a single learning objective.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">11</div><span class="qa-q-text">How do you handle a client who insists they know exactly what they need and resists the discovery process?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I do not argue with the client's certainty — I work with it. If a client is convinced they need a specific solution, telling them they are wrong rarely works and usually damages the relationship. Instead, I reframe the discovery conversation as due diligence rather than questioning. I tell them: you know your business far better than I do, and the discovery session will give me the context to build exactly what you have described rather than a generic version of it. That framing gets almost universal agreement, because nobody objects to their solution being built more accurately. Within that conversation, the right questions naturally surface the information I need to validate or redirect the brief — and if the direction changes, it changes because of what the client has told me, not because of what I have asserted.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">12</div><span class="qa-q-text">How do you work with SMEs to extract content from people who are experts but not communicators?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By asking about decisions and consequences rather than asking for information. An SME who struggles to articulate what they know will almost always be able to describe a situation where something went wrong and why. Those stories contain the most instructionally valuable content — the decision points, the common errors, the stakes. On the pharma virtual assistant project, I conducted job-shadowing conversations with 40 sales reps — not asking them what they knew, but asking them to narrate a typical customer call. Within that narration, the knowledge surfaced naturally, in context, in the exact form a learner would need it. I also use the critical incident technique: ask the SME to describe the best and worst examples of performance they have seen in the past six months. The contrast between those two stories tells me more about the performance standard than any list of learning objectives would.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">13</div><span class="qa-q-text">How do you validate that you have correctly understood the client's learning needs before design begins?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Through a design rationale document rather than a learning objectives list. Before I commit to a design direction, I write a one-to-two page document that states: here is the business problem, here is the performance gap, here is the learning solution I am proposing and the rationale for why this approach rather than another, here is what success looks like and how it will be measured. I share this with the client before any storyboarding begins. The document functions as a validation mechanism — if the client reads it and says yes, that is exactly right, I have understood the brief. If they push back on any element, I have surfaced the misalignment before it is built into the design. This saves significant rework and protects both the project and the relationship.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">14</div><span class="qa-q-text">How do you manage a situation where the client's learning need changes significantly mid-project?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I treat mid-project scope change as a change request rather than an inconvenience. The first thing I do is document what has changed and what the downstream impact is — on the design, the timeline, the budget, and the team. I present this to the client as a clear decision: here is what you are asking for, here is what it will require, and here is what we will need to defer or drop to accommodate it within the current parameters. That conversation keeps the decision with the client, where it belongs. What I avoid is silently absorbing the scope change and hoping the team can manage it — that produces overloaded designers, compressed timelines, and compromised quality. On the ERP project, when the vendor changed the interface mid-build, I introduced a screen freeze policy — a formally agreed point after which interface changes would require a formal change request rather than an automatic rebuild. That policy saved the project.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">15</div><span class="qa-q-text">How do you identify when the real problem is not a learning problem at all?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By applying the performance analysis test: if I put a gun to the learner's head, could they do this? If the answer is yes — meaning they already know how to do it but are not doing it — then the problem is not a knowledge or skill gap, it is a motivation, process, or environment problem. Training will not fix it. The diagnostic question I ask is: has this person ever performed the task correctly? If they have, and they are not performing it now, the cause is almost never a learning gap. It is more likely a consequence gap — there is no meaningful difference between performing correctly and performing incorrectly. Or a process gap — the system or environment does not support the correct performance. I flag this diagnosis to the client directly and recommend the appropriate intervention — which might be a process redesign, a management conversation, or a change in consequences rather than a training programme. Most clients respect this honesty. Some push back — and in those cases I design the training they have asked for while formally documenting my assessment that it is unlikely to address the root cause.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ C: DESIGN PROCESS & METHODOLOGY ═══ -->
+<div class="cat-section" id="catC">
+  <div class="cat-heading"><span class="cat-badge">C · Design Process &amp; Methodology</span><div class="cat-line"></div></div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">16</div><span class="qa-q-text">Walk me through your end-to-end instructional design process from brief to delivery.</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I follow five stages, each with a defined output that must be signed off before the next stage begins. Stage one is discovery — stakeholder interviews, TNA, performance analysis, constraint mapping. Output: a design rationale document. Stage two is architecture — learning objectives, content outline, modality recommendation, assessment strategy. Output: a signed-off programme outline. Stage three is storyboarding — detailed screen-by-screen design with all interaction logic, narration scripts, and assessment items. Output: a reviewed and approved storyboard. Stage four is production — build in the agreed authoring tool against the approved storyboard. Output: a quality-reviewed SCORM or xAPI module. Stage five is review and deploy — client review cycle, revisions, LMS upload, and post-launch monitoring. The sign-off gates between stages are not bureaucratic — they are risk management. A problem caught at storyboard stage costs a day to fix. The same problem caught in production costs a week.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">17</div><span class="qa-q-text">How do you apply a must-know / need-to-know / nice-to-know filter to scope a content project?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I apply it at the content outline stage, before any storyboarding begins. Must-know is content without which the learner cannot perform the task safely or correctly — it always goes in. Need-to-know is content that supports better performance but whose absence would not cause a failure — it goes in if time and budget allow. Nice-to-know is context, background, and supplementary information — it goes in a reference library or a job aid, not in the core learning experience. On the ERP project, applying this filter reduced the scope by 38% — which made four-month delivery genuinely achievable. The filter also has a stakeholder management function: when a client wants to include everything they know about a subject, the must-know/need-to-know framework gives them a principled reason to prioritise rather than a conversation about what to cut.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">18</div><span class="qa-q-text">How do you ensure instructional consistency across a programme when multiple designers are building different modules?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Through a shared design framework established before production begins — not after inconsistencies emerge. The framework covers four things: a style guide (visual language, interaction patterns, narration tone), a storyboard template (standardised structure for every screen type), a content filter (the must-know/need-to-know framework applied consistently), and a quality checklist (the specific criteria every module is reviewed against). When ten designers are working from the same framework, the output is consistent by design rather than by luck. I also run a calibration session at the start of the project where all designers review the same sample module and discuss what works and what does not — building shared standards rather than assuming everyone has the same definition of good.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">19</div><span class="qa-q-text">How do you approach rapid content development when the timeline is compressed and quality cannot be compromised?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By reducing decision points, not standards. Speed comes from knowing exactly what you are building before you build it — which means investing more time in the outline and storyboard stage so that the production stage is execution rather than discovery. On compressed projects, I also modularise aggressively — breaking the content into small, independently buildable units that can be produced and reviewed in parallel rather than sequentially. Template-driven production is the other lever: if a designer is working from a pre-built, pre-approved Storyline template with consistent interaction patterns, they are not making design decisions during production — they are placing content into a structure that has already been validated. The quality standard does not drop. The decision overhead does.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">20</div><span class="qa-q-text">How do you handle scope creep in a learning design project?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By making the cost of scope change visible before agreeing to absorb it. When a client requests additional content or functionality after the brief has been signed off, my response is always the same structure: I acknowledge the request, I quantify the impact — additional design time, production time, review cycles, and the knock-on effect to the timeline — and I present the client with a choice: accommodate the new request within the current budget and timeline by deferring something else, or add budget and time to accommodate it alongside the agreed scope. What I do not do is say yes without quantifying the impact, because that is how projects run late and over budget with no clear point of accountability. The change request process I introduced on the hospitality group TNA project — requiring any new training request to link to a TNA gap and a funding source — eliminated ad-hoc scope additions entirely.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">21</div><span class="qa-q-text">How do you design assessments that genuinely test performance rather than recall?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By grounding every assessment item in a real decision the learner will face on the job. A recall question asks: what is the correct procedure? A performance question asks: here is the situation, here is the constraint, here is what has just happened — what do you do? The second question tests judgment, not memory. On the ERP project, every assessment scenario was drawn directly from the error patterns the SME interviews surfaced — not invented situations but reconstructed versions of real problems the organisation had experienced. On the IPC gamified assessment, the distractors were clinically plausible errors that real staff make — not obviously wrong options that any attentive person would eliminate immediately. The assessment standard for performance learning is simple: if a learner could pass this by reading a summary document, it is not testing performance.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">22</div><span class="qa-q-text">How do you design for learning transfer — ensuring people apply what they have learned back on the job?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Transfer is designed in before the programme launches, not hoped for afterwards. The three mechanisms I always build in are: a pre-programme manager briefing — so managers know what their team is learning, what to look for on the job, and how to reinforce it; a post-programme application challenge — a structured 30-day task that requires the learner to apply one specific behaviour in a real work situation and report on it; and an accountability structure — either a manager check-in or a peer accountability partner. On the DEI programme, every participant left with a named commitment — one specific behaviour, the context in which they would practise it, and a named accountability partner they declared in the room. The public commitment was deliberate. Research on behaviour change consistently shows that social accountability dramatically increases follow-through. Transfer is not a learning design outcome — it is a performance design outcome.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">23</div><span class="qa-q-text">How do you decide between eLearning, ILT, vILT, and blended learning for a given project?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        The decision starts with the performance context, not the client's preference or the budget. I ask: what type of learning outcome is required? Knowledge and compliance — where the standard is consistent and the performance is individual — suits eLearning well. Behavioural and interpersonal skills — where the learning happens in the space between people, in reaction to others, in real-time response — require a live environment, either ILT or vILT. Complex judgment and application — where the learner needs to practise making decisions under pressure with real consequences — suits simulation or scenario-based learning. The second consideration is transfer context: if the learner will perform this task alone, self-paced learning is appropriate. If they will perform it in a team or in a live customer interaction, they need to have practised it with other people first. Blended learning is not a compromise — it is the right answer when different outcomes in the same programme require different approaches.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ D: ID MODELS & THEORIES ═══ -->
+<div class="cat-section" id="catD">
+  <div class="cat-heading"><span class="cat-badge">D · ID Models &amp; Theories</span><div class="cat-line"></div></div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">24</div><span class="qa-q-text">When would you use ADDIE versus SAM — and what are the limitations of each?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        ADDIE suits projects where the requirements are well-defined upfront, the content is stable, and the client relationship supports sequential sign-off gates. It is linear, which makes it predictable and easy to manage — but that linearity is also its limitation. In ADDIE, a problem discovered in production has to be addressed by going back to design, which disrupts the sequence and the timeline. SAM — the Successive Approximation Model — is better suited to projects where requirements are ambiguous, the client needs to see something before they can articulate what they want, or the content is likely to evolve during development. SAM's iterative cycles — prototype, review, revise — surface problems early through something the client can react to rather than a document they have to imagine. Its limitation is that without disciplined iteration management, it can become endless revision. In practice, I apply ADDIE's structure with SAM's early prototyping habit — building a working prototype of one module before the full storyboard is approved. That combination gives me the predictability of ADDIE and the client validation of SAM.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">25</div><span class="qa-q-text">How do you apply Bloom's Taxonomy in your instructional design practice?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Bloom's gives me a precision tool for writing learning objectives and designing assessments that match the required cognitive level. The most common error I see in instructional design is a mismatch between the learning objective and the assessment — an objective written at the analysis level (the learner will diagnose the cause of...) assessed at the recall level (the learner will list the causes of...). Bloom's makes that mismatch visible and correctable. In practice, I use it at the outline stage to ensure that the objectives, the learning activities, and the assessment items are all aligned at the same cognitive level. For compliance learning, remember and understand is often sufficient. For management development, analysis, evaluation, and creation are the appropriate levels. I also use it to challenge scope: when a client asks for a one-hour module that covers all six levels of Bloom's for a complex topic, that conversation about cognitive load and realistic scope is much easier to have with a framework behind it.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">26</div><span class="qa-q-text">How does adult learning theory — andragogy — influence the way you design learning?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Knowles' andragogy principles shape nearly every design decision I make. Adults are self-directed — which means I build choice and control into the learning wherever possible: learners should be able to navigate to what they need rather than being marched through content in a fixed sequence. Adults bring prior experience — which means I design for activation of existing knowledge rather than treating the learner as an empty vessel. The scenario-based approach I use consistently is an andragogic choice: it puts the learner's existing experience in dialogue with the new knowledge rather than presenting new knowledge in isolation. Adults are motivated by relevance — which means the "what's in it for me" has to be established in the first thirty seconds of any learning experience, not at the end. And adults are problem-centred rather than content-centred — which is why I design around realistic problems and decisions rather than information and topics.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">27</div><span class="qa-q-text">How do you apply cognitive load theory in your eLearning design?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Cognitive load theory tells me that working memory is limited, and that every design decision either contributes to or reduces the load placed on it. The practical applications I use most consistently are: chunking — breaking complex content into small, coherent units that the brain can process before moving to the next; modality matching — presenting information in the most appropriate format for its type, not defaulting to text for everything; eliminating redundancy — not reading narration that is simultaneously displayed verbatim on screen, because that forces the brain to process the same information twice; and progressive disclosure — revealing information as the learner needs it rather than presenting everything at once. When I review a storyboard that is producing cognitive overload — too much text, too many concurrent elements, too many new concepts on one screen — cognitive load theory gives me the diagnostic framework to identify which elements are intrinsic load (unavoidable, inherent in the complexity of the topic), extraneous load (unnecessary, caused by poor design), and germane load (productive, contributing to schema formation). The design fix is always to reduce extraneous load first.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">28</div><span class="qa-q-text">How do you use Gagne's Nine Events of Instruction in your design practice?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I use Gagne's events as a design checklist rather than a rigid sequence. The events — gain attention, inform learners of objectives, stimulate recall of prior learning, present content, provide learning guidance, elicit performance, provide feedback, assess performance, enhance retention and transfer — map to the key moments where a learning experience can succeed or fail. The ones I find most valuable in practice are stimulating recall of prior learning, which andragogy also reinforces — activating what the learner already knows before introducing new knowledge dramatically improves retention; providing guidance rather than just presenting content — the difference between telling a learner information and showing them how to use it in context; and enhancing retention and transfer — the step most eLearning skips entirely, treating the end of the module as the end of the learning. In my design, every programme has a transfer mechanism beyond the module itself, which directly addresses Gagne's ninth event.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">29</div><span class="qa-q-text">What is the significance of the Forgetting Curve and how does it influence your design decisions?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Ebbinghaus' forgetting curve tells us that without reinforcement, people forget approximately 70% of new information within 24 hours and up to 90% within a week. This is not a failure of learners — it is how memory works. The design implication is that a single learning event — a one-day workshop, a one-hour eLearning module — is almost never sufficient to produce durable knowledge or behaviour change. The antidote is spaced repetition: deliberately reactivating knowledge at increasing intervals after the initial learning event. In practice, I build spaced reinforcement into programme architecture through microlearning nudges at 3, 7, and 21 days post-training; manager-led review conversations anchored to specific behaviours; and on-the-job application challenges that require the learner to use the knowledge before it fades. The forgetting curve is also the argument against information-dump eLearning — if the learner forgets most of it within 24 hours regardless, the goal should be to build the minimum viable knowledge base and then design for application, not comprehensiveness.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">30</div><span class="qa-q-text">How do you apply constructivism in your instructional design practice?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Constructivism holds that learners build new knowledge by connecting it to what they already know — that learning is an active process of meaning-making rather than passive information reception. The design implication is that the learner's existing knowledge and experience is not background noise — it is the foundation on which new learning is built. In practice, this means I design learning experiences that begin with activation — asking the learner to engage with a problem or scenario before presenting any new information. The HEART virtual ILT programme is a clear example: participants practised the five service behaviours before the HEART acronym was introduced. By the time they learned the framework name, they recognised it as a label for something they had already done. That sequencing — experience before explanation — is a constructivist design choice. It produces understanding rather than recognition, and understanding transfers to the job in a way that recognition does not.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ E: QUALITY ASSURANCE & DELIVERY ═══ -->
+<div class="cat-section" id="catE">
+  <div class="cat-heading"><span class="cat-badge">E · Quality Assurance &amp; Delivery</span><div class="cat-line"></div></div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">31</div><span class="qa-q-text">What does your quality assurance process look like across a multi-designer project?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        QA runs at three levels. The first is designer self-review — every designer checks their own module against a structured checklist before it leaves their hands: instructional accuracy, interaction logic, narration alignment, visual consistency, and technical function. The second is peer review — a second designer reviews the module against the same checklist and adds a fresh perspective on clarity and learner experience. The third is lead review — I review a sample of modules from each designer at defined milestones, focusing on instructional quality rather than production polish. I also run a calibration session at the start of the project where the whole team reviews a sample module together and discusses what meets the standard and what does not. Calibration means that all three levels of QA are applying the same standard rather than each person's individual interpretation of good. QA is not a final gate — it is embedded throughout the production process.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">32</div><span class="qa-q-text">How do you manage SME reviews — and handle SMEs who give vague or contradictory feedback?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        I give SMEs a structured review template with specific accuracy gates rather than asking for general feedback. The template asks: is this factually accurate? If not, what is the correct information and what is your source? Is this consistent with current policy or process? Is there a situation where this guidance would not apply? That structure prevents the two most common SME review problems: the SME who writes "not quite right — please revise" without specifying what is wrong, and the SME who rewrites content from a communication preference rather than an accuracy concern. When SMEs give contradictory feedback — which happens frequently when multiple SMEs review the same content — I do not choose between them. I convene a brief reconciliation session, present both versions, and ask them to agree on the authoritative position. I make it clear that I cannot proceed until there is one agreed source of truth, because building a module on contested content creates exactly the kind of learner confusion the module is supposed to prevent.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">33</div><span class="qa-q-text">How do you present a learning solution to a senior stakeholder who does not have an L&D background?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        In their language, not mine. A senior stakeholder without an L&D background does not need to understand ADDIE or xAPI or Kirkpatrick Level 3. They need to understand three things: what business problem this solution is addressing, what success looks like and how it will be measured, and what the investment is and what the expected return is. I structure every senior stakeholder presentation around those three questions and I lead with the business outcome, not the learning design. If I am presenting a gamified compliance assessment, I do not open with the game mechanics — I open with the 58% versus 91% performance comparison and then explain what produced that difference. The design details come after the business case has been established, not before. Senior stakeholders are interested in outcomes. They tolerate process.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">34</div><span class="qa-q-text">How do you manage expectations when a project is running behind schedule?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Early, directly, and with a solution rather than just a problem. The worst time to tell a client a project is behind schedule is when the deadline has passed. The best time is the moment I know the original timeline is at risk — which is usually weeks earlier. I tell the client: we are at risk of missing the agreed date, here is what has caused the delay, and here are three options for how we respond. Option one: adjust the timeline. Option two: reduce scope to keep the original date. Option three: add resource to maintain both timeline and scope. I present the trade-offs of each option clearly and let the client decide. What I do not do is promise to make up the time without a credible plan for how that will happen — that is how a delayed project becomes a failed project.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">35</div><span class="qa-q-text">How do you manage a content migration project — for example, moving a legacy SCORM library to an xAPI-compliant LMS?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        With a content audit before a single file is moved. The most common mistake in content migration is treating it as a technical exercise — moving files from one system to another — rather than a content quality exercise. A content audit asks: is this content current? Is it accurate? Is it still relevant to the business? Is it used? On the pharma virtual assistant project, I catalogued 1,240 documents and found that fewer than 40% were both current and cleared for use. Migrating all 1,240 would have moved the problem from one system to another without solving it. For SCORM to xAPI migration specifically, the audit also evaluates whether the existing content is worth rebuilding to leverage xAPI's tracking capabilities, or whether it should be replaced with more current content. The migration plan then sequences the content that is both current and high-priority first, defers content that is current but low-priority, and flags content that needs rebuild before migration.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ F: TEAM DEVELOPMENT & KEEPING CURRENT ═══ -->
+<div class="cat-section" id="catF">
+  <div class="cat-heading"><span class="cat-badge">F · Team Development &amp; Keeping Current</span><div class="cat-line"></div></div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">36</div><span class="qa-q-text">How do you develop the instructional design capability of your team over time?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Through deliberate practice embedded in the work, not through training programmes separated from it. The most effective capability development I have seen happens when designers are stretched slightly beyond their current capability on a real project — with enough support that they can succeed, but enough challenge that they have to grow. I structure this through task assignment, pairing, and post-project review. Task assignment gives the designer work at the edge of their capability. Pairing puts them alongside someone more experienced for the most challenging elements. Post-project review — which I run as a structured debrief rather than an informal conversation — asks: what decisions did you make, what was the evidence behind those decisions, and what would you do differently? That debrief builds the reflective habit that turns experience into expertise. I also run quarterly design challenges within the team — short briefs where designers build a prototype solution to a fictional problem, then critique each other's choices. It is the closest thing to deliberate practice outside a live project.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">37</div><span class="qa-q-text">How do you keep yourself current with developments in instructional design and learning technology?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Through active practice first, followed by structured reading and community engagement. The AI and learning analytics capabilities I have built over the last two years came from building live projects — a Microsoft Copilot Studio virtual assistant, an LXP integration with xAPI, a Power BI learning analytics dashboard. There is no faster way to understand a technology than to build something with it under real constraints for a real client. Beyond live practice, I follow research from ATD, the Learning and Performance Institute, and the Journal of Applied Instructional Design. I use LinkedIn to track practitioners whose thinking I respect — not for content consumption, but to understand what problems the field is currently wrestling with. I am also deliberate about attending at least one L&D conference or webinar series annually — not for the keynotes, but for the conversations in the margins, where practitioners are honest about what is not working in ways they would not be in a published paper.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">38</div><span class="qa-q-text">How do you help your team stay current with emerging trends in learning and development?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By building learning into the rhythm of the team's work rather than treating it as something separate from delivery. I run a monthly thirty-minute team session I call a design review — one designer presents a recent project decision, explains the instructional rationale behind it, and the team discusses whether it was the right choice and what alternatives existed. The discipline of explaining your reasoning to peers is one of the most effective learning mechanisms I know. I also circulate one article or research summary per fortnight — not a reading list, but a single piece with a specific question attached: how does this change or confirm how we design? And when a new tool or technology is worth exploring, I assign a designer to build a prototype with it and present the findings to the team. Learning about a tool by reading about it is less than a quarter as effective as learning about it by using it.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">39</div><span class="qa-q-text">How do you create a culture of design quality within an instructional design team?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By making quality a shared language rather than a management expectation. A culture of design quality exists when designers are asking each other the hard questions — does this screen do what it needs to do, is this scenario realistic, is this assessment actually testing the right thing — before the lead asks them. That culture is built through calibration, through peer review, and through the way feedback is given and received. I am deliberate about feedback language: I do not say "this is wrong." I say "the learner does not have enough context here to make the decision this screen is asking them to make — what information are they missing?" That framing makes feedback a design problem to solve rather than a judgment about the designer's competence. Over time, designers internalise that framing and start applying it to their own work before it reaches review. That is when the culture has formed.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num">40</div><span class="qa-q-text">How do you balance the demands of delivery with investing in your team's development?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        By treating team development as a delivery risk management strategy rather than a separate overhead. A team that is not developing is a team whose capability is slowly becoming misaligned with the complexity of the work — which creates quality problems and retention problems that are far more expensive than the time invested in development. In practice, I protect two things even on the most pressured projects: the post-project debrief, which costs two hours and produces more development value than most formal training programmes; and the monthly design review session, which costs thirty minutes and builds the reflective habit that turns experience into expertise. The development that happens outside of these sessions — the stretch assignments, the pairing, the prototype challenges — is embedded in the delivery work itself, which means it costs no additional time. Development and delivery are not in competition when the development is embedded in the work.
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CALLOUT -->
+<div class="callout" style="margin-top:40px;">
+  <div class="callout-icon">🧠</div>
+  <div class="callout-body">
+    <strong>Remember this</strong>
+    These answers are grounded in real projects. When you answer in an interview, name the specific project — the ERP rollout, the hospitality TNA, the IPC assessment, the pharma VA. Specificity is credibility. A general answer tells the interviewer you can think. A specific answer tells them you have done it.
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <h3>You know these answers.<br><em>Now make them yours.</em></h3>
+  <p>Back to the generic questions — or view the portfolio behind every answer.</p>
+  <a href="ip.html" class="cta-btn" style="margin-right:12px;">← Generic questions</a>
+  <a href="/" class="cta-btn">View portfolio →</a>
+</div>
+
+</div>
+
+<footer>
+  <p><strong>Learning Matters.</strong> &nbsp;·&nbsp; <a href="/">rameshkrishnan.me</a></p>
+  <p style="margin-top:6px;font-size:0.72rem;">Interview Preparation · 40 Questions · ID Team &amp; Processes · Lead/Manager Track</p>
+</footer>
+
+<script>
+const answered = new Set();
+function toggleQA(btn) {
+  const card = btn.closest('.qa-card');
+  const num = parseInt(card.querySelector('.qa-num').textContent);
+  card.classList.toggle('open');
+  if (card.classList.contains('open')) answered.add(num);
+  updateProgress();
+}
+function updateProgress() {
+  const pct = (answered.size / 40) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = answered.size + ' of 40';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.qa-card.open').forEach(c => c.classList.remove('open'));
+});
+const sections = document.querySelectorAll('.cat-section');
+const navLinks = document.querySelectorAll('.cat-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.style.color = '');
+      const active = document.querySelector(`.cat-nav a[href="#${entry.target.id}"]`);
+      if (active) active.style.color = '#ffffff';
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

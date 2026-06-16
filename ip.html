@@ -3,23 +3,21 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Interview Preparation — 20 Generic Questions | Learning Matters</title>
+<title>Interview Preparation — 30 Generic Questions | Learning Matters</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --forest: #1e4a3a; --forest-mid: #2d6b52; --forest-light: #e8f2ed;
-  --gold: #a37c3b; --gold-light: #f5edd8; --gold-pale: #faf6ee;
-  --ink: #1c1c1a; --ink-mid: #3d3d38; --ink-light: #6b6b62;
-  --smoke: #f7f5f0; --border: #ddd9ce; --white: #ffffff;
-  --radius: 10px; --shadow: 0 2px 16px rgba(30,74,58,0.08);
+  --forest:#1e4a3a;--forest-mid:#2d6b52;--forest-light:#e8f2ed;
+  --gold:#a37c3b;--gold-light:#f5edd8;--gold-pale:#faf6ee;
+  --ink:#1c1c1a;--ink-mid:#3d3d38;--ink-light:#6b6b62;
+  --smoke:#f7f5f0;--border:#ddd9ce;--white:#ffffff;
+  --radius:10px;--shadow:0 2px 16px rgba(30,74,58,0.08);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--smoke);color:var(--ink);line-height:1.7;font-size:16px;}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 48px;height:56px;gap:40px;}
 .nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;}
 .nav-brand span{color:var(--forest);}.nav-brand em{color:var(--gold);font-style:normal;}
@@ -27,15 +25,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .nav-links a{font-size:0.82rem;color:var(--ink-light);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--forest);}
 .nav-cta{background:var(--forest);color:var(--white)!important;padding:7px 18px;border-radius:20px;font-weight:500!important;}
-
-/* CATEGORY NAV */
 .cat-nav{background:var(--forest);display:flex;overflow-x:auto;scrollbar-width:none;}
 .cat-nav::-webkit-scrollbar{display:none;}
 .cat-nav a{color:rgba(255,255,255,0.6);font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:11px 22px;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.1);transition:all 0.2s;display:flex;align-items:center;gap:7px;}
 .cat-nav a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
 .cat-nav .num{background:rgba(255,255,255,0.15);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:0.68rem;flex-shrink:0;}
-
-/* HERO */
 .hero{background:var(--forest);padding:72px 48px 56px;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(163,124,59,0.12) 0%,transparent 60%);pointer-events:none;}
 .hero-inner{max-width:860px;position:relative;}
@@ -49,37 +43,29 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .h-stat-num span{color:#c9a96e;}
 .h-stat-label{font-size:0.72rem;color:rgba(255,255,255,0.5);}
 .h-stat-div{width:1px;background:rgba(255,255,255,0.15);align-self:stretch;}
-
-/* HOW TO USE */
 .how-to{background:var(--gold-pale);border:1px solid #e8d9b8;border-radius:var(--radius);padding:20px 24px;margin:32px 48px;display:flex;gap:14px;align-items:flex-start;}
 .how-to-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
 .how-to-body{font-size:0.85rem;color:var(--ink-mid);line-height:1.65;}
 .how-to-body strong{color:var(--gold);display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
-
-/* PROGRESS */
 .progress-wrap{max-width:900px;margin:0 auto;padding:0 48px;}
 .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
 .progress-top span{font-size:0.75rem;color:var(--ink-light);font-weight:500;}
 .progress-count{color:var(--forest)!important;font-weight:600!important;}
 .progress-bar{background:var(--forest-light);border-radius:20px;height:8px;overflow:hidden;}
 .progress-fill{height:100%;background:var(--forest);border-radius:20px;width:0%;transition:width 0.4s ease;}
-
-/* MAIN */
 .main{max-width:900px;margin:0 auto;padding:40px 48px 80px;}
-
-/* CATEGORY HEADINGS */
 .cat-section{scroll-margin-top:80px;}
 .cat-heading{display:flex;align-items:center;gap:12px;margin-bottom:20px;margin-top:48px;}
 .cat-badge{background:var(--forest);color:var(--white);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;}
+.cat-badge-aptara{background:#c74634;color:var(--white);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;}
 .cat-line{flex:1;height:1px;background:var(--border);}
-
-/* Q&A CARDS */
 .qa-list{display:flex;flex-direction:column;gap:10px;}
 .qa-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--white);}
 .qa-question{width:100%;background:var(--white);border:none;padding:18px 22px;text-align:left;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;transition:background 0.2s;}
 .qa-question:hover{background:var(--smoke);}
 .qa-q-left{display:flex;align-items:flex-start;gap:12px;}
 .qa-num{background:var(--gold-light);color:var(--gold);font-size:0.72rem;font-weight:700;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.qa-num-aptara{background:#fdf0ee;color:#c74634;}
 .qa-q-text{font-size:0.9rem;font-weight:600;color:var(--forest);line-height:1.5;text-align:left;}
 .qa-icon{color:var(--gold);font-size:1rem;flex-shrink:0;transition:transform 0.25s;margin-top:4px;}
 .qa-answer{display:none;padding:0 22px 20px 62px;font-size:0.875rem;color:var(--ink-mid);line-height:1.8;}
@@ -87,60 +73,40 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .qa-card.open .qa-answer{display:block;}
 .qa-card.open .qa-icon{transform:rotate(180deg);}
 .qa-card.open .qa-question{background:var(--forest-light);}
-.qa-card.open .qa-q-text{color:var(--forest);}
-
-/* FOLLOW-UP SCENARIOS */
 .followup{margin-top:18px;border-top:1px dashed var(--border);padding-top:14px;}
 .followup-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .followup-label::before{content:'↩';font-size:0.85rem;}
 .followup-q{font-size:0.82rem;font-style:italic;color:var(--ink-light);margin-bottom:10px;padding:8px 12px;background:var(--smoke);border-radius:6px;border-left:3px solid var(--gold);}
 .followup-a{font-size:0.875rem;color:var(--ink-mid);line-height:1.8;}
 .followup+.followup{margin-top:14px;}
-
-/* CALLOUT */
-.callout{background:var(--forest);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin:32px 0;display:flex;gap:12px;align-items:flex-start;}
+.callout{border-radius:var(--radius);padding:18px 22px;margin:32px 0;display:flex;gap:12px;align-items:flex-start;}
 .callout-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
-.callout-body{font-size:0.875rem;color:rgba(255,255,255,0.9);line-height:1.7;font-style:italic;}
-.callout-body strong{color:#c9a96e;display:block;font-style:normal;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
-
-/* CTA */
+.callout-body{font-size:0.875rem;line-height:1.7;}
+.callout-body strong{display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;}
+.callout.remember{background:var(--forest);color:rgba(255,255,255,0.9);border-left:4px solid var(--gold);}
+.callout.remember .callout-body strong{color:#c9a96e;}
 .cta-block{background:var(--forest);border-radius:var(--radius);padding:36px 40px;text-align:center;margin-top:48px;}
 .cta-block h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:8px;}
 .cta-block h3 em{font-style:italic;color:#c9a96e;}
 .cta-block p{font-size:0.875rem;color:rgba(255,255,255,0.65);margin-bottom:20px;}
-.cta-btn{display:inline-block;background:var(--gold);color:var(--white);padding:11px 28px;border-radius:24px;font-size:0.85rem;font-weight:500;text-decoration:none;}
-
-/* FOOTER */
+.cta-btn{display:inline-block;background:var(--gold);color:var(--white);padding:11px 28px;border-radius:24px;font-size:0.85rem;font-weight:500;text-decoration:none;margin:4px;}
 footer{background:var(--forest);color:rgba(255,255,255,0.6);text-align:center;padding:32px 48px;font-size:0.8rem;}
 footer a{color:#c9a96e;text-decoration:none;}
 footer strong{color:var(--white);}
-
-/* MOBILE */
-@media(max-width:640px){
-  nav{padding:0 20px;}
-  .hero{padding:48px 20px 40px;}
-  .how-to{margin:24px 20px;}
-  .progress-wrap{padding:0 20px;}
-  .main{padding:32px 20px 60px;}
-  .qa-answer{padding:0 16px 16px 16px;}
-}
+@media(max-width:640px){nav{padding:0 20px;}.hero{padding:48px 20px 40px;}.how-to{margin:24px 20px;}.progress-wrap{padding:0 20px;}.main{padding:32px 20px 60px;}.qa-answer{padding:0 16px 16px 16px;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-brand" href="/">Learning <span>Matters</span><em>.</em></a>
   <div class="nav-links">
-    <a href="/">Work</a>
-    <a href="/">Insights</a>
-    <a href="/">Testimonials</a>
-    <a href="/">About</a>
-    <a href="/" class="nav-cta">Let's talk</a>
+    <a href="ip2.html">ID Team &amp; Process</a>
+    <a href="ip3.html">Oracle Prep</a>
+    <a href="/" class="nav-cta">Portfolio</a>
   </div>
 </nav>
 
-<!-- CATEGORY NAV -->
 <div class="cat-nav">
   <a href="#cat1"><span class="num">1</span>About You</a>
   <a href="#cat2"><span class="num">2</span>Strengths &amp; Weaknesses</a>
@@ -148,51 +114,47 @@ footer strong{color:var(--white);}
   <a href="#cat4"><span class="num">4</span>Stakeholders</a>
   <a href="#cat5"><span class="num">5</span>Leadership &amp; Process</a>
   <a href="#cat6"><span class="num">6</span>Vision &amp; Future</a>
+  <a href="#cat7"><span class="num">7</span>Aptara Specific</a>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-badge">📋 Interview Preparation</div>
-    <h1>20 Generic Interview<br><em>Questions &amp; Answers</em></h1>
-    <p class="hero-sub">Authentic, experience-grounded answers built from 23 years of practice across instructional design, learning consultancy, and performance support. Use across all interviews — IC and lead/manager tracks.</p>
+    <div class="hero-badge">📋 Interview Preparation — Part 1</div>
+    <h1>30 Generic Interview<br><em>Questions &amp; Answers</em></h1>
+    <p class="hero-sub">20 core generic questions with follow-up scenarios, plus 10 Aptara-specific questions based on the Senior IDM job description. Authentic, experience-grounded answers across IC and lead/manager tracks.</p>
     <div class="hero-stats">
-      <div class="h-stat"><div class="h-stat-num">20</div><div class="h-stat-label">Questions with full answers</div></div>
+      <div class="h-stat"><div class="h-stat-num">30</div><div class="h-stat-label">Questions with full answers</div></div>
       <div class="h-stat-div"></div>
-      <div class="h-stat"><div class="h-stat-num">6</div><div class="h-stat-label">Categories</div></div>
+      <div class="h-stat"><div class="h-stat-num">7</div><div class="h-stat-label">Categories</div></div>
       <div class="h-stat-div"></div>
-      <div class="h-stat"><div class="h-stat-num">2</div><div class="h-stat-label">Tracks — IC &amp; lead/manager</div></div>
+      <div class="h-stat"><div class="h-stat-num">10</div><div class="h-stat-label">Aptara JD-specific questions</div></div>
     </div>
   </div>
 </section>
 
-<!-- HOW TO USE -->
 <div class="how-to">
   <div class="how-to-icon">💡</div>
   <div class="how-to-body">
     <strong>How to use this guide</strong>
-    Do not memorise these answers verbatim — they will sound rehearsed. Read each answer once, close the page, tell the story out loud in your own words, then come back and check what you missed. That is the version that will land in an interview. Click any question to expand the answer. Where follow-up scenarios appear, they show how to handle the most likely counter-questions.
+    Read each answer once. Close the page. Tell it out loud in your own words. Return and check what you missed. Where follow-up scenarios appear — marked with ↩ — they show how to handle likely counter-questions. Aptara-specific questions are in Category 7.
   </div>
 </div>
 
-<!-- PROGRESS -->
 <div class="progress-wrap" style="margin-top:24px;">
   <div class="progress-top">
     <span>Questions rehearsed</span>
-    <span id="progress-label" class="progress-count">0 of 20</span>
+    <span id="progress-label" class="progress-count">0 of 30</span>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
-<!-- ═══ CATEGORY 1: ABOUT YOU ═══ -->
+<!-- CAT 1: ABOUT YOU -->
 <div class="cat-section" id="cat1">
   <div class="cat-heading"><span class="cat-badge">About You</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
-    <!-- Q1 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">1</div><span class="qa-q-text">Tell me about yourself.</span></div>
@@ -203,12 +165,16 @@ footer strong{color:var(--white);}
         <div class="followup">
           <div class="followup-label">Possible follow-up</div>
           <div class="followup-q">"Has there been a situation where things didn't go as planned or you weren't able to produce measurable change?"</div>
-          <div class="followup-a">Yes — and I think anyone who claims otherwise either hasn't been doing this long enough or isn't being honest.<br><br>Early in my career, I designed a soft skills programme for a mid-size organisation — well-structured, well-received, strong reaction scores. Participants liked it. Managers thought it was useful. We called it a success.<br><br>About six months later I had an honest conversation with the HR head, who told me that she couldn't point to a single thing that had changed on the floor. Behaviour was the same. The problem the programme was supposed to address was still there.<br><br>What had gone wrong was straightforward in hindsight: I had designed for the training room, not for the workplace. There was no transfer mechanism — no manager briefing before the programme, no on-the-job application structure after it, no accountability for whether anyone actually tried the new behaviours in a real situation. I had built a good learning experience and a poor performance intervention. Those are two very different things.<br><br>That failure changed how I design. Every programme I build now has a transfer architecture — something that bridges what happens in the room and what happens back at the desk. The post-programme commitment structure, the manager follow-up, the 30-day application challenge — those elements exist in my work today because of a programme that worked in the room and failed in the world.<br><br>I am a better designer because that happened. And I would rather tell you that story than pretend it didn't.</div>
+          <div class="followup-a">Yes — and I think anyone who claims otherwise either hasn't been doing this long enough or isn't being honest.<br><br>Early in my career, I designed a soft skills programme for a mid-size organisation — well-structured, well-received, strong reaction scores. Participants liked it. Managers thought it was useful. We called it a success.<br><br>About six months later I had an honest conversation with the HR head, who told me that she couldn't point to a single thing that had changed on the floor. Behaviour was the same. The problem the programme was supposed to address was still there.<br><br>What had gone wrong was straightforward in hindsight: I had designed for the training room, not for the workplace. There was no transfer mechanism — no manager briefing before the programme, no on-the-job application structure after it, no accountability for whether anyone actually tried the new behaviours in a real situation. I had built a good learning experience and a poor performance intervention. Those are two very different things.<br><br>That failure changed how I design. Every programme I build now has a transfer architecture — something that bridges what happens in the room and what happens back at the desk. I am a better designer because that happened. And I would rather tell you that story than pretend it didn't.</div>
+        </div>
+        <div class="followup">
+          <div class="followup-label">Possible follow-up — Aptara specific</div>
+          <div class="followup-q">"Can you give a specific example of measurable impact from your work?"</div>
+          <div class="followup-a">Three examples, each with a different measurement mechanism.<br><br>On an Oracle Financials Cloud ERP implementation for a financial services organisation — 400 users, six role-based pathways — we achieved a 96% first-attempt pass rate across all assessments and a 62% reduction in support desk queries in the first 30 days post go-live, measured against the organisation's own baseline from a previous system rollout.<br><br>On a healthcare IPC gamified assessment, the redesigned programme produced a 91% perfect score rate compared to 58% on the previous version — measured through the same assessment instrument on the same cohort type.<br><br>On a learning analytics framework for a higher education institution, the Student Progression Index identified 347 at-risk students in semester one. 83% of those who received a tutor intervention completed the semester. The institution's year-on-year retention improved by 19% — the first improvement in three years.<br><br>What these three have in common is that the measurement was agreed before the design began, not retrofitted after delivery. That is the only way measurement is credible.</div>
         </div>
       </div></div>
     </div>
 
-    <!-- Q2 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">2</div><span class="qa-q-text">Why are you looking for a new opportunity?</span></div>
@@ -219,17 +185,16 @@ footer strong{color:var(--white);}
         <div class="followup">
           <div class="followup-label">Possible follow-up</div>
           <div class="followup-q">"This role is purely instructional design — there is no consultancy component."</div>
-          <div class="followup-a">That actually works very well for me — and let me explain why.<br><br>The consultancy experience I am describing is not something I am looking to replicate in a new role. It is the lens through which I approach design work. The habit of asking what the real problem is before building anything, of understanding the business outcome before deciding on the modality — that thinking does not require a consultancy title. It just requires space to ask the right questions before the brief is locked.<br><br>What I am genuinely looking for is a sustained creative and intellectual challenge — a place where the instructional design work is complex enough to be interesting, and where the impact of what I build is visible over time rather than handed off the moment a project closes. That is the part independent consultancy cannot give me, regardless of what the role is called.<br><br>So no — I am not looking for a consultancy role. I am looking for design work that is taken seriously. If that is what this role offers, then the title is the least important part of the conversation.</div>
+          <div class="followup-a">That actually works very well for me — and let me explain why.<br><br>The consultancy experience I am describing is not something I am looking to replicate in a new role. It is the lens through which I approach design work. The habit of asking what the real problem is before building anything, of understanding the business outcome before deciding on the modality — that thinking does not require a consultancy title. It just requires space to ask the right questions before the brief is locked.<br><br>What I am genuinely looking for is a sustained creative and intellectual challenge — a place where the instructional design work is complex enough to be interesting, and where the impact of what I build is visible over time rather than handed off the moment a project closes. So no — I am not looking for a consultancy role. I am looking for design work that is taken seriously. If that is what this role offers, then the title is the least important part of the conversation.</div>
         </div>
         <div class="followup">
           <div class="followup-label">Possible follow-up</div>
           <div class="followup-q">"We don't deal with AI-based learning interventions here. I'm not sure this role will match your growing aspirations."</div>
-          <div class="followup-a">I appreciate you being direct about that — and I want to be equally direct in return.<br><br>When I talk about AI in learning, I am not describing a destination I have arrived at. I am describing a direction I am moving in — and that direction does not require every organisation I work with to be at the same stage. Some of my most satisfying work has been in organisations where the starting point was straightforward — a compliance module, a product training programme — and the satisfaction came from doing that work exceptionally well, not from the sophistication of the technology.<br><br>What I have found, consistently, is that the fundamentals of good instructional design — understanding the real problem, designing for behaviour change, measuring what actually changes — matter far more than the tools used to deliver the solution. AI is one more tool in that kit. If this role does not require it, I design without it. The thinking does not change.<br><br>What I would ask you is this — is the work here genuinely complex and meaningful? Are there real performance challenges the organisation is trying to solve through learning? If the answer to those questions is yes, then I am interested — regardless of where the organisation sits on the technology curve.<br><br>I have never been in this for the tools. I am in it for the work.</div>
+          <div class="followup-a">I appreciate you being direct about that — and I want to be equally direct in return.<br><br>When I talk about AI in learning, I am not describing a destination I have arrived at. I am describing a direction I am moving in — and that direction does not require every organisation I work with to be at the same stage. The fundamentals of good instructional design — understanding the real problem, designing for behaviour change, measuring what actually changes — matter far more than the tools used to deliver the solution. AI is one more tool in that kit. If this role does not require it, I design without it. The thinking does not change.<br><br>What I would ask you is this — is the work here genuinely complex and meaningful? If yes, then I am interested — regardless of where the organisation sits on the technology curve. I have never been in this for the tools. I am in it for the work.</div>
         </div>
       </div></div>
     </div>
 
-    <!-- Q3 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">3</div><span class="qa-q-text">What do you know about our organisation and why do you want to work here?</span></div>
@@ -243,12 +208,11 @@ footer strong{color:var(--white);}
   </div>
 </div>
 
-<!-- ═══ CATEGORY 2: STRENGTHS & WEAKNESSES ═══ -->
+<!-- CAT 2: STRENGTHS & WEAKNESSES -->
 <div class="cat-section" id="cat2">
   <div class="cat-heading"><span class="cat-badge">Strengths &amp; Weaknesses</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
-    <!-- Q4 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">4</div><span class="qa-q-text">What is your greatest professional strength?</span></div>
@@ -259,7 +223,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q5 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">5</div><span class="qa-q-text">What is your greatest professional weakness?</span></div>
@@ -270,7 +233,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q6 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">6</div><span class="qa-q-text">How do you stay current with trends in learning and development?</span></div>
@@ -284,23 +246,21 @@ footer strong{color:var(--white);}
   </div>
 </div>
 
-<!-- ═══ CATEGORY 3: DOMAIN & CRAFT ═══ -->
+<!-- CAT 3: DOMAIN & CRAFT -->
 <div class="cat-section" id="cat3">
   <div class="cat-heading"><span class="cat-badge">Domain &amp; Craft</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
-    <!-- Q7 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">7</div><span class="qa-q-text">Describe your experience with eLearning tools and technologies.</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        My primary authoring tool is Articulate Storyline, which I have used across the full range of eLearning formats — linear modules, scenario-based branching, software simulations, and gamified assessments. I have also worked extensively with Adobe Captivate for software training, Vyond for animated explainer content, and iSpring for rapid development. On the infrastructure side I have designed and deployed content across multiple LMS platforms, built xAPI-compliant courses tracked through Learning Record Stores, and integrated eLearning content with LXP environments. More recently I have been working with Microsoft Copilot Studio to build AI-powered performance support tools, and with Power BI to build learning analytics dashboards. My approach to tools has always been to let the performance context drive the technology choice — not the other way around.
+        My primary authoring tool is Articulate Storyline, which I have used across the full range of eLearning formats — linear modules, scenario-based branching, software simulations, and gamified assessments. I have also worked with Articulate Rise 360 for rapid responsive development, Adobe Captivate for software training, Vyond for animated explainer content, and iSpring for rapid development. On the infrastructure side I have designed and deployed content across multiple LMS platforms, built xAPI-compliant courses tracked through Learning Record Stores, and integrated eLearning content with LXP environments. More recently I have been working with Microsoft Copilot Studio to build AI-powered performance support tools, and with Power BI to build learning analytics dashboards. My approach to tools has always been to let the performance context drive the technology choice — not the other way around.
       </div></div>
     </div>
 
-    <!-- Q8 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">8</div><span class="qa-q-text">How do you conduct a Training Needs Analysis?</span></div>
@@ -311,18 +271,16 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q9 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">9</div><span class="qa-q-text">How do you measure the effectiveness of a learning programme?</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        My approach to measuring effectiveness depends on the context — and I deliberately choose the framework based on what the client actually needs to know and what decision the data will inform.<br><br>For most programmes, I start with Kirkpatrick as a structural guide — but I apply it selectively. Level 1 reaction data rarely tells me anything useful, so I do not make it the headline metric. Where I focus most of my energy is Level 3 — are people actually doing things differently on the job? I build post-programme observation frameworks or manager verification structures into the design to capture this, rather than leaving it to an end-of-year survey.<br><br>Where a client needs to make a financial case for learning investment, I bring in the Phillips ROI methodology — converting Level 4 business impact data into a cost-benefit ratio. I used this approach on an ERP rollout where the 62% reduction in support desk queries after go-live gave the L&amp;D team a clear, defensible return on the training investment.<br><br>When I need a faster read on whether learning is transferring — without a full evaluation study — I use Brinkerhoff's Success Case Method. I identify the learners who applied the learning well and those who did not, compare them, and surface what is enabling or blocking transfer. It is quicker than a formal Level 3 study and often more actionable.<br><br>And increasingly, I connect learning data directly to business KPIs through xAPI tracking and Power BI dashboards — which moves measurement from a post-programme report into a live, ongoing view of whether the learning is producing the outcomes it was designed to produce.<br><br>The framework is always a means to an end. The question I am always trying to answer is the same one regardless of which model I use: did something actually change?
+        My approach to measuring effectiveness depends on the context — and I deliberately choose the framework based on what the client actually needs to know and what decision the data will inform.<br><br>For most programmes, I start with Kirkpatrick as a structural guide — but I apply it selectively. Level 1 reaction data rarely tells me anything useful, so I do not make it the headline metric. Where I focus most of my energy is Level 3 — are people actually doing things differently on the job? I build post-programme observation frameworks or manager verification structures into the design to capture this, rather than leaving it to an end-of-year survey.<br><br>Where a client needs to make a financial case for learning investment, I bring in the Phillips ROI methodology — converting Level 4 business impact data into a cost-benefit ratio. I used this approach on an ERP rollout where the 62% reduction in support desk queries after go-live gave the L&amp;D team a clear, defensible return on the training investment.<br><br>When I need a faster read on whether learning is transferring — without a full evaluation study — I use Brinkerhoff's Success Case Method. I identify the learners who applied the learning well and those who did not, compare them, and surface what is enabling or blocking transfer.<br><br>And increasingly, I connect learning data directly to business KPIs through xAPI tracking and Power BI dashboards — which moves measurement from a post-programme report into a live, ongoing view of whether the learning is producing the outcomes it was designed to produce.<br><br>The framework is always a means to an end. The question I am always trying to answer is the same one regardless of which model I use: did something actually change?
       </div></div>
     </div>
 
-    <!-- Q10 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">10</div><span class="qa-q-text">What is your experience with gamification in learning?</span></div>
@@ -333,7 +291,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q11 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">11</div><span class="qa-q-text">How do you approach learning design differently for virtual delivery versus face-to-face?</span></div>
@@ -344,7 +301,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q12 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">12</div><span class="qa-q-text">How do you approach designing for a global, multicultural audience?</span></div>
@@ -355,7 +311,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q13 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">13</div><span class="qa-q-text">Describe your experience with learning analytics.</span></div>
@@ -369,12 +324,11 @@ footer strong{color:var(--white);}
   </div>
 </div>
 
-<!-- ═══ CATEGORY 4: STAKEHOLDERS ═══ -->
+<!-- CAT 4: STAKEHOLDERS -->
 <div class="cat-section" id="cat4">
   <div class="cat-heading"><span class="cat-badge">Stakeholders</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
-    <!-- Q14 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">14</div><span class="qa-q-text">How do you handle a situation where the client disagrees with your design recommendation?</span></div>
@@ -385,7 +339,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q15 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">15</div><span class="qa-q-text">How do you manage stakeholder relationships, especially difficult ones?</span></div>
@@ -399,23 +352,21 @@ footer strong{color:var(--white);}
   </div>
 </div>
 
-<!-- ═══ CATEGORY 5: LEADERSHIP & PROCESS ═══ -->
+<!-- CAT 5: LEADERSHIP & PROCESS -->
 <div class="cat-section" id="cat5">
   <div class="cat-heading"><span class="cat-badge">Leadership &amp; Process</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
-    <!-- Q16 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">16</div><span class="qa-q-text">Tell me about a time you managed a complex, large-scale learning project.</span></div>
         <span class="qa-icon">▾</span>
       </button>
       <div class="qa-answer"><div class="qa-answer-inner">
-        One of the most complex projects I have led was an ERP application training programme for a financial services organisation — 400 users, six role-based pathways, a fixed go-live deadline, and a team of ten instructional designers working under my direction. Before building anything, I ran a content and capability audit — reviewing 340 pages of vendor documentation and conducting structured interviews with 18 SMEs. What those conversations revealed changed the entire design strategy: the errors users were most likely to make were not about understanding the system, but about not understanding the underlying business process the system was built around. I restructured the entire programme around that insight. The result was 100% pathway completion before go-live, a 96% first-attempt pass rate, and a 62% reduction in support desk queries in the first 30 days — the first time in the organisation's history that a major system rollout had achieved full pre-go-live training completion.
+        One of the most complex projects I have led was an Oracle Financials Cloud end-user training programme for a financial services organisation — 400 users, six role-based pathways, a fixed go-live deadline, and a team of ten instructional designers working under my direction. Before building anything, I ran a content and capability audit — reviewing 340 pages of Oracle configuration documentation and conducting structured interviews with 18 SMEs. What those conversations revealed changed the entire design strategy: the errors users were most likely to make were not about navigating Oracle's interface — they were about not understanding the underlying financial process the system was built to support. I restructured the entire programme around that insight. The result was 100% pathway completion before go-live, a 96% first-attempt pass rate, and a 62% reduction in support desk queries in the first 30 days — the first time in the organisation's history that a major system rollout had achieved full pre-go-live training completion.
       </div></div>
     </div>
 
-    <!-- Q17 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">17</div><span class="qa-q-text">How do you prioritise when you have multiple projects running simultaneously?</span></div>
@@ -426,7 +377,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q18 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">18</div><span class="qa-q-text">How do you ensure quality in learning design, especially when leading a team?</span></div>
@@ -440,12 +390,11 @@ footer strong{color:var(--white);}
   </div>
 </div>
 
-<!-- ═══ CATEGORY 6: VISION & FUTURE ═══ -->
+<!-- CAT 6: VISION & FUTURE -->
 <div class="cat-section" id="cat6">
   <div class="cat-heading"><span class="cat-badge">Vision &amp; Future</span><div class="cat-line"></div></div>
   <div class="qa-list">
 
-    <!-- Q19 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">19</div><span class="qa-q-text">Where do you see the future of learning and development heading?</span></div>
@@ -456,7 +405,6 @@ footer strong{color:var(--white);}
       </div></div>
     </div>
 
-    <!-- Q20 -->
     <div class="qa-card">
       <button class="qa-question" onclick="toggleQA(this)">
         <div class="qa-q-left"><div class="qa-num">20</div><span class="qa-q-text">Do you have any questions for us?</span></div>
@@ -470,33 +418,163 @@ footer strong{color:var(--white);}
   </div>
 </div>
 
-<!-- REMEMBER THIS -->
-<div class="callout" style="margin-top:40px;">
-  <div class="callout-icon">🧠</div>
-  <div class="callout-body">
-    <strong>Remember this</strong>
-    The best interview answer is not a recitation of facts — it is a coherent narrative that shows how you think. Memorise the structure and the examples. Tell the story in your own voice. That is the version that stays with the interviewer after the room empties.
+<!-- CAT 7: APTARA SPECIFIC -->
+<div class="cat-section" id="cat7">
+  <div class="cat-heading"><span class="cat-badge-aptara">Aptara Specific — Senior IDM Role</span><div class="cat-line"></div></div>
+  <div class="qa-list">
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">21</div><span class="qa-q-text">Walk me through your Oracle Financials Cloud training project — what was the brief, what did you design, and what were the outcomes?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        A financial services organisation had replaced three legacy finance systems with Oracle Financials Cloud — covering General Ledger, Accounts Payable, Accounts Receivable, and Fixed Assets. The go-live date was fixed. When I came on as Lead ID, there were 400 users across four locations and two countries with no training programme in place — not a poor one, none at all. I had four months.<br><br>
+        Before building anything, I ran a two-week discovery phase — reviewing 340 pages of Oracle configuration documentation and conducting structured interviews with 18 SMEs across six user groups. The key insight from those interviews changed the entire design strategy: the errors users were most likely to make were not Oracle navigation errors — they were business process errors. An AP clerk who did not understand the three-way match principle would not know why an invoice was on hold, regardless of how well they could navigate Oracle Payables.<br><br>
+        I restructured the programme around a process-first, system-second principle — six role-based pathways (GL Accountant, AP Clerk, AR Manager, Fixed Asset Controller, Procurement Officer, Finance Business Partner) each built in four layers: process explainer video, Show Me Oracle navigation demonstration, Try Me sandboxed simulation at three levels of support, and scenario-based assessment drawn from real error patterns the SME interviews surfaced.<br><br>
+        Results: 100% of 400+ users certified before go-live. 96% first-attempt pass rate across all six pathways. 62% reduction in support desk queries in the first 30 days post go-live — measured against a real baseline from the organisation's previous system rollout. The first Oracle implementation in the organisation's history to achieve full pre-go-live certification.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">22</div><span class="qa-q-text">The Aptara JD mentions providing ID solutions and estimates for large bids and complex projects. How do you approach scoping and estimation?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Accurate scoping is one of the most underrated skills in instructional design — it is where projects are won or lost before a single screen is built. My approach starts with three questions: what is the modality mix, what is the content complexity, and what is the review cycle structure?<br><br>
+        Modality mix determines the production effort — a 30-minute eLearning module takes very different effort from a 30-minute ILT programme. Content complexity determines the discovery and storyboarding effort — highly regulated or technically specialised content (Oracle Financials, pharma, financial compliance) requires significantly more SME engagement and review cycles than process training. Review cycle structure determines the revision effort — a client with three levels of review adds more time than a client with one.<br><br>
+        For large bids, I apply a must-know/need-to-know scope filter to every content area before producing an estimate — because the single most reliable way to reduce a project estimate is to reduce what gets included, not to underestimate the effort required to produce each element. On the Oracle project, applying this filter reduced the scope by 38% and made the four-month timeline genuinely achievable.<br><br>
+        I also build a contingency assumption into every estimate for a new client — typically 15–20% — to cover the SME availability gaps, review delays, and scope clarifications that are predictable even when their specific form is not.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">23</div><span class="qa-q-text">How do you handle a situation where the Oracle or ERP implementation team and the training team have conflicting priorities?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        This is one of the most common tensions in ERP training projects and it is structural, not personal — the implementation team's priority is a technically clean go-live; the training team's priority is a humanly ready go-live. Both are necessary. Neither is sufficient alone.<br><br>
+        The most productive framing I have found is to make the training team the implementation team's ally in the go-live readiness argument — rather than a competing workstream. When I present a go-live readiness dashboard showing that 78% of users have achieved certification in their Oracle role but 22% have not, I am giving the implementation lead information they need to make the go-live decision, not competing with them.<br><br>
+        The specific conflict in CS7 was mid-project Oracle configuration changes — the implementation team making changes to approval hierarchies and Chart of Accounts structures that directly affected completed training content. The resolution was a configuration freeze policy — a formally agreed date after which training-relevant configuration changes required a documented change request. That made the conflict explicit, gave both teams a clear process for managing it, and eliminated the informal scope creep that would otherwise have consumed the training timeline.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">24</div><span class="qa-q-text">What is your approach to creating a design proposal for a complex ERP training project?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        A design proposal for a complex ERP training project needs to do four things: demonstrate that you understand the client's specific context (not just ERP training in general), propose a solution that is precisely scoped to that context, justify the instructional approach with evidence, and give the client confidence that the production timeline and budget are realistic.<br><br>
+        My proposals are structured around five sections. First — context and problem statement: what is the implementation, who are the users, what are the go-live risks if training fails? Second — design approach: process-first or navigation-first, role-based or function-based, what modality mix and why? Third — scope: how many modules, which Oracle functions, what is included and what is explicitly excluded? Fourth — production plan: timeline, milestones, dependencies (Oracle sandbox availability, SME access, configuration freeze date), and team structure. Fifth — measurement: how go-live readiness will be defined, measured, and reported.<br><br>
+        The element clients find most valuable — and most differentiated — is the explicit scope exclusion list. Stating clearly what the training will not cover, and why, demonstrates that the designer has made deliberate decisions rather than producing a generic response. It also protects the project from scope creep.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">25</div><span class="qa-q-text">How do you identify and develop individual skill enhancement plans for instructional designers in your team?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Development planning starts with an honest assessment of where each designer is and where the business needs them to go — and those two things are not always the same. I run a skills mapping exercise at the start of each year (or when joining a new team) that looks at three dimensions: instructional design craft (scenario writing, assessment design, modality selection, learning theory application), production capability (Storyline, Rise, Captivate, video — and at what level of proficiency), and consulting skills (stakeholder management, scoping, facilitation, client communication).<br><br>
+        From that mapping, I identify each designer's development priority — the one capability that, if improved, would most increase their value on the projects they are working on. Then I design the development intervention around that priority: a stretch assignment on a live project, a pairing with a more experienced colleague, a focused external course, or a self-directed exploration with a prototype challenge and peer review.<br><br>
+        The most important element is that the development plan is built into the work rather than sitting alongside it. A designer who is developing scenario-writing capability does so by writing scenarios on real projects, with structured feedback, not by attending a scenario-writing workshop in isolation.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">26</div><span class="qa-q-text">The Aptara JD mentions performing random audits on documents. How do you approach quality auditing without creating a culture of fear?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Random audits create fear when the standard being audited against is unclear or subjective — when designers do not know what "good" looks like until a manager tells them their work is wrong. The antidote is a publicly shared, objectively defined quality standard that every designer helped create.<br><br>
+        When I audit, I audit against a checklist that the team has already seen and agreed to — covering instructional accuracy, learning objective alignment, assessment validity, interaction logic, and visual consistency. The audit result is not a judgment of the designer — it is a quality measurement against an agreed standard. The designer who scores below the standard gets specific, actionable feedback based on the checklist criteria, not a general observation that their work is substandard.<br><br>
+        I also make audit findings visible at team level — not to shame individuals, but to identify patterns. If multiple designers are producing assessments that test recall rather than performance, that is a team-level capability gap that needs a team-level response, not individual feedback. The audit is a diagnostic tool. Its purpose is to improve the system, not to evaluate the person.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">27</div><span class="qa-q-text">How do you manage cost, quality, and schedule simultaneously across multiple concurrent projects?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        The project management triangle — cost, quality, schedule — is real, and the honest answer is that you can optimise any two at the expense of the third. The key is making that trade-off decision explicitly, with the client, rather than absorbing it silently and hoping the team can manage it.<br><br>
+        Across multiple concurrent projects, I use three mechanisms. First, a shared resource tracker that shows total team capacity against committed project hours — making overcommitment visible before it becomes a delivery problem. Second, a standardised scoping process that connects timeline to scope before production begins — if the timeline compresses, scope reduces; if scope expands, timeline extends or resource increases. Third, a quality floor — a minimum standard below which I will not allow work to be delivered, regardless of timeline pressure. The quality floor is protected by the design framework: shared templates, quality checklists, and calibration sessions mean that maintaining minimum quality does not require additional review time.<br><br>
+        On the Oracle project, all three were essential: the configuration freeze policy protected the timeline, the must-know scope filter protected the cost, and the shared design framework protected the quality — simultaneously, across a team of ten.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">28</div><span class="qa-q-text">What emerging technologies do you think will most significantly impact ERP training design in the next three years?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Three technologies, in order of near-term impact:<br><br>
+        <strong>AI-powered Digital Adoption Platforms</strong> — tools like WalkMe are already overlaying Oracle Financials Cloud with in-application guidance. The next generation will use AI to detect user behaviour patterns and proactively surface guidance before the user makes an error, rather than responding after. This will fundamentally change the post-go-live support model — reducing support desk queries not through better pre-go-live training but through better in-application assistance.<br><br>
+        <strong>Generative AI for content production</strong> — AI will significantly reduce the time required to produce scenario-based assessment items, narration scripts, and process explainer content. The instructional design value will shift from content production to content curation and quality assurance — knowing which AI-generated scenarios are instructionally sound and which are not. This is a design skill, not a production skill, which favours experienced IDs over junior ones.<br><br>
+        <strong>Simulation environments for Oracle practice</strong> — Oracle Cloud's quarterly update cycle makes screen-recording-based simulations expensive to maintain. The future is AI-generated Oracle practice environments that adapt to configuration changes automatically, reducing the rebuild cost that currently makes sandboxed simulation the most expensive element of ERP training production.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">29</div><span class="qa-q-text">How do you contribute to the pre-sales process — from RFI through to signed contract?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        My pre-sales contribution spans three stages, each requiring different thinking.<br><br>
+        At the RFI stage, I focus on positioning — understanding what the client is actually asking, what their real concern is, and whether our capability genuinely maps to their need. The best RFI responses do not answer every question generically; they demonstrate understanding of the client's specific context in a way that generic competitors cannot match.<br><br>
+        At the RFP stage, I lead the instructional design section of the proposal — translating the client's requirements into a specific solution approach, with a rationale for every design decision. I also produce the scope and effort estimates that underpin the commercial proposal. Underestimating at RFP stage wins the bid and loses the client relationship. Accurate scoping wins the bid and builds the relationship.<br><br>
+        At the contract and solutioning stage, I lead the initial client workshops — the needs analysis conversations that validate the RFP assumptions and surface the information we did not have when we wrote the proposal. This is where the design rationale is stress-tested and where the production plan is finalised. In my experience at Ozemio, this stage is where the value of pre-sales experience is most visible — clients who feel heard and understood in the solutioning conversation sign contracts faster and with fewer scope disputes.
+      </div></div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <div class="qa-q-left"><div class="qa-num qa-num-aptara">30</div><span class="qa-q-text">Why Aptara — and why this role specifically?</span></div>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer"><div class="qa-answer-inner">
+        Aptara sits at the intersection of two things I have spent my career developing: instructional design rigour and complex enterprise system training. The Oracle Financials Cloud project showed me that ERP training done well is genuinely difficult — it requires process understanding, role-based design precision, scalable production systems, and the ability to measure what changes at go-live. Aptara's business is built on exactly that capability at scale.<br><br>
+        The Senior IDM role specifically interests me because it combines the two things I do best: leading design teams through complex projects and engaging with clients at the point where a brief is being shaped. That combination — design leadership and pre-sales consultancy — is exactly what this role requires, and exactly what my 23-year background has prepared me for.<br><br>
+        I am also at a point in my career where I want to see the long-term impact of the work — to build something that compounds over time within one organisation, rather than moving from project to project as an independent consultant. Aptara's scale of Oracle and ERP work offers exactly that kind of sustained, complex engagement. That is what draws me here.
+      </div></div>
+    </div>
+
   </div>
 </div>
 
-<!-- CTA -->
-<div class="cta-block">
-  <h3>You know these answers.<br><em>Now make them yours.</em></h3>
-  <p>The portfolio behind every answer — twelve case studies across twelve real challenges.</p>
-  <a href="/" class="cta-btn">View portfolio →</a>
+<!-- CALLOUT -->
+<div class="callout remember" style="margin-top:40px;">
+  <div class="callout-icon">🧠</div>
+  <div class="callout-body">
+    <strong>For the Aptara interview — Thursday 18 June</strong>
+    Know three numbers cold: 96% (first-attempt pass rate), 62% (support query reduction), 100% (pre-go-live certification). Know one insight: process before navigation. Everything else builds from there. See ip3.html for the full Oracle Financials Cloud preparation.
+  </div>
 </div>
 
-</div><!-- end .main -->
+<div class="cta-block">
+  <h3>You know these answers.<br><em>Now make them yours.</em></h3>
+  <p>Continue your Aptara preparation with the Oracle Financials Cloud deep-dive guide.</p>
+  <a href="ip2.html" class="cta-btn">ID Team &amp; Process →</a>
+  <a href="ip3.html" class="cta-btn">Oracle Financials Prep →</a>
+</div>
 
-<!-- FOOTER -->
+</div>
+
 <footer>
   <p><strong>Learning Matters.</strong> &nbsp;·&nbsp; <a href="/">rameshkrishnan.me</a></p>
-  <p style="margin-top:6px;font-size:0.72rem;">Interview Preparation · 20 Generic Questions · IC &amp; Lead/Manager Tracks</p>
+  <p style="margin-top:6px;font-size:0.72rem;">Interview Preparation · 30 Questions · Generic + Aptara Senior IDM</p>
 </footer>
 
 <script>
 const answered = new Set();
-
 function toggleQA(btn) {
   const card = btn.closest('.qa-card');
   const num = parseInt(card.querySelector('.qa-num').textContent);
@@ -504,17 +582,14 @@ function toggleQA(btn) {
   if (card.classList.contains('open')) answered.add(num);
   updateProgress();
 }
-
 function updateProgress() {
-  const pct = (answered.size / 20) * 100;
+  const pct = (answered.size / 30) * 100;
   document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-label').textContent = answered.size + ' of 20';
+  document.getElementById('progress-label').textContent = answered.size + ' of 30';
 }
-
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') document.querySelectorAll('.qa-card.open').forEach(c => c.classList.remove('open'));
 });
-
 const sections = document.querySelectorAll('.cat-section');
 const navLinks = document.querySelectorAll('.cat-nav a');
 const observer = new IntersectionObserver(entries => {
