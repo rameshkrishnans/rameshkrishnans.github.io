@@ -1,102 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Case Study 7 &#8212; Interview Prep | Learning Matters</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--primary:#1e3a5f;--primary-dark:#0f2035;--accent-text:#7ec5e8;--gold:#c8922a;--gold-light:#fdf4e3;--ink:#0f1e20;--ink-mid:#2d4a4e;--ink-light:#5a7a7e;--white:#ffffff;--warm:#f7fafa;--rule:#c8dfe0;--red:#c0303a;--red-light:#fdecea;--green:#1e7a4a;--green-light:#e4f0ea;--font-display:'Fraunces',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);}
-html{scroll-behavior:smooth;}body{font-family:var(--font-body);background:var(--warm);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
-.progress-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--primary-dark);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 2px 16px rgba(0,0,0,0.25);}
-.progress-nav-title{font-family:var(--font-display);font-size:14px;color:rgba(255,255,255,0.9);white-space:nowrap;flex-shrink:0;}.progress-nav-title span{color:var(--accent-text);}
-.progress-steps{display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none;}.progress-steps::-webkit-scrollbar{display:none;}
-.progress-step{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.45);cursor:pointer;transition:all 0.2s;white-space:nowrap;text-decoration:none;border:1px solid transparent;}
-.progress-step:hover{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.15);}.progress-step.active{color:var(--accent-text);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);}
-.progress-step-num{width:17px;height:17px;border-radius:50%;background:rgba(255,255,255,0.1);font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}.progress-step.active .progress-step-num{background:rgba(255,255,255,0.25);}
-.hero{background:var(--primary);padding:96px 48px 60px;position:relative;overflow:hidden;}.hero::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);pointer-events:none;}
-.hero-inner{max-width:880px;margin:0 auto;}.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;background:rgba(200,146,42,0.15);border:1px solid rgba(200,146,42,0.3);padding:5px 13px;border-radius:20px;}
-.hero h1{font-family:var(--font-display);font-size:clamp(27px,3.8vw,46px);font-weight:500;color:var(--white);line-height:1.15;margin-bottom:15px;}.hero h1 em{font-style:italic;color:var(--accent-text);font-weight:300;}
-.hero-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7;max-width:640px;margin-bottom:30px;}
-.hero-stats{display:flex;gap:26px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);}
-.hero-stat-num{font-family:var(--font-display);font-size:27px;font-weight:500;color:var(--white);line-height:1;margin-bottom:3px;}.hero-stat-num sup{font-size:13px;color:var(--gold);}
-.hero-stat-label{font-size:11px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.4;max-width:100px;}
-.how-to-use{background:var(--gold-light);border:1px solid rgba(200,146,42,0.25);padding:15px 24px;display:flex;align-items:center;gap:13px;max-width:880px;margin:24px auto 0;border-radius:8px;}
-.how-to-use p{font-size:12.5px;color:#6a4010;line-height:1.55;}.how-to-use strong{color:#3a2005;}
-main{max-width:880px;margin:0 auto;padding:52px 48px;}
-.chapter{margin-bottom:64px;scroll-margin-top:72px;}
-.chapter-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;padding-bottom:18px;border-bottom:2px solid rgba(0,0,0,0.07);}
-.chapter-num{width:42px;height:42px;border-radius:50%;background:var(--primary);color:var(--white);font-family:var(--font-display);font-size:17px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.chapter-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--primary);margin-bottom:4px;}
-.chapter-title{font-family:var(--font-display);font-size:clamp(18px,2.2vw,26px);font-weight:500;color:var(--ink);line-height:1.2;}.chapter-title em{font-style:italic;color:var(--primary);}
-.story{font-size:14.5px;font-weight:300;color:var(--ink-mid);line-height:1.85;margin-bottom:16px;}.story strong{font-weight:500;color:var(--ink);}
-.key-fact{background:rgba(0,0,0,0.04);border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:13px;color:var(--ink-mid);line-height:1.65;}
-.key-fact strong{display:block;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);margin-bottom:4px;}
-.challenge-box{background:var(--red-light);border:1px solid rgba(192,48,58,0.2);border-radius:9px;padding:15px 19px;margin:12px 0;}
-.challenge-box-header{display:flex;align-items:center;gap:9px;margin-bottom:7px;}.challenge-box-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);}
-.challenge-box p{font-size:13px;font-weight:300;color:#5a1a1e;line-height:1.65;}
-.resolution-box{background:var(--green-light);border:1px solid rgba(30,122,74,0.2);border-radius:9px;padding:15px 19px;margin:8px 0 14px;}
-.resolution-box-header{display:flex;align-items:center;gap:9px;margin-bottom:7px;}.resolution-box-label{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);}
-.resolution-box p{font-size:13px;font-weight:300;color:#0f3a22;line-height:1.65;}
-.steps{display:flex;flex-direction:column;gap:10px;margin:16px 0;}.step{display:flex;gap:12px;align-items:flex-start;}
-.step-num{width:24px;height:24px;border-radius:50%;background:var(--primary);color:var(--white);font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.step-text{font-size:13.5px;font-weight:300;color:var(--ink-mid);line-height:1.7;}.step-text strong{font-weight:500;color:var(--ink);}
-.remember{background:var(--primary);border-radius:9px;padding:19px 23px;margin:20px 0;}.remember-label{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--accent-text);margin-bottom:7px;}
-.remember p{font-size:14px;font-style:italic;font-family:var(--font-display);color:rgba(255,255,255,0.9);line-height:1.6;}
-.pull-quote{border-left:4px solid var(--gold);padding:13px 19px;background:var(--gold-light);border-radius:0 8px 8px 0;margin:18px 0;font-family:var(--font-display);font-size:16px;font-style:italic;color:var(--ink);line-height:1.6;}
-.qa-section{margin:24px 0;}.qa-section-title{font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink-light);margin-bottom:11px;display:flex;align-items:center;gap:9px;}.qa-section-title::after{content:'';flex:1;height:1px;background:var(--rule);}
-.qa-item{margin-bottom:9px;border:1px solid var(--rule);border-radius:9px;overflow:hidden;}
-.qa-question{padding:12px 16px;background:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background 0.2s;}.qa-question:hover{background:#f0f8f8;}
-.qa-question-text{font-size:12.5px;font-weight:500;color:var(--ink);line-height:1.4;}.qa-chevron{font-size:10px;color:var(--ink-light);transition:transform 0.25s var(--ease);flex-shrink:0;}
-.qa-item.open .qa-chevron{transform:rotate(180deg);}.qa-answer{display:none;padding:0 16px 13px;background:var(--white);border-top:1px solid rgba(0,0,0,0.06);}
-.qa-item.open .qa-answer{display:block;padding-top:11px;}.qa-answer p{font-size:12.5px;font-weight:300;color:var(--ink-mid);line-height:1.75;margin-bottom:7px;}.qa-answer p:last-child{margin-bottom:0;}.qa-answer strong{font-weight:500;color:var(--ink);}
-.objection-item{margin-bottom:9px;border-radius:9px;overflow:hidden;border:1px solid rgba(192,48,58,0.2);}
-.objection-q{padding:12px 16px;background:var(--red-light);display:flex;align-items:flex-start;gap:9px;cursor:pointer;transition:background 0.2s;}.objection-q:hover{background:#fad5d7;}
-.objection-icon{font-size:13px;flex-shrink:0;margin-top:1px;}.objection-text{font-size:12.5px;font-weight:500;color:#5a1a1e;line-height:1.4;flex:1;}
-.objection-chevron{font-size:10px;color:var(--red);transition:transform 0.25s;flex-shrink:0;}.objection-item.open .objection-chevron{transform:rotate(180deg);}
-.rebuttal{display:none;padding:12px 16px;background:var(--green-light);border-top:1px solid rgba(30,122,74,0.15);}.objection-item.open .rebuttal{display:block;}
-.rebuttal-label{font-size:10px;font-weight:500;letter-spacing:0.11em;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
-.rebuttal p{font-size:12.5px;font-weight:300;color:#0f3a22;line-height:1.75;margin-bottom:6px;}.rebuttal p:last-child{margin-bottom:0;}.rebuttal strong{font-weight:500;}
-.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0;}
-.resource-card{background:var(--white);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;text-decoration:none;display:flex;gap:9px;align-items:flex-start;transition:border-color 0.2s,transform 0.2s;}.resource-card:hover{border-color:var(--primary);transform:translateY(-2px);}
-.resource-type{font-size:9px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;padding:2px 5px;border-radius:3px;flex-shrink:0;margin-top:2px;}
-.resource-type.article{background:rgba(0,109,119,0.1);color:#006d77;border:1px solid rgba(0,109,119,0.2);}
-.resource-type.video{background:rgba(192,48,58,0.08);color:#c0303a;border:1px solid rgba(192,48,58,0.15);}
-.resource-type.guide{background:rgba(200,146,42,0.1);color:#7a5010;border:1px solid rgba(200,146,42,0.2);}
-.resource-title{font-size:12px;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:2px;}.resource-source{font-size:10.5px;font-weight:300;color:var(--ink-light);}
-.summary-card{background:var(--white);border:1px solid var(--rule);border-radius:11px;padding:24px;margin:24px 0;}.summary-card h3{font-family:var(--font-display);font-size:17px;font-weight:500;color:var(--ink);margin-bottom:12px;}
-.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.summary-item{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;font-weight:300;color:var(--ink-mid);line-height:1.5;}.summary-item::before{content:'✓';color:var(--primary);font-weight:600;flex-shrink:0;}
-.divider{display:flex;align-items:center;gap:12px;margin:32px 0 26px;font-size:10px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--ink-light);}.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--rule);}
-.closing-card{background:var(--primary);border-radius:11px;padding:32px;text-align:center;margin-top:48px;}.closing-card h2{font-family:var(--font-display);font-size:23px;font-weight:500;color:var(--white);margin-bottom:9px;line-height:1.25;}.closing-card h2 em{font-style:italic;color:var(--accent-text);font-weight:300;}.closing-card p{font-size:13px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.65;max-width:440px;margin:0 auto;}
-@media(max-width:768px){main{padding:30px 16px;}.hero{padding:70px 16px 38px;}.progress-nav{padding:0 10px;}.resources-grid,.summary-grid{grid-template-columns:1fr;}}</style></head>
-<body>
-<nav class="progress-nav"><div class="progress-nav-title">CS7 &#8212; <span>Interview Prep</span></div><div class="progress-steps"><a href="#ch1" class="progress-step"><div class="progress-step-num">1</div><span>Brief</span></a><a href="#ch2" class="progress-step"><div class="progress-step-num">2</div><span>Architecture</span></a><a href="#ch3" class="progress-step"><div class="progress-step-num">3</div><span>Challenges</span></a><a href="#ch4" class="progress-step"><div class="progress-step-num">4</div><span>Outcomes</span></a><a href="#chQ" class="progress-step"><div class="progress-step-num">Q</div><span>Q&amp;A</span></a></div></nav>
-<header class="hero"><div class="hero-inner">
-<div class="hero-badge">&#128203; Interview Preparation Guide</div>
-<h1>Case Study 7 &#8212; <em>From Manual to Mastery</em></h1>
-<p class="hero-desc">An eLearning programme combining produced video explainers, Show Me demonstrations, Try Me simulations, and scenario-based assessments &#8212; training 400 users across six role-based pathways before a high-stakes ERP system go-live.</p>
-<div class="hero-stats"><div class="hero-stat"><div class="hero-stat-num">18</div><div class="hero-stat-label">eLearning modules</div></div><div class="hero-stat"><div class="hero-stat-num">42</div><div class="hero-stat-label">Produced video explainers</div></div><div class="hero-stat"><div class="hero-stat-num">96<sup>%</sup></div><div class="hero-stat-label">First-attempt pass rate</div></div><div class="hero-stat"><div class="hero-stat-num">400<sup>+</sup></div><div class="hero-stat-label">Users trained before go-live</div></div></div>
-</div>
-<div class="how-to-use"><div style="font-size:19px;flex-shrink:0;">&#128161;</div><p><strong>How to use:</strong> Read top to bottom first. Use the nav to jump when rehearsing. Click any question or objection to reveal the answer &#8212; read, close, recall. That builds retention.</p></div>
-</header>
-<main>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Case Study 7 — Interview Prep | Learning Matters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --forest: #1e4a3a; --forest-mid: #2d6b52; --forest-light: #e8f2ed;
+  --gold: #a37c3b; --gold-light: #f5edd8; --gold-pale: #faf6ee;
+  --ink: #1c1c1a; --ink-mid: #3d3d38; --ink-light: #6b6b62;
+  --smoke: #f7f5f0; --border: #ddd9ce; --white: #ffffff;
+  --danger: #8b2e2e; --danger-light: #fdf0f0;
+  --blue: #2d4a6b; --blue-light: #e8eef5;
+  --green: #3d6b2d; --green-light: #eef5e8;
+  --oracle: #C74634; --oracle-light: #fdf0ee;
+  --radius: 10px; --shadow: 0 2px 16px rgba(30,74,58,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--smoke);color:var(--ink);line-height:1.7;font-size:16px;}
 
-<section class="chapter" id="ch1"><div class="chapter-header"><div class="chapter-num">1</div><div class="chapter-header-text"><div class="chapter-eyebrow">Where the story begins</div><h2 class="chapter-title">A go-live date that would not move. <em>And 400 users who had never seen the application.</em></h2></div></div><p>The organisation had completed a major ERP implementation &#8212; a new finance and operations platform replacing three legacy systems simultaneously. The go-live date was fixed. The pressure was absolute. And the training programme, which should have begun six weeks earlier, was still unbuilt.</p><p>The challenge was not just speed. Different user groups needed different training &#8212; finance teams, operations managers, and front-line processing staff each had distinct workflows within the same system. A single generic programme would not work. <strong>Six bespoke role-based pathways had to be designed, built, and deployed in under four months.</strong></p><div class="key-fact"><strong>The content audit finding that changed the design</strong>SME interviews revealed that the most common errors users were expected to make were not about understanding the system &#8212; they were about understanding the <em>underlying business process</em> the system was designed to support. This shifted the entire instructional strategy: teach the process first, then the system. Every video, every Show Me, every Try Me was sequenced accordingly.</div><div class="remember"><div class="remember-label">&#129504; Remember This</div><p>"The system is the tool. The business process is the task. If users do not understand the task, no amount of system training will produce the right behaviour."</p></div></section>
-<section class="chapter" id="ch2"><div class="chapter-header"><div class="chapter-num">2</div><div class="chapter-header-text"><div class="chapter-eyebrow">The four-layer design</div><h2 class="chapter-title">Explain, demonstrate, practise, assess. <em>Every layer building on the one before.</em></h2></div></div><p>The programme was built as a four-layer learning architecture applied consistently across all six role pathways.</p><div class="steps"><div class="step"><div class="step-num">1</div><div class="step-text"><strong>Video Explainers (42 videos, avg. 3.8 min)</strong> Produced animations with professional voiceover. Each video established the business context before introducing the system interface. Deliberately non-technical in tone &#8212; designed to be watched, not studied.</div></div><div class="step"><div class="step-num">2</div><div class="step-text"><strong>Show Me (guided demonstrations)</strong> Step-by-step guided walkthroughs of the actual system interface in Storyline &#8212; with hotspots, callout annotations, and audio commentary. Every click annotated with purpose, not just instruction.</div></div><div class="step"><div class="step-num">3</div><div class="step-text"><strong>Try Me (guided practice)</strong> Pixel-accurate system simulation where users completed real tasks independently. Three levels of support: full hints, hints on request, and mastery mode (no hints). Errors triggered specific feedback, not generic &#8216;incorrect&#8217; messages.</div></div><div class="step"><div class="step-num">4</div><div class="step-text"><strong>Scenario-Based Assessment</strong> Not a knowledge quiz &#8212; a realistic work situation requiring the right decision within the system. Results fed a live dashboard visible to learning administrators and line managers.</div></div></div><div class="challenge-box"><div class="challenge-box-header"><div style="font-size:15px">&#9888;&#65039;</div><div class="challenge-box-label">Challenge: the system kept changing</div></div><p>Screen captures taken during early development became obsolete as the vendor made interface changes right up to four weeks before go-live. Show Me demonstrations built against earlier builds had to be rebuilt from scratch.</p></div><div class="resolution-box"><div class="resolution-box-header"><div style="font-size:15px">&#9989;</div><div class="resolution-box-label">Resolution</div></div><p>I introduced a screen freeze policy &#8212; no interface changes after week ten without a formal impact assessment. I also built a rapid-rebuild workflow that could update a Show Me within 48 hours of a confirmed screen change.</p></div></section>
-<section class="chapter" id="ch3"><div class="chapter-header"><div class="chapter-num">3</div><div class="chapter-header-text"><div class="chapter-eyebrow">What made this hard</div><h2 class="chapter-title">Six challenges. <em>Six resolutions.</em></h2></div></div><div class="challenge-box"><div class="challenge-box-header"><div style="font-size:15px">&#9888;&#65039;</div><div class="challenge-box-label">SME availability</div></div><p>The people who held all the knowledge were also implementing the system. Long review cycles threatened the build phase.</p></div><div class="resolution-box"><div class="resolution-box-header"><div style="font-size:15px">&#9989;</div><div class="resolution-box-label">Resolution</div></div><p>Targeted sign-off model: each SME assigned to specific modules only, with a 48-hour turnaround expectation and a structured review template focused on factual accuracy &#8212; not editorial preference.</p></div><div class="challenge-box"><div class="challenge-box-header"><div style="font-size:15px">&#9888;&#65039;</div><div class="challenge-box-label">Role overlap</div></div><p>Many screens were shared across multiple user roles but used differently by each. Building separate sequences for every role would have tripled build time.</p></div><div class="resolution-box"><div class="resolution-box-header"><div style="font-size:15px">&#9989;</div><div class="resolution-box-label">Resolution</div></div><p>Layered branching within shared modules &#8212; a single core Show Me with role-specific annotation layers that activated based on the user&#8217;s pathway.</p></div><div class="challenge-box"><div class="challenge-box-header"><div style="font-size:15px">&#9888;&#65039;</div><div class="challenge-box-label">Engagement: system training as box-ticking</div></div><p>Early pilot feedback confirmed participants were clicking through Show Me sequences without reading the annotations.</p></div><div class="resolution-box"><div class="resolution-box-header"><div style="font-size:15px">&#9989;</div><div class="resolution-box-label">Resolution</div></div><p>Consequence moments embedded before every Show Me &#8212; brief scenarios showing what happens when a common error is made in the real system. Users who understood the cost of getting it wrong paid far more attention to the demonstration.</p></div><div class="challenge-box"><div class="challenge-box-header"><div style="font-size:15px">&#9888;&#65039;</div><div class="challenge-box-label">Assessment integrity</div></div><p>Early assessment designs were flagged as too easy &#8212; users could pass by eliminating obviously wrong options without genuine understanding.</p></div><div class="resolution-box"><div class="resolution-box-header"><div style="font-size:15px">&#9989;</div><div class="resolution-box-label">Resolution</div></div><p>All knowledge-recall questions replaced with scenario-based situational questions. Distractors written to be plausible &#8212; close-but-wrong options that would catch vague rather than solid understanding.</p></div></section>
-<section class="chapter" id="ch4"><div class="chapter-header"><div class="chapter-num">4</div><div class="chapter-header-text"><div class="chapter-eyebrow">What it achieved</div><h2 class="chapter-title">100% pre-go-live completion. <em>62% fewer support desk queries in the first 30 days.</em></h2></div></div><div class="summary-card"><h3>Know these numbers</h3><div class="summary-grid"><div class="summary-item">100% of 400+ users completed their pathway before go-live</div><div class="summary-item">96% first-attempt pass rate across all six role pathways</div><div class="summary-item">62% fewer support desk queries vs equivalent prior rollouts</div><div class="summary-item">42 videos produced &#8212; all with a single round of revisions per script</div><div class="summary-item">220+ FAQ library entries for post-go-live performance support</div><div class="summary-item">First major rollout in the organisation to achieve 100% pre-go-live training completion</div></div></div><div class="pull-quote">"Our previous system rollout generated weeks of support tickets and frustrated users. This time, people arrived at go-live knowing exactly what they were doing. The difference was visible within hours." &#8212; Head of Operations Transformation</div></section>
-<section class="chapter" id="chQ">
-<div class="chapter-header"><div class="chapter-num">Q</div><div class="chapter-header-text"><div class="chapter-eyebrow">Be ready for pushback</div><h2 class="chapter-title">The tough questions. <em>Answer them with confidence.</em></h2></div></div>
-<p class="story">Interviewers will probe your decisions and test whether you genuinely own this story. Here are the objections you are most likely to face.</p>
-<div class="qa-section"><div class="qa-section-title">Design Approach</div><div class="objection-item"><div class="objection-q" onclick="toggleObj(this)"><div class="objection-icon">&#129300;</div><div class="objection-text">Why 42 produced videos? Couldn&#8217;t you use screen recordings instead? They would be faster and cheaper.</div><div class="objection-chevron">&#9662;</div></div><div class="rebuttal"><div class="rebuttal-label">Your response</div><p>Screen recordings show what the system does. Produced videos explain <em>why</em> the system does what it does &#8212; and why the underlying business process demands it. A screen recording of a finance approval workflow shows the clicks. A produced video explains what an approval actually authorises, what happens if it is skipped, and how it connects to the payment run. That context is what makes the subsequent Show Me meaningful rather than mechanical.</p><p><strong>The speed argument also underestimates the production system we built:</strong> a modular animation component library, a pre-approved script template, and a voiceover artist on retainer. A video could go from first-draft script to finished output in five working days. That pace made 42 videos viable within a four-month window.</p></div></div><div class="objection-item"><div class="objection-q" onclick="toggleObj(this)"><div class="objection-icon">&#129300;</div><div class="objection-text">Why not one programme for all users rather than six role-based pathways?</div><div class="objection-chevron">&#9662;</div></div><div class="rebuttal"><div class="rebuttal-label">Your response</div><p>A generic programme would have trained every user in every workflow &#8212; including workflows irrelevant to their role. In a system where data entry errors have financial consequences, training people in processes they will never use creates confusion, not competence. Worse, it wastes the single most valuable resource in a pre-go-live window: learner attention.</p><p><strong>The role-based pathways were also more efficient than they appear:</strong> many modules were shared across roles, with role-specific annotation layers applied to the same core content. The 18 modules served six pathways &#8212; meaning the average module was used by multiple roles, not built exclusively for one.</p></div></div></div><div class="qa-section"><div class="qa-section-title">Show Me / Try Me Design</div><div class="qa-item"><div class="qa-question" onclick="toggleQA(this)"><span class="qa-question-text">What is the instructional difference between a Show Me and a Try Me?</span><span class="qa-chevron">&#9662;</span></div><div class="qa-answer">A Show Me is a guided demonstration &#8212; the learner watches, reads, and listens, but does not interact. It builds a mental model of the workflow. A Try Me is a guided practice &#8212; the learner completes the same task independently, with support available at three levels depending on their confidence. The Show Me builds the schema. The Try Me tests and consolidates it. Neither is effective without the other. A Show Me without a Try Me produces recognition without production. A Try Me without a Show Me produces trial-and-error without a mental model to anchor the learning.</div></div><div class="qa-item"><div class="qa-question" onclick="toggleQA(this)"><span class="qa-question-text">Why scenario-based assessment rather than a system simulation for the summative?</span><span class="qa-chevron">&#9662;</span></div><div class="qa-answer">A system simulation tests whether a user can navigate the interface. A scenario-based assessment tests whether a user makes the right business decision &#8212; which is the actual performance requirement. A finance user who can click through a payment run correctly but does not know when to escalate an approval exception has passed the interface test and failed the job performance test. The scenario assessment targeted the judgment layer that the Try Me activity, focused on procedural practice, could not reach.</div></div></div>
-<div class="divider">Further reading &amp; viewing</div>
-<div class="resources-grid"><a href="https://elearningindustry.com" target="_blank" class="resource-card"><div class="resource-type article">Article</div><div><div class="resource-title">Show Me / Tell Me / Try Me in eLearning</div><div class="resource-source">eLearning Industry</div></div></a><a href="https://trainingindustry.com" target="_blank" class="resource-card"><div class="resource-type article">Article</div><div><div class="resource-title">Performance Support and 70-20-10 Learning</div><div class="resource-source">Training Industry</div></div></a><a href="https://www.asapmethodology.org" target="_blank" class="resource-card"><div class="resource-type guide">Guide</div><div><div class="resource-title">ERP Training Best Practices</div><div class="resource-source">ASAP Methodology</div></div></a><a href="https://www.articulate.com" target="_blank" class="resource-card"><div class="resource-type video">Video</div><div><div class="resource-title">Screencasting vs. Produced Video in eLearning</div><div class="resource-source">Articulate 360</div></div></a></div>
+nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 48px;height:56px;gap:40px;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--ink);text-decoration:none;}
+.nav-brand span{color:var(--forest);}.nav-brand em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:28px;margin-left:auto;}
+.nav-links a{font-size:0.82rem;color:var(--ink-light);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--forest);}
+.nav-cta{background:var(--forest);color:var(--white)!important;padding:7px 18px;border-radius:20px;font-weight:500!important;}
+
+.chapter-nav{background:var(--forest);display:flex;overflow-x:auto;scrollbar-width:none;}
+.chapter-nav::-webkit-scrollbar{display:none;}
+.chapter-nav a{color:rgba(255,255,255,0.6);font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:12px 24px;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.1);transition:all 0.2s;display:flex;align-items:center;gap:8px;}
+.chapter-nav a:hover{color:var(--white);background:rgba(255,255,255,0.08);}
+.chapter-nav .ch-num{background:rgba(255,255,255,0.15);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;flex-shrink:0;}
+
+.hero{background:var(--forest);padding:64px 48px 52px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(163,124,59,0.12) 0%,transparent 60%);pointer-events:none;}
+.hero-inner{max-width:760px;position:relative;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:0.75rem;color:rgba(255,255,255,0.8);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;}
+.oracle-badge{background:rgba(199,70,52,0.3);border-color:rgba(199,70,52,0.5);color:rgba(255,255,255,0.9);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:10px;}
+.hero h1 em{font-style:italic;color:#c9a96e;}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:580px;margin-bottom:36px;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+.h-stat{display:flex;flex-direction:column;}
+.h-stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--white);line-height:1;}
+.h-stat-num span{color:#c9a96e;}
+.h-stat-label{font-size:0.72rem;color:rgba(255,255,255,0.5);}
+.h-stat-divider{width:1px;background:rgba(255,255,255,0.15);align-self:stretch;}
+
+.how-to{background:var(--gold-pale);border:1px solid #e8d9b8;border-radius:var(--radius);padding:20px 24px;margin:32px 48px;display:flex;gap:14px;align-items:flex-start;}
+.how-to-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.how-to-body{font-size:0.85rem;color:var(--ink-mid);line-height:1.65;}
+.how-to-body strong{color:var(--gold);display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+
+/* Oracle module map */
+.oracle-alert{background:var(--oracle-light);border:1px solid rgba(199,70,52,0.25);border-radius:var(--radius);padding:18px 22px;margin:0 48px 24px;display:flex;gap:12px;align-items:flex-start;}
+.oracle-alert-icon{font-size:1rem;flex-shrink:0;margin-top:2px;}
+.oracle-alert-body{font-size:0.85rem;color:var(--ink-mid);line-height:1.65;}
+.oracle-alert-body strong{color:var(--oracle);display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;}
+
+.module-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.module-pill{background:var(--white);border:1px solid rgba(199,70,52,0.2);border-radius:20px;padding:4px 12px;font-size:0.75rem;font-weight:500;color:var(--oracle);}
+
+.layout{max-width:900px;margin:0 auto;padding:48px 48px 80px;display:flex;flex-direction:column;gap:56px;}
+
+.chapter{scroll-margin-top:80px;}
+.chapter-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.ch-badge{width:36px;height:36px;border-radius:50%;background:var(--forest);color:var(--white);font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chapter-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+.chapter h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.5vw,1.9rem);font-weight:400;color:var(--ink);line-height:1.25;}
+.chapter h2 em{font-style:italic;color:var(--forest);}
+.chapter p{color:var(--ink-mid);font-size:0.95rem;line-height:1.8;margin-bottom:14px;}
+.chapter p strong{color:var(--ink);font-weight:600;}
+
+.callout{border-radius:var(--radius);padding:20px 24px;margin:20px 0;display:flex;gap:14px;align-items:flex-start;}
+.callout-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.callout-body{font-size:0.875rem;line-height:1.7;}
+.callout-body strong{display:block;margin-bottom:4px;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase;}
+.callout.remember{background:var(--forest);color:rgba(255,255,255,0.9);border-left:4px solid var(--gold);}
+.callout.remember .callout-body strong{color:#c9a96e;}
+.callout.insight{background:var(--gold-pale);border-left:4px solid var(--gold);}
+.callout.insight .callout-body strong{color:var(--gold);}
+
+/* STAR blocks */
+.star-block{margin:20px 0;}
+.star-label{display:flex;align-items:center;gap:10px;margin-bottom:10px;margin-top:20px;}
+.star-letter{width:34px;height:34px;border-radius:8px;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.star-s{background:var(--forest-light);color:var(--forest);}
+.star-t{background:var(--blue-light);color:var(--blue);}
+.star-a{background:var(--gold-light);color:var(--gold);}
+.star-r{background:var(--green-light);color:var(--green);}
+.star-label-text{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+.star-content{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;font-size:0.88rem;color:var(--ink-mid);line-height:1.75;box-shadow:var(--shadow);}
+.star-content strong{color:var(--ink);font-weight:600;}
+
+/* Q&A accordion */
+.qa-section{display:flex;flex-direction:column;gap:12px;}
+.qa-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.qa-question{width:100%;background:var(--white);border:none;padding:16px 20px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background 0.2s;}
+.qa-question:hover{background:var(--smoke);}
+.qa-q-text{font-size:0.88rem;font-weight:500;color:var(--ink);line-height:1.5;}
+.qa-icon{color:var(--gold);font-size:1rem;flex-shrink:0;transition:transform 0.25s;}
+.qa-answer{display:none;padding:16px 20px;background:var(--gold-pale);border-top:1px solid var(--border);font-size:0.875rem;color:var(--ink-mid);line-height:1.75;}
+.qa-answer strong{color:var(--ink);font-weight:600;}
+.qa-card.open .qa-answer{display:block;}
+.qa-card.open .qa-icon{transform:rotate(180deg);}
+.qa-category{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;margin-top:4px;}
+
+/* Numbers grid */
+.numbers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0;}
+.number-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;box-shadow:var(--shadow);}
+.number-big{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--forest);line-height:1;}
+.number-label{font-size:0.72rem;color:var(--ink-light);margin-top:4px;line-height:1.4;}
+
+/* Oracle number card */
+.number-card-oracle{border-color:rgba(199,70,52,0.2);}
+.number-big-oracle{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--oracle);line-height:1;}
+
+/* Resources */
+.resources{display:flex;flex-direction:column;gap:10px;margin:20px 0;}
+.resource-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow);}
+.resource-icon{width:32px;height:32px;border-radius:7px;background:var(--forest-light);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.resource-icon-oracle{background:var(--oracle-light);}
+.resource-content h4{font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.resource-content p{font-size:0.75rem;color:var(--ink-light);margin:0;}
+.resource-content a{font-size:0.75rem;color:var(--forest);text-decoration:none;font-weight:500;}
+.resource-content a:hover{text-decoration:underline;}
+
+.cta-block{background:var(--forest);border-radius:var(--radius);padding:36px 40px;text-align:center;}
+.cta-block h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:8px;}
+.cta-block p{font-size:0.875rem;color:rgba(255,255,255,0.65);margin-bottom:20px;}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--white);padding:11px 28px;border-radius:24px;font-size:0.85rem;font-weight:500;text-decoration:none;margin:4px;}
+
+.divider{border:none;border-top:1px solid var(--border);}
+footer{background:var(--forest);color:rgba(255,255,255,0.6);text-align:center;padding:32px 48px;font-size:0.8rem;}
+footer a{color:#c9a96e;text-decoration:none;}
+footer strong{color:var(--white);}
+
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .hero{padding:48px 20px 40px;}
+  .how-to,.oracle-alert{margin-left:20px;margin-right:20px;}
+  .layout{padding:32px 20px 60px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="/">Learning <span>Matters</span><em>.</em></a>
+  <div class="nav-links">
+    <a href="/">Work</a><a href="/">Insights</a><a href="/">Testimonials</a><a href="/">About</a>
+    <a href="/" class="nav-cta">Let's talk</a>
+  </div>
+</nav>
+
+<div class="chapter-nav">
+  <a href="#ch1"><span class="ch-num">1</span>Brief</a>
+  <a href="#ch2"><span class="ch-num">2</span>Architecture</a>
+  <a href="#ch3"><span class="ch-num">3</span>Challenges</a>
+  <a href="#ch4"><span class="ch-num">4</span>Outcomes</a>
+  <a href="#chQ"><span class="ch-num">Q</span>Q&amp;A</a>
+  <a href="#resources"><span class="ch-num">📚</span>Resources</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📋 Interview Preparation Guide</div>
+    <div class="hero-badge oracle-badge" style="margin-left:8px;">🔴 Oracle Financials Cloud</div>
+    <h1>Case Study 7 — <em>From Manual to Mastery</em></h1>
+    <p class="hero-sub">End-user training for an Oracle Financials Cloud implementation — 400 users, six role-based pathways, a fixed go-live deadline, and one design decision that changed everything: process before system.</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-num">400<span>+</span></div><div class="h-stat-label">Users certified pre-go-live</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">96<span>%</span></div><div class="h-stat-label">First-attempt pass rate</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">62<span>%</span></div><div class="h-stat-label">Reduction in support desk queries</div></div>
+      <div class="h-stat-divider"></div>
+      <div class="h-stat"><div class="h-stat-num">4<span> months</span></div><div class="h-stat-label">Design to full delivery</div></div>
+    </div>
+  </div>
 </section>
-<div class="closing-card"><h2>You know this story. <em>Now tell it.</em></h2><p>The best interview answer is not a recitation of facts &#8212; it is a coherent narrative that shows how you think. Rehearse this story out loud. Close the page. Tell it to yourself. Then come back and check what you missed.</p></div>
-</main>
+
+<div class="how-to">
+  <div class="how-to-icon">💡</div>
+  <div class="how-to-body">
+    <strong>How to use this guide</strong>
+    Read top to bottom first. Use the nav to jump when rehearsing. Click any question or objection to reveal the answer — read, close, recall. Three numbers to know cold: <strong>96%</strong> first-attempt pass rate · <strong>62%</strong> support query reduction · <strong>100%</strong> pre-go-live certification.
+  </div>
+</div>
+
+<div class="oracle-alert">
+  <div class="oracle-alert-icon">🔴</div>
+  <div class="oracle-alert-body">
+    <strong>Oracle Financials Cloud — Six modules covered in this project</strong>
+    This project covered Oracle Financials Cloud's core financial management suite — the system used by global enterprises to centralise all financial transaction processing.
+    <div class="module-pills">
+      <span class="module-pill">General Ledger (GL)</span>
+      <span class="module-pill">Accounts Payable (AP)</span>
+      <span class="module-pill">Accounts Receivable (AR)</span>
+      <span class="module-pill">Fixed Assets</span>
+      <span class="module-pill">Oracle Procurement</span>
+      <span class="module-pill">OTBI Reporting</span>
+    </div>
+    <p style="margin-top:10px;font-size:0.8rem;color:var(--ink-light);">Process flows trained: <strong>Procure-to-Pay (P2P) · Order-to-Cash (O2C) · Record-to-Report (R2R)</strong></p>
+  </div>
+</div>
+
+<div class="layout">
+
+<!-- CH1: BRIEF -->
+<section class="chapter" id="ch1">
+  <div class="chapter-header">
+    <div class="ch-badge">1</div>
+    <div>
+      <div class="chapter-eyebrow">Where the story begins</div>
+      <h2>The system was live. <em>The people were not ready.</em></h2>
+    </div>
+  </div>
+
+  <p>A financial services organisation had completed a major technology transformation — replacing three legacy finance systems with <strong>Oracle Financials Cloud</strong>, Oracle's integrated suite covering General Ledger, Accounts Payable, Accounts Receivable, and Fixed Assets. The go-live date was fixed and immovable. And the training programme, which should have started six weeks earlier, was still unbuilt.</p>
+
+  <p>When I came on board as Lead ID, there were 400 users across four locations and two countries who had never seen the system. Oracle University's generic cloud training had been dismissed early as too broad for the organisation's configured workflows — the correct assessment, but it had left a training vacuum with a four-month window to fill it.</p>
+
+  <p><strong>The content audit finding that changed the design strategy:</strong> I reviewed 340 pages of Oracle configuration documentation and conducted structured interviews with 18 SMEs across six user groups. What emerged was the central insight: the errors users were most likely to make were not navigation errors — they were business process errors. An AP clerk who didn't understand the three-way match between a purchase order, goods receipt, and supplier invoice would misprocess invoices regardless of how well they navigated the Oracle Payables dashboard.</p>
+
+  <p>This shifted the entire instructional strategy: <strong>teach the Oracle process first — Procure-to-Pay, Order-to-Cash, Record-to-Report — then the Oracle system.</strong> Every video, every Show Me, every Try Me was sequenced accordingly.</p>
+
+  <div class="callout remember">
+    <div class="callout-icon">🧠</div>
+    <div class="callout-body">
+      <strong>Remember this</strong>
+      "Oracle Financials Cloud is built around integrated process flows — Procure-to-Pay, Order-to-Cash, Record-to-Report. Every transaction a user enters has upstream dependencies and downstream consequences. Training that focuses only on system navigation produces users who can enter data. Training that focuses on process flow produces users who understand what they are entering, why it matters, and what happens if they get it wrong."
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CH2: ARCHITECTURE -->
+<section class="chapter" id="ch2">
+  <div class="chapter-header">
+    <div class="ch-badge">2</div>
+    <div>
+      <div class="chapter-eyebrow">The learning architecture</div>
+      <h2>Six Oracle role-based pathways. <em>One process-first principle.</em></h2>
+    </div>
+  </div>
+
+  <p>The programme was built as a four-layer learning architecture applied consistently across all six Oracle Financials Cloud role pathways — each pathway mapped to a specific user group and the Oracle modules they would operate daily.</p>
+
+  <p>The six role-based pathways covered: <strong>GL Accountant</strong> (Oracle General Ledger — journal entry, period-end close, account reconciliation, OTBI reporting), <strong>AP Clerk</strong> (Oracle Payables — invoice processing, three-way match, payment runs), <strong>AR Manager</strong> (Oracle Receivables — customer invoicing, cash application, collections), <strong>Fixed Asset Controller</strong> (Oracle Fixed Assets — asset additions, depreciation, retirements), <strong>Procurement Officer</strong> (Oracle Procurement — purchase requisitions, purchase orders, Procure-to-Pay cycle), and <strong>Finance Business Partner</strong> (OTBI dashboards, Financial Reporting Studio, period-end management reporting).</p>
+
+  <p>Each pathway followed the same four-stage learning sequence:</p>
+
+  <div class="callout insight">
+    <div class="callout-icon">📋</div>
+    <div class="callout-body">
+      <strong>Four-stage architecture — applied across all six pathways</strong>
+      <strong>Stage 1 — Oracle Process Explainer Video:</strong> A produced video (5–8 min) establishing the Oracle business process context before any system navigation. The AP pathway opened with the three-way match concept — what it is, why Oracle enforces it, and what a mismatch means for the organisation's financial controls — before a single Payables screen appeared.<br><br>
+      <strong>Stage 2 — Show Me (Oracle Guided Demonstration):</strong> Screen-recorded walkthroughs of the organisation's configured Oracle Financials Cloud environment — not Oracle's generic demo environment. Narration focused on decision points: why this field, what happens if this Oracle approval is bypassed, how this transaction flows downstream into GL.<br><br>
+      <strong>Stage 3 — Try Me (Oracle Simulation):</strong> Interactive simulations where learners completed Oracle transactions independently — with decreasing support across three levels: field-by-field guidance → task-level prompts → unsupported (replicating the go-live environment).<br><br>
+      <strong>Stage 4 — Scenario-Based Assessment:</strong> Every assessment scenario was drawn directly from real Oracle error patterns the SME interviews had identified. An AP clerk scenario presented an invoice with a quantity variance against the Oracle purchase order and asked the user to identify the correct Oracle workflow response.
+    </div>
+  </div>
+
+  <div class="callout insight">
+    <div class="callout-icon">💡</div>
+    <div class="callout-body">
+      <strong>The must-know filter — 38% scope reduction</strong>
+      Applying a must-know / need-to-know / nice-to-know filter to each Oracle pathway against the configuration documentation reduced scope by 38% — making four-month delivery genuinely achievable without compromising the training standard. Every screen cut was a screen that would not have changed Oracle performance on the job.
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CH3: YOUR STAR ANSWER -->
+<section class="chapter" id="ch3">
+  <div class="chapter-header">
+    <div class="ch-badge">3</div>
+    <div>
+      <div class="chapter-eyebrow">Your STAR answer</div>
+      <h2>The full story. <em>In your words.</em></h2>
+    </div>
+  </div>
+
+  <p>Use this for: <strong>"Tell me about a time you designed and delivered training for a large-scale ERP implementation."</strong> Also works for: <em>"Tell me about a time you identified that the real problem wasn't what the client thought it was."</em></p>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-s">S</div><div class="star-label-text" style="color:var(--forest);">Situation</div></div>
+    <div class="star-content">
+      A financial services organisation had just completed an Oracle Financials Cloud implementation — replacing three legacy finance systems with Oracle's integrated suite covering General Ledger, Accounts Payable, Accounts Receivable, Fixed Assets, and Procurement. The go-live date was fixed and immovable. When I came on board as Lead ID, there were 400 users across four locations and two countries who had never seen the system — and no training programme in place. Oracle University's generic cloud training had already been dismissed as too broad for the organisation's configured workflows, leaving a training vacuum with four months to fill it.
+    </div>
+  </div>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-t">T</div><div class="star-label-text" style="color:var(--blue);">Task</div></div>
+    <div class="star-content">
+      As Lead ID, I was responsible for designing and delivering six bespoke Oracle role-based training pathways — covering GL accountants, AP clerks, AR managers, Fixed Asset controllers, Procurement officers, and Finance Business Partners — and producing a go-live readiness dashboard that would give senior leadership the evidence they needed to approve Oracle go-live. Every pathway had to be completed and assessed before go-live day. I led a team of ten instructional designers through the full build.
+    </div>
+  </div>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-a">A</div><div class="star-label-text" style="color:var(--gold);">Action — your thinking, your decisions</div></div>
+    <div class="star-content">
+      Before building anything, I ran a two-week discovery phase. I reviewed 340 pages of Oracle Financials Cloud configuration documentation — chart of accounts, approval hierarchies, workflow configurations — and conducted structured interviews with 18 SMEs across the six Oracle user groups. The question I was asking was not "what Oracle functionality do you need to train?" It was "what decisions do users in this role make every day, and what do they need to understand — about the Oracle business process, not just the Oracle interface — to make those decisions correctly?"<br><br>
+      What those conversations revealed changed the entire design strategy. The errors users were most likely to make were not navigation errors — they were Oracle business process errors. An AP clerk who didn't understand the three-way match between a purchase order, goods receipt, and supplier invoice would misprocess invoices regardless of how well they navigated the Payables dashboard. A GL accountant who didn't understand the period-end close sequence would create manual journal entries that should have been generated automatically by Oracle's Subledger Accounting engine — creating reconciliation problems that would persist for months.<br><br>
+      I restructured the entire programme around a process-first principle. Each Oracle pathway began with the relevant Oracle process flow — Procure-to-Pay for AP and Procurement, Order-to-Cash for AR, Record-to-Report for GL — before any Oracle interface navigation. I applied a must-know/need-to-know filter that reduced scope by 38%, making four-month delivery achievable without compromising the standard.<br><br>
+      I then directed my team of ten through a four-layer architecture: produced Oracle process explainer videos (42 videos across all pathways), Show Me guided demonstrations of the organisation's configured Oracle environment, Try Me simulations at three support levels, and scenario-based assessments drawn directly from the Oracle error patterns the SME interviews had surfaced. When the Oracle implementation team made configuration changes mid-project — approval hierarchy and chart of accounts changes — I introduced a screen freeze policy and a rapid-rebuild workflow that kept affected Show Me modules current within 48 hours of a confirmed change.<br><br>
+      I also introduced a differentiated entry point for the two user populations: a diagnostic pre-assessment routing users to an extended Oracle process context module if they scored below threshold — ensuring the India-based processing team (who had operated a largely manual legacy system) received the Oracle business process foundation they needed before any system navigation.
+    </div>
+  </div>
+
+  <div class="star-block">
+    <div class="star-label"><div class="star-letter star-r">R</div><div class="star-label-text" style="color:var(--green);">Result</div></div>
+    <div class="star-content">
+      100% of 400+ users completed their Oracle pathway before go-live — the first time in the organisation's history that a major system rollout achieved full pre-go-live training completion. 96% first-attempt pass rate across all six Oracle role-based pathways. 62% reduction in support desk queries in the first 30 days post go-live compared to the organisation's previous system rollout. The go-live readiness dashboard showed role-specific Oracle competency scores — not just completion flags — giving the project sponsor granular, defensible evidence of user readiness before activating the live Oracle Financials Cloud environment.
+    </div>
+  </div>
+
+  <div class="callout remember">
+    <div class="callout-icon">🧠</div>
+    <div class="callout-body">
+      <strong>Remember this</strong>
+      "Oracle Financials Cloud is an integrated system. GL, AP, AR, Fixed Assets, and Procurement do not operate independently — every transaction has upstream dependencies and downstream consequences. Training that ignores this produces users who can navigate Oracle but cannot operate it. The distinction matters enormously on go-live day."
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CH4: OUTCOMES -->
+<section class="chapter" id="ch4">
+  <div class="chapter-header">
+    <div class="ch-badge">4</div>
+    <div>
+      <div class="chapter-eyebrow">Know these numbers</div>
+      <h2>The results. <em>In full.</em></h2>
+    </div>
+  </div>
+  <div class="numbers-grid">
+    <div class="number-card"><div class="number-big">100%</div><div class="number-label">Of 400+ users certified before Oracle go-live</div></div>
+    <div class="number-card"><div class="number-big">96%</div><div class="number-label">First-attempt pass rate across all six Oracle pathways</div></div>
+    <div class="number-card"><div class="number-big">62%</div><div class="number-label">Reduction in support desk queries — first 30 days post go-live</div></div>
+    <div class="number-card"><div class="number-big">6</div><div class="number-label">Oracle role-based pathways — GL, AP, AR, Fixed Assets, Procurement, Finance BP</div></div>
+    <div class="number-card"><div class="number-big">42</div><div class="number-label">Oracle process explainer videos produced across all pathways</div></div>
+    <div class="number-card"><div class="number-big">38%</div><div class="number-label">Scope reduction from must-know/need-to-know filter — enabling 4-month delivery</div></div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- QA -->
+<section class="chapter" id="chQ">
+  <div class="chapter-header">
+    <div class="ch-badge">Q</div>
+    <div>
+      <div class="chapter-eyebrow">Be ready for pushback</div>
+      <h2>The tough questions. <em>Answer them with confidence.</em></h2>
+    </div>
+  </div>
+
+  <p>Interviewers — particularly at Aptara — will probe your Oracle decisions specifically. Here are the questions most likely to come up.</p>
+
+  <div class="qa-section">
+
+    <div class="qa-category">Oracle Process — Design Decisions</div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 Why process-first rather than Oracle system-first? Oracle University teaches the system — why didn't you follow that approach?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Oracle University teaches the standard, unconfigured Oracle product. Every Oracle implementation configures the system differently — the chart of accounts, approval hierarchies, supplier data, and workflow configurations are unique to each organisation. End users trained on Oracle's generic product encounter a system that looks and behaves differently from the one they were trained on.</p>
+        <p>But the deeper problem is structural. Oracle Financials Cloud is built around integrated process flows — Procure-to-Pay, Order-to-Cash, Record-to-Report. Every Oracle transaction a user enters is an act within a business process. An AP clerk who doesn't understand the three-way match will trigger invoice holds they don't know how to resolve, regardless of how well they can navigate the Payables dashboard. A GL accountant who doesn't understand which journal entries Oracle's Subledger Accounting engine creates automatically versus which require manual intervention will create duplicate entries that corrupt the trial balance.</p>
+        <p><strong>System-first design teaches users to click correctly. Process-first design teaches users to think correctly.</strong> When the Oracle interface changes — and in Oracle Cloud, it changes every quarter — a user trained process-first can adapt. A user trained system-first cannot. The 62% reduction in support desk queries in the first 30 days post go-live is the evidence.</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 Why 42 produced videos? Couldn't Oracle screen recordings be faster and cheaper?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Oracle screen recordings show what Oracle does. Produced Oracle process explainer videos explain <em>why</em> Oracle does what it does — and why the underlying financial process demands it.</p>
+        <p>A screen recording of an Oracle Payables approval workflow shows the clicks. A produced video explains what an Oracle AP approval actually authorises, what a three-way match exception means for the organisation's financial controls, and how the approval decision connects downstream to the Oracle payment run and GL posting. That process context is what makes the subsequent Oracle Show Me meaningful rather than mechanical.</p>
+        <p><strong>The speed argument underestimates the production system we built:</strong> a modular Storyline component library with standardised Oracle interaction patterns, a pre-approved script template, and a rapid-build workflow. A video could go from first-draft script to finished output in five working days. That pace made 42 Oracle process videos viable within a four-month window.</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 How did you handle Oracle configuration changes mid-project when training was already built?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>On two levels — governance and architecture.</p>
+        <p>At the governance level, I negotiated a configuration freeze agreement with the Oracle implementation lead — a formally agreed date after which no changes to training-relevant Oracle configuration (approval hierarchies, chart of accounts segment values, workflow routing rules) would be made without a documented change request and a formal impact assessment on the training content.</p>
+        <p>At the architecture level, I built the Oracle Show Me modules using a modular Storyline component library — standardised Oracle interaction patterns and screen templates that could be updated individually without rebuilding entire modules. A confirmed Oracle configuration change could be reflected in affected Show Me modules within 48 hours. This made the change request process acceptable to the implementation team — they knew the training impact was bounded and manageable.</p>
+        <p><strong>The lesson: in Oracle training projects, you cannot control the implementation timeline, but you can design your production architecture to absorb the impact of late configuration changes without crisis.</strong></p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 Why six Oracle role-based pathways rather than one consolidated programme?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Because Oracle Financials Cloud presents different interfaces and different functions to different users based on their role-based security model. A GL accountant's Oracle environment looks and behaves completely differently from an AP clerk's — different dashboards, different transaction types, different approval responsibilities, different reporting access.</p>
+        <p>A generic Oracle programme would have trained every user in every workflow — including Oracle workflows irrelevant to their role. In a system where data entry errors have real financial consequences, training people in Oracle processes they will never use creates confusion, not competence. It also wastes the most valuable resource in a pre-go-live window: learner attention.</p>
+        <p><strong>The six Oracle pathways were also more efficient than they appear:</strong> many modules were shared across roles, with role-specific annotation layers applied to the same core Oracle content. The 42 process videos served six pathways — the average video was used by multiple Oracle user groups, not built exclusively for one.</p>
+      </div>
+    </div>
+
+    <div class="qa-category" style="margin-top:20px;">Oracle Module Knowledge</div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 What is the three-way match in Oracle Payables and why is it the most important AP training concept?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>The three-way match is Oracle Payables' core control mechanism for verifying that a supplier invoice should be paid. Oracle AP automatically matches three documents: the Purchase Order (what the organisation agreed to buy, at what price, from which supplier), the Goods Receipt (confirmation that the goods were actually received in the correct quantity and condition), and the Supplier Invoice (the supplier's request for payment).</p>
+        <p>Oracle automatically places a hold on any invoice where there is a discrepancy — a quantity variance, a price variance, or a missing goods receipt. The hold prevents payment until the discrepancy is resolved.</p>
+        <p>It is the most important AP training concept because it is the most common source of post-go-live support queries. An AP clerk who doesn't understand the three-way match will call the help desk every time they encounter an Oracle invoice hold — they know something is wrong but don't know what the correct resolution is. In the CS7 project, the AP pathway opened with the three-way match concept before any Oracle Payables screen was shown. This single design decision was responsible for a significant portion of the 62% support query reduction.</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 What is the period-end close in Oracle GL and why is it a training challenge?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>The Oracle period-end close is the process of finalising all accounting transactions for a given month — ensuring all Oracle subledger transactions have been processed (AP invoices cleared, AR receipts applied, Fixed Asset depreciation run), all manual journal entries posted, all account reconciliations completed, and the Oracle accounting period formally closed so no further transactions can be posted to it.</p>
+        <p>It is a training challenge for three reasons. First, it requires coordination across multiple Oracle user roles — an AP clerk's failure to process all invoices before the Oracle close deadline blocks the GL accountant's ability to close the period. Training that covers each Oracle role in isolation misses this critical interdependency. Second, Oracle period-end errors are consequential — an incorrect journal posted to the wrong Oracle period cannot be deleted, only corrected through a reversing entry. Third, the Oracle close sequence is organisation-specific — different close calendars, different cut-off policies, different Oracle approval hierarchies.</p>
+        <p>In the CS7 project, the GL accountant pathway addressed the period-end close in detail — specifically the sequence of steps across Oracle GL, AP, AR, and Fixed Assets that must be completed before the Oracle period can be locked. This was the most complex module in the entire programme.</p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 How does your CS7 Oracle training experience transfer to other ERP platforms like SAP?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>The methodology transfers completely — the specific Oracle interface knowledge does not, but the instructional design principles are platform-independent.</p>
+        <p>Process-first design is as essential for SAP S/4HANA as it is for Oracle Financials Cloud. SAP's Procure-to-Pay, Order-to-Cash, and Record-to-Report process flows are conceptually identical to Oracle's — the transactions have different names (SAP uses "MIRO" for invoice verification where Oracle uses the Payables import), but the business logic is the same. A user who doesn't understand why SAP enforces a three-way match will make the same errors as an Oracle user who doesn't understand it.</p>
+        <p>Role-based pathway design, the must-know/need-to-know content filter, the Show Me / Try Me / scenario assessment architecture, the configuration freeze governance model, the go-live readiness dashboard — all of these apply to SAP, Workday, Microsoft Dynamics, or any enterprise system training project. <strong>The platform changes. The methodology doesn't.</strong></p>
+      </div>
+    </div>
+
+    <div class="qa-category" style="margin-top:20px;">Measurement &amp; Evidence</div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 The readiness dashboard showed role-specific competency scores. How was this built and what did it measure?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>The scenario-based assessments were designed from the outset to serve a dual purpose: learning reinforcement and Oracle go-live readiness evidence. Each Oracle assessment scenario produced a role-specific competency score — not a pass/fail completion flag — showing which Oracle transactions the user had demonstrated proficiency in and which required additional support.</p>
+        <p>The readiness dashboard aggregated these scores by Oracle role and by location. Rather than a single number — "87% completion rate" — the dashboard showed, for example, that AP clerks in the India office had demonstrated proficiency in Oracle invoice entry and supplier enquiry but showed lower scores on Oracle payment exception handling. This triggered a targeted follow-up session on that specific Oracle topic before go-live.</p>
+        <p>The project sponsor used this dashboard to approve Oracle go-live — not a completion percentage, but granular Oracle competency evidence. <strong>That is the difference between a dashboard that shows training has happened and a dashboard that shows Oracle readiness.</strong></p>
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="qa-question" onclick="toggleQA(this)">
+        <span class="qa-q-text">🤔 If you were to redesign this Oracle project today, what would you add?</span>
+        <span class="qa-icon">▾</span>
+      </button>
+      <div class="qa-answer">
+        <p>Three things, in priority order.</p>
+        <p><strong>First, a Digital Adoption Platform — specifically WalkMe integrated with the Oracle environment.</strong> The Show Me / Try Me architecture was effective for pre-go-live certification. But in the first weeks after Oracle go-live, users encounter real transactions that don't match training scenarios exactly. WalkMe in-application guidance would support those moments — the training builds the Oracle mental model; the DAP supports the first real execution in the live Oracle environment.</p>
+        <p><strong>Second, spaced reinforcement at 7, 21, and 60 days post Oracle go-live.</strong> The forgetting curve is a real risk in ERP training — users certified in week three of a four-week window may have forgotten critical Oracle process steps by month two. Targeted microlearning nudges linked to each user's specific Oracle assessment gaps would address this.</p>
+        <p><strong>Third, a cross-functional Oracle simulation — a joint session for GL accountants, AP managers, and AR managers working through the period-end close sequence together.</strong> The period-end close requires coordination across Oracle modules, and the training delivered each role in relative isolation. That isolation was the weakest link in the overall programme — the post-go-live support data showed most period-end queries came from role-boundary confusion rather than Oracle navigation errors.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- RESOURCES -->
+<section class="chapter" id="resources">
+  <div class="chapter-header">
+    <div class="ch-badge">📚</div>
+    <div>
+      <div class="chapter-eyebrow">Further reading</div>
+      <h2>Resources to strengthen <em>your Oracle knowledge before the interview.</em></h2>
+    </div>
+  </div>
+
+  <div class="resources">
+    <div class="resource-card">
+      <div class="resource-icon resource-icon-oracle">🔴</div>
+      <div class="resource-content">
+        <h4>Oracle Financials Cloud — Official Product Overview</h4>
+        <p>Oracle's own overview of the Financials Cloud suite — modules, capabilities, and the integrated process flow architecture. Start here for the official language Aptara and Oracle clients use.</p>
+        <a href="https://www.oracle.com/erp/financials/" target="_blank">oracle.com/erp/financials →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-icon resource-icon-oracle">🔴</div>
+      <div class="resource-content">
+        <h4>Oracle Financials Cloud Documentation</h4>
+        <p>Oracle's official documentation. Focus on the General Ledger, Payables, Receivables, and Assets user guides — specifically the user-facing transaction sections, not the technical configuration sections.</p>
+        <a href="https://docs.oracle.com/en/cloud/saas/financials/" target="_blank">docs.oracle.com/financials →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-icon resource-icon-oracle">🔴</div>
+      <div class="resource-content">
+        <h4>Oracle University — Financials Cloud Learning Paths</h4>
+        <p>Review Oracle University's course catalogue — not to take the courses, but to understand how Oracle structures its own training and which role-specific paths exist. This is the product Aptara's clients are replacing with bespoke training.</p>
+        <a href="https://education.oracle.com" target="_blank">education.oracle.com →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-icon">🎯</div>
+      <div class="resource-content">
+        <h4>WalkMe for Oracle — Digital Adoption Platform</h4>
+        <p>WalkMe's documentation on Oracle Financials Cloud integration. Understanding DAPs is now essential for Oracle implementation training — listed as a preferred skill in the Aptara JD.</p>
+        <a href="https://www.walkme.com/oracle/" target="_blank">walkme.com/oracle →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-icon">📋</div>
+      <div class="resource-content">
+        <h4>ERP Training Best Practices — ASAP Methodology</h4>
+        <p>Industry-standard guidance on ERP training design and go-live readiness. Covers role-based training architecture, sandbox environments, and the go-live certification framework.</p>
+        <a href="https://www.asapmethodology.org" target="_blank">asapmethodology.org →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-icon">📖</div>
+      <div class="resource-content">
+        <h4>Case Study 7 — From Manual to Mastery (Your Portfolio)</h4>
+        <p>Re-read your own Oracle Financials Cloud case study before the interview. The module map, the six role-based pathways, the process-first rationale, and the three headline numbers must be completely fluent.</p>
+        <a href="CaseStudy7.html" target="_blank">rameshkrishnan.me/CaseStudy7.html →</a>
+      </div>
+    </div>
+    <div class="resource-card">
+      <div class="resource-icon">🧠</div>
+      <div class="resource-content">
+        <h4>Oracle Financials Deep-Dive Preparation Guide (ip3.html)</h4>
+        <p>50 questions covering Oracle GL, AP, AR, Fixed Assets, process flows, ERP training design, and Aptara-specific questions — built specifically for the Aptara Senior IDM interview.</p>
+        <a href="ip3.html" target="_blank">rameshkrishnan.me/ip3.html →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<div class="cta-block">
+  <h3>You know this story.<br><em>Now tell it.</em></h3>
+  <p>Three numbers cold — 96% · 62% · 100%. One insight — process before system. Everything else builds from there.</p>
+  <a href="CaseStudy7.html" class="cta-btn">← Case study</a>
+  <a href="ip3.html" class="cta-btn">Oracle deep-dive →</a>
+</div>
+
+</div>
+
+<footer>
+  <p><strong>Learning Matters.</strong> &nbsp;·&nbsp; <a href="/">rameshkrishnan.me</a></p>
+  <p style="margin-top:6px;font-size:0.72rem;">Case Study 7 — Interview Prep · Oracle Financials Cloud · Financial Services · ERP Application Training</p>
+</footer>
+
 <script>
-function toggleQA(btn){const item=btn.closest('.qa-item');item.classList.toggle('open');}
-function toggleObj(btn){const item=btn.closest('.objection-item');item.classList.toggle('open');}
-const chs=document.querySelectorAll('.chapter'),nls=document.querySelectorAll('.progress-step');
-new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting){const id=en.target.id;nls.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+id)l.classList.add('active');});}});},{rootMargin:'-20% 0px -70% 0px'}).observe&&chs.forEach(c=>new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting){const id=en.target.id;nls.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+id)l.classList.add('active');})}})},{rootMargin:'-20% 0px -70% 0px'}).observe(c));
+function toggleQA(btn){btn.closest('.qa-card').classList.toggle('open');}
 </script>
-</body></html>
+</body>
+</html>
